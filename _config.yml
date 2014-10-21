@@ -1,12 +1,50 @@
-# Site settings
-title: Michael Watts, a web developer in Surrey, UK
-email: hello@michaelwatts.me
-description: > # this means to ignore newlines until "baseurl:"
-  Website for Web Developer Michael Watts, based in Surrey, UK.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://michaelwatts.me" # the base hostname & protocol for your site
-twitter_username: altescapedesign
-github_username:  altescape
+title:            Michael Watts
+description:      Website of Michael Watts, a web developer in Surrey, UK
+disqus_shortname: disqus_V6ccNgzKE5
+# Your site's domain goes here. When working locally use localhost server leave blank
+# PS. If you set this wrong stylesheets and scripts won't load and most links will break.
+# PPS. If you leave it blank for local testing home links won't work, they'll be fine for live domains though.
+url:
 
-# Build settings
-markdown: kramdown
+# Owner/author information
+owner:
+  name:           Michael Watts
+  avatar:         df75fece89f48dab15f6e458d73b0915.jpg
+  bio:            "A web developer from Surrey in the UK."
+  email:          hello@michaelwatts.me
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        altescapedesign
+  facebook:
+  github:         altescape
+  stackexchange:  http://stackoverflow.com/users/1945990/mjwatts
+  linkedin:       mwattsweb
+  instagram:
+  flickr:
+  tumblr:
+  # For Google Authorship https://plus.google.com/authorship
+  # google plus id, include the '+', eg +mmistakes
+  google_plus:    113239679855361194218
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: Theme Setup
+    url: /theme-setup
+  - title: External Link
+    url: http://mademistakes.com
+    external: true
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Europe/London
+future:      true
+pygments:    true
+markdown:    kramdown
+
+# Amount of posts to show on home page
+paginate: 5
