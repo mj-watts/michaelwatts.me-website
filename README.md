@@ -29,7 +29,7 @@ Breakdown of work:
 url: private Github repository, need to make clone public and remove any DB refs.
 
 Aim:
-- To increase membership to Saudi Fashion Magazine. Cashier staff were incentivised to 'sign-up' customers at POS. Data is processed using Oracle and sent to our server.
+- To increase membership to Saudi Fashion Magazine. Cashier staff were incentivised to 'sign-up' customers at POS. Data is processed using Oracle and sent to our server where its validated and processed for use.
 
 Languages:
 - PHP
@@ -42,3 +42,50 @@ Breakdown of work:
 - Data is syphoned into good and bad reports so that the Saudi team can deal with problems or system cheats (cashiers are incentivised to ask customers for data so a cashier could enter dummy data on a transaction to boost earnings).
 - Using Campaign Monitor's API it then creates custom fields and subscribers. 
 - Emails are sent from Campaign Monitor where successful opens can be segmented by gender, store, brand, mall, location or staff id.
+
+---
+## #Are you fashion competition
+url: http://are-you-fashion.com (login with mike@smswmedia.com) can also see backend at /report
+
+Aim:
+- Marketing campaign to build up awareness of Saudi Fashion Magazine with massive posters on the side of malls, campaigns on Facebook, Twitter, etc, etc. The aim was to have people enter their details and tell us why they 'were fashion' and also upload a picture of themselves.
+
+Languages:
+- PHP
+- Laravel
+- SCSS
+
+Breakdown of work:
+- need to add
+
+---
+## GAP Facebook Campaigns (need to find names of campaigns)
+### Where they uploaded the picture
+### Where they could easily add 3-5 friends
+
+Languages:
+- PHP
+- Laravel
+
+Breakdown of work:
+- need to add
+
+---
+## Card Flipping Game for FG4
+
+Languages:
+- PHP
+- Laravel
+
+Breakdown of work:
+- need to add
+
+---
+## SITA Horizon Value Calculator
+
+Languages:
+- AngularJS
+- SCSS
+
+Breakdown of work:
+- need to add
