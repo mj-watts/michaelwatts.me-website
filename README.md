@@ -3,6 +3,8 @@ michaelwatts.me-website
 
 Website of michaelwatts.me
 
+(need links for codepen.io, jsfiddle and plunkr)
+
 ---
 ## Saudi Fashion Magazine
 url: http://www.saudifashionmagazine.com
