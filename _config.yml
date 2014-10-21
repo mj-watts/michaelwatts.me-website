@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Website for Web Developer Michael Watts, based in Surrey, UK.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://michaelwatts.me" # the base hostname & protocol for your site
-twitter_username: altescape
+twitter_username: altescapedesign
 github_username:  altescape
 
 # Build settings
