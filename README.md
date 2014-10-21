@@ -3,7 +3,9 @@ michaelwatts.me-website
 
 Website of michaelwatts.me
 
-(need links for codepen.io, jsfiddle and plunkr)
+- codepen.io (http://codepen.io/altescape/popular/)
+- jsfiddle (http://jsfiddle.net/user/altescape/fiddles/)
+- Plunker (http://plnkr.co/users/altescape)
 
 ---
 ## Saudi Fashion Magazine
