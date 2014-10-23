@@ -1,10 +1,9 @@
 _site
 .sass-cache
 .idea
-assets/libs
 assets.old
-node_modules
 images.old
 _posts.old
 _layouts.old
 _includes.old
+node_modules
