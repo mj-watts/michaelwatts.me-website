@@ -7,6 +7,12 @@ Website of michaelwatts.me
 - jsfiddle (http://jsfiddle.net/user/altescape/fiddles/)
 - Plunker (http://plnkr.co/users/altescape)
 
+
+### inspirations: 
+- http://tympanus.net/Development/ArticleIntroEffects/index5.html
+- http://tympanus.net/codrops/2014/05/22/inspiration-for-article-intro-effects/
+- http://tympanus.net/Development/ModalWindowEffects/
+
 ---
 ## Saudi Fashion Magazine
 url: http://www.saudifashionmagazine.com
