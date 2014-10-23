@@ -3,7 +3,7 @@
 
 (function() {
 
-    if ($('.post-template:not(.page)').length) {
+    if ($('.post:not(.page)').length) {
 
         // detect if IE : from http://stackoverflow.com/a/16657946      
         var ie = (function(){
@@ -72,7 +72,7 @@
             isRevealed, 
             noscroll,
             isAnimating,
-            container = document.getElementById( 'notepad-post-container' ) || document,
+            container = document.getElementById( 'container' ) || document,
             trigger = container.querySelector( 'button.trigger' );
 
         function scrollY() {

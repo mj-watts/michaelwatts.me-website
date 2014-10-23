@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include head.html %}
+</head>
+
+<body class="post">
+
+    <div id="container" class="container {{ page.effect }}" role="main">
+
+        <div class="sticky">
+
+            <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+                <a class="logo" href="{{ site.url }}">
+                    <img src="{{ site.url }}/images/{{ site.logo }}" alt="Blog Logo" />
+                </a>
+
+                <section>
+                    <div class="mobile-menu show-for-small right">
+                        <a href="#"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="menu right">
+                        <li class="mobile-close-btn show-for-small text-right">
+                            <a href="#"><i class="fa fa-times"></i></a>
+                        </li>
+                        {% for link in site.links %}
+                        <li>
+                            {% if link.external %}
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                            {% else %}
+                            <a href="{{ site.url }}{{ link.url }}">{{ link.title }}</a>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                        <li><a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+                    </ul>
+                </section>
+
+            </nav>
+        </div>
+
+        <header class="header">
+            <div class="bg-img">
+                <img src="/images/{{ page.imagefeature }}" />
+            </div>
+        </header>
+
+        <button class="trigger bg-check" data-info="Read more"><span>Trigger</span></button>
+
+
+        <article class="content">
+            <div class="title">
+                <nav class="content-tags">
+                    {% for tag in page.tags %}
+                        <a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>
+                    {% endfor %}
+                </nav>
+                <h1>{{ page.title }}</h1>
+                <p class="subline">{{ page.description }}</p>
+                <p>by <strong>{{ site.owner.name }}</strong> on <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
+            </div>
+            <div class="body-content">
+                {{ content }}
+            </div>
+        </article>
+        {% if site.share %}
+            {% include share.html %}
+        {% endif %}
+        <div class="cf"></div>
+        {% include signoff.html %}
+
+        <div class="cf"></div>
+
+        {% if site.disqus_shortname and page.comments == true %}
+        <section class="disqus row">
+            <div class="small-12 columns">
+                <h1 class="comments-header">Comments</h1>
+                <div id="disqus_thread"></div>
+                {% include disqus_comments.html %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% include footer.html %}
+
+    </div>
+
+    {% include scripts.html %}
+
+</body>
+</html>

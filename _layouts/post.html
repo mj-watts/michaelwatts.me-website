@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html>
-<!--
-           Moooooo!
-            /            Eek!_   _
-    ((__)) /              \ (_)-(_)
-     (00)                    (o o)
-nn--(o__o)--nn-----------ooO--(_)--Ooo-
-
--->
 <head>
 {% include head.html %}
-{% if site.dropcap %}<style type="text/css">@media only screen and (min-width:43.75em){.notepad-post-content div>p:first-child:first-letter{float:left;font-size:4.688rem;line-height:4.375rem;padding-top:.25rem;padding-right:.5rem;padding-left:.188rem;font-family:serif}}</style>{% endif %}
+{% if site.dropcap %}<style type="text/css">@media only screen and (min-width:43.75em){.content div>p:first-child:first-letter{float:left;font-size:4.688rem;line-height:4.375rem;padding-top:.25rem;padding-right:.5rem;padding-left:.188rem;font-family:serif}}</style>{% endif %}
 </head>
-<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
 {% if page.imagefeature %}
-        <main id="notepad-post-container" class="notepad-post-container {{ page.effect }}" role="main">
-            <header class="notepad-post-header">
+        <main id="post-container" class="post-container {{ page.effect }}" role="main">
+            <header class="post-header">
                 <div class="bg-img"></div>
                 
-                <div class="notepad-post-menu-header">
+                <div class="post-menu-header">
 {% else %}
-        <main id="notepad-post-container-simple" class="notepad-post-container-simple" role="main">
-            <header class="notepad-post-header-simple">
-                <div class="notepad-post-menu-header-simple">
+        <main id="post-container-simple" class="post-container-simple" role="main">
+            <header class="post-header-simple">
+                <div class="post-menu-header-simple">
 {% endif %}
-                    <a class="notepad-blog-logo" href="{{ site.url }}">
+                    <a class="blog-logo" href="{{ site.url }}">
                         <img src="{{ site.url }}/images/{{ site.logo }}" alt="Blog Logo" />
                     </a>
 
-                <div class="notepad-blog-menu">      
-    <div class="notepad-mobile-menu show-for-small">
+                <div class="blog-menu">      
+    <div class="mobile-menu show-for-small">
         <a href="#"><i class="fa fa-bars"></i></a>
     </div>
-    <ul class="notepad-menu">
-        <li class="notepad-mobile-close-btn show-for-small text-right">
+    <ul class="menu">
+        <li class="mobile-close-btn show-for-small text-right">
             <a href="#"><i class="fa fa-times"></i></a>
         </li>
 {% for link in site.links %}
@@ -49,7 +41,7 @@ nn--(o__o)--nn-----------ooO--(_)--Ooo-
 </div>
             </div>
 {% if page.imagefeature %}
-            <div class="notepad-post-title bg-check">
+            <div class="post-title bg-check">
                 <h1>{{ page.title }}</h1>
                 <p>by <strong>{{ site.owner.name }}</strong> &#8212; {% assign tagsize = page.tags.size %}{% if tagsize != 0 %}on {% for tag in page.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}&nbsp;&comma;&nbsp;{% endunless %}{% endfor %}{% endif %} <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
             </div>
@@ -58,9 +50,9 @@ nn--(o__o)--nn-----------ooO--(_)--Ooo-
         <button class="trigger bg-check" data-info="Read more"><span>Trigger</span></button>
         <img src="{{ site.url }}/images/{{ page.imagefeature }}" alt="cover-image" />
 {% else %}
-                <div class="notepad-post-title-simple row">
+                <div class="post-title-simple row">
                     <div class="small-12 columns">
-                        <div class="notepad-post-meta-simple">
+                        <div class="post-meta-simple">
                             <h1>{{ page.title }}</h1>
                             <p>by <strong>{{ site.owner.name }}</strong> &#8212; {% assign tagsize = page.tags.size %}{% if tagsize != 0 %}on {% for tag in page.tags %}<a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}&nbsp;&comma;&nbsp;{% endunless %}{% endfor %}{% endif %} <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
                         </div>
@@ -68,7 +60,7 @@ nn--(o__o)--nn-----------ooO--(_)--Ooo-
                 </div>
             </header>
 {% endif %}
-        {% if page.imagefeature %}<article class="notepad-post-content post">{% else %}<article class="notepad-post-content post tag-simple">{% endif %}
+        {% if page.imagefeature %}<article class="content post">{% else %}<article class="content post tag-simple">{% endif %}
             <div>{{ content }}
             </div>
         </article>
@@ -80,9 +72,9 @@ nn--(o__o)--nn-----------ooO--(_)--Ooo-
         
         <div class="cf"></div>
         {% if site.disqus_shortname and page.comments == true %}
-        <section class="notepad-disqus row">
+        <section class="disqus row">
     <div class="small-12 columns">
-        <h1 class="notepad-comments-header">Comments</h1>
+        <h1 class="comments-header">Comments</h1>
         <div id="disqus_thread"></div>
         {% include disqus_comments.html %}
     </div>
