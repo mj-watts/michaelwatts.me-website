@@ -10,6 +10,7 @@ image:
   creditlink: http://mademistakes.com
 comments: true
 share: true
+thumb: thumb10.jpg
 coverimage: cover10.jpg
 imagefeature: 
 effect: 

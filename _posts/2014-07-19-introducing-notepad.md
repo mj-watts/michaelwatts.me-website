@@ -7,6 +7,7 @@ modified: 2014-07-19
 category: personal
 tags: []
 comments: true
+thumb: thumb10.jpg
 coverimage: cover3.jpg
 imagefeature: 
 comments: true

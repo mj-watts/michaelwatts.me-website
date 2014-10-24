@@ -5,6 +5,7 @@ description: "Instructions on how to install and customize the HMFAYSAL Notepad 
 category: theme
 tags: [how-to]
 comments: true
+thumb: thumb10.jpg
 coverimage: 
 imagefeature: cover10.jpg
 effect: intro-effect-sidefixed

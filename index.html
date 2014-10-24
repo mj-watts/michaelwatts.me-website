@@ -9,38 +9,40 @@ tags: []
 ---
 {% if site.paginate %}
 	{% for post in paginator.posts %}
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}">
-                    <span class="day">
-                        {{ post.date | date: "%d" }}
-                    </span>
-                    <span class="month-year">
-                        {{ post.date | date: "%B %Y" }}
-                    </span>
-                </time>
-            </span>
+
+    <section class="row home-article-list">
+        <div class="small-4 columns img">
+            <img src="{{ site.url }}/images/{{ post.thumb }}">
         </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="{{ site.url }}{{ post.url }}">
-                        {{ post.title }}
-                    </a>
-                </h3>
+        <div class="small-8 columns">
+            <header>
+                <h1><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
             </header>
-            <section class="notepad-post-excerpt">
-                <p>{{ post.description | strip_html | truncatewords:40 }}</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                {% for tag in post.categories %}<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" title="Other posts from the {{ tag | capitalize }} category">{{ tag | capitalize }}</a>{% unless forloop.last %}&nbsp;{% endunless %}{% endfor %}
-                    
+            <article>
+                <p>{{ post.description }}</p>
+            </article>
+            <footer class="row">
+                <div class="small-6 columns meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        Date:
+                        <span class="day">
+                            {{ post.date | date: "%d" }}
+                        </span>
+                        <span class="month-year">
+                            {{ post.date | date: "%B %Y" }}
+                        </span>
+                    </time>
+                    Tags: {% for tag in post.categories %}<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" title="Other posts from the {{ tag | capitalize }} category">{{ tag | capitalize }}</a>{% unless forloop.last %}&nbsp;{% endunless %}{% endfor %}
                 </div>
-            
+                <div class="small-6 columns text-right">
+                    <a href="{{ site.url }}{{ post.url }}" class="button radius small outline">MORE <i class="fa fa-angle-right"></i></a>
+                </div>
+            </footer>
         </div>
-    </article>
+    </section>
+
+
+
 	{% endfor %}
     <nav class="pagination" role="navigation">
     {% if paginator.previous_page %}

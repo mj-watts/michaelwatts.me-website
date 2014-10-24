@@ -3,6 +3,7 @@ layout: new-post
 title:  "Rename files in a directory with the terminal"
 description: "Using terminal commands can be quicker..."
 date:   2014-10-22 09:38:25
+thumb: thumb10.jpg
 imagefeature: cover11.jpg
 effect: intro-effect-sidefixed
 categories: terminal bash
