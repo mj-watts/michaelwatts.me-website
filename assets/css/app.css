@@ -544,7 +544,7 @@ nav.top-bar {
     /* line 605, ../app.scss */
     .intro-effect-sidefixed .title p.subline {
       font-size: 1.75em;
-      line-height: 1; }
+      line-height: 1.4; }
 /* line 612, ../app.scss */
 .intro-effect-sidefixed .body-content {
   z-index: 1;
