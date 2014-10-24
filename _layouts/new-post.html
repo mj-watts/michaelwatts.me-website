@@ -21,8 +21,31 @@
         <button class="trigger bg-check" data-info="Read more"><span>Trigger</span></button>
         {% endif %}
 
+        {% if page.coverimage %}
+        <div class="aside sticky-aside">
+            <header style="background-image: url(/images/{{ page.coverimage }})"></header>
+            <article>
+                <ul class="links inline-list">
+                    <li><a href="#">LINK ONE</a></li>
+                    <li><a href="#">LINK TWO</a></li>
+                    <li><a href="#">LINK THREE</a></li>
+                </ul>
+                <div class="inner">
+                    <div>
+                        <h1>Some heading here</h1>
+                        <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
+                        <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
+                        <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
+                    </div>
+                </div>
+            </article>
+            {% include footer.html %}
+        </div>
+        {% endif %}
+
         <article class="content {% if page.imagefeature == %}clear-nav{% endif %}">
             <div class="single-column">
+
                 <div class="title">
                     <nav class="content-tags">
                         {% for tag in page.tags %}
@@ -36,27 +59,27 @@
                 <div class="body-content">
                     {{ content }}
                 </div>
+
+                {% include signoff.html %}
+
+                {% if site.share %}
+                    {% include share.html %}
+                {% endif %}
+
+                {% if site.disqus_shortname and page.comments == true %}
+                <section class="disqus">
+                    <h1 class="comments-header">Comment</h1>
+                    <div id="disqus_thread"></div>
+                    {% include disqus_comments.html %}
+                </section>
+                {% endif %}
+
             </div>
         </article>
-        {% if site.share %}
-            {% include share.html %}
+
+        {% if page.coverimage == %}
+            {% include footer.html %}
         {% endif %}
-        <div class="cf"></div>
-        {% include signoff.html %}
-
-        <div class="cf"></div>
-
-        {% if site.disqus_shortname and page.comments == true %}
-        <section class="disqus row">
-            <div class="small-12 columns">
-                <h1 class="comments-header">Comments</h1>
-                <div id="disqus_thread"></div>
-                {% include disqus_comments.html %}
-            </div>
-        </section>
-        {% endif %}
-
-        {% include footer.html %}
 
     </div>
 

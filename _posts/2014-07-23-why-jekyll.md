@@ -6,6 +6,7 @@ headline:
 modified: 2014-07-23
 category: webdevelopment
 tags: [jekyll]
+coverimage: cover11.jpg
 imagefeature: 
 comments: true
 featured: true

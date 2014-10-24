@@ -4,6 +4,7 @@ title: Michael Watts
 description: "Website of Michael Watts, a web developer in Surrey, UK"
 headline: An Web Developer's Diary
 date:   2014-10-22 09:38:25
+coverimage: cover11.jpg
 tags: []
 ---
 {% if site.paginate %}
@@ -30,7 +31,7 @@ tags: []
                 </h3>
             </header>
             <section class="notepad-post-excerpt">
-                <p>{{ post.content | strip_html | truncatewords:40 }}</p>
+                <p>{{ post.description | strip_html | truncatewords:40 }}</p>
             </section>
             
                 <div class="notepad-index-post-tags">

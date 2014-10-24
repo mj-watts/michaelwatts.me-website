@@ -1,13 +1,18 @@
 ---
-layout: post
+layout: new-post
 title: "Documentation"
 description: "Instructions on how to install and customize the HMFAYSAL Notepad Theme."
 category: theme
 tags: [how-to]
+comments: true
+coverimage: 
 imagefeature: cover10.jpg
+effect: intro-effect-sidefixed
+comments: true
+featured: true
 ---
 
-General notes and suggestions for customizing **HMFAYSAL Notepad Theme**.
+General notes and suggestions for customizing **Theme**.
 
 <section id="table-of-contents" class="toc">
   <header>

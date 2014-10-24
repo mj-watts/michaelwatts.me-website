@@ -1,14 +1,16 @@
 ---
-layout: post
+layout: new-post
 title: "Introducing Notepad"
 description: 
 headline: 
 modified: 2014-07-19
 category: personal
 tags: []
-imagefeature: cover1.jpg
 comments: true
-effect: intro-effect-sliced 
+coverimage: cover3.jpg
+imagefeature: 
+comments: true
+featured: true
 ---
 
 Notepad is a Jekyll theme which is very simple, clean and beautiful. This theme is good for any blog.

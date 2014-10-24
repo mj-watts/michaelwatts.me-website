@@ -1,9 +1,6 @@
-<footer class="notepad-site-footer">
-    <div class="copyright">
-         <section>All content copyright <a href="{{ site.url }}/about">{{ site.owner.name }}</a> &copy; {{ site.time | date: '%Y' }} &bull; All rights reserved.</section>
-         <section>Proudly published with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a></section>
-    </div>
-    <div class="social-icons">
+<footer class="global-footer">
+
+    <section class="social-icons large-6 columns">
         
         {% if site.owner.twitter %}
         <a href="http://twitter.com/{{ site.owner.twitter }}">
@@ -45,7 +42,13 @@
             </span>
         </a>
         {% endif %}
-    </div>
+    </section>
+
+    <section class="copyright text-right large-6 columns">
+        <div>
+            <small>&copy; {{ site.time | date: '%Y' }}.</small>
+            <small>Proudly published with <a class="icon-ghost" href="https://jekyllrb.com/">Jekyll</a></small>
+        </div>
+    </section>
     
-    <div class="cf"></div>
 </footer>
