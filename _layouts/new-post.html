@@ -9,37 +9,9 @@
 
     <div id="container" class="container {{ page.effect }}" role="main">
 
-        <div class="sticky">
+        {% include main-nav.html %}
 
-            <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
-                <a class="logo" href="{{ site.url }}">
-                    <img src="{{ site.url }}/images/{{ site.logo }}" alt="Blog Logo" />
-                </a>
-
-                <section>
-                    <div class="mobile-menu show-for-small right">
-                        <a href="#"><i class="fa fa-bars"></i></a>
-                    </div>
-                    <ul class="menu right">
-                        <li class="mobile-close-btn show-for-small text-right">
-                            <a href="#"><i class="fa fa-times"></i></a>
-                        </li>
-                        {% for link in site.links %}
-                        <li>
-                            {% if link.external %}
-                            <a href="{{ link.url }}">{{ link.title }}</a>
-                            {% else %}
-                            <a href="{{ site.url }}{{ link.url }}">{{ link.title }}</a>
-                            {% endif %}
-                        </li>
-                        {% endfor %}
-                        <li><a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
-                    </ul>
-                </section>
-
-            </nav>
-        </div>
-
+        {% if page.imagefeature %}
         <header class="header">
             <div class="bg-img">
                 <img src="/images/{{ page.imagefeature }}" />
@@ -47,9 +19,9 @@
         </header>
 
         <button class="trigger bg-check" data-info="Read more"><span>Trigger</span></button>
+        {% endif %}
 
-
-        <article class="content">
+        <article class="content {% if page.imagefeature == %}clear-nav{% endif %}">
             <div class="single-column">
                 <div class="title">
                     <nav class="content-tags">
@@ -57,7 +29,7 @@
                             <a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>
                         {% endfor %}
                     </nav>
-                    <h1>{{ page.title }}</h1>
+                    <h1 class="bg-check">{{ page.title }}</h1>
                     <p class="subline">{{ page.description }}</p>
                     <p>by <strong>{{ site.owner.name }}</strong> on <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
                 </div>

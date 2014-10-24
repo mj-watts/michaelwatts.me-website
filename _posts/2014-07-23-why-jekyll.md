@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: new-post
 title: "Why Jekyll?"
 description: 
 headline: 
@@ -7,8 +7,6 @@ modified: 2014-07-23
 category: webdevelopment
 tags: [jekyll]
 imagefeature: 
-mathjax: 
-chart: 
 comments: true
 featured: true
 ---

@@ -5,7 +5,7 @@ description: "Custom written post descriptions are the way to go... if you're no
 category: theme
 tags: [sample post, readability]
 imagefeature: cover9.jpg
-effect: intro-effect-sidefixed 
+effect: intro-effect-sidefixed
 share: true
 ---
 

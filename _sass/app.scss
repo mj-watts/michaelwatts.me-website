@@ -1,4 +1,6 @@
 $body-bg: #FFF;
+$text-color: #333;
+$heading-color: #514753;
 $brand-color-1: #c03b5d;
 $brand-color-2: #514753;
 
@@ -31,7 +33,11 @@ nav.top-bar {
   z-index: 9999;
 
   .logo {
-    max-height: 5rem;
+    height: 80px;
+    display: block;
+    width: 80px;
+    position: relative;
+    z-index: 2;
 
     img {
       height: 100%;
@@ -86,6 +92,8 @@ nav.top-bar {
   }
 }
 
+.clear-nav {padding-top: 120px !important;}
+
 .content-tags {
   padding: 0 0 1em;
   position: relative;
@@ -118,6 +126,14 @@ nav.top-bar {
   margin: 0 auto;
   min-height: 35rem;
   width: 100%;
+}
+.title {
+  h1 {
+    color: $text-color;
+
+    &.background--dark {color: $body-bg}
+    &.background--light {color: #222}
+  }
 }
 
 // Start: Trigger button
@@ -302,6 +318,8 @@ nav.top-bar {
       font-size: 4.5rem;
       line-height: 1;
       margin-bottom: 1.5rem;
+      transition: all 0.2s cubic-bezier(0.7,0,0.3,1);
+      transition-delay: 0;
     }
 
     p {
@@ -329,8 +347,14 @@ nav.top-bar {
   }
 
   &.modify {
-    .title p {
-      opacity: 1;
+    .title {
+      h1 {
+        color: $heading-color;
+        transition-delay: .3s;
+      }
+      p {
+        opacity: 1;
+      }
     }
 
     .body-content {
