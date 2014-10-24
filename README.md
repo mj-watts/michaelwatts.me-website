@@ -12,6 +12,7 @@ Website of michaelwatts.me
 - http://tympanus.net/Development/ArticleIntroEffects/index5.html
 - http://tympanus.net/codrops/2014/05/22/inspiration-for-article-intro-effects/
 - http://tympanus.net/Development/ModalWindowEffects/
+- http://tripplanner.travelalberta.com/#
 
 ---
 ## Saudi Fashion Magazine
