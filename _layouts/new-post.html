@@ -53,7 +53,7 @@
                         {% endfor %}
                     </nav>
                     <h1 class="bg-check">{{ page.title }}</h1>
-                    <p class="subline">{{ page.description }}</p>
+                    <p class="subline bg-check">{{ page.description }}</p>
                     <p>by <strong>{{ site.owner.name }}</strong> on <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
                 </div>
                 <div class="body-content">

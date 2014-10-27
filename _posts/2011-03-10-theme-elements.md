@@ -5,7 +5,7 @@ description: "Just about everything you'll need to style in the theme: headings,
 date:   2014-10-23 09:38:25
 category: articles
 tags: [sample post]
-imagefeature: cover6.jpg
+imagefeature: cover12.jpg
 thumb: thumb11.jpg
 effect: intro-effect-sidefixed
 comments: true

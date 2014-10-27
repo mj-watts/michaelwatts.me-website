@@ -19,23 +19,7 @@
     {% include main-nav.html %}
 
     <div class="aside sticky-aside">
-        <header style="background-image: url(/images/{{ page.coverimage }})"></header>
-        <article>
-            <ul class="links inline-list">
-                <li><a href="#">LINK ONE</a></li>
-                <li><a href="#">LINK TWO</a></li>
-                <li><a href="#">LINK THREE</a></li>
-            </ul>
-            <div class="inner">
-                <div>
-                    <h1>Some heading here</h1>
-                    <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
-                    <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
-                    <p>Between the dinosaur fossil safaris, triple loop rollercoasters, long rides on real steam trains and big soft sandy beaches, kid-fun adventures are right around the corner. These holidays will get the whole family talking about their cool Alberta experiences all year.</p>
-                </div>
-            </div>
-        </article>
-        {% include footer.html %}
+        <header style="background-image: url(/images/{{ page.coverimage }}); bottom: 0;"></header>
     </div>
 
     <article class="content {% if page.imagefeature == %}clear-nav{% endif %}">

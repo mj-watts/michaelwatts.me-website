@@ -155,7 +155,7 @@ nav.top-bar {
   .single-column {
     overflow: auto;
     height: 100%;
-    padding: 2rem !important;
+    padding: 6.5rem !important;
   }
 }
 
@@ -439,6 +439,18 @@ nav.top-bar {
     &.background--dark {color: $body-bg}
     &.background--light {color: #222}
   }
+
+  .subline {
+    color: $body-bg;
+
+    &.background--light {
+      color: black;
+    }
+
+    &.background--dark {
+      color: $body-bg;
+    }
+  }
 }
 
 // Start: Trigger button
@@ -544,6 +556,8 @@ nav.top-bar {
   }
 }
 
+//----------------------------------------------------------
+// ARTICLE EFFECTS
 // Start: Side fixed
 .intro-effect-sidefixed {
 
@@ -579,7 +593,7 @@ nav.top-bar {
   .content {
     width: 50%;
     margin-left: 50% !important;;
-    padding: 0 2.5em !important;
+    padding: 0 6.5rem !important;
     display: table;
     vertical-align: middle;
     table-layout: fixed;
@@ -642,10 +656,16 @@ nav.top-bar {
       font-weight: 300;
       font-size: 0.85em;
       margin: 0 auto;
+      transition: all 0.2s cubic-bezier(0.7,0,0.3,1);
+      transition-delay: 0;
+
 
       &.subline {
+        opacity: 1;
         font-size: 1.75em;
         line-height: 1.4;
+        transition: all 0.2s cubic-bezier(0.7,0,0.3,1);
+        transition-delay: 0;
       }
     }
   }
@@ -666,6 +686,8 @@ nav.top-bar {
       }
       p {
         opacity: 1;
+        color: #585A66;
+        transition-delay: .3s;
       }
     }
 
@@ -696,6 +718,10 @@ nav.top-bar {
 
 }
 // End: Side Fixed
+
+.js {
+  .with-image
+}
 
 ::-webkit-scrollbar {
   width: 4px;

@@ -1,6 +1,6 @@
 'use strict';
 
-var notepad = (function ($) {
+var michaelwatts = (function ($) {
 
     var indexPostClass = '.index-post',
         mobileMenuButton = '.mobile-menu a',
@@ -9,20 +9,7 @@ var notepad = (function ($) {
         bgCheckClass = '.bg-check',
         postBgImages = '.bg-img img',
         postCoverImg = '.post-header .bg-img',
-
-    // post animations on homepage
-    indexPostAnimate = function () {
-        if ($(indexPostClass).length) {
-            $(indexPostClass).each(function () {
-            var postPos = $(this).offset().top;
-            var topOfWindow = $(window).scrollTop(),
-                windowHeight = $(window).height();
-                if (postPos < topOfWindow + (windowHeight/ 1.4)) {
-                    $(this).addClass('fadeInDown');
-                }
-            });
-        }
-    },
+	    indexPostClass = '.home-article-list',
 
     mobileMenu = function () {
         if($(mainMenu).length) {
@@ -54,16 +41,11 @@ var notepad = (function ($) {
         }
     },
 
-    // notepad javascripts initialization
+    // javascripts initialization
     init = function () {
-        indexPostAnimate();
-        $(window).on('scroll', function() {
-            indexPostAnimate();
-        });
         postHeaderCoverImg();
         mobileMenu();
         headerTitlesBackgroundCheck();
-        $('p:has(> img)').addClass('with-image');
     };
 
     return {
@@ -73,5 +55,5 @@ var notepad = (function ($) {
 })(jQuery);
 
 (function () {
-    notepad.init();
+	michaelwatts.init();
 })();
