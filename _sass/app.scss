@@ -88,12 +88,22 @@ nav.top-bar {
   .logo {
     height: $nav-height;
     display: block;
-    width: $nav-height;
     position: relative;
     z-index: 2;
 
     img {
       height: 100%;
+      float: left;
+      margin-right: 1.5em;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      line-height: $nav-height;
+      color: $body-bg;
+      transition: all .1s ease-in-out;
+      font-size: 1.2rem;
     }
   }
 
@@ -718,10 +728,6 @@ nav.top-bar {
 
 }
 // End: Side Fixed
-
-.js {
-  .with-image
-}
 
 ::-webkit-scrollbar {
   width: 4px;
