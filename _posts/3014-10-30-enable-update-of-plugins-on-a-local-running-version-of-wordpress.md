@@ -50,9 +50,3 @@ Complete all steps and ***then change ownership back to you*** otherwise you won
   {% highlight bash %}
   sudo chown -R _www wp-content/uploads; sudo chmod -R g+w wp-content/uploads
   {% endhighlight %}
-
-----
-
-### @todo:
-1. See if you can skip changing everything but the themes folder as that is where most editing is done, so wouldn't need to change and change back everytime.
-2. Set this with an admin button if possible.
