@@ -4,7 +4,6 @@ title:  "Rename files in a directory with the terminal"
 description: "Using terminal commands can be quicker..."
 date:   2014-10-22 09:38:25
 thumb: thumb10.jpg
-imagefeature: cover11.jpg
 effect: intro-effect-sidefixed plain
 categories: terminal bash
 comments: true
@@ -18,21 +17,6 @@ This works better on larger directories. Finds anything with .jpg extension. You
 
 {% highlight bash %}
 find . -name '*.jpg' | awk 'BEGIN{ a=0 }{ printf "mv %s your_file_name_%04d.jpg\n", $0, a++}' | bash
-{% endhighlight %}
-
-{% highlight php %}
-class Reaction
-{
-  public $return_data;
-  public $reactions_number = 5;
-  /**
-   * Constructor
-   */
-  public function __construct()
-  {
-    $this->EE =& get_instance();
-  }
-}
 {% endhighlight %}
 
 #### Using ls command

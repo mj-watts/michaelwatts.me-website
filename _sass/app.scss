@@ -1,3 +1,5 @@
+@import "syntax-highlighting";
+
 $body-bg: #FFF;
 $text-color: #333;
 $heading-color: #514753;
@@ -732,9 +734,27 @@ nav.top-bar {
 // End: Side Fixed
 
 .highlight {
-  pre {
-    code {
+  margin: 2em 0;
 
+  span {
+    line-height: 25px;
+
+    .lineno {
+      background: #E6E6E6;
+      padding: 4px 0.4em;
+      color: #AAA;
+    }
+  }
+
+  pre {
+    overflow-y: hidden;
+    padding: 2em;
+    background: #EEE;
+
+    code {
+      border: none;
+      background-color: transparent;
+      padding: 0;
     }
   }
 }
