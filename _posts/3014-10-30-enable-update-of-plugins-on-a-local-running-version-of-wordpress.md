@@ -5,6 +5,7 @@ description: "When developing a site in WordPress on a local machine - you can't
 date:   2014-10-30 09:38:25
 thumb: cover14-thumb.jpg
 categories: terminal bash wordpress
+comments: true
 ---
 
 Complete all steps and ***then change ownership back to you*** otherwise you won't be able to edit anything.
