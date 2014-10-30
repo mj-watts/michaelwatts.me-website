@@ -531,33 +531,29 @@ nav.top-bar {
   display: table;
   vertical-align: middle;
   table-layout: fixed; }
-  /* line 611, ../app.scss */
-  .intro-effect-sidefixed .content div {
-    position: relative;
-    margin: 70px 0 0; }
-/* line 617, ../app.scss */
+/* line 612, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .bg-img:before, .intro-effect-sidefixed:not(.notrans) .bg-img:after, .intro-effect-sidefixed:not(.notrans) .title p, .intro-effect-sidefixed:not(.notrans) .content > div {
   -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
           transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
   -webkit-transition-duration: 0.5s;
           transition-duration: 0.5s; }
-/* line 624, ../app.scss */
+/* line 619, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .content > div {
   -webkit-transition-property: -webkit-transform, opacity;
           transition-property: transform, opacity; }
-/* line 627, ../app.scss */
+/* line 622, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .title p {
   -webkit-transition-property: opacity;
           transition-property: opacity; }
-/* line 630, ../app.scss */
+/* line 625, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .body-content {
   -webkit-transition-delay: 0s;
           transition-delay: 0s; }
-/* line 633, ../app.scss */
+/* line 628, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .bg-img::after {
   -webkit-transition-property: -webkit-transform;
           transition-property: transform; }
-/* line 637, ../app.scss */
+/* line 632, ../app.scss */
 .intro-effect-sidefixed .title {
   z-index: 1;
   margin: 0 auto;
@@ -570,12 +566,12 @@ nav.top-bar {
           transform: translateY(200px);
   width: 100%;
   height: 100%; }
-  /* line 648, ../app.scss */
+  /* line 643, ../app.scss */
   .intro-effect-sidefixed .title .single-column {
     height: 100%;
     display: table-cell;
     vertical-align: middle; }
-  /* line 654, ../app.scss */
+  /* line 649, ../app.scss */
   .intro-effect-sidefixed .title h1 {
     font-size: 4.5rem;
     line-height: 1;
@@ -584,7 +580,7 @@ nav.top-bar {
             transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
     -webkit-transition-delay: 0;
             transition-delay: 0; }
-  /* line 662, ../app.scss */
+  /* line 657, ../app.scss */
   .intro-effect-sidefixed .title p {
     opacity: 0;
     color: #585A66;
@@ -596,7 +592,7 @@ nav.top-bar {
             transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
     -webkit-transition-delay: 0;
             transition-delay: 0; }
-    /* line 673, ../app.scss */
+    /* line 668, ../app.scss */
     .intro-effect-sidefixed .title p.subline {
       opacity: 1;
       font-size: 1.75em;
@@ -605,7 +601,7 @@ nav.top-bar {
               transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
       -webkit-transition-delay: 0;
               transition-delay: 0; }
-/* line 683, ../app.scss */
+/* line 678, ../app.scss */
 .intro-effect-sidefixed .body-content {
   z-index: 1;
   opacity: 0;
@@ -615,55 +611,56 @@ nav.top-bar {
       -ms-transform: translateY(400px);
           transform: translateY(400px);
   -webkit-transition-delay: 0;
-          transition-delay: 0; }
-/* line 693, ../app.scss */
+          transition-delay: 0;
+  margin-top: 70px; }
+/* line 689, ../app.scss */
 .intro-effect-sidefixed.modify .title h1 {
-  color: #514753;
   -webkit-transition-delay: .3s;
           transition-delay: .3s; }
-/* line 697, ../app.scss */
+/* line 692, ../app.scss */
 .intro-effect-sidefixed.modify .title p {
   opacity: 1;
-  color: #585A66;
   -webkit-transition-delay: .3s;
           transition-delay: .3s; }
-/* line 704, ../app.scss */
+/* line 698, ../app.scss */
 .intro-effect-sidefixed.modify .body-content {
   opacity: 1;
   -webkit-transform: translateY(180px);
       -ms-transform: translateY(180px);
           transform: translateY(180px); }
-/* line 711, ../app.scss */
+/* line 705, ../app.scss */
 .intro-effect-sidefixed.modify .bg-img:before {
   background-color: rgba(247, 214, 169, 0.4); }
-/* line 715, ../app.scss */
+/* line 709, ../app.scss */
 .intro-effect-sidefixed.modify .bg-img:after {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
           transform: translateX(0); }
-/* line 721, ../app.scss */
+/* line 715, ../app.scss */
 .intro-effect-sidefixed.modify:not(.notrans) .body-content {
   -webkit-transition-delay: 0.5s;
           transition-delay: 0.5s; }
+/* line 724, ../app.scss */
+.intro-effect-sidefixed.plain .content {
+  width: 80%;
+  margin: 0 auto !important;
+  padding: 0 6.5rem !important; }
 
-/* line 732, ../app.scss */
+/* line 743, ../app.scss */
 ::-webkit-scrollbar {
   width: 4px;
   height: 6px; }
 
-/* line 1155, ../app.scss */
-/* line 738, ../app.scss */
+/* line 747, ../app.scss */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
 
-/* line 1161, ../app.scss */
-/* line 744, ../app.scss */
+/* line 751, ../app.scss */
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0px; }
 
-/* line 1167, ../app.scss */
-/* line 750, ../app.scss */
+/* line 755, ../app.scss */
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(0, 0, 0, 0.2); }

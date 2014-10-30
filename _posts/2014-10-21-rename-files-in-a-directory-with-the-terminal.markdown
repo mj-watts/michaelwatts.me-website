@@ -1,27 +1,54 @@
 ---
-layout: new-post
+layout: plain-post
 title:  "Rename files in a directory with the terminal"
 description: "Using terminal commands can be quicker..."
 date:   2014-10-22 09:38:25
 thumb: thumb10.jpg
 imagefeature: cover11.jpg
-effect: intro-effect-sidefixed
+effect: intro-effect-sidefixed plain
 categories: terminal bash
+comments: true
 ---
 
-## Using find command (better on larger directories)
+***WARNING: Watch out this can bite - use with caution, backup your files first!***
 
-Replace 'shoe_monkey_' with whatever or delete for '0001.jpg'
+#### Using find command
 
-{% highlight bash %}
-find . -name '*.jpg' | awk 'BEGIN{ a=0 }{ printf "mv %s shoe_monkey_%04d.jpg\n", $0, a++}' | bash
-{% endhighlight %}
-
-
-## Using ls command
-
-Replace 'shoe_monkey_' with whatever or delete for '0001.jpg'
+This works better on larger directories. Finds anything with .jpg extension. You can delete 'your_file_name_' for sequential file names like '0001.jpg'.
 
 {% highlight bash %}
-ls *.jpg| awk 'BEGIN{ a=0 }{ printf "mv %s shoe_monkey_%04d.jpg\n", $0, a++ }' | bash
+find . -name '*.jpg' | awk 'BEGIN{ a=0 }{ printf "mv %s your_file_name_%04d.jpg\n", $0, a++}' | bash
 {% endhighlight %}
+
+{% highlight php %}
+class Reaction
+{
+  public $return_data;
+  public $reactions_number = 5;
+  /**
+   * Constructor
+   */
+  public function __construct()
+  {
+    $this->EE =& get_instance();
+  }
+}
+{% endhighlight %}
+
+#### Using ls command
+
+Alternative way of doing it with the ls command
+
+{% highlight bash %}
+ls *.jpg | awk 'BEGIN{ a=0 }{ printf "mv %s shoe_monkey_%04d.jpg\n", $0, a++ }' | bash
+{% endhighlight %}
+
+----
+
+#### Aside
+
+The [pipeline](http://www.gnu.org/software/bash/manual/bash.html#Pipelines "Pipelines") character between each command is connecting the output of the first command to the input of the next command.
+
+1. So before the first pipe we are finding anything in the current directory with a .jpg extension.
+
+2. The next command uses AWK to process the file names.

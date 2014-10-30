@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include head.html %}
+</head>
+
+<body class="post">
+
+    <div id="container" class="container {{ page.effect }}" role="main">
+
+        {% include main-nav.html %}
+
+        <article class="content">
+            <div class="single-column">
+
+                <div class="title">
+                    <nav class="content-tags">
+                        {% for tag in page.tags %}
+                            <a href="{{ site.url }}/tags/index.html#{{ tag | cgi_encode }}" data-toggle="tooltip" title="Posts tagged with {{ tag }}" rel="tag">{{ tag }}</a>
+                        {% endfor %}
+                    </nav>
+                    <h1 class="bg-check">{{ page.title }}</h1>
+                    <p class="subline bg-check">{{ page.description }}</p>
+                    <p>by <strong>{{ site.owner.name }}</strong> on <strong><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time></strong></p>
+                </div>
+                <div class="body-content">
+                    {{ content }}
+                </div>
+
+                {% include signoff.html %}
+
+                {% if site.share %}
+                    {% include share.html %}
+                {% endif %}
+
+                {% if site.disqus_shortname and page.comments == true %}
+                <section class="disqus">
+                    <h1 class="comments-header">Comment</h1>
+                    <div id="disqus_thread"></div>
+                    {% include disqus_comments.html %}
+                </section>
+                {% endif %}
+
+            </div>
+        </article>
+
+        {% if page.coverimage == %}
+            {% include footer.html %}
+        {% endif %}
+
+    </div>
+
+    {% include scripts.html %}
+
+</body>
+</html>
