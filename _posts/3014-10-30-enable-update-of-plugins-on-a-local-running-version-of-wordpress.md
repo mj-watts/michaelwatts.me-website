@@ -1,5 +1,5 @@
 ---
-layout: new-post
+layout: plain-post
 title:  "How to update plugins on a locally installed version of WordPress on OSX"
 description: "When developing a site in WordPress on a local machine - you can't initially update the plugins with FTP. This article shows you how to do it."
 date:   2014-10-30 09:38:25
