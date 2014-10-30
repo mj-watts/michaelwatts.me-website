@@ -4,8 +4,6 @@ title:  "How to update plugins on a locally installed version of WordPress on OS
 description: "When developing a site in WordPress on a local machine - you can't initially update the plugins with FTP. This article shows you how to do it."
 date:   2014-10-30 09:38:25
 thumb: cover14-thumb.jpg
-imagefeature: cover14.jpg
-effect: intro-effect-sidefixed
 categories: terminal bash wordpress
 ---
 
