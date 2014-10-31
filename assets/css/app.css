@@ -197,21 +197,25 @@
   .highlight .il {
     color: #099; }
 
-/* line 11, ../app.scss */
+/* line 10, ../app.scss */
+body {
+  color: #333; }
+
+/* line 15, ../app.scss */
 .button {
   background-color: #c03b5d;
   border-color: #992f4a; }
-  /* line 15, ../app.scss */
+  /* line 19, ../app.scss */
   .button.faded {
     color: #c03b5d;
     background-color: #e7e4e8;
     border-color: #594e5b; }
-    /* line 20, ../app.scss */
+    /* line 24, ../app.scss */
     .button.faded:hover {
       color: #ac3554;
       background-color: #cfc9d0;
       border-color: #594e5b; }
-  /* line 27, ../app.scss */
+  /* line 31, ../app.scss */
   .button.outline {
     color: #c03b5d;
     border-width: 1px;
@@ -219,52 +223,52 @@
     background-color: transparent;
     -webkit-transition: border-color .1s linear;
             transition: border-color .1s linear; }
-    /* line 34, ../app.scss */
+    /* line 38, ../app.scss */
     .button.outline:hover {
       border-color: #992f4a;
       color: #ac3554; }
 
 /* tools */
-/* line 42, ../app.scss */
+/* line 46, ../app.scss */
 .cf:before,
 .cf:after {
   content: " ";
   display: table; }
 
-/* line 47, ../app.scss */
+/* line 51, ../app.scss */
 .cf:after {
   clear: both; }
 
-/* line 50, ../app.scss */
+/* line 54, ../app.scss */
 body {
   font-family: "Open Sans", sans-serif;
   height: auto;
   min-height: 100%;
   line-height: 1; }
 
-/* line 57, ../app.scss */
+/* line 61, ../app.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", sans-serif;
   color: #c03b5d; }
 
-/* line 62, ../app.scss */
+/* line 66, ../app.scss */
 p {
   font-size: 1.125rem; }
 
-/* line 66, ../app.scss */
+/* line 70, ../app.scss */
 a {
   color: #c03b5d; }
-  /* line 69, ../app.scss */
+  /* line 73, ../app.scss */
   a:hover {
     color: #992f4a; }
-  /* line 71, ../app.scss */
+  /* line 75, ../app.scss */
   a:visited {
     color: #514753; }
-    /* line 74, ../app.scss */
+    /* line 78, ../app.scss */
     a:visited:hover {
       color: #362f38; }
 
-/* line 80, ../app.scss */
+/* line 84, ../app.scss */
 nav.top-bar {
   width: 100%;
   height: 60px;
@@ -274,18 +278,18 @@ nav.top-bar {
   top: 0;
   left: 0;
   z-index: 9999; }
-  /* line 90, ../app.scss */
+  /* line 94, ../app.scss */
   nav.top-bar .logo {
     height: 60px;
     display: block;
     position: relative;
     z-index: 2; }
-    /* line 96, ../app.scss */
+    /* line 100, ../app.scss */
     nav.top-bar .logo img {
       height: 100%;
       float: left;
       margin-right: 1.5em; }
-    /* line 102, ../app.scss */
+    /* line 106, ../app.scss */
     nav.top-bar .logo h1 {
       margin: 0;
       padding: 0;
@@ -294,7 +298,7 @@ nav.top-bar {
       -webkit-transition: all .1s ease-in-out;
               transition: all .1s ease-in-out;
       font-size: 1.2rem; }
-  /* line 112, ../app.scss */
+  /* line 116, ../app.scss */
   nav.top-bar .menu {
     padding-top: 0;
     padding-bottom: 0;
@@ -311,7 +315,7 @@ nav.top-bar {
             transform: translate3d(0, -110%, 0);
     text-align: right;
     line-height: 60px; }
-    /* line 127, ../app.scss */
+    /* line 131, ../app.scss */
     nav.top-bar .menu li {
       display: inline;
       margin: 0;
@@ -319,60 +323,60 @@ nav.top-bar {
       font-size: 2.25rem;
       text-align: center;
       padding: 0.3125rem; }
-      /* line 135, ../app.scss */
+      /* line 139, ../app.scss */
       nav.top-bar .menu li a {
         color: #FFF;
         font-weight: 400;
         font-size: 1.2rem;
         height: 100%;
         outline: none; }
-        /* line 142, ../app.scss */
+        /* line 146, ../app.scss */
         nav.top-bar .menu li a:hover {
           color: #514753; }
 
 @media only screen and (min-width: 40.063em) {
-  /* line 152, ../app.scss */
+  /* line 156, ../app.scss */
   .main-menu .menu {
     padding-top: 1.75rem;
     padding-bottom: 1.5625rem;
     font-size: 1rem; } }
-/* line 160, ../app.scss */
+/* line 164, ../app.scss */
 .clear-nav {
   position: fixed;
   top: 60px;
   left: 50%;
   bottom: 0;
   right: 0; }
-  /* line 167, ../app.scss */
+  /* line 171, ../app.scss */
   .clear-nav .single-column {
     overflow: auto;
     height: 100%;
     padding: 6.5rem !important; }
 
-/* line 174, ../app.scss */
+/* line 178, ../app.scss */
 .home-article-list {
   border-bottom: 1px solid #f2f2f2;
   padding: 1rem 0;
   margin: 0 0 1rem; }
-  /* line 179, ../app.scss */
+  /* line 183, ../app.scss */
   .home-article-list .img img {
     width: 100%; }
-  /* line 182, ../app.scss */
+  /* line 186, ../app.scss */
   .home-article-list h1 {
     font-size: 1.4rem;
     text-transform: uppercase; }
-    /* line 186, ../app.scss */
+    /* line 190, ../app.scss */
     .home-article-list h1 a {
       color: #c03b5d; }
-  /* line 191, ../app.scss */
+  /* line 195, ../app.scss */
   .home-article-list .meta {
     font-size: 0.8rem;
     color: #999999; }
-    /* line 195, ../app.scss */
+    /* line 199, ../app.scss */
     .home-article-list .meta time {
       display: block;
       margin-bottom: 0.6rem; }
-    /* line 200, ../app.scss */
+    /* line 204, ../app.scss */
     .home-article-list .meta a {
       display: inline-block;
       background-color: #e6e6e6;
@@ -381,16 +385,16 @@ nav.top-bar {
       color: #999999;
       -webkit-transition: all .1s linear;
               transition: all .1s linear; }
-      /* line 208, ../app.scss */
+      /* line 212, ../app.scss */
       .home-article-list .meta a:hover {
         background-color: #999999;
         color: #cccccc; }
 
-/* line 216, ../app.scss */
+/* line 220, ../app.scss */
 .content-tags {
   padding: 0 0 1em;
   position: relative; }
-  /* line 220, ../app.scss */
+  /* line 224, ../app.scss */
   .content-tags a {
     font-weight: 800;
     text-transform: uppercase;
@@ -401,46 +405,46 @@ nav.top-bar {
     opacity: 0.7;
     margin: 0 0.5em;
     color: #CF4A5C; }
-    /* line 232, ../app.scss */
+    /* line 236, ../app.scss */
     .content-tags a:hover {
       opacity: .4; }
 
-/* line 238, ../app.scss */
+/* line 242, ../app.scss */
 .signoff {
   border-top: 1px solid #EEE;
   border-bottom: 1px solid #EEE;
   padding: 2rem 0;
   position: relative;
   z-index: 1; }
-  /* line 245, ../app.scss */
+  /* line 249, ../app.scss */
   .signoff .author-photo {
     width: 100px;
     float: right;
     left: 2rem; }
-  /* line 255, ../app.scss */
+  /* line 259, ../app.scss */
   .signoff h1 {
     margin: 0;
     margin-bottom: 0.5rem;
     font-size: 2rem;
     font-weight: 700; }
-  /* line 262, ../app.scss */
+  /* line 266, ../app.scss */
   .signoff p {
     margin: 0; }
 
-/* line 266, ../app.scss */
+/* line 270, ../app.scss */
 .intro-effect-sidefixed.modify .signoff {
   margin-top: 210px; }
 
-/* line 269, ../app.scss */
+/* line 273, ../app.scss */
 .share {
   border-bottom: 1px solid #EEE;
   padding: 2rem 0;
   position: relative;
   z-index: 1; }
-  /* line 275, ../app.scss */
+  /* line 279, ../app.scss */
   .share p {
     margin: 0; }
-  /* line 279, ../app.scss */
+  /* line 283, ../app.scss */
   .share .share-icon {
     margin: 0 0.2rem;
     display: inline-block;
@@ -451,22 +455,22 @@ nav.top-bar {
     text-align: center;
     border-radius: 20px;
     color: #FFF; }
-    /* line 290, ../app.scss */
+    /* line 294, ../app.scss */
     .share .share-icon:hover {
       background-color: #514753; }
 
-/* line 296, ../app.scss */
+/* line 300, ../app.scss */
 .disqus {
   border-bottom: 1px solid #EEE;
   padding: 2rem 0;
   position: relative;
   z-index: 1; }
-  /* line 302, ../app.scss */
+  /* line 306, ../app.scss */
   .disqus .comments-header {
     font-size: 2rem;
     font-weight: 700; }
 
-/* line 310, ../app.scss */
+/* line 314, ../app.scss */
 .aside.sticky-aside {
   position: fixed;
   top: 60px;
@@ -474,7 +478,7 @@ nav.top-bar {
   right: 50%;
   bottom: 0;
   background-color: #f2f2f2; }
-  /* line 318, ../app.scss */
+  /* line 322, ../app.scss */
   .aside.sticky-aside header {
     position: absolute;
     top: 0;
@@ -483,34 +487,34 @@ nav.top-bar {
     right: 0;
     background-color: #bfbfbf;
     background-size: cover; }
-  /* line 329, ../app.scss */
+  /* line 333, ../app.scss */
   .aside.sticky-aside article {
     position: absolute;
     top: 50%;
     bottom: 70px;
     left: 0;
     right: 0; }
-    /* line 337, ../app.scss */
+    /* line 341, ../app.scss */
     .aside.sticky-aside article .links {
       width: 100%;
       margin: 0;
       padding: 0; }
-      /* line 342, ../app.scss */
+      /* line 346, ../app.scss */
       .aside.sticky-aside article .links li {
         width: 33.3333333333%;
         text-align: center;
         margin: 0; }
-        /* line 347, ../app.scss */
+        /* line 351, ../app.scss */
         .aside.sticky-aside article .links li a {
           display: block;
           background: #c03b5d;
           height: 60px;
           line-height: 60px;
           color: #FFF; }
-          /* line 354, ../app.scss */
+          /* line 358, ../app.scss */
           .aside.sticky-aside article .links li a:hover {
             background: #992f4a; }
-    /* line 361, ../app.scss */
+    /* line 365, ../app.scss */
     .aside.sticky-aside article .inner {
       overflow: hidden;
       position: absolute;
@@ -518,18 +522,18 @@ nav.top-bar {
       left: 0;
       right: 0;
       bottom: 0; }
-      /* line 369, ../app.scss */
+      /* line 373, ../app.scss */
       .aside.sticky-aside article .inner div {
         padding: 1rem;
         height: 100%;
         overflow: auto; }
-        /* line 374, ../app.scss */
+        /* line 378, ../app.scss */
         .aside.sticky-aside article .inner div h1 {
           font-size: 2rem;
           font-weight: 700;
           text-transform: uppercase;
           margin: 1.3rem 0 1rem; }
-  /* line 384, ../app.scss */
+  /* line 388, ../app.scss */
   .aside.sticky-aside footer {
     position: absolute;
     bottom: 0;
@@ -538,17 +542,17 @@ nav.top-bar {
     height: 70px;
     background-color: #e6e6e6;
     padding: 1rem; }
-    /* line 393, ../app.scss */
+    /* line 397, ../app.scss */
     .aside.sticky-aside footer .copyright {
       vertical-align: bottom;
       display: table;
       height: 100%; }
-      /* line 398, ../app.scss */
+      /* line 402, ../app.scss */
       .aside.sticky-aside footer .copyright div {
         display: table-cell;
         vertical-align: bottom; }
 
-/* line 407, ../app.scss */
+/* line 411, ../app.scss */
 .pagination-section {
   overflow: hidden;
   background: #f2f2f2;
@@ -556,16 +560,16 @@ nav.top-bar {
   margin-left: -2rem;
   margin-right: -2rem;
   margin-bottom: -2rem; }
-  /* line 415, ../app.scss */
+  /* line 419, ../app.scss */
   .pagination-section .page-status {
     color: #c03b5d;
     margin-top: 1rem;
     font-weight: 700;
     display: block; }
-  /* line 422, ../app.scss */
+  /* line 426, ../app.scss */
   .pagination-section .button {
     margin-bottom: 0; }
-    /* line 427, ../app.scss */
+    /* line 431, ../app.scss */
     .pagination-section .button.disabled:hover {
       color: #c03b5d;
       background-color: #e7e4e8;
@@ -574,33 +578,33 @@ nav.top-bar {
 /*--------------------------------
 /* ARTICLE EFFECTS
 /*------------------------------*/
-/* line 441, ../app.scss */
+/* line 445, ../app.scss */
 .header {
   position: relative;
   margin: 0 auto;
   min-height: 35rem;
   width: 100%; }
 
-/* line 448, ../app.scss */
+/* line 452, ../app.scss */
 .title h1 {
   color: #333; }
-  /* line 451, ../app.scss */
+  /* line 455, ../app.scss */
   .title h1.background--dark {
     color: #FFF; }
-  /* line 452, ../app.scss */
+  /* line 456, ../app.scss */
   .title h1.background--light {
-    color: #222; }
-/* line 455, ../app.scss */
+    color: #333; }
+/* line 459, ../app.scss */
 .title .subline {
-  color: #FFF; }
-  /* line 458, ../app.scss */
-  .title .subline.background--light {
-    color: black; }
+  color: #333; }
   /* line 462, ../app.scss */
+  .title .subline.background--light {
+    color: #333; }
+  /* line 466, ../app.scss */
   .title .subline.background--dark {
     color: #FFF; }
 
-/* line 469, ../app.scss */
+/* line 473, ../app.scss */
 .trigger {
   position: fixed;
   bottom: 2.5rem;
@@ -616,7 +620,7 @@ nav.top-bar {
   color: transparent;
   font-size: 2em;
   cursor: pointer; }
-  /* line 485, ../app.scss */
+  /* line 489, ../app.scss */
   .trigger:before {
     position: absolute;
     bottom: 100%;
@@ -629,17 +633,17 @@ nav.top-bar {
     text-transform: uppercase;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden; }
-  /* line 498, ../app.scss */
+  /* line 502, ../app.scss */
   .trigger:focus {
     outline: none; }
-  /* line 502, ../app.scss */
+  /* line 506, ../app.scss */
   .trigger span {
     position: relative;
     display: block;
     overflow: hidden;
     width: 100%;
     height: 100%; }
-    /* line 509, ../app.scss */
+    /* line 513, ../app.scss */
     .trigger span:before {
       position: absolute;
       top: 0;
@@ -657,26 +661,26 @@ nav.top-bar {
       speak: none;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale; }
-  /* line 529, ../app.scss */
+  /* line 533, ../app.scss */
   .trigger.background--light:before, .trigger.background--light span:before {
     color: black; }
-  /* line 534, ../app.scss */
+  /* line 538, ../app.scss */
   .trigger.background--dark:before, .trigger.background--dark span:before {
     color: #FFF; }
 
-/* line 540, ../app.scss */
+/* line 544, ../app.scss */
 .container:not(.notrans) .trigger {
   -webkit-transition: opacity 0.3s 0.5s;
           transition: opacity 0.3s 0.5s; }
 
-/* line 543, ../app.scss */
+/* line 547, ../app.scss */
 .container.modify:not(.notrans) .trigger {
   opacity: 0;
   pointer-events: none;
   -webkit-transition-delay: 0s;
           transition-delay: 0s; }
 
-/* line 551, ../app.scss */
+/* line 555, ../app.scss */
 .bg-img {
   position: absolute;
   overflow: hidden;
@@ -686,7 +690,7 @@ nav.top-bar {
   bottom: 0;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
-  /* line 560, ../app.scss */
+  /* line 564, ../app.scss */
   .bg-img img {
     position: absolute;
     top: 0;
@@ -696,23 +700,23 @@ nav.top-bar {
     min-height: 100%;
     max-width: none; }
 
-/* line 576, ../app.scss */
+/* line 580, ../app.scss */
 .intro-effect-sidefixed .header {
   position: absolute; }
-/* line 580, ../app.scss */
+/* line 584, ../app.scss */
 .intro-effect-sidefixed .bg-img {
   position: fixed; }
-  /* line 583, ../app.scss */
+  /* line 587, ../app.scss */
   .intro-effect-sidefixed .bg-img:before, .intro-effect-sidefixed .bg-img:after {
     content: '';
     position: absolute;
     z-index: 100; }
-  /* line 589, ../app.scss */
+  /* line 593, ../app.scss */
   .intro-effect-sidefixed .bg-img:before {
     width: 100%;
     height: 100%;
     background-color: rgba(247, 214, 169, 0.1); }
-  /* line 595, ../app.scss */
+  /* line 599, ../app.scss */
   .intro-effect-sidefixed .bg-img:after {
     background: #FFF;
     top: 0;
@@ -722,7 +726,7 @@ nav.top-bar {
     -webkit-transform: translateX(100%);
         -ms-transform: translateX(100%);
             transform: translateX(100%); }
-/* line 605, ../app.scss */
+/* line 609, ../app.scss */
 .intro-effect-sidefixed .content {
   width: 50%;
   margin-left: 50% !important;
@@ -730,29 +734,29 @@ nav.top-bar {
   display: table;
   vertical-align: middle;
   table-layout: fixed; }
-/* line 614, ../app.scss */
+/* line 618, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .bg-img:before, .intro-effect-sidefixed:not(.notrans) .bg-img:after, .intro-effect-sidefixed:not(.notrans) .title p, .intro-effect-sidefixed:not(.notrans) .content > div {
   -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
           transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
   -webkit-transition-duration: 0.5s;
           transition-duration: 0.5s; }
-/* line 621, ../app.scss */
+/* line 625, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .content > div {
   -webkit-transition-property: -webkit-transform, opacity;
           transition-property: transform, opacity; }
-/* line 624, ../app.scss */
+/* line 628, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .title p {
   -webkit-transition-property: opacity;
           transition-property: opacity; }
-/* line 627, ../app.scss */
+/* line 631, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .body-content {
   -webkit-transition-delay: 0s;
           transition-delay: 0s; }
-/* line 630, ../app.scss */
+/* line 634, ../app.scss */
 .intro-effect-sidefixed:not(.notrans) .bg-img::after {
   -webkit-transition-property: -webkit-transform;
           transition-property: transform; }
-/* line 634, ../app.scss */
+/* line 638, ../app.scss */
 .intro-effect-sidefixed .title {
   z-index: 1;
   margin: 0 auto;
@@ -765,12 +769,12 @@ nav.top-bar {
           transform: translateY(200px);
   width: 100%;
   height: 100%; }
-  /* line 645, ../app.scss */
+  /* line 649, ../app.scss */
   .intro-effect-sidefixed .title .single-column {
     height: 100%;
     display: table-cell;
     vertical-align: middle; }
-  /* line 651, ../app.scss */
+  /* line 655, ../app.scss */
   .intro-effect-sidefixed .title h1 {
     font-size: 4.5rem;
     line-height: 1;
@@ -779,7 +783,7 @@ nav.top-bar {
             transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
     -webkit-transition-delay: 0;
             transition-delay: 0; }
-  /* line 659, ../app.scss */
+  /* line 663, ../app.scss */
   .intro-effect-sidefixed .title p {
     opacity: 0;
     color: #585A66;
@@ -791,7 +795,7 @@ nav.top-bar {
             transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
     -webkit-transition-delay: 0;
             transition-delay: 0; }
-    /* line 670, ../app.scss */
+    /* line 674, ../app.scss */
     .intro-effect-sidefixed .title p.subline {
       opacity: 1;
       font-size: 1.75em;
@@ -800,7 +804,7 @@ nav.top-bar {
               transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
       -webkit-transition-delay: 0;
               transition-delay: 0; }
-/* line 680, ../app.scss */
+/* line 684, ../app.scss */
 .intro-effect-sidefixed .body-content {
   z-index: 1;
   opacity: 0;
@@ -812,76 +816,76 @@ nav.top-bar {
   -webkit-transition-delay: 0;
           transition-delay: 0;
   margin-top: 70px; }
-/* line 691, ../app.scss */
+/* line 695, ../app.scss */
 .intro-effect-sidefixed.modify .title h1 {
   -webkit-transition-delay: .3s;
           transition-delay: .3s; }
-/* line 694, ../app.scss */
+/* line 698, ../app.scss */
 .intro-effect-sidefixed.modify .title p {
   opacity: 1;
   -webkit-transition-delay: .3s;
           transition-delay: .3s; }
-/* line 700, ../app.scss */
+/* line 704, ../app.scss */
 .intro-effect-sidefixed.modify .body-content {
   opacity: 1;
   -webkit-transform: translateY(180px);
       -ms-transform: translateY(180px);
           transform: translateY(180px); }
-/* line 707, ../app.scss */
+/* line 711, ../app.scss */
 .intro-effect-sidefixed.modify .bg-img:before {
   background-color: rgba(247, 214, 169, 0.4); }
-/* line 711, ../app.scss */
+/* line 715, ../app.scss */
 .intro-effect-sidefixed.modify .bg-img:after {
   -webkit-transform: translateX(0);
       -ms-transform: translateX(0);
           transform: translateX(0); }
-/* line 717, ../app.scss */
+/* line 721, ../app.scss */
 .intro-effect-sidefixed.modify:not(.notrans) .body-content {
   -webkit-transition-delay: 0.5s;
           transition-delay: 0.5s; }
-/* line 726, ../app.scss */
+/* line 730, ../app.scss */
 .intro-effect-sidefixed.plain .content {
   width: 80%;
   margin: 0 auto !important;
   padding: 0 6.5rem !important; }
 
-/* line 736, ../app.scss */
+/* line 740, ../app.scss */
 .highlight {
   margin: 2em 0; }
-  /* line 739, ../app.scss */
+  /* line 743, ../app.scss */
   .highlight span {
     line-height: 25px; }
-    /* line 742, ../app.scss */
+    /* line 746, ../app.scss */
     .highlight span .lineno {
       background: #E6E6E6;
       padding: 4px 0.4em;
       color: #AAA; }
-  /* line 749, ../app.scss */
+  /* line 753, ../app.scss */
   .highlight pre {
     overflow-y: hidden;
     padding: 2em;
     background: #EEE; }
-    /* line 754, ../app.scss */
+    /* line 758, ../app.scss */
     .highlight pre code {
       border: none;
       background-color: transparent;
       padding: 0; }
 
-/* line 763, ../app.scss */
+/* line 767, ../app.scss */
 ::-webkit-scrollbar {
   width: 4px;
   height: 6px; }
 
-/* line 767, ../app.scss */
+/* line 771, ../app.scss */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
 
-/* line 771, ../app.scss */
+/* line 775, ../app.scss */
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0px; }
 
-/* line 775, ../app.scss */
+/* line 779, ../app.scss */
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(0, 0, 0, 0.2); }

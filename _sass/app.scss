@@ -7,6 +7,10 @@ $brand-color-1: #514753;
 $brand-color-2: #c03b5d;
 $nav-height: 60px;
 
+body {
+  color: $text-color;
+}
+
 // redo on some of foundation design
 .button {
   background-color: $brand-color-2;
@@ -449,14 +453,14 @@ nav.top-bar {
     color: $text-color;
 
     &.background--dark {color: $body-bg}
-    &.background--light {color: #222}
+    &.background--light {color: $text-color}
   }
 
   .subline {
-    color: $body-bg;
+    color: $text-color;
 
     &.background--light {
-      color: black;
+      color: $text-color;
     }
 
     &.background--dark {
