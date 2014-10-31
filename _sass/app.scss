@@ -737,11 +737,22 @@ nav.top-bar {
 }
 // End: Side Fixed
 
-.highlight {
+.highlighttable {
   margin: 2em 0;
+  width: 100%;
+
+  .linenos {
+    text-align: right;
+    width: 50px;
+    padding-right: 0;
+  }
+
+  .code {
+    padding-left: 1px;
+  }
 
   span {
-    line-height: 25px;
+    line-height: 1;
 
     .lineno {
       background: #E6E6E6;
@@ -759,6 +770,7 @@ nav.top-bar {
       border: none;
       background-color: transparent;
       padding: 0;
+      line-height: 1;
     }
   }
 }

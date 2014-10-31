@@ -13,7 +13,7 @@ comments: true
 
 This doesn't change any code it just gives 5 columns, 2 cols wide with 1 col offset either side.
 
-{% highlight html %}
+{% highlight html linenos=table %}
 
 <div class="row fudged-columns">
     <div class="col-sm-2 col-sm-offset-1 diff-color"></div>
@@ -30,7 +30,7 @@ This doesn't change any code it just gives 5 columns, 2 cols wide with 1 col off
 
 With a little css we can easily do our own
 
-{% highlight css %}
+{% highlight css linenos=table %}
 
 /* Rewired 5 Columns */
 .col-xs-5ths,

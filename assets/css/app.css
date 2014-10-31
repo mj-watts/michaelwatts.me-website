@@ -850,42 +850,52 @@ nav.top-bar {
   padding: 0 6.5rem !important; }
 
 /* line 740, ../app.scss */
-.highlight {
-  margin: 2em 0; }
-  /* line 743, ../app.scss */
-  .highlight span {
-    line-height: 25px; }
-    /* line 746, ../app.scss */
-    .highlight span .lineno {
+.highlighttable {
+  margin: 2em 0;
+  width: 100%; }
+  /* line 744, ../app.scss */
+  .highlighttable .linenos {
+    text-align: right;
+    width: 50px;
+    padding-right: 0; }
+  /* line 750, ../app.scss */
+  .highlighttable .code {
+    padding-left: 1px; }
+  /* line 754, ../app.scss */
+  .highlighttable span {
+    line-height: 1; }
+    /* line 757, ../app.scss */
+    .highlighttable span .lineno {
       background: #E6E6E6;
       padding: 4px 0.4em;
       color: #AAA; }
-  /* line 753, ../app.scss */
-  .highlight pre {
+  /* line 764, ../app.scss */
+  .highlighttable pre {
     overflow-y: hidden;
     padding: 2em;
     background: #EEE; }
-    /* line 758, ../app.scss */
-    .highlight pre code {
+    /* line 769, ../app.scss */
+    .highlighttable pre code {
       border: none;
       background-color: transparent;
-      padding: 0; }
+      padding: 0;
+      line-height: 1; }
 
-/* line 767, ../app.scss */
+/* line 779, ../app.scss */
 ::-webkit-scrollbar {
   width: 4px;
   height: 6px; }
 
-/* line 771, ../app.scss */
+/* line 783, ../app.scss */
 ::-webkit-scrollbar-track {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
 
-/* line 775, ../app.scss */
+/* line 787, ../app.scss */
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0px; }
 
-/* line 779, ../app.scss */
+/* line 791, ../app.scss */
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(0, 0, 0, 0.2); }

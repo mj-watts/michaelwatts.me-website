@@ -8,7 +8,7 @@ categories: javascript angularjs
 comments: true
 ---
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
   var myApp = angular.module('myApp',[]);
   
   myApp.service('myService', function() {
