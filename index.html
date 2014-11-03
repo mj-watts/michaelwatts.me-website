@@ -29,18 +29,34 @@
         a:visited:hover {
             color: #E81D62
         }
-
+        a.contacts {
+            color: #1F2036 !important;
+            display: inline-block;
+            background: #F0F0F0;
+            padding-right: 0.5em;
+            border-radius: 3px;
+        }
+        i.fa {
+            background: #1F2036;
+            color: #FFF;
+            padding: 0.5em;
+            border-radius: 3px;
+        }
+        a.contacts:hover {
+            background: #DDD;
+        }
+        a.contacts:hover i.fa {
+            background: #111;
+        }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'ff-meta-serif-web-pro', Georgia, serif;
         }
-
         h2 {
             font-size: 1.2em;
             font-weight: 700;
             letter-spacing: 1px;
             font-style: italic;
         }
-
         h3 {
             font-size: 1em;
             font-weight: 300;
@@ -48,14 +64,12 @@
             font-style: italic;
             margin-bottom: 0;
         }
-
         .ar {
             background: #FFF;
             padding: 3em;
             position: relative;
             box-shadow: 0 0px 3px rgba(0, 0, 0, 0.1), 0 0px 30px rgba(0, 0, 0, 0.1);
         }
-
         img.id {
             border-radius: 50px;
             box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2), 0 0px 30px rgba(0, 0, 0, 0.1);
@@ -63,7 +77,6 @@
             top: -30px;
             right: -30px;
         }
-
         header {
             margin-left: -3em;
             margin-right: -3em;
@@ -73,7 +86,6 @@
             color: #FFF;
             margin-bottom: 3em;
         }
-
         header h1 {
             margin-top: 0;
             font-size: 2.8em;
@@ -82,7 +94,6 @@
             font-style: italic;
             color: white
         }
-
         header p.lead {
             font-size: 1.6em;
             line-height: 1.4;
@@ -126,8 +137,8 @@
         <p>GAP, SITA Aero, Fawaz Alhokair, British Showjumping, M&S, Philips, Porsche and Microsoft.</p>
 
         <h2>Contact me anytime:</h2>
-        <p></p>On <a href="https://github.com/altescape"><i class="fa fa-github"></i> Github</a>, <a
-          href="http://uk.linkedin.com/in/mwattsweb/"><i class="fa fa-linkedin"></i> LinkedIn</a> or <a href="http://stackoverflow.com/users/1945990/mjwatts"><i class="fa fa-stack-overflow"></i> Stack
+        <p></p>On <a href="https://github.com/altescape" class="contacts"><i class="fa fa-github"></i> Github</a>, <a
+          href="http://uk.linkedin.com/in/mwattsweb/" class="contacts"><i class="fa fa-linkedin"></i> LinkedIn</a> or <a href="http://stackoverflow.com/users/1945990/mjwatts" class="contacts"><i class="fa fa-stack-overflow"></i> Stack
             Overflow</a>
     </div>
 </div>
