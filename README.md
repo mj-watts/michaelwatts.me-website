@@ -73,6 +73,7 @@ Breakdown of work:
 ## GAP Facebook Campaigns (need to find names of campaigns)
 ### Where they uploaded the picture
 ### Where they could easily add 3-5 friends
+### Note: ‘Montage’ campaign won a distinction at the GAP annual conference and other countries now want to do something similar
 
 Languages:
 - PHP
