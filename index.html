@@ -1,106 +1,258 @@
----
-layout: new-home
-title: Michael Watts
-description: "Website of Michael Watts, a web developer in Surrey, UK"
-headline: An Web Developer's Diary
-date:   2014-10-22 09:38:25
-coverimage: cover13.jpg
-tags: []
----
-{% if site.paginate %}
-	{% for post in paginator.posts %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description"
+          content="I'm a developer with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and CSS.">
 
-    <section class="row home-article-list">
-        <div class="small-4 columns img">
-            <a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/{{ post.thumb }}"></a>
-        </div>
-        <div class="small-8 columns">
-            <header>
-                <h1><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></h1>
-            </header>
-            <article>
-                <p>{{ post.description }}</p>
-            </article>
-            <footer class="row">
-                <div class="small-6 columns meta">
-                    <time datetime="{{ post.date | date_to_xmlschema }}">
-                        Date:
-                        <span class="day">
-                            {{ post.date | date: "%d" }}
-                        </span>
-                        <span class="month-year">
-                            {{ post.date | date: "%B %Y" }}
-                        </span>
-                    </time>
-                    Tags: {% for tag in post.categories %}<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" title="Other posts from the {{ tag | capitalize }} category">{{ tag | capitalize }}</a>{% unless forloop.last %}&nbsp;{% endunless %}{% endfor %}
-                </div>
-                <div class="small-6 columns text-right">
-                    <a href="{{ site.url }}{{ post.url }}" class="button radius small outline">MORE <i class="fa fa-angle-right"></i></a>
-                </div>
-            </footer>
-        </div>
-    </section>
+    <link rel="import" href="http://www.polymer-project.org/components/paper-ripple/paper-ripple.html">
 
-	{% endfor %}
+    <style>
+        body {
+            font-family: 'museo-sans', Helvetica, sans-serif;
+            font-size: 1.2em;
+            line-height: 1.7em;
+            margin: 3em auto;
+            width: 80%;
+            background: #F6F6F6;
+            color: #27272F;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+            max-width: 1000px;
+        }
 
-    <section class="pagination-section">
-        <div class="small-4 columns">
-            {% if paginator.previous_page %}
-            {% if paginator.previous_page == 1 %}
-            <a href="{{ site.url }}" class="button faded small radius"><i class="fa fa-arrow-left"></i> Newer</a>
-            {% else %}
-            <a href="{{ site.url }}/page{{ paginator.previous_page }}" class="button faded small radius"><i class="fa fa-arrow-left"></i> Newer</a>
-            {% endif %}
-            {% else %}
-            <a href="#" class="button faded small disabled radius"><i class="fa fa-chevron-left"></i> Newer</a>
-            {% endif %}
-        </div>
-        <div class="small-4 columns text-center">
-            <span class="page-status">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-        </div>
-        <div class="small-4 columns text-right radius">
-            {% if paginator.next_page %}
-            <a href="{{ site.url }}/page{{ paginator.next_page }}/" class="button faded small">Older <i class="fa fa-chevron-right"></i></a>
-            {% else %}
-            <a href="#" class="button faded small disabled">Older <i class="fa fa-chevron-right"></i></a>
-            {% endif %}
-        </div>
-    </section>
+        a {
+            color: #E81D62;
+            transition: all 0.05s linear;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #1F2036
+        }
+        a:visited {
+            color: #D7658C
+        }
+        a:visited:hover {
+            color: #E81D62
+        }
+        a.contacts {
+            color: #1F2036 !important;
+            display: inline-block;
+            background: #F0F0F0;
+            padding-right: 20px;
+            border-radius: 3px;
+            font-size: 1em;
+            line-height: 40px;
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            padding-left: 60px;
+        }
+        .contacts svg {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            height: 30px;
+            width: 30px;
+            background: #DDD;
+            text-align: center;
+            padding: 5px;
+        }
+        a.contacts:hover {
+            background: #DDD;
+        }
+        a.contacts:hover i.fa {
+            background: #111;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'ff-meta-serif-web-pro', Georgia, serif;
+        }
+        h2 {
+            font-size: 1.2em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-style: italic;
+            margin-top: 2em;
+        }
+        h3 {
+            font-size: 1em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+        .ar {
+            background: #FFF;
+            padding: 3em;
+            position: relative;
+            box-shadow: 0 0px 3px rgba(0, 0, 0, 0.1), 0 0px 30px rgba(0, 0, 0, 0.1);
+        }
+        img.id {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+            width: 140px;
+            clip: rect(0px, 140px, 130px, 10px);
+        }
+        header {
+            margin-left: -3em;
+            margin-right: -3em;
+            margin-top: -3em;
+            background: #1F2036;
+            padding: 20%;
+            color: #FFF;
+            margin-bottom: 3em;
+        }
+        header h1 {
+            margin-top: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: 0px;
+            font-style: italic;
+            color: white
+        }
+        header p.lead {
+            font-size: 1.6em;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+        .skills {margin-top: 0.5em}
+    </style>
+    <script src="//use.typekit.net/xig0tkx.js"></script>
+    <script>try {
+            Typekit.load();
+        } catch (e) {
+        }</script>
+</head>
+<body>
+<div class="ar">
+    <img src="https://scontent-b-lhr.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/30379_372697399487420_723242712_n.jpg?oh=018cb725c855311ef4074987638d54f8&oe=54F0CD50" class="id">
+    <header>
+        <h1>MichaelWatts.me</h1>
+        <p class="lead">I'm Michael Watts, a full-stack web developer from the UK.</p>
+        <paper-ripple fit></paper-ripple>
+    </header>
+    <div class="wr">
+        <p style="font-size: 1.2em">With a meticulous eye for detail and a driven passion to create great user experiences...</p>
 
+        <h2>I Specialise in:</h2>
+        <ul class="skills">
+            <li>PHP and PHP frameworks such as Laravel and CodeIgniter</li>
+            <li>JavaScript, AngularJS, Underscore/Lo-Dash, JQuery and a bunch of other frameworks</li>
+            <li>SASS and LESS</li>
+            <li>HTML</li>
+            <li>API integration</li>
+            <li>LAMP stack admin</li>
+        </ul>
+        <h3>and I'm currently learning:</h3>
+        <ul>
+            <li>Ruby</li>
+            <li>CoffeeScript</li>
+        </ul>
+        <h2>Companies I've worked for include:</h2>
 
-{% else %}
-	{% for post in site.posts %}
-    <article class="notepad-index-post post row">
-        <div class="small-12 medium-3 large-2 columns datetime">
-            <span class="notepad-post-meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}">
-                    <span class="day">
-                        {{ post.date | date: "%d" }}
-                    </span>
-                    <span class="month-year">
-                        {{ post.date | date: "%B %Y" }}
-                    </span>
-                </time>
-            </span>
-        </div>
-        <div class="small-12 medium-9 large-10 columns">
-            <header class="notepad-post-header">
-                <h3 class="notepad-post-title">
-                    <a href="{{ site.url }}{{ post.url }}">
-                        {{ post.title }}
-                    </a>
-                </h3>
-            </header>
-            <section class="notepad-post-excerpt">
-                <p>{{ post.content | strip_html | truncatewords:100 }}</p>
-            </section>
-            
-                <div class="notepad-index-post-tags">
-                {% for tag in post.categories %}<a href="{{ site.url }}/categories/index.html#{{ post.categories | cgi_encode }}" title="Other posts from the {{ tag | capitalize }} category">{{ tag | capitalize }}</a>{% unless forloop.last %}&nbsp;{% endunless %}{% endfor %}
-                    
-                </div>
-            
-        </div>
-    </article>
-	{% endfor %}  
-{% endif %}
+        <p>GAP, SITA Aero, Fawaz Alhokair, British Showjumping, M&S, Philips, Porsche and Microsoft.</p>
+
+        <h2>Contact me anytime:</h2>
+        <p>
+            <a href="https://github.com/altescape" class="contacts" fit>
+                <paper-ripple fit></paper-ripple>
+                <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="github">
+                        <path d="M22.844,15.191c0,1.71-0.498,3.248-1.496,4.613s-2.286,2.31-3.865,2.834c-0.185,0.034-0.318,0.011-0.404-0.071
+                            c-0.085-0.082-0.127-0.184-0.127-0.307v-2.155c0-0.66-0.178-1.144-0.531-1.45c0.388-0.041,0.736-0.103,1.047-0.184
+                            c0.31-0.082,0.63-0.215,0.96-0.398s0.606-0.41,0.827-0.68c0.221-0.269,0.402-0.626,0.541-1.072c0.141-0.446,0.21-0.958,0.21-1.538
+                            c0-0.824-0.269-1.525-0.808-2.104c0.252-0.62,0.226-1.314-0.081-2.083c-0.19-0.062-0.467-0.024-0.827,0.112
+                            c-0.361,0.136-0.674,0.286-0.939,0.45l-0.389,0.245c-0.633-0.177-1.287-0.265-1.961-0.265s-1.328,0.088-1.961,0.265
+                            c-0.109-0.075-0.254-0.167-0.434-0.275c-0.181-0.109-0.465-0.24-0.853-0.394s-0.681-0.199-0.878-0.138
+                            c-0.3,0.77-0.323,1.464-0.071,2.083c-0.538,0.579-0.807,1.28-0.807,2.104c0,0.579,0.07,1.09,0.209,1.533
+                            c0.14,0.442,0.318,0.8,0.536,1.072s0.492,0.501,0.822,0.685s0.65,0.316,0.96,0.398c0.31,0.081,0.659,0.143,1.046,0.184
+                            c-0.272,0.245-0.439,0.596-0.5,1.052c-0.143,0.068-0.296,0.12-0.459,0.153c-0.164,0.034-0.357,0.052-0.582,0.052
+                            s-0.448-0.073-0.669-0.22c-0.222-0.146-0.411-0.359-0.567-0.639c-0.129-0.218-0.295-0.395-0.496-0.531
+                            c-0.201-0.136-0.37-0.218-0.505-0.245l-0.205-0.03c-0.143,0-0.242,0.015-0.296,0.046c-0.055,0.03-0.072,0.069-0.051,0.117
+                            s0.051,0.096,0.092,0.143c0.041,0.048,0.084,0.089,0.132,0.123l0.072,0.051c0.149,0.068,0.298,0.198,0.444,0.389
+                            c0.146,0.19,0.253,0.364,0.322,0.521l0.102,0.235c0.088,0.259,0.238,0.468,0.449,0.628s0.439,0.263,0.685,0.307
+                            s0.481,0.067,0.709,0.071c0.229,0.004,0.417-0.009,0.567-0.036l0.235-0.04c0,0.259,0.001,0.562,0.005,0.908
+                            c0.003,0.348,0.005,0.531,0.005,0.552c0,0.123-0.044,0.225-0.133,0.307c-0.088,0.082-0.224,0.105-0.408,0.071
+                            c-1.58-0.524-2.869-1.469-3.866-2.834c-0.998-1.365-1.497-2.902-1.497-4.613c0-1.422,0.351-2.735,1.052-3.937
+                            c0.702-1.202,1.653-2.153,2.855-2.855C12.264,7.698,13.577,7.347,15,7.347c1.424,0,2.736,0.351,3.938,1.052
+                            c1.201,0.702,2.153,1.653,2.855,2.855C22.494,12.456,22.844,13.769,22.844,15.191z"/>
+                    </g>
+                </svg> Github
+            </a>
+            <a href="http://uk.linkedin.com/in/mwattsweb/" class="contacts" fit>
+                <paper-ripple fit></paper-ripple>
+                <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="linkedin">
+                        <path fill="#007AB8" d="M22.361,10.399v9.202c0,0.76-0.27,1.41-0.811,1.951c-0.539,0.539-1.189,0.809-1.95,0.809h-9.201
+                            c-0.761,0-1.411-0.27-1.951-0.809c-0.54-0.541-0.81-1.191-0.81-1.951v-9.202c0-0.761,0.27-1.41,0.81-1.951
+                            c0.54-0.539,1.19-0.81,1.951-0.81h9.201c0.761,0,1.411,0.271,1.95,0.81C22.092,8.989,22.361,9.639,22.361,10.399z M12.269,11.262
+                            c-0.007-0.332-0.122-0.607-0.346-0.824s-0.521-0.326-0.892-0.326c-0.37,0-0.672,0.109-0.905,0.326s-0.35,0.492-0.35,0.824
+                            c0,0.326,0.113,0.6,0.34,0.819c0.227,0.221,0.522,0.331,0.887,0.331h0.01c0.377,0,0.681-0.11,0.91-0.331
+                            C12.153,11.861,12.269,11.588,12.269,11.262z M9.91,19.967h2.214v-6.653H9.91V19.967z M17.875,19.967h2.215V16.15
+                            c0-0.984-0.233-1.729-0.699-2.233c-0.467-0.505-1.084-0.757-1.851-0.757c-0.869,0-1.537,0.373-2.003,1.121h0.019v-0.968h-2.214
+                            c0.02,0.421,0.02,2.64,0,6.653h2.214v-3.721c0-0.242,0.022-0.422,0.067-0.537c0.096-0.224,0.239-0.413,0.432-0.57
+                            c0.191-0.156,0.428-0.234,0.709-0.234c0.741,0,1.111,0.502,1.111,1.506V19.967z"/>
+                    </g>
+                </svg> LinkedIn
+            </a>
+            <a href="http://stackoverflow.com/users/1945990/mjwatts" class="contacts" fit>
+                <paper-ripple fit></paper-ripple>
+                <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="stackoverflow">
+                        <rect x="17.448" y="8.031" transform="matrix(-0.1709 -0.9853 0.9853 -0.1709 16.3965 31.587)" fill="#FF7A00" width="8.08" height="1.727"/>
+                        <polygon fill="#FF8A00" points="16.474,6.445 21.02,13.127 19.604,14.098 15.046,7.427"/>
+                        <rect x="11.359" y="12.161" transform="matrix(-0.8609 -0.5089 0.5089 -0.8609 22.0288 32.0716)" fill="#D58C14" width="8.082" height="1.726"/>
+                        <rect x="10.14" y="15.228" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 23.7086 35.3024)" fill="#C1964D" width="8.076" height="1.726"/>
+                        <polygon fill="#A78A6C" points="9.724,17.821 17.764,18.563 17.615,20.277 9.563,19.535"/>
+                        <rect x="9.495" y="20.774" fill="#818285" width="8.075" height="1.725"/>
+                        <g>
+                            <path fill="#818285" d="M20.322,16.816v8.007l-0.011,0.399v0.012H7.382l-0.4-0.012H6.971v-8.406h1.382v7.059h10.6v-7.059H20.322z"/>
+                        </g>
+                    </g>
+                </svg> Stack Overflow
+            </a>
+            <a href="https://plus.google.com/113239679855361194218/posts" class="contacts" fit>
+                <paper-ripple fit></paper-ripple>
+                <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="googleplus">
+                        <path fill="#DF4A32" d="M14.445,12.395c0-0.292-0.04-0.603-0.121-0.93c-0.08-0.329-0.195-0.646-0.342-0.953
+                            c-0.149-0.306-0.353-0.559-0.613-0.759c-0.261-0.199-0.551-0.299-0.873-0.299c-0.452,0-0.802,0.168-1.051,0.504
+                            c-0.248,0.335-0.372,0.737-0.372,1.204c0,0.229,0.028,0.469,0.084,0.722c0.056,0.253,0.142,0.506,0.259,0.759
+                            c0.117,0.254,0.253,0.481,0.409,0.683c0.156,0.203,0.345,0.367,0.569,0.493c0.224,0.127,0.46,0.19,0.708,0.19
+                            c0.472,0,0.813-0.148,1.026-0.441C14.339,13.272,14.445,12.882,14.445,12.395z"/>
+                        <path fill="#DF4A32" d="M15.219,18.127c-0.024-0.079-0.068-0.164-0.129-0.252c-0.061-0.087-0.111-0.161-0.153-0.223
+                            c-0.041-0.061-0.106-0.132-0.193-0.215c-0.088-0.083-0.155-0.145-0.201-0.187c-0.046-0.041-0.123-0.104-0.233-0.186
+                            c-0.109-0.083-0.185-0.139-0.227-0.168c-0.041-0.028-0.122-0.085-0.241-0.168c-0.119-0.082-0.193-0.134-0.223-0.152
+                            c-0.083-0.01-0.204-0.016-0.365-0.016c-0.262,0-0.521,0.018-0.772,0.052c-0.254,0.034-0.517,0.095-0.789,0.183
+                            c-0.273,0.087-0.511,0.199-0.715,0.335c-0.204,0.137-0.372,0.319-0.503,0.548c-0.132,0.229-0.198,0.488-0.198,0.78
+                            c0,0.332,0.086,0.627,0.259,0.887s0.399,0.465,0.679,0.613s0.573,0.259,0.879,0.332c0.307,0.072,0.615,0.109,0.927,0.109
+                            c0.287,0,0.561-0.03,0.821-0.092c0.261-0.061,0.505-0.155,0.733-0.284s0.41-0.308,0.543-0.536s0.201-0.496,0.201-0.803
+                            c0-0.102-0.011-0.201-0.032-0.296C15.266,18.295,15.243,18.207,15.219,18.127z"/>
+                        <path fill="#DF4A32" d="M19.913,7.628h-9.792c-1.352,0-2.448,1.096-2.448,2.448v9.792c0,1.352,1.096,2.448,2.448,2.448h9.792
+                            c1.352,0,2.448-1.097,2.448-2.448v-9.792C22.361,8.724,21.265,7.628,19.913,7.628z M15.329,20.116
+                            c-0.74,0.637-1.761,0.955-3.065,0.955c-0.288,0-0.578-0.023-0.873-0.072c-0.294-0.049-0.591-0.13-0.89-0.245
+                            c-0.299-0.113-0.563-0.255-0.792-0.423c-0.229-0.168-0.416-0.385-0.562-0.649c-0.146-0.266-0.219-0.561-0.219-0.887
+                            c0-0.297,0.089-0.625,0.27-0.984c0.155-0.312,0.389-0.581,0.701-0.807c0.312-0.227,0.664-0.399,1.059-0.519
+                            c0.394-0.119,0.771-0.207,1.131-0.263c0.36-0.057,0.725-0.088,1.094-0.099c-0.311-0.403-0.467-0.766-0.467-1.087
+                            c0-0.059,0.005-0.116,0.015-0.171c0.01-0.056,0.022-0.104,0.037-0.143s0.034-0.091,0.058-0.156
+                            c0.024-0.066,0.042-0.118,0.051-0.157c-0.195,0.024-0.365,0.036-0.511,0.036c-0.725,0-1.347-0.238-1.865-0.715
+                            c-0.518-0.476-0.777-1.074-0.777-1.795c0-0.681,0.231-1.29,0.693-1.828c0.462-0.538,1.032-0.882,1.708-1.033
+                            c0.458-0.097,0.913-0.146,1.365-0.146h3.188l-0.984,0.577h-0.986c0.345,0.219,0.613,0.525,0.803,0.919
+                            c0.189,0.395,0.284,0.806,0.284,1.233c0,0.359-0.057,0.68-0.168,0.959c-0.112,0.28-0.249,0.505-0.408,0.675
+                            c-0.161,0.17-0.322,0.327-0.482,0.47c-0.161,0.144-0.297,0.292-0.408,0.445c-0.112,0.154-0.168,0.318-0.168,0.493
+                            c0,0.127,0.04,0.25,0.12,0.372c0.08,0.122,0.185,0.238,0.313,0.35c0.129,0.112,0.271,0.229,0.427,0.35
+                            c0.155,0.122,0.311,0.258,0.466,0.405c0.157,0.148,0.298,0.31,0.428,0.481c0.129,0.173,0.233,0.38,0.313,0.62
+                            c0.08,0.241,0.12,0.5,0.12,0.777C16.35,18.837,16.009,19.522,15.329,20.116z M21.071,11.731h-1.868v1.868h-0.935v-1.868h-1.867
+                            v-0.935h1.867V8.929h0.935v1.868h1.868V11.731z"/>
+                    </g>
+                </svg> Google+
+            </a>
+    </div>
+</div>
+</body>
+</html>
