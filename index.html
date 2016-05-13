@@ -1,351 +1,2940 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Michael Watts, Web Developer</title>
-    <meta name="description"
-          content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+Last login: Wed May 11 14:00:31 on ttys001
+ruby-2.3.1 is not installed.
+To install do: 'rvm install ruby-2.3.1'
+req%                                                                                                                                                                                                                                                                                                                          ^R
+ /usr/local/share/metasploit-framework   master  resque-web                                                                                                                                                                                                                                                      master
+[2016-05-11 14:11:48 +0100] Starting 'resque-web'...
+[2016-05-11 14:11:48 +0100] trying port 5678...
+ /usr/local/share/metasploit-framework   master  h michael                                                                                                                                                                                                                                                       master
+   54  cd /Users/michaelwatts/Desktop/drdaproposals/homedir/public_html
+  106  sudo chown -R michaelwatts:wheel .; sudo chmod -R 755 .
+  122  cd /Users/michaelwatts/Documents/_amazing_ruby_scripts/shopify
+  168  cd /Users/michaelwatts/Documents/_amazing_ruby_scripts/shopify/fg4store-10075184/
+  169  ls -la /var/mail/michaelwatts
+  185  vim /var/mail/michaelwatts
+  512  sudo chown -R michaelwatts:wheel wp-content; sudo chmod -R 755 wp-content
+  630  sudo chown michaelwatts:admin /usr/local/include/node
+  632  sudo chown -r michaelwatts:admin /usr/local/include/node
+  633  sudo chown -R michaelwatts:admin /usr/local/include/node
+  663  mkdir /Users/michaelwatts/.node/lib/node_modules
+  664  /Users/michaelwatts/.node/lib/node_modules/npm
+  665  mkdir /Users/michaelwatts/.node/lib/node_modules/npm
+  666  ls -la /Users/michaelwatts/.node/lib
+  667  ls -la /Users/michaelwatts/.node/lib/node_modules
+  668  ls -la /Users/michaelwatts/.node/lib/node_modules/npm
+  669  ls -la /Users/michaelwatts/.node/lib/
+  670  ls -la /Users/michaelwatts/.node/
+  671  ls -la /Users/michaelwatts/
+  704  less /Users/michaelwatts/Documents/_amazing_angularjs_scripts/SitaCal/npm-debug.log
+ 1014  less /Users/michaelwatts/Documents/retailgroup.pem
+ 1043  ssh-keygen -t rsa -b 4096 -C "hello@michaelwatts.me"
+ 1044  mv id_michaelwatts_me ~/.ssh/id_michaelwatts_me
+ 1045  copy ~/.ssh/id_michaelwatts_me
+ 1046  mv id_michaelwatts_me.pub ~/.ssh/
+ 1048  copy ~/.ssh/id_michaelwatts_me.pub
+ 1199  sudo rm -rf /Users/michaelwatts/.vim/bundle/tern_for_vim
+ 1288  chown michaelwatts:wheel fawazalhokairfashion.com
+ 1289  sudo chown michaelwatts:wheel fawazalhokairfashion.com
+ 1399  talk michaelwatts
+ 1712  mongo ds035290.mongolab.com:35290/heroku_pzx9qzr2 -u michaelwatts -p London2012
+ 1713  mongoexport -h ds035290.mongolab.com:35290 -d heroku_pzx9qzr2 -c salaries -u michaelwatts -p London2012 -o salaries.json
+ 1732  npm set init.author.email "hello@michaelwatts.me"
+ 1733  npm set init.author.url "http://michaelwatts.me"
+ 1751  cd /Users/michaelwatts/Documents/_amazing_angularjs_scripts/full-stack-salary-survey
 
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
-    <style>
-        body {
-            font: 400 1em / 1.5 'museo-sans', sans-serif;
-            background: #EFEFFF;
-            color: #767981;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-            -webkit-touch-callout: none;
-            margin: 0;
-            -webkit-transition: all 0.1s linear;
-            -moz-transition: all 0.1s linear;
-            transition: all 0.1s linear;
-        }
 
-        p, li {
-            font-size: 1em;
-            line-height: 1.5;
-        }
 
-        a {
-            color: #034F84;
-            transition: all 0.05s linear;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            color: #D34B52;
-        }
-        a:visited {
-            color: #D34B52
-        }
-        a:visited:hover {
-            color: #C2454B;
-        }
-        header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
-        a.contacts {
-            color: #AEA291 !important;
-            display: inline-block;
-            padding-right: 20px;
-            border-radius: 3px;
-            font-size: 1em;
-            line-height: 40px;
-            height: 40px;
-            overflow: hidden;
-            position: relative;
-            padding-left: 60px;
-        }
-        .contacts > svg {
-            position: absolute;
-            top: 0;
-            left: 0px;
-            height: 30px;
-            width: 30px;
-            text-align: center;
-            padding: 5px;
-        }
-        a.contacts:hover {
-            background: #443B45;
-        }
-        a.contacts:hover > svg {
-            background: #3F4147;
-        }
-        h1 {
-            font-family: "corner-store";
-            font-weight: normal;
-        }
-        h2, h3, h4 {
-            color: #034F84;
-        }
-        .container {
-            position: relative;
-        }
-        header {
-            padding: 10%;
-            text-align: center;
-            background: #EFEFFF;
-            color: #AEA291;
-        }
-        header h1 {
-            margin-top: 0;
-            font-size: 3.4em;
-            line-height: 1;
-            color: #034F84;
-        }
-        header h1 small {
-            font-family: 'museo-sans', sans-serif;
-            display: block;
-            font-weight: 100;
-            text-transform: uppercase;
-            font-size: 0.2em;
-            letter-spacing: 4px;
-            color: #AEA291;
-            margin-top: 1em;
-            line-height: 1.3;
-            text-shadow: none
-        }
-        header h1 small strong {color: #034F84; font-weight: 300;}
-        header p.lead {
-            font-size: 1.1em;
-            line-height: 1.6;
-            font-weight: 100;
-        }
-        header p.more-info {
-            text-transform: uppercase;
-            font-size: 1em;
-            margin-top: 3.2em;
-            font-weight: 300;
-        }
-        .skills {margin-top: 0.5em}
-        .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-            margin-top: 0;
-        }
-        .list-inline {
-            padding-left: 0;
-            margin-left: -5px;
-            list-style: none;
-        }
-        .list-inline > li {
-            display: inline-block;
-            padding-right: 5px;
-            padding-left: 5px;
-        }
-        .list-bordered li {
-            margin: 1em auto;
-            border-bottom: 1px solid rgba(57, 73, 102, 0.43);
-            padding-bottom: 1em;
-            width: 70%;
-        }
-        .list-bordered li:before {
-            content : "";
-            position: absolute;
-            left    : 0;
-            bottom  : 0;
-            height  : 1px;
-            width   : 50%;  /* or 100px */
-            border-bottom:1px solid magenta;
-        }
-        .text-center {text-align: center;}
-        .script {
-            color: #034F84;
-            text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
-        }
-        .logos {
-            opacity: 0.4;
-            width: 90%;
-        }
-        section .script {font-size: 3em;}
-        footer {
-            background: #2B303A;
-            padding: 4em 0 20em;
-            overflow: hidden;
-        }
-        footer > .links {
-            margin: 0;
-            line-height: 0;
-        }
-        .copyright {
-            color: #AEA291;
-            text-transform: uppercase;
-            margin: 3.3em 0;
-            display: block;
-            font-size: 0.6em;
-            letter-spacing: 2px;
-            opacity: .5;
-        }
-        .hr-mute {
-            opacity: 0.3;
-            border-color: #AEA291;
-            color: rgba(0, 0, 0, 0);
-            background: rgba(0, 0, 0, 0);
-        }
-        .margin-top {margin-top: 3em;}
 
-        @media (min-width: 300px) {
-            header h1 {font-size: 4em;}
-        }
-
-        @media (min-width: 760px) {
-            .container {
-                width: 80%;
-                max-width: 1000px;
-            }
-            header h1 {font-size: 4em;}
-            header p.lead {font-size: 1.3em;}
-            header p.more-info {font-size: 1.15em;}
-            .list-bordered li {width: 30%;}
-        }
-
-        @media (min-width: 1000px) {
-            .container {
-                margin: 3em auto;
-            }
-            header h1 {font-size: 5.4em;}
-            header p.lead {font-size: 1.6em;}
-            header p.more-info {font-size: 1.15em;}
-        }
-    </style>
-    <script src="//use.typekit.net/xig0tkx.js"></script>
-    <script>try {
-            Typekit.load();
-        } catch (e) {
-        }</script>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1 class="script">Michael Watts <small><strong>Web developer</strong> based in Surrey, UK</small></h1>
-            <p class="lead">
-                I help clients engage with their customers or data through digital media. 
-                Whether it's from building applications that provide a great user experience or introducing new technologies I strive to deliver solutions of the very highest quality.
-                I build applications that help clients engage with their customers
-            </p>
-            <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
-        </div>
-    </header>
-    <section class="text-center">
-        <div class="container">
-
-            <h1 class="script">Skills</h1>
-            <ul class="skills list-unstyled list-bordered">
-                <li>PHP, Laravel</li>
-                <li>Ruby, Rails</li>
-                <li>JavaScript, AngularJS</li>
-                <li>Node, Express and the MEAN stack</li>
-                <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp, etc, etc.</li>
-                <li>API integration</li>
-                <li>LAMP Stack admininstration</li>
-            </ul>
-
-        </div>
-    </section>
-    <section class="text-center">
-        <div class="container">
-            <h1 class="script">Clients</h1>
-            <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
-            <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
-        </div>
-    </section>
-
-    <footer class="text-center">
-        <div class="container">
-            <p class="links">
-                <a href="https://github.com/altescape" class="contacts">
-                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
-                        <g id="github">
-                            <path fill="#034F84" d="M22.844,15.191c0,1.71-0.498,3.248-1.496,4.613s-2.286,2.31-3.865,2.834c-0.185,0.034-0.318,0.011-0.404-0.071
-                                c-0.085-0.082-0.127-0.184-0.127-0.307v-2.155c0-0.66-0.178-1.144-0.531-1.45c0.388-0.041,0.736-0.103,1.047-0.184
-                                c0.31-0.082,0.63-0.215,0.96-0.398s0.606-0.41,0.827-0.68c0.221-0.269,0.402-0.626,0.541-1.072c0.141-0.446,0.21-0.958,0.21-1.538
-                                c0-0.824-0.269-1.525-0.808-2.104c0.252-0.62,0.226-1.314-0.081-2.083c-0.19-0.062-0.467-0.024-0.827,0.112
-                                c-0.361,0.136-0.674,0.286-0.939,0.45l-0.389,0.245c-0.633-0.177-1.287-0.265-1.961-0.265s-1.328,0.088-1.961,0.265
-                                c-0.109-0.075-0.254-0.167-0.434-0.275c-0.181-0.109-0.465-0.24-0.853-0.394s-0.681-0.199-0.878-0.138
-                                c-0.3,0.77-0.323,1.464-0.071,2.083c-0.538,0.579-0.807,1.28-0.807,2.104c0,0.579,0.07,1.09,0.209,1.533
-                                c0.14,0.442,0.318,0.8,0.536,1.072s0.492,0.501,0.822,0.685s0.65,0.316,0.96,0.398c0.31,0.081,0.659,0.143,1.046,0.184
-                                c-0.272,0.245-0.439,0.596-0.5,1.052c-0.143,0.068-0.296,0.12-0.459,0.153c-0.164,0.034-0.357,0.052-0.582,0.052
-                                s-0.448-0.073-0.669-0.22c-0.222-0.146-0.411-0.359-0.567-0.639c-0.129-0.218-0.295-0.395-0.496-0.531
-                                c-0.201-0.136-0.37-0.218-0.505-0.245l-0.205-0.03c-0.143,0-0.242,0.015-0.296,0.046c-0.055,0.03-0.072,0.069-0.051,0.117
-                                s0.051,0.096,0.092,0.143c0.041,0.048,0.084,0.089,0.132,0.123l0.072,0.051c0.149,0.068,0.298,0.198,0.444,0.389
-                                c0.146,0.19,0.253,0.364,0.322,0.521l0.102,0.235c0.088,0.259,0.238,0.468,0.449,0.628s0.439,0.263,0.685,0.307
-                                s0.481,0.067,0.709,0.071c0.229,0.004,0.417-0.009,0.567-0.036l0.235-0.04c0,0.259,0.001,0.562,0.005,0.908
-                                c0.003,0.348,0.005,0.531,0.005,0.552c0,0.123-0.044,0.225-0.133,0.307c-0.088,0.082-0.224,0.105-0.408,0.071
-                                c-1.58-0.524-2.869-1.469-3.866-2.834c-0.998-1.365-1.497-2.902-1.497-4.613c0-1.422,0.351-2.735,1.052-3.937
-                                c0.702-1.202,1.653-2.153,2.855-2.855C12.264,7.698,13.577,7.347,15,7.347c1.424,0,2.736,0.351,3.938,1.052
-                                c1.201,0.702,2.153,1.653,2.855,2.855C22.494,12.456,22.844,13.769,22.844,15.191z"/>
-                        </g>
-                    </svg> Github
-                </a>
-                <a href="http://uk.linkedin.com/in/mwattsweb/" class="contacts">
-                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
-                        <g id="linkedin">
-                            <path fill="#034F84" d="M22.361,10.399v9.202c0,0.76-0.27,1.41-0.811,1.951c-0.539,0.539-1.189,0.809-1.95,0.809h-9.201
-                                c-0.761,0-1.411-0.27-1.951-0.809c-0.54-0.541-0.81-1.191-0.81-1.951v-9.202c0-0.761,0.27-1.41,0.81-1.951
-                                c0.54-0.539,1.19-0.81,1.951-0.81h9.201c0.761,0,1.411,0.271,1.95,0.81C22.092,8.989,22.361,9.639,22.361,10.399z M12.269,11.262
-                                c-0.007-0.332-0.122-0.607-0.346-0.824s-0.521-0.326-0.892-0.326c-0.37,0-0.672,0.109-0.905,0.326s-0.35,0.492-0.35,0.824
-                                c0,0.326,0.113,0.6,0.34,0.819c0.227,0.221,0.522,0.331,0.887,0.331h0.01c0.377,0,0.681-0.11,0.91-0.331
-                                C12.153,11.861,12.269,11.588,12.269,11.262z M9.91,19.967h2.214v-6.653H9.91V19.967z M17.875,19.967h2.215V16.15
-                                c0-0.984-0.233-1.729-0.699-2.233c-0.467-0.505-1.084-0.757-1.851-0.757c-0.869,0-1.537,0.373-2.003,1.121h0.019v-0.968h-2.214
-                                c0.02,0.421,0.02,2.64,0,6.653h2.214v-3.721c0-0.242,0.022-0.422,0.067-0.537c0.096-0.224,0.239-0.413,0.432-0.57
-                                c0.191-0.156,0.428-0.234,0.709-0.234c0.741,0,1.111,0.502,1.111,1.506V19.967z"/>
-                        </g>
-                    </svg> LinkedIn
-                </a>
-                <a href="http://stackoverflow.com/users/1945990/mjwatts" class="contacts">
-                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
-                        <g id="stackoverflow">
-                            <rect x="17.448" y="8.031" transform="matrix(-0.1709 -0.9853 0.9853 -0.1709 16.3965 31.587)" fill="#034F84" width="8.08" height="1.727"/>
-                            <polygon fill="#E16063" points="16.474,6.445 21.02,13.127 19.604,14.098 15.046,7.427"/>
-                            <rect x="11.359" y="12.161" transform="matrix(-0.8609 -0.5089 0.5089 -0.8609 22.0288 32.0716)" fill="#D56F6E" width="8.082" height="1.726"/>
-                            <rect x="10.14" y="15.228" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 23.7086 35.3024)" fill="#D56F6E" width="8.076" height="1.726"/>
-                            <polygon fill="#C97F79" points="9.724,17.821 17.764,18.563 17.615,20.277 9.563,19.535"/>
-                            <rect x="9.495" y="20.774" fill="#B79689" width="8.075" height="1.725"/>
-                            <g>
-                                <path fill="#AEA291" d="M20.322,16.816v8.007l-0.011,0.399v0.012H7.382l-0.4-0.012H6.971v-8.406h1.382v7.059h10.6v-7.059H20.322z"/>
-                            </g>
-                        </g>
-                    </svg> Stack Overflow
-                </a>
-                <a href="https://plus.google.com/113239679855361194218/posts" class="contacts">
-                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
-                        <g id="googleplus">
-                            <path fill="#034F84" d="M14.445,12.395c0-0.292-0.04-0.603-0.121-0.93c-0.08-0.329-0.195-0.646-0.342-0.953
-                                c-0.149-0.306-0.353-0.559-0.613-0.759c-0.261-0.199-0.551-0.299-0.873-0.299c-0.452,0-0.802,0.168-1.051,0.504
-                                c-0.248,0.335-0.372,0.737-0.372,1.204c0,0.229,0.028,0.469,0.084,0.722c0.056,0.253,0.142,0.506,0.259,0.759
-                                c0.117,0.254,0.253,0.481,0.409,0.683c0.156,0.203,0.345,0.367,0.569,0.493c0.224,0.127,0.46,0.19,0.708,0.19
-                                c0.472,0,0.813-0.148,1.026-0.441C14.339,13.272,14.445,12.882,14.445,12.395z"/>
-                            <path fill="#034F84" d="M15.219,18.127c-0.024-0.079-0.068-0.164-0.129-0.252c-0.061-0.087-0.111-0.161-0.153-0.223
-                                c-0.041-0.061-0.106-0.132-0.193-0.215c-0.088-0.083-0.155-0.145-0.201-0.187c-0.046-0.041-0.123-0.104-0.233-0.186
-                                c-0.109-0.083-0.185-0.139-0.227-0.168c-0.041-0.028-0.122-0.085-0.241-0.168c-0.119-0.082-0.193-0.134-0.223-0.152
-                                c-0.083-0.01-0.204-0.016-0.365-0.016c-0.262,0-0.521,0.018-0.772,0.052c-0.254,0.034-0.517,0.095-0.789,0.183
-                                c-0.273,0.087-0.511,0.199-0.715,0.335c-0.204,0.137-0.372,0.319-0.503,0.548c-0.132,0.229-0.198,0.488-0.198,0.78
-                                c0,0.332,0.086,0.627,0.259,0.887s0.399,0.465,0.679,0.613s0.573,0.259,0.879,0.332c0.307,0.072,0.615,0.109,0.927,0.109
-                                c0.287,0,0.561-0.03,0.821-0.092c0.261-0.061,0.505-0.155,0.733-0.284s0.41-0.308,0.543-0.536s0.201-0.496,0.201-0.803
-                                c0-0.102-0.011-0.201-0.032-0.296C15.266,18.295,15.243,18.207,15.219,18.127z"/>
-                            <path fill="#034F84" d="M19.913,7.628h-9.792c-1.352,0-2.448,1.096-2.448,2.448v9.792c0,1.352,1.096,2.448,2.448,2.448h9.792
-                                c1.352,0,2.448-1.097,2.448-2.448v-9.792C22.361,8.724,21.265,7.628,19.913,7.628z M15.329,20.116
-                                c-0.74,0.637-1.761,0.955-3.065,0.955c-0.288,0-0.578-0.023-0.873-0.072c-0.294-0.049-0.591-0.13-0.89-0.245
-                                c-0.299-0.113-0.563-0.255-0.792-0.423c-0.229-0.168-0.416-0.385-0.562-0.649c-0.146-0.266-0.219-0.561-0.219-0.887
-                                c0-0.297,0.089-0.625,0.27-0.984c0.155-0.312,0.389-0.581,0.701-0.807c0.312-0.227,0.664-0.399,1.059-0.519
-                                c0.394-0.119,0.771-0.207,1.131-0.263c0.36-0.057,0.725-0.088,1.094-0.099c-0.311-0.403-0.467-0.766-0.467-1.087
-                                c0-0.059,0.005-0.116,0.015-0.171c0.01-0.056,0.022-0.104,0.037-0.143s0.034-0.091,0.058-0.156
-                                c0.024-0.066,0.042-0.118,0.051-0.157c-0.195,0.024-0.365,0.036-0.511,0.036c-0.725,0-1.347-0.238-1.865-0.715
-                                c-0.518-0.476-0.777-1.074-0.777-1.795c0-0.681,0.231-1.29,0.693-1.828c0.462-0.538,1.032-0.882,1.708-1.033
-                                c0.458-0.097,0.913-0.146,1.365-0.146h3.188l-0.984,0.577h-0.986c0.345,0.219,0.613,0.525,0.803,0.919
-                                c0.189,0.395,0.284,0.806,0.284,1.233c0,0.359-0.057,0.68-0.168,0.959c-0.112,0.28-0.249,0.505-0.408,0.675
-                                c-0.161,0.17-0.322,0.327-0.482,0.47c-0.161,0.144-0.297,0.292-0.408,0.445c-0.112,0.154-0.168,0.318-0.168,0.493
-                                c0,0.127,0.04,0.25,0.12,0.372c0.08,0.122,0.185,0.238,0.313,0.35c0.129,0.112,0.271,0.229,0.427,0.35
-                                c0.155,0.122,0.311,0.258,0.466,0.405c0.157,0.148,0.298,0.31,0.428,0.481c0.129,0.173,0.233,0.38,0.313,0.62
-                                c0.08,0.241,0.12,0.5,0.12,0.777C16.35,18.837,16.009,19.522,15.329,20.116z M21.071,11.731h-1.868v1.868h-0.935v-1.868h-1.867
-                                v-0.935h1.867V8.929h0.935v1.868h1.868V11.731z"/>
-                        </g>
-                    </svg> Google+
-                </a>
-                <hr class="hr-mute">
-                <small class="copyright">&copy; Copyright Michael Watts 2015</small>
-        </div>
-    </footer>
-</body>
-</html>
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  243
+  244             <h1 class="script">Experience</h1>
+  245             <ul class="skills list-unstyled list-bordered">
+  246                 <li>Ruby, Rails</li>
+  247                 <li>Node, Express and MongoDB</li>
+  248                 <li>JavaScript, AngularJS</li>
+  249                 <li>PHP, Laravel</li>
+  250                 <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  251                 <li>API integration</li>
+  252                 <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  253                 <li>Linux, Bash</li>
+  254             </ul>
+  255
+  256         </div>
+  257     </section>
+  258     <section class="text-center">
+  259         <div class="container">
+  260             <h1 class="script">Clients</h1>
+  261             <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  262             <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  263         </div>
+  264     </section>
+  265
+  266     <footer class="text-center">
+  267         <div class="container">
+  268             <p class="links">
+  269                 <a href="https://github.com/altescape" class="contacts">
+>>270                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>271                         <g id="github">
+>>272                             <path fill="#034F84" d="M22.844,15.191c0,1.71-0.498,3.248-1.496,4.613s-2.286,2.31-3.865,2.834c-0.185,0.034-0.318,0.011-0.404-0.071
+  273                                 c-0.085-0.082-0.127-0.184-0.127-0.307v-2.155c0-0.66-0.178-1.144-0.531-1.45c0.388-0.041,0.736-0.103,1.047-0.184
+  274                                 c0.31-0.082,0.63-0.215,0.96-0.398s0.606-0.41,0.827-0.68c0.221-0.269,0.402-0.626,0.541-1.072c0.141-0.446,0.21-0.958,0.21-1.538
+  275                                 c0-0.824-0.269-1.525-0.808-2.104c0.252-0.62,0.226-1.314-0.081-2.083c-0.19-0.062-0.467-0.024-0.827,0.112
+  276                                 c-0.361,0.136-0.674,0.286-0.939,0.45l-0.389,0.245c-0.633-0.177-1.287-0.265-1.961-0.265s-1.328,0.088-1.961,0.265
+  277                                 c-0.109-0.075-0.254-0.167-0.434-0.275c-0.181-0.109-0.465-0.24-0.853-0.394s-0.681-0.199-0.878-0.138
+  278                                 c-0.3,0.77-0.323,1.464-0.071,2.083c-0.538,0.579-0.807,1.28-0.807,2.104c0,0.579,0.07,1.09,0.209,1.533
+  279                                 c0.14,0.442,0.318,0.8,0.536,1.072s0.492,0.501,0.822,0.685s0.65,0.316,0.96,0.398c0.31,0.081,0.659,0.143,1.046,0.184
+  280                                 c-0.272,0.245-0.439,0.596-0.5,1.052c-0.143,0.068-0.296,0.12-0.459,0.153c-0.164,0.034-0.357,0.052-0.582,0.052
+  281                                 s-0.448-0.073-0.669-0.22c-0.222-0.146-0.411-0.359-0.567-0.639c-0.129-0.218-0.295-0.395-0.496-0.531
+  282                                 c-0.201-0.136-0.37-0.218-0.505-0.245l-0.205-0.03c-0.143,0-0.242,0.015-0.296,0.046c-0.055,0.03-0.072,0.069-0.051,0.117
+  283                                 s0.051,0.096,0.092,0.143c0.041,0.048,0.084,0.089,0.132,0.123l0.072,0.051c0.149,0.068,0.298,0.198,0.444,0.389
+  284                                 c0.146,0.19,0.253,0.364,0.322,0.521l0.102,0.235c0.088,0.259,0.238,0.468,0.449,0.628s0.439,0.263,0.685,0.307
+  285                                 s0.481,0.067,0.709,0.071c0.229,0.004,0.417-0.009,0.567-0.036l0.235-0.04c0,0.259,0.001,0.562,0.005,0.908
+  286                                 c0.003,0.348,0.005,0.531,0.005,0.552c0,0.123-0.044,0.225-0.133,0.307c-0.088,0.082-0.224,0.105-0.408,0.071
+  287                                 c-1.58-0.524-2.869-1.469-3.866-2.834c-0.998-1.365-1.497-2.902-1.497-4.613c0-1.422,0.351-2.735,1.052-3.937
+  288                                 c0.702-1.202,1.653-2.153,2.855-2.855C12.264,7.698,13.577,7.347,15,7.347c1.424,0,2.736,0.351,3.938,1.052
+  289                                 c1.201,0.702,2.153,1.653,2.855,2.855C22.494,12.456,22.844,13.769,22.844,15.191z"/>
+>>290                         </g>
+>>291                     </svg> Github
+  292                 </a>
+  293                 <a href="http://uk.linkedin.com/in/mwattsweb/" class="contacts">
+>>294                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>295                         <g id="linkedin">
+>>296                             <path fill="#034F84" d="M22.361,10.399v9.202c0,0.76-0.27,1.41-0.811,1.951c-0.539,0.539-1.189,0.809-1.95,0.809h-9.201
+  297                                 c-0.761,0-1.411-0.27-1.951-0.809c-0.54-0.541-0.81-1.191-0.81-1.951v-9.202c0-0.761,0.27-1.41,0.81-1.951
+  298                                 c0.54-0.539,1.19-0.81,1.951-0.81h9.201c0.761,0,1.411,0.271,1.95,0.81C22.092,8.989,22.361,9.639,22.361,10.399z M12.269,11.262
+  299                                 c-0.007-0.332-0.122-0.607-0.346-0.824s-0.521-0.326-0.892-0.326c-0.37,0-0.672,0.109-0.905,0.326s-0.35,0.492-0.35,0.824
+  300                                 c0,0.326,0.113,0.6,0.34,0.819c0.227,0.221,0.522,0.331,0.887,0.331h0.01c0.377,0,0.681-0.11,0.91-0.331
+  301                                 C12.153,11.861,12.269,11.588,12.269,11.262z M9.91,19.967h2.214v-6.653H9.91V19.967z M17.875,19.967h2.215V16.15
+  302                                 c0-0.984-0.233-1.729-0.699-2.233c-0.467-0.505-1.084-0.757-1.851-0.757c-0.869,0-1.537,0.373-2.003,1.121h0.019v-0.968h-2.214
+  303                                 c0.02,0.421,0.02,2.64,0,6.653h2.214v-3.721c0-0.242,0.022-0.422,0.067-0.537c0.096-0.224,0.239-0.413,0.432-0.57
+  304                                 c0.191-0.156,0.428-0.234,0.709-0.234c0.741,0,1.111,0.502,1.111,1.506V19.967z"/>
+  305                         </g>
+  306                     </svg> LinkedIn
+  307                 </a>
+  308                 <a href="http://stackoverflow.com/users/1945990/mjwatts" class="contacts">
+  309                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+  310                         <g id="stackoverflow">
+  311                             <rect x="17.448" y="8.031" transform="matrix(-0.1709 -0.9853 0.9853 -0.1709 16.3965 31.587)" fill="#034F84" width="8.08" height="1.727"/>
+  312                             <polygon fill="#E16063" points="16.474,6.445 21.02,13.127 19.604,14.098 15.046,7.427"/>
+  313                             <rect x="11.359" y="12.161" transform="matrix(-0.8609 -0.5089 0.5089 -0.8609 22.0288 32.0716)" fill="#D56F6E" width="8.082" height="1.726"/>
+  314                             <rect x="10.14" y="15.228" transform="matrix(-0.9659 -0.2588 0.2588 -0.9659 23.7086 35.3024)" fill="#D56F6E" width="8.076" height="1.726"/>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                      html      utf-8      66%  243:  1   ✹ trailing[229]  [Syntax: line:270 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  184             opacity: .5;
+  185         }
+  186         .hr-mute {
+  187             opacity: 0.3;
+  188             border-color: #AEA291;
+  189             color: rgba(0, 0, 0, 0);
+  190             background: rgba(0, 0, 0, 0);
+  191         }
+  192         .margin-top {margin-top: 3em;}
+  193
+  194         @media (min-width: 300px) {
+  195             header h1 {font-size: 4em;}
+  196         }
+  197
+  198         @media (min-width: 760px) {
+  199             .container {
+  200                 width: 80%;
+  201                 max-width: 1000px;
+  202             }
+  203             header h1 {font-size: 4em;}
+  204             header p.lead {font-size: 1.3em;}
+  205             header p.more-info {font-size: 1.15em;}
+  206             .list-bordered li {width: 30%;}
+  207         }
+  208
+  209         @media (min-width: 1000px) {
+  210             .container {
+  211                 margin: 3em auto;
+  212             }
+  213             header h1 {font-size: 5.4em;}
+  214             header p.lead {font-size: 1.6em;}
+  215             header p.more-info {font-size: 1.15em;}
+  216         }
+  217     </style>
+  218     <script src="//use.typekit.net/xig0tkx.js"></script>
+  219     <script>try {
+  220             Typekit.load();
+  221         } catch (e) {
+  222         }</script>
+  223 </head>
+  224 <body>
+  225     <header>
+  226         <div class="container">
+  227             <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  228             <h2 class="lead">I love writing code.</h2>
+  229             <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way that they use digital media to engage with customers.</p>
+  230             <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no compla
+  231             <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  232         </div>
+  233     </header>
+  234     <section class="text-center">
+  235         <div class="container">
+  236
+  237             <h1 class="script">Experience</h1>
+  238             <ul class="skills list-unstyled list-bordered">
+  239                 <li>Ruby, Rails</li>
+  240                 <li>Node, Express and MongoDB</li>
+  241                 <li>JavaScript, AngularJS</li>
+  242                 <li>PHP, Laravel</li>
+  243                 <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  244                 <li>API integration</li>
+  245                 <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  246                 <li>Linux, Bash</li>
+  247             </ul>
+  248
+  249         </div>
+  250     </section>
+  251     <section class="text-center">
+  252         <div class="container">
+  253             <h1 class="script">Clients</h1>
+  254             <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  255             <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  193:  1   [Syntax: line:263 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3 <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6           content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11         body {
+   12             font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13             background: #EFEFFF;
+   14             color: #767981;
+   15             -webkit-user-select: none;
+   16             -moz-user-select: none;
+   17             -ms-user-select: none;
+   18             user-select: none;
+   19             -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20             -webkit-touch-callout: none;
+   21             margin: 0;
+   22             -webkit-transition: all 0.1s linear;
+   23             -moz-transition: all 0.1s linear;
+   24             transition: all 0.1s linear;
+   25         }
+   26
+   27         p, li {
+   28             font-size: 1em;
+   29             line-height: 1.5;
+   30         }
+   31
+   32         a {
+   33             color: #034F84;
+   34             transition: all 0.05s linear;
+   35             text-decoration: none;
+   36             font-weight: bold;
+   37         }
+   38         a:hover {
+   39             color: #D34B52;
+   40         }
+   41         a:visited {
+   42             color: #D34B52
+   43         }
+   44         a:visited:hover {
+   45             color: #C2454B;
+   46         }
+   47         header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48         a.contacts {
+   49             color: #AEA291 !important;
+   50             display: inline-block;
+   51             padding-right: 20px;
+   52             border-radius: 3px;
+   53             font-size: 1em;
+   54             line-height: 40px;
+   55             height: 40px;
+   56             overflow: hidden;
+   57             position: relative;
+   58             padding-left: 60px;
+   59         }
+   60         .contacts > svg {
+   61             position: absolute;
+   62             top: 0;
+   63             left: 0px;
+   64             height: 30px;
+   65             width: 30px;
+   66             text-align: center;
+   67             padding: 5px;
+   68         }
+   69         a.contacts:hover {
+   70             background: #443B45;
+   71         }
+   72         a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:263 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  187             opacity: 0.3;
+  188             border-color: #AEA291;
+  189             color: rgba(0, 0, 0, 0);
+  190             background: rgba(0, 0, 0, 0);
+  191         }
+  192         .margin-top {margin-top: 3em;}
+  193
+  194         @media (min-width: 300px) {
+  195             header h1 {font-size: 4em;}
+  196         }
+  197
+  198         @media (min-width: 760px) {
+  199             .container {
+  200                 width: 80%;
+  201                 max-width: 1000px;
+  202             }
+  203             header h1 {font-size: 4em;}
+  204             header p.lead {font-size: 1.3em;}
+  205             header p.more-info {font-size: 1.15em;}
+  206             .list-bordered li {width: 30%;}
+  207         }
+  208
+  209         @media (min-width: 1000px) {
+  210             .container {
+  211                 margin: 3em auto;
+  212             }
+  213             header h1 {font-size: 5.4em;}
+  214             header p.lead {font-size: 1.6em;}
+  215             header p.more-info {font-size: 1.15em;}
+  216         }
+  217     </style>
+  218     <script src="//use.typekit.net/xig0tkx.js"></script>
+  219     <script>try {
+  220             Typekit.load();
+  221         } catch (e) {
+  222         }</script>
+  223 </head>
+  224 <body>
+  225     <header>
+  226         <div class="container">
+  227             <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  228             <h2 class="lead">I love writing code.</h2>
+  229             <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way that they use digital media to engage with customers.</p>
+  230             <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no compla
+  231             <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  232         </div>
+  233     </header>
+  234     <section class="text-center">
+  235         <div class="container">
+  236
+  237             <h1 class="script">Experience</h1>
+  238             <ul class="skills list-unstyled list-bordered">
+  239                 <li>Ruby, Rails</li>
+  240                 <li>Node, Express and MongoDB</li>
+  241                 <li>JavaScript, AngularJS</li>
+  242                 <li>PHP, Laravel</li>
+  243                 <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  244                 <li>API integration</li>
+  245                 <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  246                 <li>Linux, Bash</li>
+  247             </ul>
+  248
+  249         </div>
+  250     </section>
+  251     <section class="text-center">
+  252         <div class="container">
+  253             <h1 class="script">Clients</h1>
+  254             <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  255             <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  256         </div>
+  257     </section>
+  258
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  193:  1   [Syntax: line:263 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3 <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6           content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11         body {
+   12             font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13             background: #EFEFFF;
+   14             color: #767981;
+   15             -webkit-user-select: none;
+   16             -moz-user-select: none;
+   17             -ms-user-select: none;
+   18             user-select: none;
+   19             -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20             -webkit-touch-callout: none;
+   21             margin: 0;
+   22             -webkit-transition: all 0.1s linear;
+   23             -moz-transition: all 0.1s linear;
+   24             transition: all 0.1s linear;
+   25         }
+   26
+   27         p, li {
+   28             font-size: 1em;
+   29             line-height: 1.5;
+   30         }
+   31
+   32         a {
+   33             color: #034F84;
+   34             transition: all 0.05s linear;
+   35             text-decoration: none;
+   36             font-weight: bold;
+   37         }
+   38         a:hover {
+   39             color: #D34B52;
+   40         }
+   41         a:visited {
+   42             color: #D34B52
+   43         }
+   44         a:visited:hover {
+   45             color: #C2454B;
+   46         }
+   47         header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48         a.contacts {
+   49             color: #AEA291 !important;
+   50             display: inline-block;
+   51             padding-right: 20px;
+   52             border-radius: 3px;
+   53             font-size: 1em;
+   54             line-height: 40px;
+   55             height: 40px;
+   56             overflow: hidden;
+   57             position: relative;
+   58             padding-left: 60px;
+   59         }
+   60         .contacts > svg {
+   61             position: absolute;
+   62             top: 0;
+   63             left: 0px;
+   64             height: 30px;
+   65             width: 30px;
+   66             text-align: center;
+   67             padding: 5px;
+   68         }
+   69         a.contacts:hover {
+   70             background: #443B45;
+   71         }
+   72         a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:263 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  158         .text-center {text-align: center;}
+  159         .script {
+  160             color: #034F84;
+  161             text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  162         }
+  163         .logos {
+  164             opacity: 0.4;
+  165             width: 90%;
+  166         }
+  167         section .script {font-size: 3em;}
+  168         footer {
+  169             background: #2B303A;
+  170             padding: 4em 0 20em;
+  171             overflow: hidden;
+  172         }
+  173         footer > .links {
+  174             margin: 0;
+  175             line-height: 0;
+  176         }
+  177         .copyright {
+  178             color: #AEA291;
+  179             text-transform: uppercase;
+  180             margin: 3.3em 0;
+  181             display: block;
+  182             font-size: 0.6em;
+  183             letter-spacing: 2px;
+  184             opacity: .5;
+  185         }
+  186         .hr-mute {
+  187             opacity: 0.3;
+  188             border-color: #AEA291;
+  189             color: rgba(0, 0, 0, 0);
+  190             background: rgba(0, 0, 0, 0);
+  191         }
+  192         .margin-top {margin-top: 3em;}
+  193
+  194         @media (min-width: 300px) {
+  195             header h1 {font-size: 4em;}
+  196         }
+  197
+  198         @media (min-width: 760px) {
+  199             .container {
+  200                 width: 80%;
+  201                 max-width: 1000px;
+  202             }
+  203             header h1 {font-size: 4em;}
+  204             header p.lead {font-size: 1.3em;}
+  205             header p.more-info {font-size: 1.15em;}
+  206             .list-bordered li {width: 30%;}
+  207         }
+  208
+  209         @media (min-width: 1000px) {
+  210             .container {
+  211                 margin: 3em auto;
+  212             }
+  213             header h1 {font-size: 5.4em;}
+  214             header p.lead {font-size: 1.6em;}
+  215             header p.more-info {font-size: 1.15em;}
+  216         }
+  217     </style>
+  218     <script src="//use.typekit.net/xig0tkx.js"></script>
+  219     <script>try {
+  220             Typekit.load();
+  221         } catch (e) {
+  222         }</script>
+  223 </head>
+  224 <body>
+  225     <header>
+  226         <div class="container">
+  227             <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  228             <h2 class="lead">I love writing code.</h2>
+  229             <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way that they use digital media to engage with customers.</p>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  193:  1   [Syntax: line:263 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+   13             background: #EFEFFF;
+   14             color: #767981;
+   15             -webkit-user-select: none;
+   16             -moz-user-select: none;
+   17             -ms-user-select: none;
+   18             user-select: none;
+   19             -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20             -webkit-touch-callout: none;
+   21             margin: 0;
+   22             -webkit-transition: all 0.1s linear;
+   23             -moz-transition: all 0.1s linear;
+   24             transition: all 0.1s linear;
+   25         }
+   26
+   27         p, li {
+   28             font-size: 1em;
+   29             line-height: 1.5;
+   30         }
+   31
+   32         a {
+   33             color: #034F84;
+   34             transition: all 0.05s linear;
+   35             text-decoration: none;
+   36             font-weight: bold;
+   37         }
+   38         a:hover {
+   39             color: #D34B52;
+   40         }
+   41         a:visited {
+   42             color: #D34B52
+   43         }
+   44         a:visited:hover {
+   45             color: #C2454B;
+   46         }
+   47         header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48         a.contacts {
+   49             color: #AEA291 !important;
+   50             display: inline-block;
+   51             padding-right: 20px;
+   52             border-radius: 3px;
+   53             font-size: 1em;
+   54             line-height: 40px;
+   55             height: 40px;
+   56             overflow: hidden;
+   57             position: relative;
+   58             padding-left: 60px;
+   59         }
+   60         .contacts > svg {
+   61             position: absolute;
+   62             top: 0;
+   63             left: 0px;
+   64             height: 30px;
+   65             width: 30px;
+   66             text-align: center;
+   67             padding: 5px;
+   68         }
+   69         a.contacts:hover {
+   70             background: #443B45;
+   71         }
+   72         a.contacts:hover > svg {
+   73             background: #3F4147;
+   74         }
+   75         h1 {
+   76             font-family: "corner-store";
+   77             font-weight: normal;
+   78         }
+   79         h2, h3, h4 {
+   80             color: #034F84;
+   81         }
+   82         h2 { font-size: 1.6em; }
+   83         .container {
+   84             position: relative;
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      22%   82: 31   [Syntax: line:264 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+  178         .copyright {
+  179             color: #AEA291;
+  180             text-transform: uppercase;
+  181             margin: 3.3em 0;
+  182             display: block;
+  183             font-size: 0.6em;
+  184             letter-spacing: 2px;
+  185             opacity: .5;
+  186         }
+  187         .hr-mute {
+  188             opacity: 0.3;
+  189             border-color: #AEA291;
+  190             color: rgba(0, 0, 0, 0);
+  191             background: rgba(0, 0, 0, 0);
+  192         }
+  193         .margin-top {margin-top: 3em;}
+  194
+  195         @media (min-width: 300px) {
+  196             header h1 {font-size: 4em;}
+  197         }
+  198
+  199         @media (min-width: 760px) {
+  200             .container {
+  201                 width: 80%;
+  202                 max-width: 1000px;
+  203             }
+  204             header h1 {font-size: 4em;}
+  205             header p.lead {font-size: 1.3em;}
+  206             header p.more-info {font-size: 1.15em;}
+  207             .list-bordered li {width: 30%;}
+  208         }
+  209
+  210         @media (min-width: 1000px) {
+  211             .container {
+  212                 margin: 3em auto;
+  213             }
+  214             header h1 {font-size: 5.4em;}
+  215             header p.lead {font-size: 1.6em;}
+  216             header p.more-info {font-size: 1.15em;}
+  217         }
+  218     </style>
+  219     <script src="//use.typekit.net/xig0tkx.js"></script>
+  220     <script>try {
+  221             Typekit.load();
+  222         } catch (e) {
+  223         }</script>
+  224 </head>
+  225 <body>
+  226     <header>
+  227         <div class="container">
+  228             <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  229             <h2 class="lead">I love writing code.</h2>
+  230             <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way that they use digital media to engage with customers.</p>
+  231             <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no compla
+  232             <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  233         </div>
+  234     </header>
+  235     <section class="text-center">
+  236         <div class="container">
+  237
+  238             <h1 class="script">Experience</h1>
+  239             <ul class="skills list-unstyled list-bordered">
+  240                 <li>Ruby, Rails</li>
+  241                 <li>Node, Express and MongoDB</li>
+  242                 <li>JavaScript, AngularJS</li>
+  243                 <li>PHP, Laravel</li>
+  244                 <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  245                 <li>API integration</li>
+  246                 <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  247                 <li>Linux, Bash</li>
+  248             </ul>
+  249
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      64%  230:111   [Syntax: line:264 (13)]
+1 change; before #147  61 seconds ago
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+   47         header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48         a.contacts {
+   49             color: #AEA291 !important;
+   50             display: inline-block;
+   51             padding-right: 20px;
+   52             border-radius: 3px;
+   53             font-size: 1em;
+   54             line-height: 40px;
+   55             height: 40px;
+   56             overflow: hidden;
+   57             position: relative;
+   58             padding-left: 60px;
+   59         }
+   60         .contacts > svg {
+   61             position: absolute;
+   62             top: 0;
+   63             left: 0px;
+   64             height: 30px;
+   65             width: 30px;
+   66             text-align: center;
+   67             padding: 5px;
+   68         }
+   69         a.contacts:hover {
+   70             background: #443B45;
+   71         }
+   72         a.contacts:hover > svg {
+   73             background: #3F4147;
+   74         }
+   75         h1 {
+   76             font-family: "corner-store";
+   77             font-weight: normal;
+   78         }
+   79         h2, h3, h4 {
+   80             color: #034F84;
+   81         }
+   82         h2 { font-size: 1.6em; }
+   83         .container {
+   84             position: relative;
+   85         }
+   86         header {
+   87             padding: 10%;
+   88             text-align: center;
+   89             background: #EFEFFF;
+   90             color: #AEA291;
+   91         }
+   92         header h1 {
+   93             margin-top: 0;
+   94             font-size: 3.4em;
+   95             line-height: 1;
+   96             color: #034F84;
+   97         }
+   98         header h1 small {
+   99             font-family: 'museo-sans', sans-serif;
+  100             display: block;
+  101             font-weight: 100;
+  102             text-transform: uppercase;
+  103             font-size: 0.2em;
+  104             letter-spacing: 4px;
+  105             color: #AEA291;
+  106             margin-top: 1em;
+  107             line-height: 1.3;
+  108             text-shadow: none
+  109         }
+  110         header h1 small strong {color: #034F84; font-weight: 300;}
+  111         header p.lead {
+  112             font-size: 1.1em;
+  113             line-height: 1.6;
+  114             font-weight: 100;
+  115         }
+  116         header p.more-info {
+  117             text-transform: uppercase;
+  118             font-size: 1em;
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      22%   82: 13   [Syntax: line:264 (13)]
+1 change; after #148  23 seconds ago
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  194
+  195         @media (min-width: 300px) {
+  196             header h1 {font-size: 4em;}
+  197         }
+  198
+  199         @media (min-width: 760px) {
+  200             .container {
+  201                 width: 80%;
+  202                 max-width: 1000px;
+  203             }
+  204             header h1 {font-size: 4em;}
+  205             header p.lead {font-size: 1.3em;}
+  206             header p.more-info {font-size: 1.15em;}
+  207             .list-bordered li {width: 30%;}
+  208         }
+  209
+  210         @media (min-width: 1000px) {
+  211             .container {
+  212                 margin: 3em auto;
+  213             }
+  214             header h1 {font-size: 5.4em;}
+  215             header p.lead {font-size: 1.4444em;}
+  216             header p.more-info {font-size: 1.15em;}
+  217         }
+  218     </style>
+  219     <script src="//use.typekit.net/xig0tkx.js"></script>
+  220     <script>try {
+  221             Typekit.load();
+  222         } catch (e) {
+  223         }</script>
+  224 </head>
+  225 <body>
+  226     <header>
+  227         <div class="container">
+  228             <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  229             <h2 class="lead">I love writing code.</h2>
+  230             <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  231             <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no compla
+  232             <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  233         </div>
+  234     </header>
+  235     <section class="text-center">
+  236         <div class="container">
+  237
+  238             <h1 class="script">Experience</h1>
+  239             <ul class="skills list-unstyled list-bordered">
+  240                 <li>Ruby, Rails</li>
+  241                 <li>Node, Express and MongoDB</li>
+  242                 <li>JavaScript, AngularJS</li>
+  243                 <li>PHP, Laravel</li>
+  244                 <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  245                 <li>API integration</li>
+  246                 <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  247                 <li>Linux, Bash</li>
+  248             </ul>
+  249
+  250         </div>
+  251     </section>
+  252     <section class="text-center">
+  253         <div class="container">
+  254             <h1 class="script">Clients</h1>
+  255             <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  256             <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  257         </div>
+  258     </section>
+  259
+  260     <footer class="text-center">
+  261         <div class="container">
+  262             <p class="links">
+  263                 <a href="https://github.com/altescape" class="contacts">
+>>264                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>265                         <g id="github">
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  194:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3 <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6           content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11         body {
+   12             font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13             background: #EFEFFF;
+   14             color: #767981;
+   15             -webkit-user-select: none;
+   16             -moz-user-select: none;
+   17             -ms-user-select: none;
+   18             user-select: none;
+   19             -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20             -webkit-touch-callout: none;
+   21             margin: 0;
+   22             -webkit-transition: all 0.1s linear;
+   23             -moz-transition: all 0.1s linear;
+   24             transition: all 0.1s linear;
+   25         }
+   26
+   27         p, li {
+   28             font-size: 1em;
+   29             line-height: 1.5;
+   30         }
+   31
+   32         a {
+   33             color: #034F84;
+   34             transition: all 0.05s linear;
+   35             text-decoration: none;
+   36             font-weight: bold;
+   37         }
+   38         a:hover {
+   39           color: #034F84;
+   40         }
+   41         a:visited {
+   42           color: #034F84;
+   43         }
+   44         a:visited:hover {
+   45           color: #034F84;
+   46         }
+   47         header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48         a.contacts {
+   49             color: #AEA291 !important;
+   50             display: inline-block;
+   51             padding-right: 20px;
+   52             border-radius: 3px;
+   53             font-size: 1em;
+   54             line-height: 40px;
+   55             height: 40px;
+   56             overflow: hidden;
+   57             position: relative;
+   58             padding-left: 60px;
+   59         }
+   60         .contacts > svg {
+   61             position: absolute;
+   62             top: 0;
+   63             left: 0px;
+   64             height: 30px;
+   65             width: 30px;
+   66             text-align: center;
+   67             padding: 5px;
+   68         }
+   69         a.contacts:hover {
+   70             background: #443B45;
+   71         }
+   72         a.contacts:hover > svg {
+ V-LINE  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       1%    7:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8       2%    9:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+  194
+  195       @media (min-width: 300px) {
+  196         header h1 {font-size: 4em;}
+  197       }
+  198
+  199       @media (min-width: 760px) {
+  200         .container {
+  201           width: 80%;
+  202           max-width: 1000px;
+  203         }
+  204         header h1 {font-size: 4em;}
+  205         header p.lead {font-size: 1.3em;}
+  206         header p.more-info {font-size: 1.15em;}
+  207         .list-bordered li {width: 30%;}
+  208       }
+  209
+  210       @media (min-width: 1000px) {
+  211         .container {
+  212           margin: 3em auto;
+  213         }
+  214         header h1 {font-size: 5.4em;}
+  215         header p.lead {font-size: 1.4444em;}
+  216         header p.more-info {font-size: 1.15em;}
+  217       }
+  218     </style>
+  219     <script src="//use.typekit.net/xig0tkx.js"></script>
+  220     <script>try {
+  221       Typekit.load();
+  222       } catch (e) {
+  223       }</script>
+  224   </head>
+  225   <body>
+  226     <header>
+  227     <div class="container">
+  228       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  229       <h2 class="lead">I love writing code.</h2>
+  230       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  231       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  232       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  233     </div>
+  234     </header>
+  235     <section class="text-center">
+  236     <div class="container">
+  237
+  238       <h1 class="script">Experience</h1>
+  239       <ul class="skills list-unstyled list-bordered">
+  240         <li>Ruby, Rails</li>
+  241         <li>Node, Express and MongoDB</li>
+  242         <li>JavaScript, AngularJS</li>
+  243         <li>PHP, Laravel</li>
+  244         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  245         <li>API integration</li>
+  246         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  247         <li>Linux, Bash</li>
+  248       </ul>
+  249
+  250     </div>
+  251     </section>
+  252     <section class="text-center">
+  253     <div class="container">
+  254       <h1 class="script">Clients</h1>
+  255       <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  256       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  257     </div>
+  258     </section>
+  259
+  260     <footer class="text-center">
+  261     <div class="container">
+  262       <p class="links">
+  263       <a href="https://github.com/altescape" class="contacts">
+>>264         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>265         <g id="github">
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      72%  259:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  194
+  195       @media (min-width: 300px) {
+  196         header h1 {font-size: 4em;}
+  197       }
+  198
+  199       @media (min-width: 760px) {
+  200         .container {
+  201           width: 80%;
+  202           max-width: 1000px;
+  203         }
+  204         header h1 {font-size: 4em;}
+  205         header p.lead {font-size: 1.3em;}
+  206         header p.more-info {font-size: 1.15em;}
+  207         .list-bordered li {width: 30%;}
+  208       }
+  209
+  210       @media (min-width: 1000px) {
+  211         .container {
+  212           margin: 3em auto;
+  213         }
+  214         header h1 {font-size: 5.4em;}
+  215         header p.lead {font-size: 1.4444em;}
+  216         header p.more-info {font-size: 1.15em;}
+  217       }
+  218     </style>
+  219     <script src="//use.typekit.net/xig0tkx.js"></script>
+  220     <script>try {
+  221       Typekit.load();
+  222       } catch (e) {
+  223       }</script>
+  224   </head>
+  225   <body>
+  226     <header>
+  227     <div class="container">
+  228       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  229       <h2 class="lead">I love writing code.</h2>
+  230       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  231       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  232       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  233     </div>
+  234     </header>
+  235     <section class="text-center">
+  236     <div class="container">
+  237
+  238       <h1 class="script">Experience</h1>
+  239       <ul class="skills list-unstyled list-bordered">
+  240         <li>Ruby, Rails</li>
+  241         <li>Node, Express and MongoDB</li>
+  242         <li>JavaScript, AngularJS</li>
+  243         <li>PHP, Laravel</li>
+  244         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  245         <li>API integration</li>
+  246         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  247         <li>Linux, Bash</li>
+  248       </ul>
+  249
+  250     </div>
+  251     </section>
+  252     <section class="text-center">
+  253     <div class="container">
+  254       <h1 class="script">Clients</h1>
+  255       <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  256       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  257     </div>
+  258     </section>
+  259
+  260     <footer class="text-center">
+  261     <div class="container">
+  262       <p class="links">
+  263       <a href="https://github.com/altescape" class="contacts">
+>>264         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>265         <g id="github">
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  194:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  159       .text-center {text-align: center;}
+  160       .script {
+  161         color: #034F84;
+  162         text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  163       }
+  164       .logos {
+  165         opacity: 0.4;
+  166         width: 90%;
+  167       }
+  168       section .script {font-size: 3em;}
+  169       footer {
+  170         background: #2B303A;
+  171         padding: 4em 0 20em;
+  172         overflow: hidden;
+  173       }
+  174       footer > .links {
+  175         margin: 0;
+  176         line-height: 0;
+  177       }
+  178       .copyright {
+  179         color: #AEA291;
+  180         text-transform: uppercase;
+  181         margin: 3.3em 0;
+  182         display: block;
+  183         font-size: 0.6em;
+  184         letter-spacing: 2px;
+  185         opacity: .5;
+  186       }
+  187       .hr-mute {
+  188         opacity: 0.3;
+  189         border-color: #AEA291;
+  190         color: rgba(0, 0, 0, 0);
+  191         background: rgba(0, 0, 0, 0);
+  192       }
+  193       .margin-top {margin-top: 3em;}
+  194
+  195       @media (min-width: 300px) {
+  196         header h1 {font-size: 4em;}
+  197       }
+  198
+  199       @media (min-width: 760px) {
+  200         .container {
+  201           width: 80%;
+  202           max-width: 1000px;
+  203         }
+  204         header h1 {font-size: 4em;}
+  205         header p.lead {font-size: 1.3em;}
+  206         header p.more-info {font-size: 1.15em;}
+  207         .list-bordered li {width: 30%;}
+  208       }
+  209
+  210       @media (min-width: 1000px) {
+  211         .container {
+  212           margin: 3em auto;
+  213         }
+  214         header h1 {font-size: 5.4em;}
+  215         header p.lead {font-size: 1.4444em;}
+  216         header p.more-info {font-size: 1.15em;}
+  217       }
+  218     </style>
+  219     <script src="//use.typekit.net/xig0tkx.js"></script>
+  220     <script>try {
+  221       Typekit.load();
+  222       } catch (e) {
+  223       }</script>
+  224   </head>
+  225   <body>
+  226     <header>
+  227     <div class="container">
+  228       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  229       <h2 class="lead">I love writing code.</h2>
+  230       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  194:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      12%   44:  1   [Syntax: line:264 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  191         opacity: 0.3;
+  192         border-color: #AEA291;
+  193         color: rgba(0, 0, 0, 0);
+  194         background: rgba(0, 0, 0, 0);
+  195       }
+  196       .margin-top {margin-top: 3em;}
+  197
+  198       @media (min-width: 300px) {
+  199         header h1 {font-size: 4em;}
+  200       }
+  201
+  202       @media (min-width: 760px) {
+  203         .container {
+  204           width: 80%;
+  205           max-width: 1000px;
+  206         }
+  207         header h1 {font-size: 4em;}
+  208         header p.lead {font-size: 1.3em;}
+  209         header p.more-info {font-size: 1.15em;}
+  210         .list-bordered li {width: 30%;}
+  211       }
+  212
+  213       @media (min-width: 1000px) {
+  214         .container {
+  215           margin: 3em auto;
+  216         }
+  217         header h1 {font-size: 5.4em;}
+  218         header p.lead {font-size: 1.4444em;}
+  219         header p.more-info {font-size: 1.15em;}
+  220       }
+  221     </style>
+  222     <script src="//use.typekit.net/xig0tkx.js"></script>
+  223     <script>try {
+  224       Typekit.load();
+  225       } catch (e) {
+  226       }</script>
+  227   </head>
+  228   <body>
+  229     <header>
+  230     <div class="container">
+  231       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  232       <h2 class="lead">I love writing code.</h2>
+  233       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  234       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  235       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  236     </div>
+  237     </header>
+  238     <section class="text-center">
+  239     <div class="container">
+  240
+  241       <h1 class="script">Experience</h1>
+  242       <ul class="skills list-unstyled list-bordered">
+  243         <li>Ruby, Rails</li>
+  244         <li>Node, Express and MongoDB</li>
+  245         <li>JavaScript, AngularJS</li>
+  246         <li>PHP, Laravel</li>
+  247         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  248         <li>API integration</li>
+  249         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  250         <li>Linux, Bash</li>
+  251       </ul>
+  252
+  253     </div>
+  254     </section>
+  255     <section class="text-center">
+  256     <div class="container">
+  257       <h1 class="script">Clients</h1>
+  258       <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  259       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  260     </div>
+  261     </section>
+  262
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      72%  262:  1   [Syntax: line:267 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  197
+  198       @media (min-width: 300px) {
+  199         header h1 {font-size: 4em;}
+  200       }
+  201
+  202       @media (min-width: 760px) {
+  203         .container {
+  204           width: 80%;
+  205           max-width: 1000px;
+  206         }
+  207         header h1 {font-size: 4em;}
+  208         header p.lead {font-size: 1.3em;}
+  209         header p.more-info {font-size: 1.15em;}
+  210         .list-bordered li {width: 30%;}
+  211       }
+  212
+  213       @media (min-width: 1000px) {
+  214         .container {
+  215           margin: 3em auto;
+  216         }
+  217         header h1 {font-size: 5.4em;}
+  218         header p.lead {font-size: 1.4444em;}
+  219         header p.more-info {font-size: 1.15em;}
+  220       }
+  221     </style>
+  222     <script src="//use.typekit.net/xig0tkx.js"></script>
+  223     <script>try {
+  224       Typekit.load();
+  225       } catch (e) {
+  226       }</script>
+  227   </head>
+  228   <body>
+  229     <header>
+  230     <div class="container">
+  231       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  232       <h2 class="lead">I love writing code.</h2>
+  233       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  234       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  235       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  236     </div>
+  237     </header>
+  238     <section class="text-center">
+  239     <div class="container">
+  240
+  241       <h1 class="script">Experience</h1>
+  242       <ul class="skills list-unstyled list-bordered">
+  243         <li>Ruby, Rails</li>
+  244         <li>Node, Express and MongoDB</li>
+  245         <li>JavaScript, AngularJS</li>
+  246         <li>PHP, Laravel</li>
+  247         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  248         <li>API integration</li>
+  249         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  250         <li>Linux, Bash</li>
+  251       </ul>
+  252
+  253     </div>
+  254     </section>
+  255     <section class="dark text-center">
+  256     <div class="container">
+  257       <h1 class="script">Clients</h1>
+  258       <p class="lead">Clients I have worked for include Toyota Formula One, Sita Aero, GAP, M&S, British Showjumping, IBM, Gaggia, Philips and Porsche amongst others.</p>
+  259       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  260     </div>
+  261     </section>
+  262
+  263     <footer class="text-center">
+  264     <div class="container">
+  265       <p class="links">
+  266       <a href="https://github.com/altescape" class="contacts">
+>>267         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>268         <g id="github">
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  197:  1   [Syntax: line:267 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:267 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  162         text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  163       }
+  164       .logos {
+  165         opacity: 0.4;
+  166         width: 90%;
+  167       }
+  168       section .script {font-size: 3em;}
+  169       section.dark {
+  170         background: #034F84;
+  171       }
+  172       footer {
+  173         background: #034F84;
+  174         padding: 4em 0 20em;
+  175         overflow: hidden;
+  176       }
+  177       footer > .links {
+  178         margin: 0;
+  179         line-height: 0;
+  180       }
+  181       .copyright {
+  182         color: #AEA291;
+  183         text-transform: uppercase;
+  184         margin: 3.3em 0;
+  185         display: block;
+  186         font-size: 0.6em;
+  187         letter-spacing: 2px;
+  188         opacity: .5;
+  189       }
+  190       .hr-mute {
+  191         opacity: 0.3;
+  192         border-color: #AEA291;
+  193         color: rgba(0, 0, 0, 0);
+  194         background: rgba(0, 0, 0, 0);
+  195       }
+  196       .margin-top {margin-top: 3em;}
+  197
+  198       @media (min-width: 300px) {
+  199         header h1 {font-size: 4em;}
+  200       }
+  201
+  202       @media (min-width: 760px) {
+  203         .container {
+  204           width: 80%;
+  205           max-width: 1000px;
+  206         }
+  207         header h1 {font-size: 4em;}
+  208         header p.lead {font-size: 1.3em;}
+  209         header p.more-info {font-size: 1.15em;}
+  210         .list-bordered li {width: 30%;}
+  211       }
+  212
+  213       @media (min-width: 1000px) {
+  214         .container {
+  215           margin: 3em auto;
+  216         }
+  217         header h1 {font-size: 5.4em;}
+  218         header p.lead {font-size: 1.4444em;}
+  219         header p.more-info {font-size: 1.15em;}
+  220       }
+  221     </style>
+  222     <script src="//use.typekit.net/xig0tkx.js"></script>
+  223     <script>try {
+  224       Typekit.load();
+  225       } catch (e) {
+  226       }</script>
+  227   </head>
+  228   <body>
+  229     <header>
+  230     <div class="container">
+  231       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  232       <h2 class="lead">I love writing code.</h2>
+  233       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      54%  197:  1   [Syntax: line:267 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:267 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  162         text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  163       }
+  164       .logos {
+  165         opacity: 0.4;
+  166         width: 90%;
+  167       }
+  168       section .script {font-size: 3em;}
+  169       section.dark {
+  170         background: #034F84;
+  171         padding: 2em 0;
+  172       }
+  173       .dark .script,
+  174       section.dark p, {
+  175         color: #9AB2C3;
+  176       }
+  177       footer {
+  178         background: #034F84;
+  179         padding: 4em 0 20em;
+  180         overflow: hidden;
+  181       }
+  182       footer > .links {
+  183         margin: 0;
+  184         line-height: 0;
+  185       }
+  186       .copyright {
+  187         color: #AEA291;
+  188         text-transform: uppercase;
+  189         margin: 3.3em 0;
+  190         display: block;
+  191         font-size: 0.6em;
+  192         letter-spacing: 2px;
+  193         opacity: .5;
+  194       }
+  195       .hr-mute {
+  196         opacity: 0.3;
+  197         border-color: #AEA291;
+  198         color: rgba(0, 0, 0, 0);
+  199         background: rgba(0, 0, 0, 0);
+  200       }
+  201       .margin-top {margin-top: 3em;}
+  202
+  203       @media (min-width: 300px) {
+  204         header h1 {font-size: 4em;}
+  205       }
+  206
+  207       @media (min-width: 760px) {
+  208         .container {
+  209           width: 80%;
+  210           max-width: 1000px;
+  211         }
+  212         header h1 {font-size: 4em;}
+  213         header p.lead {font-size: 1.3em;}
+  214         header p.more-info {font-size: 1.15em;}
+  215         .list-bordered li {width: 30%;}
+  216       }
+  217
+  218       @media (min-width: 1000px) {
+  219         .container {
+  220           margin: 3em auto;
+  221         }
+  222         header h1 {font-size: 5.4em;}
+  223         header p.lead {font-size: 1.4444em;}
+  224         header p.more-info {font-size: 1.15em;}
+  225       }
+  226     </style>
+  227     <script src="//use.typekit.net/xig0tkx.js"></script>
+  228     <script>try {
+  229       Typekit.load();
+  230       } catch (e) {
+  231       }</script>
+  232   </head>
+  233   <body>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      46%  168:  9   [Syntax: line:272 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:272 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  195         opacity: 0.3;
+  196         border-color: #AEA291;
+  197         color: rgba(0, 0, 0, 0);
+  198         background: rgba(0, 0, 0, 0);
+  199       }
+  200       .margin-top {margin-top: 3em;}
+  201
+  202       @media (min-width: 300px) {
+  203         header h1 {font-size: 4em;}
+  204       }
+  205
+  206       @media (min-width: 760px) {
+  207         .container {
+  208           width: 80%;
+  209           max-width: 1000px;
+  210         }
+  211         header h1 {font-size: 4em;}
+  212         header p.lead {font-size: 1.3em;}
+  213         header p.more-info {font-size: 1.15em;}
+  214         .list-bordered li {width: 30%;}
+  215       }
+  216
+  217       @media (min-width: 1000px) {
+  218         .container {
+  219           margin: 3em auto;
+  220         }
+  221         header h1 {font-size: 5.4em;}
+  222         header p.lead {font-size: 1.4444em;}
+  223         header p.more-info {font-size: 1.15em;}
+  224       }
+  225     </style>
+  226     <script src="//use.typekit.net/xig0tkx.js"></script>
+  227     <script>try {
+  228       Typekit.load();
+  229       } catch (e) {
+  230       }</script>
+  231   </head>
+  232   <body>
+  233     <header>
+  234     <div class="container">
+  235       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  236       <h2 class="lead">I love writing code.</h2>
+  237       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  238       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  239       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  240     </div>
+  241     </header>
+  242     <section class="text-center">
+  243     <div class="container">
+  244
+  245       <h1 class="script">Experience</h1>
+  246       <ul class="skills list-unstyled list-bordered">
+  247         <li>Ruby, Rails</li>
+  248         <li>Node, Express and MongoDB</li>
+  249         <li>JavaScript, AngularJS</li>
+  250         <li>PHP, Laravel</li>
+  251         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  252         <li>API integration</li>
+  253         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  254         <li>Linux, Bash</li>
+  255       </ul>
+  256
+  257     </div>
+  258     </section>
+  259     <section class="dark text-center">
+  260     <div class="container">
+  261       <h1 class="script text-light">Clients</h1>
+  262       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  263       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  264     </div>
+  265     </section>
+  266
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      55%  201:  1   [Syntax: line:271 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:271 (13)]
+/log
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  129         padding-left: 0;
+  130         margin-left: -5px;
+  131         list-style: none;
+  132       }
+  133       .list-inline > li {
+  134         display: inline-block;
+  135         padding-right: 5px;
+  136         padding-left: 5px;
+  137       }
+  138       .list-bordered li {
+  139         margin: 1em auto;
+  140         padding-bottom: 1em;
+  141         width: 70%;
+  142         position: relative;
+  143       }
+  144       .list-bordered li:before {
+  145         content: "~=:=~";
+  146         position: absolute;
+  147         left: 0;
+  148         bottom: 0;
+  149         height: 12px;
+  150         width: 100%;
+  151         text-align: center;
+  152         color: #000;
+  153         opacity: 0.3;
+  154         letter-spacing: -2px;
+  155       }
+  156       .list-bordered li:last-child:before {
+  157         content: "";
+  158       }
+  159       .text-center {text-align: center;}
+  160       .script {
+  161         color: #034F84;
+  162         text-shadow: 2px 2px 7px rgba(0, 0, 0, 0.3);
+  163       }
+  164       .logos {
+  165         opacity: 0.4;
+  166         width: 90%;
+  167       }
+  168       section .script {font-size: 3em;}
+  169       section.dark {
+  170         background: #034F84;
+  171         padding: 3em 0 5em;
+  172       }
+  173       .text-light {
+  174         color: #9AB2C3 !important;
+  175       }
+  176       footer {
+  177         background: #06416B;
+  178         padding: 4em 0 20em;
+  179         overflow: hidden;
+  180       }
+  181       footer > .links {
+  182         margin: 0;
+  183         line-height: 0;
+  184       }
+  185       .copyright {
+  186         color: #AEA291;
+  187         text-transform: uppercase;
+  188         margin: 3.3em 0;
+  189         display: block;
+  190         font-size: 0.6em;
+  191         letter-spacing: 2px;
+  192         opacity: .5;
+  193       }
+  194       .hr-mute {
+  195         opacity: 0.3;
+  196         border-color: #AEA291;
+  197         color: rgba(0, 0, 0, 0);
+  198         background: rgba(0, 0, 0, 0);
+  199       }
+  200       .margin-top {margin-top: 3em;}
+ COMMAND  ~/Desktop/untitled.html                                                                                                                                                                                                                       html      utf-8      45%  164:  8   [Syntax: line:271 (13)]
+/logosn
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ COMMAND  ~/Desktop/untitled.html                                                                                                                                                                                                                       html      utf-8       8%   31:  1   [Syntax: line:271 (13)]
+/logos
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+  196         opacity: 0.3;
+  197         border-color: #AEA291;
+  198         color: rgba(0, 0, 0, 0);
+  199         background: rgba(0, 0, 0, 0);
+  200       }
+  201       .margin-top {margin-top: 3em;}
+  202
+  203       @media (min-width: 300px) {
+  204         header h1 {font-size: 4em;}
+  205       }
+  206
+  207       @media (min-width: 760px) {
+  208         .container {
+  209           width: 80%;
+  210           max-width: 1000px;
+  211         }
+  212         header h1 {font-size: 4em;}
+  213         header p.lead {font-size: 1.3em;}
+  214         header p.more-info {font-size: 1.15em;}
+  215         .list-bordered li {width: 30%;}
+  216       }
+  217
+  218       @media (min-width: 1000px) {
+  219         .container {
+  220           margin: 3em auto;
+  221         }
+  222         header h1 {font-size: 5.4em;}
+  223         header p.lead {font-size: 1.4444em;}
+  224         header p.more-info {font-size: 1.15em;}
+  225       }
+  226     </style>
+  227     <script src="//use.typekit.net/xig0tkx.js"></script>
+  228     <script>try {
+  229       Typekit.load();
+  230       } catch (e) {
+  231       }</script>
+  232   </head>
+  233   <body>
+  234     <header>
+  235     <div class="container">
+  236       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  237       <h2 class="lead">I love writing code.</h2>
+  238       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  239       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  240       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  241     </div>
+  242     </header>
+  243     <section class="text-center">
+  244     <div class="container">
+  245
+  246       <h1 class="script">Experience</h1>
+  247       <ul class="skills list-unstyled list-bordered">
+  248         <li>Ruby, Rails</li>
+  249         <li>Node, Express and MongoDB</li>
+  250         <li>JavaScript, AngularJS</li>
+  251         <li>PHP, Laravel</li>
+  252         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  253         <li>API integration</li>
+  254         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  255         <li>Linux, Bash</li>
+  256       </ul>
+  257
+  258     </div>
+  259     </section>
+  260     <section class="dark text-center">
+  261     <div class="container">
+  262       <h1 class="script text-light">Clients</h1>
+  263       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  264       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  265     </div>
+  266     </section>
+  267
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      73%  267:  1   [Syntax: line:271 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  241     </div>
+  242     </header>
+  243     <section class="text-center">
+  244     <div class="container">
+  245
+  246       <h1 class="script">Experience</h1>
+  247       <ul class="skills list-unstyled list-bordered">
+  248         <li>Ruby, Rails</li>
+  249         <li>Node, Express and MongoDB</li>
+  250         <li>JavaScript, AngularJS</li>
+  251         <li>PHP, Laravel</li>
+  252         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  253         <li>API integration</li>
+  254         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  255         <li>Linux, Bash</li>
+  256       </ul>
+  257
+  258     </div>
+  259     </section>
+  260     <section class="dark text-center">
+  261     <div class="container">
+  262       <h1 class="script text-light">Clients</h1>
+  263       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  264       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  265     </div>
+  266     </section>
+  267
+  268     <footer class="text-center">
+  269     <div class="container">
+  270       <p class="links">
+  271       <a href="https://github.com/altescape" class="contacts">
+>>272         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>273         <g id="github">
+>>274         <path fill="#034F84" d="M22.844,15.191c0,1.71-0.498,3.248-1.496,4.613s-2.286,2.31-3.865,2.834c-0.185,0.034-0.318,0.011-0.404-0.071
+  275         c-0.085-0.082-0.127-0.184-0.127-0.307v-2.155c0-0.66-0.178-1.144-0.531-1.45c0.388-0.041,0.736-0.103,1.047-0.184
+  276         c0.31-0.082,0.63-0.215,0.96-0.398s0.606-0.41,0.827-0.68c0.221-0.269,0.402-0.626,0.541-1.072c0.141-0.446,0.21-0.958,0.21-1.538
+  277         c0-0.824-0.269-1.525-0.808-2.104c0.252-0.62,0.226-1.314-0.081-2.083c-0.19-0.062-0.467-0.024-0.827,0.112
+  278         c-0.361,0.136-0.674,0.286-0.939,0.45l-0.389,0.245c-0.633-0.177-1.287-0.265-1.961-0.265s-1.328,0.088-1.961,0.265
+  279         c-0.109-0.075-0.254-0.167-0.434-0.275c-0.181-0.109-0.465-0.24-0.853-0.394s-0.681-0.199-0.878-0.138
+  280         c-0.3,0.77-0.323,1.464-0.071,2.083c-0.538,0.579-0.807,1.28-0.807,2.104c0,0.579,0.07,1.09,0.209,1.533
+  281         c0.14,0.442,0.318,0.8,0.536,1.072s0.492,0.501,0.822,0.685s0.65,0.316,0.96,0.398c0.31,0.081,0.659,0.143,1.046,0.184
+  282         c-0.272,0.245-0.439,0.596-0.5,1.052c-0.143,0.068-0.296,0.12-0.459,0.153c-0.164,0.034-0.357,0.052-0.582,0.052
+  283         s-0.448-0.073-0.669-0.22c-0.222-0.146-0.411-0.359-0.567-0.639c-0.129-0.218-0.295-0.395-0.496-0.531
+  284         c-0.201-0.136-0.37-0.218-0.505-0.245l-0.205-0.03c-0.143,0-0.242,0.015-0.296,0.046c-0.055,0.03-0.072,0.069-0.051,0.117
+  285         s0.051,0.096,0.092,0.143c0.041,0.048,0.084,0.089,0.132,0.123l0.072,0.051c0.149,0.068,0.298,0.198,0.444,0.389
+  286         c0.146,0.19,0.253,0.364,0.322,0.521l0.102,0.235c0.088,0.259,0.238,0.468,0.449,0.628s0.439,0.263,0.685,0.307
+  287         s0.481,0.067,0.709,0.071c0.229,0.004,0.417-0.009,0.567-0.036l0.235-0.04c0,0.259,0.001,0.562,0.005,0.908
+  288         c0.003,0.348,0.005,0.531,0.005,0.552c0,0.123-0.044,0.225-0.133,0.307c-0.088,0.082-0.224,0.105-0.408,0.071
+  289         c-1.58-0.524-2.869-1.469-3.866-2.834c-0.998-1.365-1.497-2.902-1.497-4.613c0-1.422,0.351-2.735,1.052-3.937
+  290         c0.702-1.202,1.653-2.153,2.855-2.855C12.264,7.698,13.577,7.347,15,7.347c1.424,0,2.736,0.351,3.938,1.052
+  291         c1.201,0.702,2.153,1.653,2.855,2.855C22.494,12.456,22.844,13.769,22.844,15.191z"/>
+>>292         </g>
+>>293         </svg> Github
+  294       </a>
+  295       <a href="http://uk.linkedin.com/in/mwattsweb/" class="contacts">
+>>296         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+>>297         <g id="linkedin">
+>>298         <path fill="#034F84" d="M22.361,10.399v9.202c0,0.76-0.27,1.41-0.811,1.951c-0.539,0.539-1.189,0.809-1.95,0.809h-9.201
+  299         c-0.761,0-1.411-0.27-1.951-0.809c-0.54-0.541-0.81-1.191-0.81-1.951v-9.202c0-0.761,0.27-1.41,0.81-1.951
+  300         c0.54-0.539,1.19-0.81,1.951-0.81h9.201c0.761,0,1.411,0.271,1.95,0.81C22.092,8.989,22.361,9.639,22.361,10.399z M12.269,11.262
+  301         c-0.007-0.332-0.122-0.607-0.346-0.824s-0.521-0.326-0.892-0.326c-0.37,0-0.672,0.109-0.905,0.326s-0.35,0.492-0.35,0.824
+  302         c0,0.326,0.113,0.6,0.34,0.819c0.227,0.221,0.522,0.331,0.887,0.331h0.01c0.377,0,0.681-0.11,0.91-0.331
+  303         C12.153,11.861,12.269,11.588,12.269,11.262z M9.91,19.967h2.214v-6.653H9.91V19.967z M17.875,19.967h2.215V16.15
+  304         c0-0.984-0.233-1.729-0.699-2.233c-0.467-0.505-1.084-0.757-1.851-0.757c-0.869,0-1.537,0.373-2.003,1.121h0.019v-0.968h-2.214
+  305         c0.02,0.421,0.02,2.64,0,6.653h2.214v-3.721c0-0.242,0.022-0.422,0.067-0.537c0.096-0.224,0.239-0.413,0.432-0.57
+  306         c0.191-0.156,0.428-0.234,0.709-0.234c0.741,0,1.111,0.502,1.111,1.506V19.967z"/>
+  307         </g>
+  308         </svg> LinkedIn
+  309       </a>
+  310       <a href="http://stackoverflow.com/users/1945990/mjwatts" class="contacts">
+  311         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+  312         <g id="stackoverflow">
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      72%  263: 89   [Syntax: line:272 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  196         opacity: 0.3;
+  197         border-color: #AEA291;
+  198         color: rgba(0, 0, 0, 0);
+  199         background: rgba(0, 0, 0, 0);
+  200       }
+  201       .margin-top {margin-top: 3em;}
+  202
+  203       @media (min-width: 300px) {
+  204         header h1 {font-size: 4em;}
+  205       }
+  206
+  207       @media (min-width: 760px) {
+  208         .container {
+  209           width: 80%;
+  210           max-width: 1000px;
+  211         }
+  212         header h1 {font-size: 4em;}
+  213         header p.lead {font-size: 1.3em;}
+  214         header p.more-info {font-size: 1.15em;}
+  215         .list-bordered li {width: 30%;}
+  216       }
+  217
+  218       @media (min-width: 1000px) {
+  219         .container {
+  220           margin: 3em auto;
+  221         }
+  222         header h1 {font-size: 5.4em;}
+  223         header p.lead {font-size: 1.4444em;}
+  224         header p.more-info {font-size: 1.15em;}
+  225       }
+  226     </style>
+  227     <script src="//use.typekit.net/xig0tkx.js"></script>
+  228     <script>try {
+  229       Typekit.load();
+  230       } catch (e) {
+  231       }</script>
+  232   </head>
+  233   <body>
+  234     <header>
+  235     <div class="container">
+  236       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  237       <h2 class="lead">I love writing code.</h2>
+  238       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  239       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  240       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  241     </div>
+  242     </header>
+  243     <section class="text-center">
+  244     <div class="container">
+  245
+  246       <h1 class="script">Experience</h1>
+  247       <ul class="skills list-unstyled list-bordered">
+  248         <li>Ruby, Rails</li>
+  249         <li>Node, Express and MongoDB</li>
+  250         <li>JavaScript, AngularJS</li>
+  251         <li>PHP, Laravel</li>
+  252         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  253         <li>API integration</li>
+  254         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  255         <li>Linux, Bash</li>
+  256       </ul>
+  257
+  258     </div>
+  259     </section>
+  260     <section class="dark text-center">
+  261     <div class="container">
+  262       <h1 class="script text-light">Clients</h1>
+  263       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  264       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  265     </div>
+  266     </section>
+  267
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      73%  267:  1   [Syntax: line:272 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+  202
+  203       @media (min-width: 300px) {
+  204         header h1 {font-size: 4em;}
+  205       }
+  206
+  207       @media (min-width: 760px) {
+  208         .container {
+  209           width: 80%;
+  210           max-width: 1000px;
+  211         }
+  212         header h1 {font-size: 4em;}
+  213         header p.lead {font-size: 1.3em;}
+  214         header p.more-info {font-size: 1.15em;}
+  215         .list-bordered li {width: 30%;}
+  216       }
+  217
+  218       @media (min-width: 1000px) {
+  219         .container {
+  220           margin: 3em auto;
+  221         }
+  222         header h1 {font-size: 5.4em;}
+  223         header p.lead {font-size: 1.4444em;}
+  224         header p.more-info {font-size: 1.15em;}
+  225       }
+  226     </style>
+  227     <script src="//use.typekit.net/xig0tkx.js"></script>
+  228     <script>try {
+  229       Typekit.load();
+  230       } catch (e) {
+  231       }</script>
+  232   </head>
+  233   <body>
+  234     <header>
+  235     <div class="container">
+  236       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  237       <h2 class="lead">I love writing code.</h2>
+  238       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  239       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  240       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  241     </div>
+  242     </header>
+  243     <section class="text-center">
+  244     <div class="container">
+  245
+  246       <h1 class="script">Experience</h1>
+  247       <ul class="skills list-unstyled list-bordered">
+  248         <li>Ruby, Rails</li>
+  249         <li>Node, Express and MongoDB</li>
+  250         <li>JavaScript, AngularJS</li>
+  251         <li>PHP, Laravel</li>
+  252         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  253         <li>API integration</li>
+  254         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  255         <li>Linux, Bash</li>
+  256       </ul>
+  257
+  258     </div>
+  259     </section>
+  260     <section class="dark text-center">
+  261     <div class="container">
+  262       <h1 class="script text-light">Clients</h1>
+  263       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  264       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  265     </div>
+  266     </section>
+  267
+  268     <footer class="text-center">
+  269     <div class="container">
+  270       <p class="links">
+  271
+  272       <a href="https://github.com/altescape" class="contacts">
+>>273         <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      54%  202:  1   [Syntax: line:272 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #AEA291 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59       }
+   60       .contacts > svg {
+   61         position: absolute;
+   62         top: 0;
+   63         left: 0px;
+   64         height: 30px;
+   65         width: 30px;
+   66         text-align: center;
+   67         padding: 5px;
+   68       }
+   69       a.contacts:hover {
+   70         background: #443B45;
+   71       }
+   72       a.contacts:hover > svg {
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8       8%   31:  1   [Syntax: line:272 (13)]
+ ~/D/untitled.html+                                                                                                                                                                                                                                                                                               buffers
+  167         margin: 0 0 40px;
+  168       }
+  169       section .script {font-size: 3em;}
+  170       section.dark {
+  171         background: #034F84;
+  172         padding: 3em 0 5em;
+  173       }
+  174       .text-light {
+  175         color: #9AB2C3 !important;
+  176       }
+  177       footer {
+  178         background: #06416B;
+  179         padding: 4em 0 20em;
+  180         overflow: hidden;
+  181       }
+  182       footer > .links {
+  183         margin: 0;
+  184         line-height: 0;
+  185       }
+  186       .copyright {
+  187         color: #AEA291;
+  188         text-transform: uppercase;
+  189         margin: 3.3em 0;
+  190         display: block;
+  191         font-size: 0.6em;
+  192         letter-spacing: 2px;
+  193         opacity: .5;
+  194       }
+  195       .hr-mute {
+  196         opacity: 0.3;
+  197         border-color: #AEA291;
+  198         color: rgba(0, 0, 0, 0);
+  199         background: rgba(0, 0, 0, 0);
+  200       }
+  201       .margin-top {margin-top: 3em;}
+  202
+  203       @media (min-width: 300px) {
+  204         header h1 {font-size: 4em;}
+  205       }
+  206
+  207       @media (min-width: 760px) {
+  208         .container {
+  209           width: 80%;
+  210           max-width: 1000px;
+  211         }
+  212         header h1 {font-size: 4em;}
+  213         header p.lead {font-size: 1.3em;}
+  214         header p.more-info {font-size: 1.15em;}
+  215         .list-bordered li {width: 30%;}
+  216       }
+  217
+  218       @media (min-width: 1000px) {
+  219         .container {
+  220           margin: 3em auto;
+  221         }
+  222         header h1 {font-size: 5.4em;}
+  223         header p.lead {font-size: 1.4444em;}
+  224         header p.more-info {font-size: 1.15em;}
+  225       }
+  226     </style>
+  227     <script src="//use.typekit.net/xig0tkx.js"></script>
+  228     <script>try {
+  229       Typekit.load();
+  230       } catch (e) {
+  231       }</script>
+  232   </head>
+  233   <body>
+  234     <header>
+  235     <div class="container">
+  236       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  237       <h2 class="lead">I love writing code.</h2>
+  238       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+ NORMAL  ~/Desktop/untitled.html[+]                                                                                                                                                                                                                     html      utf-8      54%  202:  1   [Syntax: line:272 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #034F84 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59         background: #093350;
+   60       }
+   61       .contacts > svg {
+   62         position: absolute;
+   63         top: 0;
+   64         left: 0px;
+   65         height: 30px;
+   66         width: 30px;
+   67         text-align: center;
+   68         padding: 5px;
+   69         background: #032740;
+   70       }
+   71       a.contacts:hover {
+   72         background: #443B45;
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      13%   49: 23   [Syntax: line:275 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    1 <!DOCTYPE html>
+    2 <html>
+    3   <head>
+    4     <title>Michael Watts, Web Developer</title>
+    5     <meta name="description"
+    6     content="I'm a developer from Surrey, UK with a meticulous eye for detail and a driven passion to create great user experiences. Specialising in JavaScript, PHP and HTML5/CSS3.">
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #034F84 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59         background: #093350;
+   60       }
+   61       .contacts > svg {
+   62         position: absolute;
+   63         top: 0;
+   64         left: 0px;
+   65         height: 30px;
+   66         width: 30px;
+   67         text-align: center;
+   68         padding: 5px;
+   69         background: #032740;
+   70       }
+   71       a.contacts:hover {
+   72         background: #443B45;
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:275 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  169         margin: 0 0 40px;
+  170       }
+  171       section .script {font-size: 3em;}
+  172       section.dark {
+  173         background: #034F84;
+  174         padding: 3em 0 5em;
+  175       }
+  176       .text-light {
+  177         color: #9AB2C3 !important;
+  178       }
+  179       footer {
+  180         background: #06416B;
+  181         padding: 4em 0;
+  182         overflow: hidden;
+  183       }
+  184       footer > .links {
+  185         margin: 0;
+  186         line-height: 0;
+  187       }
+  188       .copyright {
+  189         color: #136FAE;
+  190         text-transform: uppercase;
+  191         margin: 3.3em 0;
+  192         display: block;
+  193         font-size: 0.6em;
+  194         letter-spacing: 2px;
+  195         opacity: .5;
+  196       }
+  197       .hr-mute {
+  198         opacity: 0.3;
+  199         border-color: #AEA291;
+  200         color: rgba(0, 0, 0, 0);
+  201         background: rgba(0, 0, 0, 0);
+  202       }
+  203       .margin-top {margin-top: 3em;}
+  204
+  205       @media (min-width: 300px) {
+  206         header h1 {font-size: 4em;}
+  207       }
+  208
+  209       @media (min-width: 760px) {
+  210         .container {
+  211           width: 80%;
+  212           max-width: 1000px;
+  213         }
+  214         header h1 {font-size: 4em;}
+  215         header p.lead {font-size: 1.3em;}
+  216         header p.more-info {font-size: 1.15em;}
+  217         .list-bordered li {width: 30%;}
+  218       }
+  219
+  220       @media (min-width: 1000px) {
+  221         .container {
+  222           margin: 3em auto;
+  223         }
+  224         header h1 {font-size: 5.4em;}
+  225         header p.lead {font-size: 1.4444em;}
+  226         header p.more-info {font-size: 1.15em;}
+  227       }
+  228     </style>
+  229     <script src="//use.typekit.net/xig0tkx.js"></script>
+  230     <script>try {
+  231       Typekit.load();
+  232       } catch (e) {
+  233       }</script>
+  234   </head>
+  235   <body>
+  236     <header>
+  237     <div class="container">
+  238       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  239       <h2 class="lead">I love writing code.</h2>
+  240       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      48%  181: 23   [Syntax: line:275 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+    7
+    8     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    9
+   10     <style>
+   11       body {
+   12         font: 400 1em / 1.5 'museo-sans', sans-serif;
+   13         background: #EFEFFF;
+   14         color: #767981;
+   15         -webkit-user-select: none;
+   16         -moz-user-select: none;
+   17         -ms-user-select: none;
+   18         user-select: none;
+   19         -webkit-tap-highlight-color: rgba(0,0,0,0);
+   20         -webkit-touch-callout: none;
+   21         margin: 0;
+   22         -webkit-transition: all 0.1s linear;
+   23         -moz-transition: all 0.1s linear;
+   24         transition: all 0.1s linear;
+   25       }
+   26
+   27       p, li {
+   28         font-size: 1em;
+   29         line-height: 1.5;
+   30       }
+   31
+   32       a {
+   33         color: #034F84;
+   34         transition: all 0.05s linear;
+   35         text-decoration: none;
+   36         font-weight: bold;
+   37       }
+   38       a:hover {
+   39         color: #034F84;
+   40       }
+   41       a:visited {
+   42         color: #034F84;
+   43       }
+   44       a:visited:hover {
+   45         color: #034F84;
+   46       }
+   47       header a:hover {border-bottom: 2px dotted rgba(194, 69, 75, 0.34);}
+   48       a.contacts {
+   49         color: #034F84 !important;
+   50         display: inline-block;
+   51         padding-right: 20px;
+   52         border-radius: 3px;
+   53         font-size: 1em;
+   54         line-height: 40px;
+   55         height: 40px;
+   56         overflow: hidden;
+   57         position: relative;
+   58         padding-left: 60px;
+   59         background: #093350;
+   60       }
+   61       .contacts > svg {
+   62         position: absolute;
+   63         top: 0;
+   64         left: 0px;
+   65         height: 30px;
+   66         width: 30px;
+   67         text-align: center;
+   68         padding: 5px;
+   69         background: #032740;
+   70       }
+   71       a.contacts:hover {
+   72         color: #9AB2C3 !important;
+   73         background: #034F84;
+   74       }
+   75       a.contacts:hover > svg {
+   76         background: #020A2D;
+   77       }
+   78       h1 {
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8       8%   31:  1   [Syntax: line:276 (13)]
+ ~/D/untitled.html                                                                                                                                                                                                                                                                                                buffers
+  207       }
+  208       .margin-top {margin-top: 3em;}
+  209
+  210       @media (min-width: 300px) {
+  211         header h1 {font-size: 4em;}
+  212       }
+  213
+  214       @media (min-width: 760px) {
+  215         .container {
+  216           width: 80%;
+  217           max-width: 1000px;
+  218         }
+  219         header h1 {font-size: 4em;}
+  220         header p.lead {font-size: 1.3em;}
+  221         header p.more-info {font-size: 1.15em;}
+  222         .list-bordered li {width: 30%;}
+  223       }
+  224
+  225       @media (min-width: 1000px) {
+  226         .container {
+  227           margin: 3em auto;
+  228         }
+  229         header h1 {font-size: 5.4em;}
+  230         header p.lead {font-size: 1.4444em;}
+  231         header p.more-info {font-size: 1.15em;}
+  232       }
+  233     </style>
+  234     <script src="//use.typekit.net/xig0tkx.js"></script>
+  235     <script>try {
+  236       Typekit.load();
+  237       } catch (e) {
+  238       }</script>
+  239   </head>
+  240
+  241   <body>
+  242
+  243     <header>
+  244     <div class="container">
+  245       <h1 class="script">Michael Watts <small><strong>Web developer</strong>, based in Surrey UK</small></h1>
+  246       <h2 class="lead">I love writing code.</h2>
+  247       <p class="lead">Throughout my career I have been lucky enough to help companies and organisations shape the way they use digital media to engage with customers.</p>
+  248       <p class="lead">I have built web applications and websites and I've written bespoke business tools and applications for over 15 years and my priority has always been the same: To deliver the best possible experience that I can within budget and beyond customer satisfaction. There have been no complaints s
+  249       <p class="more-info">More information can be found at <a href="http://careers.stackoverflow.com/michaelwatts ">Stack Overflow Careers</a>
+  250     </div>
+  251     </header>
+  252
+  253     <section class="text-center mid">
+  254     <div class="container">
+  255       <h1 class="script">Experience</h1>
+  256       <ul class="skills list-unstyled list-bordered">
+  257         <li>Ruby, Rails</li>
+  258         <li>Node, Express and MongoDB</li>
+  259         <li>JavaScript, AngularJS</li>
+  260         <li>PHP, Laravel</li>
+  261         <li>HTML5, Jade, CSS3, Stylus, SCSS, LESS, Grunt, Gulp</li>
+  262         <li>API integration</li>
+  263         <li>AWS (EC2, IAM, S3 plus a little bit of Lambda) and Heroku</li>
+  264         <li>Linux, Bash</li>
+  265       </ul>
+  266     </div>
+  267     </section>
+  268
+  269     <section class="dark text-center">
+  270     <div class="container">
+  271       <h1 class="script text-light">Clients</h1>
+  272       <p><img src="https://s3-eu-west-1.amazonaws.com/mwimages/global/logos.png" class="logos"></p>
+  273       <p class="lead text-light">Clients I have worked with include Toyota Formula One, GAP, M&S, British Showjumping, IBM, Gaggia, Philips, Sita Aero and Porsche as well as a whole host of smaller companies.</p>
+  274     </div>
+  275     </section>
+  276
+  277     <footer class="text-center">
+  278     <div class="container">
+ NORMAL  ~/Desktop/untitled.html                                                                                                                                                                                                                        html      utf-8      66%  253: 35   [Syntax: line:282 (13)]
+"~/Desktop/untitled.html" 378L, 16081C written
