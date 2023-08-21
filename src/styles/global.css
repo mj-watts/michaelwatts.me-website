@@ -1,6 +1,41 @@
+:root {
+  --primary-color: #50b9ff;
+  --primary-color-rgb: 80, 185, 255;
+  --secondary-color: #c184ff;
+  --secondary-color-rgb: 193, 132, 255;
+
+  --warning-color: #ffc107;
+  --warning-color-rgb: 255, 193, 7;
+  --success-color: #48bb78;
+  --success-color-rgb: 72, 187, 120;
+  --danger-color: #e53e3e;
+  --danger-color-rgb: 229, 62, 62;
+  --info-color: #63b3ed;
+  --info-color-rgb: 99, 179, 237;
+
+  --light-color: #d7dee2;
+  --light-color-rgb: 215, 222, 226;
+  --dark-color: #2d3748;
+  --dark-color-rgb: 45, 55, 72;
+  --white-color: #fff;
+  --white-color-rgb: 255, 255, 255;
+  --black-color: #000;
+  --black-color-rgb: 0, 0, 0;
+
+  --link-color: var(--primary-color);
+  --link-color-rgb: var(--primary-color-rgb);
+  --link-color-hover: #93d4ff;
+  --link-color-hover-rgb: 147, 212, 255;
+  --link-color-visited: var(--secondary-color);
+  --link-color-visited-rgb: var(--secondary-color-rgb);
+}
+
 html {
-  background-color: #f1f5f9;
+  background-color: var(--black-color);
+  color: var(--light-color);
   font-family: sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
 }
 
 body {
@@ -8,14 +43,32 @@ body {
   width: 100%;
   max-width: 80ch;
   padding: 1rem;
-  line-height: 1.5;
 }
 
 * {
   box-sizing: border-box;
 }
 
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-color-hover);
+}
+
+a:visited {
+  color: var(--link-color-visited);
+}
+
 h1 {
   margin: 1rem 0;
   font-size: 2rem;
+}
+
+pre.astro-code {
+  padding: 2rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 0.5rem;
 }

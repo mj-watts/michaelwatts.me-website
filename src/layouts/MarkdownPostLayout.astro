@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import StatusPanel from '../components/StatusPanel.astro';
 
 const { frontmatter } = Astro.props;
+
+const { wip } = frontmatter;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
 	<h1>{frontmatter.title}</h1>
 	<p>Written by {frontmatter.author}</p>
+
+	{wip && <StatusPanel>Work in progress...</StatusPanel>}
+
 	<slot />
 </BaseLayout>

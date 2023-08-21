@@ -1,4 +1,6 @@
 ---
+import logo from '../images/mj.gif';
+const title = 'Michael Watts';
 ---
 
 <style>
@@ -10,7 +12,25 @@
 }
 
 .main-nav .logo {
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.main-nav .logo img {
+  margin-right: 0.75rem;
+  border-radius: 20px;
+}
+
+.main-nav .logo a {
+  color: inherit;
+}
+
+.main-nav .logo a:hover {
+  text-decoration: underline;
+}
+
+.main-nav .logo .title {
+  font-size: 1.25rem;
   font-weight: bold;
   text-decoration: none;
 }
@@ -40,16 +60,29 @@
 
 .main-nav ul li {
   margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-nav ul li a:hover {
+  text-decoration: underline;
 }
 </style>
 
 <nav class=main-nav>
-  <a href="/" class="logo">Michael Watts</a>
+  <div class="logo">
+    <img src={logo} alt={title} width="40" height="40" />
+    <a href="/" class="title">{title}</a>
+  </div>
   <a href="#main" class="sr-only">Skip to main content</a>
 
   <ul>
-    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Archive</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/blog">Blog</a></li>
+    <li><a href="/rss">RSS</a></li>
   </ul>
 </nav>
