@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+
+const pageTitle = 'Blog';
+const allPosts = await Astro.glob('../pages/posts/*.md');
+const publishedPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <section>
+    <h1>Posts</h1>
+    <ul>
+      {publishedPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    </ul>
+  </section>
+</BaseLayout>

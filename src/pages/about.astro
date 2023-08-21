@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PersonalSummary from '../components/PersonalSummary.astro';
+
+const pageTitle = 'About';
+const languages = [
+  'TypeScript',
+  'JavaScript',
+  'HTML',
+  'CSS',
+  'SCSS',
+  'C#',
+  'Ruby',
+  'RoR',
+  'Node',
+  'React',
+  'Angular',
+  'Vue',
+  'React Native',
+]
+
+const skills = [
+  'Vue',
+  'Vuex',
+  'React',
+  'Angular',
+  'React Native',
+  'Node',
+  'AWS',
+  'GCP',
+  'Azure',
+  'Linux',
+  'Bash',
+  'Azure Functions',
+  'API Management',
+]
+
+const skillColor = "rebeccapurple";
+---
+
+<style define:vars={{skillColor}}>
+.skill {
+  color: var(--skillColor);
+}
+</style>
+
+<BaseLayout pageTitle={pageTitle}>
+  <PersonalSummary />
+
+  <h2>Location</h2>
+  <p>
+    I'm based in Surrey, UK.
+  </p>
+
+  <h2>Experience</h2>
+  <p>
+    I worked on a startup, IO Music, an Apple/Android music App built with React Native and on a number of other applications.
+  </p>
+
+  <p>
+    Currently I'm working within the financial sector for Streeva Ltd revolutionising Gift Aid and automating tax.
+  </p>
+
+  <h2>Languages</h2>
+  <ul>
+    {languages.map((language) => (
+      <li>{language}</li>
+    ))}
+  </ul>
+
+  <h2>Skills</h2>
+  <ul>
+    {skills.map((skill) => (
+      <li class="skill">{skill}</li>
+    ))}
+  </ul>
+</BaseLayout>

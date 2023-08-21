@@ -1,0 +1,88 @@
+---
+import logo from '../images/mj.gif';
+const title = 'Michael Watts';
+---
+
+<style>
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.main-nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav .logo img {
+  margin-right: 0.75rem;
+  border-radius: 20px;
+}
+
+.main-nav .logo a {
+  color: inherit;
+}
+
+.main-nav .logo a:hover {
+  text-decoration: underline;
+}
+
+.main-nav .logo .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav ul li {
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.main-nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-nav ul li a:hover {
+  text-decoration: underline;
+}
+</style>
+
+<nav class=main-nav>
+  <div class="logo">
+    <img src={logo} alt={title} width="40" height="40" />
+    <a href="/" class="title">{title}</a>
+  </div>
+  <a href="#main" class="sr-only">Skip to main content</a>
+
+  <ul>
+    <li><a href="/blog">Archive</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/rss">RSS</a></li>
+  </ul>
+</nav>
