@@ -35,12 +35,18 @@ const skills = [
   'API Management',
 ]
 
-const skillColor = "rebeccapurple";
+const skillColor = "white";
 ---
 
 <style define:vars={{skillColor}}>
 .skill {
   color: var(--skillColor);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 }
 </style>
 
@@ -58,20 +64,26 @@ const skillColor = "rebeccapurple";
   </p>
 
   <p>
-    Currently I'm working within the financial sector for Streeva Ltd revolutionising Gift Aid and automating tax.
+    Currently I'm working within the financial sector for Streeva Ltd on automating Gift Aid and tax.
   </p>
 
-  <h2>Languages</h2>
-  <ul>
-    {languages.map((language) => (
-      <li>{language}</li>
-    ))}
-  </ul>
+  <div class="grid">
+    <div>
+      <h3>Languages</h3>
+      <ul>
+        {languages.map((language) => (
+          <li>{language}</li>
+        ))}
+      </ul>
+    </div>
 
-  <h2>Skills</h2>
-  <ul>
-    {skills.map((skill) => (
-      <li class="skill">{skill}</li>
-    ))}
-  </ul>
+    <div>
+      <h3>Skills</h3>
+      <ul>
+        {skills.map((skill) => (
+          <li class="skill">{skill}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
 </BaseLayout>

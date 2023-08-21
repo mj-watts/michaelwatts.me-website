@@ -1,7 +1,27 @@
 ---
-const { url, title } = Astro.props;
+const { url, title, date } = Astro.props;
+
+const formattedDate = date ? new Date(date).toLocaleDateString('en-gb', { year:"numeric", month:"short", day:"numeric"}) : null;
 ---
+
+<style>
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+  }
+
+  small {
+    flex-shrink: 0;
+  }
+</style>
 
 <li>
   <a href={url}>{title}</a>
+  <small>{formattedDate}</small>
 </li>

@@ -29,10 +29,11 @@ const title = 'Michael Watts';
   text-decoration: underline;
 }
 
-.main-nav .logo .title {
+.main-nav .logo.title {
   font-size: 1.25rem;
   font-weight: bold;
   text-decoration: none;
+  color: inherit;
 }
 
 .sr-only {
@@ -63,26 +64,29 @@ const title = 'Michael Watts';
   font-weight: bold;
 }
 
+.main-nav .logo.title,
 .main-nav ul li a {
   text-decoration: none;
   color: inherit;
 }
 
+.main-nav .logo.title:hover,
 .main-nav ul li a:hover {
   text-decoration: underline;
+  color: inherit;
 }
 </style>
 
-<nav class=main-nav>
-  <div class="logo">
-    <img src={logo} alt={title} width="40" height="40" />
-    <a href="/" class="title">{title}</a>
-  </div>
+<header class="main-nav" role="banner">
+  <a href="/" class="logo title">
+    <img src={logo} alt="" width="40" height="40" />
+    {title}
+  </a>
   <a href="#main" class="sr-only">Skip to main content</a>
 
-  <ul>
+  <ul role="navigation">
     <li><a href="/blog">Archive</a></li>
     <li><a href="/about">About</a></li>
-    <li><a href="/rss">RSS</a></li>
+    <li><a href="/rss.xml">RSS</a></li>
   </ul>
-</nav>
+</header>
