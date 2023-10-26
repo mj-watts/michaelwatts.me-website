@@ -23,7 +23,9 @@ Look at this:
 
 There are [16 million people in the UK](https://www.scope.org.uk/media/disability-facts-figures/) who have a long term disability, many more with a temporary disability. Any one of us, at any given time, could encounter an injury resulting in some form of disability, whether it's related to mobility, hearing, vision, or any other potential impairment.
 
-## Screen reader at the ready
+A significant community relies on accessible websites and apps. I invite you to join me in a commitment to create accessible digital experiences for all! (If you aren't already doing so. 😊)
+
+## Screen reader at the ready, let's get testing
 
 So, with that in mind let's arm ourselves with a screen reader and navigate the web to see what we can learn.
 
