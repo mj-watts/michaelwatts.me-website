@@ -33,11 +33,13 @@ If you're on windows you can grab a free copy of NVDA - there are various useful
 
 ### Navigating pages
 
-If you've never used a screen reader and keyboard to navigate a web page, the feedback of information can, at first, be so overwhelming. It's a bit like being hit in the eyes with one of those busy old websites from the 90s, with flashing gifs, tickers, rainbows, etc. There is too much noise. They provide too much information to do their job effectively.
+If you've never used a screen reader and keyboard to navigate a web page, the feedback of information can, at first, be overwhelming. It's a bit like being hit in the eyes with one of those busy old websites from the 90s, with flashing gifs, tickers, rainbows, etc. There is too much noise. They provide too much information to do their job effectively.
 
-The first thing I learnt then using a screen reader for the first time is to test web components manually in order to cut down too much chatter and information. It provides a more minimalistic and tranquil experience for the user.
+One thing I've learned is the need for manually testing components with a screen reader during development. In the context of delivering information concisely to the user, the main objective is to provide an experience that is both minimalistic and tranquil so that the user does not feel overwhelmed, does not waste time and gets the information they are looking for. It's worth noting that automated methods such as UI or unit testing were less effective in attaining this goal. I'm not yet aware of any automated testing software that help in this regard.
 
 ### Building a web component that provides concise information
+
+Below is an example of a very simple web component that provides too much information (for what it is conveying) and another example with improvements.
 
 #### Example component before improvement:
 
