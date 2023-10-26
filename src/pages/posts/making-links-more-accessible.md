@@ -11,7 +11,7 @@ tags: ["accessibility"]
 wip: true
 ---
 
-I'm looking to expand my knowledge in web accessibility and share my findings with other developers.
+I'm looking to expand my knowledge of web accessibility and share my findings with other developers.
 
 Although I've been involved in website and app development for quite some time, it's only recently that I've started to appreciate the importance of addressing the difficulties faced by people with disabilities. While I had previously come across accessibility standards and guidelines, I'm now beginning to genuinely understand their significance.
 
