@@ -10,8 +10,6 @@ tags: ["shiki"]
 wip: false
 ---
 
-# Using Shiki's Diff Notation
-
 I've successfully implemented the Shiki diff notation transformer plugin, which provides a brilliant way to highlight code changes in your documentation or blog posts.
 
 ## Basic Usage
