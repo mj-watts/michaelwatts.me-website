@@ -23,12 +23,25 @@
     @apply bg-brand-500 dark:bg-brand-800;
   }
 
-  p {
-    @apply font-serif;
-  }
-
   a {
     @apply hover:text-brand-500 hover:dark:text-brand-400;
+  }
+
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6 {
+    @apply text-brand-500;
+  }
+
+  .content p:first-of-type {
+    @apply font-semibold text-xl font-sans;
+  }
+
+  .content p,
+  .content li {
+    @apply font-serif;
   }
 
   .bg-stripes-fuchsia {
@@ -221,7 +234,12 @@ code[data-language="bash"]::before {
   @apply text-green-500;
 }
 
-code[data-language="ts"]::before {
+code[data-language="ts"]::before,
+code[data-language="typescript"]::before,
+code[data-language="javascript"]::before,
+code[data-language="js"]::before,
+code[data-language="jsx"]::before,
+code[data-language="tsx"]::before {
   @apply text-blue-500;
 }
 
