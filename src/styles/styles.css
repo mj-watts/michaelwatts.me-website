@@ -33,20 +33,47 @@
 
   .bg-stripes-fuchsia {
     background-color: #e879f91a;
-    background-image: linear-gradient(135deg,#d946ef80 10%,#0000 0,#0000 50%,#d946ef80 0,#d946ef80 60%,#0000 0,#0000);
-    background-size: 7.07px 7.07px;;
+    background-image: linear-gradient(
+      135deg,
+      #d946ef80 10%,
+      #0000 0,
+      #0000 50%,
+      #d946ef80 0,
+      #d946ef80 60%,
+      #0000 0,
+      #0000
+    );
+    background-size: 7.07px 7.07px;
   }
 
   .bg-stripes-amber {
     background-color: #f59e0b1a;
-    background-image: linear-gradient(135deg,#f59e0b80 10%,#0000 0,#0000 50%,#f59e0b80 0,#f59e0b80 60%,#0000 0,#0000);
-    background-size: 7.07px 7.07px;;
+    background-image: linear-gradient(
+      135deg,
+      #f59e0b80 10%,
+      #0000 0,
+      #0000 50%,
+      #f59e0b80 0,
+      #f59e0b80 60%,
+      #0000 0,
+      #0000
+    );
+    background-size: 7.07px 7.07px;
   }
 
   .bg-stripes-slate {
     background-color: #6c757d80;
-    background-image: linear-gradient(135deg, #6c757d80 10%, #0000 0, #0000 50%, #6c757d80 0, #6c757d80 60%, #0000 0, #0000);
-    background-size: 7.07px 7.07px;;
+    background-image: linear-gradient(
+      135deg,
+      #6c757d80 10%,
+      #0000 0,
+      #0000 50%,
+      #6c757d80 0,
+      #6c757d80 60%,
+      #0000 0,
+      #0000
+    );
+    background-size: 7.07px 7.07px;
   }
 
   /* Code blocks */
@@ -69,10 +96,11 @@
 
   [data-chars-id] {
     border-bottom-width: 2px;
-    padding: .25rem;
+    padding: 0.25rem;
     --tw-shadow: 0 0 #0000;
     --tw-shadow-colored: 0 0 #0000;
-    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 
   [data-chars-id] {
@@ -83,15 +111,15 @@
     @apply !text-inherit;
   }
 
-  [data-chars-id='a'] {
+  [data-chars-id="a"] {
     @apply !text-pink-300 bg-rose-800/50 border-b-pink-600 font-bold;
   }
 
-  [data-chars-id='b'] {
+  [data-chars-id="b"] {
     @apply !text-yellow-300 bg-yellow-800/50 border-b-yellow-600 font-bold;
   }
 
-  [data-chars-id='c'] {
+  [data-chars-id="c"] {
     @apply !text-purple-200 bg-purple-800/50 border-b-purple-600 font-bold;
   }
 
@@ -120,18 +148,22 @@
     color: gray;
   }
 
-  pre:not(.has-diff) > code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  pre:not(.has-diff)
+    > code[data-line-numbers-max-digits="2"]
+    > [data-line]::before {
     width: 2rem;
   }
 
-  pre:not(.has-diff) > code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  pre:not(.has-diff)
+    > code[data-line-numbers-max-digits="3"]
+    > [data-line]::before {
     width: 3rem;
   }
 
   /* Diff notatation */
   pre.has-diff code .diff {
     position: relative;
-    transition: background-color .5s;
+    transition: background-color 0.5s;
     margin: 0 -24px;
     padding: 0 24px;
     width: calc(100% + 48px);
@@ -173,4 +205,34 @@
     @apply bg-transparent;
     color: var(--shiki-light);
   }
+}
+
+code[data-language] {
+  @apply relative;
+}
+
+code[data-language]::before {
+  content: attr(data-language);
+  /* Add any additional styling you need */
+  @apply px-2 text-sm text-gray-500 absolute top-0 right-0 font-semibold;
+}
+
+code[data-language="bash"]::before {
+  @apply text-green-500;
+}
+
+code[data-language="ts"]::before {
+  @apply text-blue-500;
+}
+
+code[data-language="gherkin"]::before {
+  @apply text-yellow-500;
+}
+
+code[data-language="css"]::before {
+  @apply text-pink-500;
+}
+
+code[data-language="html"]::before {
+  @apply text-orange-500;
 }
