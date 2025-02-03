@@ -9,7 +9,7 @@ image:
 tags: ["ai", "cursor", "internet"]
 ---
 
-Remember when searching the internet meant crafting the perfect Google query, opening multiple tabs, and scanning through pages of content to find what you were looking for? It feels almost prehistoric now. The way we interact with information has fundamentally changed with the rise of AI assistants, and there's no going back.
+Remember when searching the internet meant crafting the perfect Google query, opening multiple tabs, and scanning through pages of content to find what you were looking for? It feels almost prehistoric now. The way we interact with information has fundamentally changed with the rise of AI assistants.
 
 ## The Old Way: Google's Link Paradise
 

@@ -9,16 +9,23 @@ image:
 tags: ["ai", "cursor", "vitest", "gherkin"]
 ---
 
-When writing tests, clarity is key. Behaviour-Driven Development (BDD) helps us write tests that read like specifications, making them easier to understand and maintain. In this post, we'll explore how to write expressive tests using Gherkin syntax with Vitest and TypeScript, and see how AI coding assistants like Cursor can understand and help us write these tests more efficiently.
+Behaviour-Driven Development (BDD) helps us write tests that read like specifications, making them easier to understand and maintain. In this post, I'll explore how to write tests using Gherkin syntax with Vitest and TypeScript. I'll also look at how AI coding assistants like Cursor can help write more tests more efficiently.
 
 ## What is Gherkin?
 
 Gherkin is a plain-text language that uses a simple set of keywords to describe software behaviour. The most common keywords are:
-- **Given**: Set up the initial context
-- **When**: Describe an action
-- **Then**: Assert the expected outcome
+- **Feature**: To describe the feature or scenario
+- **Scenario**: To describe a specific scenario
+- **Given**: To set up the initial context
+- **When**: To describe an action
+- **Then**: To assert the expected outcome
+- **And**: To add additional context or actions
 
-Here are some practical examples of Gherkin syntax in action:
+**Examples** can also be used to test multiple scenarios.
+
+There are other keywords that can be used to describe the test, but these are the most common.
+
+Some practical examples of Gherkin syntax in action:
 
 ### Basic Example
 ```gherkin
