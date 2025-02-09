@@ -3,9 +3,6 @@ title: "Diff notation test with Shiki"
 pubDate: 2024-04-23
 description: "Testing  Shiki diff notation transformer plugin"
 author: "Michael Watts"
-image:
-  url: "https://docs.astro.build/assets/full-logo-light.png"
-  alt: "A link image"
 tags: ["shiki"]
 wip: false
 ---

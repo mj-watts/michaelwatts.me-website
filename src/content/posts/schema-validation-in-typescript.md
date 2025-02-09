@@ -3,9 +3,6 @@ title: "Schema validation in TypeScript"
 pubDate: 2024-04-11
 description: "Implement TypeScript friendly schema validation easily with Zod"
 author: "Michael Watts"
-image:
-  url: "https://docs.astro.build/assets/full-logo-light.png"
-  alt: "A link image"
 tags: ["typescript"]
 wip: false
 ---

@@ -3,9 +3,6 @@ title: "CSS relative colour syntax"
 pubDate: 2024-02-16
 description: "Exploring new proposal for adapting colours based on another colour's channels and values"
 author: "Michael Watts"
-image:
-  url: "https://docs.astro.build/assets/full-logo-light.png"
-  alt: "A link image"
 tags: ["typescript", "html", "css"]
 wip: false
 ---

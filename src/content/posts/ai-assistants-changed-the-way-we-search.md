@@ -3,9 +3,6 @@ title: "How AI assistants have changed the way we search the internet"
 pubDate: 2024-06-11
 description: "From Google's multi-tab searches to conversational AI assistants like Perplexity and Cursor, artificial intelligence has vastly transformed the way we find and interact with information online."
 author: "Michael Watts"
-image:
-  url: ""
-  alt: "A link image"
 tags: ["ai", "cursor", "internet"]
 ---
 

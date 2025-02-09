@@ -3,9 +3,6 @@ title: "Web components"
 pubDate: 2023-10-26
 description: "A paddle in the shallows of web components, a deeper dive to come later"
 author: "Michael Watts"
-image:
-  url: ""
-  alt: "A link image"
 tags: ["web-components", "JavaScript", "TypeScript"]
 ---
 

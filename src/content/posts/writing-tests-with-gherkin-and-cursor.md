@@ -4,8 +4,10 @@ pubDate: 2024-07-24
 description: "Learn how to write clear, behaviour-driven tests using Gherkin syntax with Vitest and TypeScript, enhanced by AI-powered coding assistance."
 author: "Michael Watts"
 image:
-  url: ""
-  alt: "A link image"
+  url: "/posts/ghrekin-illustration.png"
+  url2x: "/posts/ghrekin-illustration@2x.png"
+  url3x: "/posts/ghrekin-illustration@3x.png"
+  alt: "Gherkin syntax"
 tags: ["ai", "cursor", "vitest", "gherkin"]
 ---
 
