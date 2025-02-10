@@ -94,8 +94,12 @@
   }
 
   /* Code blocks */
+  figure[data-rehype-pretty-code-figure] {
+    @apply relative;
+  }
+
   figure[data-rehype-pretty-code-figure] pre {
-    @apply py-4 mb-5 rounded-lg overflow-x-auto border border-brand-200;
+    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-brand-200;
   }
 
   html.dark figure[data-rehype-pretty-code-figure] pre {
@@ -229,33 +233,32 @@ code[data-language] {
   @apply relative md:text-sm;
 }
 
-code[data-language]::before {
-  content: attr(data-language);
+.language-tag {
   /* Add any additional styling you need */
-  @apply px-2 text-sm text-gray-500 absolute top-0 right-0 font-semibold;
+  @apply px-2 text-sm text-gray-500 font-semibold text-end absolute top-0 right-0 uppercase;
+  transform: translateY(-24px);
 }
 
-code[data-language="bash"]::before {
+.language-tag.bash {
   @apply text-green-500;
 }
 
-code[data-language="ts"]::before,
-code[data-language="typescript"]::before,
-code[data-language="javascript"]::before,
-code[data-language="js"]::before,
-code[data-language="jsx"]::before,
-code[data-language="tsx"]::before {
+.language-tag.typescript,
+.language-tag.javascript,
+.language-tag.js,
+.language-tag.jsx,
+.language-tag.tsx {
   @apply text-blue-500;
 }
 
-code[data-language="gherkin"]::before {
+.language-tag.gherkin {
   @apply text-yellow-500;
 }
 
-code[data-language="css"]::before {
+.language-tag.css {
   @apply text-pink-500;
 }
 
-code[data-language="html"]::before {
+.language-tag.html {
   @apply text-orange-500;
 }
