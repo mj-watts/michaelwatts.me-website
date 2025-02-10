@@ -205,7 +205,8 @@
 }
 
 code[data-language] {
-  @apply relative text-sm md:text-base;
+  font-size: 0.75rem;
+  @apply relative md:text-sm;
 }
 
 code[data-language]::before {
