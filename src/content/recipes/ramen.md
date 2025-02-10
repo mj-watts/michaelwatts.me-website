@@ -3,9 +3,6 @@ title: "Quick Ramen"
 pubDate: 2024-03-07
 description: "A very quick base recipe to use as a springboard to ramen heights (or depths depending on how you look at it)..."
 author: "Michael Watts"
-image:
-  url: "https://docs.astro.build/assets/full-logo-light.png"
-  alt: "A link image"
 tags: ["recipes"]
 draft: true
 ---
