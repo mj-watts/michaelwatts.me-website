@@ -19,6 +19,26 @@
     @apply text-brand-500 leading-tight;
   }
 
+  .content h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  .content h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  .content h4 {
+    @apply text-lg md:text-xl;
+  }
+
+  .content h5 {
+    @apply text-base md:text-lg;
+  }
+
+  .content h6 {
+    @apply text-sm md:text-base;
+  }
+
   .content p:first-of-type {
     @apply text-base md:text-xl;
   }
