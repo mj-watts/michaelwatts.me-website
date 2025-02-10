@@ -16,16 +16,16 @@
   .content h4,
   .content h5,
   .content h6 {
-    @apply text-brand-500;
+    @apply text-brand-500 leading-tight;
   }
 
   .content p:first-of-type {
-    @apply font-semibold text-xl font-sans;
+    @apply text-base md:text-xl;
   }
 
   .content p,
   .content li {
-    @apply font-serif;
+    @apply text-sm md:text-base leading-normal;
   }
 
   .bg-stripes-fuchsia {
@@ -205,7 +205,7 @@
 }
 
 code[data-language] {
-  @apply relative;
+  @apply relative text-sm md:text-base;
 }
 
 code[data-language]::before {

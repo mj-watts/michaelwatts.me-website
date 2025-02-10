@@ -11,7 +11,7 @@ image:
 tags: ["ai", "cursor", "vitest", "gherkin"]
 ---
 
-Behaviour-Driven Development (BDD) helps us write tests that read like specifications, making them easier to understand and maintain. In this post, I'll explore how to write tests using Gherkin syntax with Vitest and TypeScript. I'll also look at how AI coding assistants like Cursor can help write more tests more efficiently.
+Behaviour-Driven Development (BDD) helps us write tests that read like specifications, making them easier to understand and maintain. In this post, I'll explore how to write tests using Gherkin syntax with Vitest and TypeScript. I'll also look at how AI coding assistants like Cursor can help write tests but how to review the generated tests and write them more efficiently.
 
 ## What is Gherkin?
 
@@ -23,11 +23,11 @@ Gherkin is a plain-text language that uses a simple set of keywords to describe 
 - **Then**: To assert the expected outcome
 - **And**: To add additional context or actions
 
-**Examples** can also be used to test multiple scenarios.
+**Examples** can also be used to test multiple scenarios are written in a table format.
 
-There are other keywords that can be used to describe the test, but these are the most common.
+There are other keywords that can be used to describe the test, but these are the most common which I'll use in this post.
 
-Some practical examples of Gherkin syntax in action:
+Here are a few practical examples of Gherkin syntax in action:
 
 ### Basic Example
 ```gherkin
@@ -54,7 +54,7 @@ Feature: Shopping Basket
     Then no discount should be applied
 ```
 
-### Example with Background
+### Using Background to set up the context
 ```gherkin
 Feature: Shopping Cart Discounts
   Background:
@@ -74,7 +74,7 @@ Feature: Shopping Cart Discounts
     And the final total should be £100
 ```
 
-### Example with Scenario Outline
+### Scenario Outline with Examples
 ```gherkin
 Feature: Bulk Discounts
   Scenario Outline: Volume-based discounts
@@ -90,7 +90,8 @@ Feature: Bulk Discounts
       | 10       | 10    | 80    | 20       |
 ```
 
-These Gherkin scenarios can be translated into Vitest tests using descriptive comments that follow the same pattern. This makes our tests both human-readable and AI-friendly, as tools like Cursor can understand the intent behind each step.
+Most of these Gherkin scenarios can be translated into Vitest tests depending on the library you use.
+The tests can be easily read by anyone and also they're AI-friendly meaning that tools like Cursor can learn the context and intent behind each step.
 
 ## Setting Up Our Test Environment
 
