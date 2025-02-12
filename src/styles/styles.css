@@ -99,11 +99,11 @@
   }
 
   figure[data-rehype-pretty-code-figure] pre {
-    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-brand-200;
+    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-secondary-200 bg-secondary-50;
   }
 
   html.dark figure[data-rehype-pretty-code-figure] pre {
-    @apply bg-secondary-950 border-secondary-950;
+    @apply bg-secondary-950 border-secondary-800;
   }
 
   [data-highlighted-line] {
