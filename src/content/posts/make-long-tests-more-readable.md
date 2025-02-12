@@ -6,7 +6,7 @@ author: "Michael Watts"
 tags: ["vitest", "gherkin"]
 ---
 
-## Introduction
+Following on from my last post about [writing tests with Gherkin](/posts/writing-tests-with-gherkin-and-cursor). I thought I'd follow up with a post on how to make tests more readable.
 
 Sometimes tests can get really long, very fast. They become harder to read and more difficult to navigate making them a pain to maintain.
 
@@ -40,9 +40,9 @@ It's fine at the moment but once it starts to grow it can get hard to read and d
 
 The best tip is to literally zoom out, shrink the text and get a bird's eye view of the test.
 
-Pick out the repeated steps and extract them into functions.
+Pick out the repeated steps and extract them into functions, stick them at the top of the file (or bottom depending on your style) and forget about them.
 
-If we have 4 tests that are almost identical, we can extract the repeated steps into a function.
+Here's an example of what the functions might look like...keeping it simple:
 
 ```ts
 const givenAnEmptyShoppingCart = (given) => {
@@ -65,7 +65,7 @@ const thenTheTotalShouldBe = (then, total) => {
 
 ```
 
-Update the test to use the new functions.
+Update the test to use the new functions:
 
 ```ts
 test('Adding items to cart', ({ given, when, then }) => {
@@ -76,4 +76,4 @@ test('Adding items to cart', ({ given, when, then }) => {
 });
 ```
 
-Now the test is much shorter and easier to read.
+And the test is much shorter and easier to read and maintain.
