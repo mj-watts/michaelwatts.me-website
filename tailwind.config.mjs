@@ -21,8 +21,8 @@ export default {
     },
     extend: {
       colors: {
-        brand: colors.rose,
-        secondary: colors.neutral,
+        brand: colors.emerald,
+        secondary: colors.sky,
         main: "#fff6f6",
       },
     },

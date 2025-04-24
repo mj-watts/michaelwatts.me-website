@@ -8,17 +8,15 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav
-  class:list={["flex justify-between items-center h-12", classList]}
+  class:list={["flex justify-between items-center", classList]}
   role="banner"
 >
-  <div class="flex-1"></div>
-
-  <ul role="navigation" class="flex list-none m-0 p-0">
-    <li class:list={["font-bold mx-1", currentPath === "" ? "active" : null]}>
+  <ul role="navigation" class="flex gap-4 list-none m-0 p-0">
+    <li class:list={["font-bold", currentPath === "" ? "active" : null]}>
       <MainNavLink href="/" isActive={currentPath === ""}>Home</MainNavLink>
     </li>
     <li
-      class:list={["font-bold mx-1", currentPath === "about" ? "active" : null]}
+      class:list={["font-bold", currentPath === "about" ? "active" : null]}
     >
       <MainNavLink href="/about" isActive={currentPath === "about"}>
         About
@@ -26,7 +24,13 @@ const currentPath = pathname.slice(1);
     </li>
   </ul>
 
-  <div class="ml-3">
+  <div>
     <ToggleTheme client:only="svelte" />
   </div>
 </nav>
+
+<style>
+  li {
+    @apply mx-0 px-0;
+  }
+</style>

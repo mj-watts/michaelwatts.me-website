@@ -7,8 +7,16 @@
     @apply bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-200;
   }
 
+  html {
+    @apply dark:bg-brand-900 bg-brand-50;
+  }
+
+  aside {
+    @apply dark:bg-brand-950 bg-brand-100;
+  }
+
   a {
-    @apply hover:text-brand-500 hover:dark:text-brand-400;
+    @apply text-brand-700 dark:text-brand-400 hover:text-brand-500 hover:dark:text-brand-400;
   }
 
   .content h2,
@@ -16,7 +24,7 @@
   .content h4,
   .content h5,
   .content h6 {
-    @apply text-brand-500 leading-tight;
+    @apply dark:text-brand-400 text-brand-500 leading-tight;
   }
 
   .content h2 {
@@ -95,15 +103,15 @@
 
   /* Code blocks */
   figure[data-rehype-pretty-code-figure] {
-    @apply relative;
+    @apply relative my-3;
   }
 
   figure[data-rehype-pretty-code-figure] pre {
-    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-secondary-200 bg-secondary-50;
+    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-slate-200 bg-slate-50;
   }
 
   html.dark figure[data-rehype-pretty-code-figure] pre {
-    @apply bg-secondary-950 border-secondary-800;
+    @apply bg-slate-950 border-slate-800;
   }
 
   [data-highlighted-line] {
@@ -206,7 +214,7 @@ code[data-language] {
 
 .language-tag {
   /* Add any additional styling you need */
-  @apply px-2 text-sm text-gray-500 font-semibold text-end absolute top-0 right-0 uppercase;
+  @apply px-2 bg-brand-50 dark:bg-brand-900 rounded-md text-sm tracking-wider text-brand-50 dark:text-brand-950 font-semibold text-end absolute top-7 right-1 uppercase;
   transform: translateY(-24px);
 }
 
@@ -215,11 +223,12 @@ code[data-language] {
 }
 
 .language-tag.typescript,
+.language-tag.ts,
 .language-tag.javascript,
 .language-tag.js,
 .language-tag.jsx,
 .language-tag.tsx {
-  @apply text-blue-500;
+  @apply text-blue-400;
 }
 
 .language-tag.gherkin {

@@ -8,7 +8,7 @@ const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -24,18 +24,18 @@ const { pageTitle } = Astro.props;
       async
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
-  <body class="md:grid">
-    <MainNav classList="container mx-auto my-12 prose dark:prose-invert prose-xl " />
+  <body class="md:grid md:grid-cols-4 gap-5">
+    <Sidebar classList="hidden lg:block md:col-span-1" />
 
     <main
       id="main"
       role="main"
-      class="container mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
+      class="px-5 pb-4 prose dark:prose-invert prose-xl text-pretty md:col-span-3"
     >
+      <MainNav classList="mt-5 xl:mt-12 mb-3 prose dark:prose-invert prose-xl " />
       <slot />
+      <MainFooter classList="pb-4 prose dark:prose-invert prose-xl" />
     </main>
-
-    <MainFooter classList="container mx-auto pb-4 prose dark:prose-invert prose-xl" />
 
     <script>
       // used to be able to use web components

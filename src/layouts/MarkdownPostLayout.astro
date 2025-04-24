@@ -1,12 +1,12 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import PostLayout from "../layouts/PostLayout.astro";
 import StatusPanel from "../components/StatusPanel.astro";
 
 const { frontmatter } = Astro.props;
 const { wip } = frontmatter;
 ---
 
-<BaseLayout pageTitle={frontmatter.title} sidebar={true}>
+<PostLayout pageTitle={frontmatter.title} sidebar={true}>
   {
     frontmatter.image ? (
       <img
@@ -18,14 +18,14 @@ const { wip } = frontmatter;
     ) : null
   }
 
-  <h1 class="text-brand-500 pt-6 text-2xl font-bold">
+  <h1 class="text-brand-600 dark:text-brand-200 pt-6 text-4xl leading-tight font-bold">
     {frontmatter.title}
   </h1>
 
   {wip && <StatusPanel>Work in progress...</StatusPanel>}
 
   <slot />
-</BaseLayout>
+</PostLayout>
 
 <script>
   const codeFigures = document.querySelectorAll(

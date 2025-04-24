@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import MainNav from "../components/MainNav.astro";
 import BlogPost from "../components/BlogPost.astro";
 import Avatar from "../components/Avatar.astro";
+
+const { classList } = Astro.props;
 
 const allPosts = await getCollection("posts");
 const publishedPosts = allPosts
@@ -13,9 +14,9 @@ const publishedPosts = allPosts
   );
 ---
 
-<aside class="md:col-span-2 md:p-5">
+<aside class:list={[classList]} class="p-3 xl:p-5">
   <header
-    class="main-nav flex justify-between items-center py-5 px-5 md:px-0 md:pb-10"
+    class="main-nav flex justify-between items-center p-3 xl:p-5 xl:mt-6 ms-0"
     role="banner"
   >
     <Avatar />
@@ -25,19 +26,11 @@ const publishedPosts = allPosts
       class="sr-only ml-3 px-2 focus:static focus:w-auto focus:h-auto focus:overflow-visible"
       >Skip to main content</a
     >
-
-    <MainNav classList="flex md:hidden px-4 md:px-16" />
   </header>
 
-  <div
-    id="show-menu-button"
-    class="prose dark:prose-invert mx-auto flex flex-col items-center p-4 md:hidden cursor-pointer"
-  >
-    <button>Show posts</button>
-  </div>
   <ul
     id="menu-list"
-    class="list-none m-0 hidden flex-col items-center md:block p-4 pe-12"
+    class="list-none m-0 flex-col items-center p-4 pe-12"
   >
     {
       publishedPosts.map((post) => (
@@ -50,28 +43,3 @@ const publishedPosts = allPosts
     }
   </ul>
 </aside>
-
-<script>
-  const showMenuButton = document.getElementById("show-menu-button");
-  enum MenuText {
-    Show = "Show posts menu",
-    Hide = "Hide posts menu",
-  }
-
-  if (showMenuButton) {
-    showMenuButton.innerText = MenuText.Show;
-  }
-
-  showMenuButton?.addEventListener("click", (e) => {
-    e.preventDefault();
-    const menu = document.getElementById("menu-list");
-    menu?.classList.toggle("hidden");
-    menu?.classList.toggle("flex");
-
-    if (menu?.classList.contains("hidden")) {
-      showMenuButton.innerText = MenuText.Show;
-    } else {
-      showMenuButton.innerText = MenuText.Hide;
-    }
-  });
-</script>

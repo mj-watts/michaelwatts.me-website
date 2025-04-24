@@ -40,13 +40,15 @@ The below HTML represents a navigation list item with a link and an image. The l
 <li>
   <a href="https://example.com">
     <img
-      src="https://picsum.photos/id/27/300/120"
+      src="/posts/manonbeach.jpg"
       alt="A man stands on the edge of a cliff looking out to a rough sea."
     />
   </a>
   <div>
     <div>
-      <a href="https://example.com">War a real threat and Europe not ready, warns Poland's PM</a>
+      <a href="https://example.com">
+        War a real threat and Europe not ready, warns Poland's PM
+      </a>
     </div>
     <time>01/02/24</time>
   </div>
@@ -55,29 +57,29 @@ The below HTML represents a navigation list item with a link and an image. The l
 
 This is what NVDA will read out aloud from the component on the left:
 
-<ul class="prose dark:prose-invert list-none bg-stripes-slate rounded-lg m-0 p-5 flex flex-col gap-3">
-  <li class="list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border mb-0">
+<ul class="list-none bg-stripes-slate rounded-lg m-0 p-1 flex flex-col xl:flex-row gap-1">
+  <li class="list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border m-0 p-0">
     <a href="https://example.com">
       <img
-        src="https://picsum.photos/id/27/300/200"
+        src="/posts/manonbeach.jpg"
         alt="A man stands on the edge of a cliff looking out to a rough sea."
-        class="w-full lg:h-36 object-cover"
+        class="m-0 w-full lg:h-36 object-cover"
       />
     </a>
-    <div class="flex justify-between items-baseline p-3 leading-tight">
-      <p class="m-0 font-bold mr-3">
-        <a href="https://example.com">War a real threat and Europe not ready, warns Poland's PM</a>
+    <div class="flex justify-between items-baseline p-3">
+      <p class="m-0">
+        <a href="https://example.com" class="leading-3 text-base font-bold">War a real threat and Europe not ready, warns Poland's PM</a>
       </p>
       <time class="text-sm">01/02/24</time>
     </div>
   </li>
-  <li class="list-none w-auto mb-0 border p-3 rounded">
-    <h2 class="m-0 text-base uppercase mb-3 ">🤖 Screen reader output:</h2>
-    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-3 text-black">
-      <li class="p-3 font-bold bg-amber-500 mb-3 rounded-lg list-none">💬 link image to https://example.com</li>
-      <li class="p-3 font-bold bg-amber-500 mb-3 rounded-lg list-none">💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
-      <li class="p-3 font-bold bg-amber-500 mb-3 rounded-lg list-none">💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
-      <li class="p-3 font-bold bg-amber-500 rounded-lg list-none">💬 01/02/24</li>
+  <li class="list-none w-auto m-0 border p-1 rounded">
+    <h2 class="m-0 text-base uppercase mb-1 bg-white p-3 rounded">🤖 Screen reader output:</h2>
+    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-1 m-0 text-black">
+      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 link image to https://example.com</li>
+      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
+      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
+      <li class="p-3 font-bold bg-amber-500 rounded-lg list-none m-0">💬 01/02/24</li>
     </ul>
   </li>
 </ul>
@@ -88,25 +90,25 @@ And this is part of a list so it is worth considering that if there are many mor
 
 Changing the previous block to the following and using a neat little trick I nicked from the BBC website you can cut down the chatter to a single line:
 
-<ul class="list-none bg-stripes-slate rounded-lg m-0 p-5 flex flex-col xl:flex-row gap-3">
-  <li class="flex flex-col list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border relative mb-0">
+<ul class="list-none bg-stripes-slate rounded-lg m-0 p-1 flex flex-col xl:flex-row gap-1">
+  <li class="flex flex-col list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border relative m-0 p-0">
     <p class="order-2 flex justify-between items-baseline p-3 m-0">
-      <a href="https://example.com" class="text-lg leading-tight font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99">War a real threat and Europe not ready, warns Poland's PM</a>
+      <a href="https://example.com" class="text-lg leading-relaxed font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99">War a real threat and Europe not ready, warns Poland's PM</a>
       <time class="text-sm">01/02/24</time>
     </p>
     <img
-      src="https://picsum.photos/id/27/300/200"
+      src="/posts/manonbeach.jpg"
       alt="A man stands on the edge of a cliff looking out to a rough sea."
-      class="w-full lg:h-36 object-cover"
+      class="m-0 w-full lg:h-36 object-cover"
     />
   </li>
-  <li class="list-none w-auto mb-0 border p-3 rounded w-full">
-    <h2 class="m-0 text-base uppercase mb-3 bg-white p-3 rounded">🤖 Screen reader output:</h2>
-    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-3 text-black">
-      <li class="p-3 font-bold bg-amber-500 mb-3 rounded-lg list-none">💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-50 mb-3 rounded-lg list-none line-through ">💬 Image alt: "A man stands on the edge of a cliff..."</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-30 mb-3 rounded-lg list-none line-through">💬 Heading tag H6 0. Link "War a real threat and Europe not...</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-15 rounded-lg list-none line-through">💬 01/02/24</li>
+  <li class="list-none w-auto m-0 border p-1 rounded">
+    <h2 class="m-0 text-base uppercase mb-1 bg-white p-3 rounded">🤖 Screen reader output:</h2>
+    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-1 m-0 text-black">
+      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
+      <li class="p-3 font-bold bg-stripes-amber opacity-50 mb-1 rounded-lg list-none line-through m-0">💬 Image alt: "A man stands on the edge of a cliff..."</li>
+      <li class="p-3 font-bold bg-stripes-amber opacity-30 mb-1 rounded-lg list-none line-through m-0">💬 Heading tag H6 0. Link "War a real threat and Europe not...</li>
+      <li class="p-3 font-bold bg-stripes-amber opacity-15 rounded-lg list-none line-through m-0">💬 01/02/24</li>
     </ul>
   </li>
 </ul>

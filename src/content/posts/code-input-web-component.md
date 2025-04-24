@@ -1,19 +1,22 @@
 ---
-title: "Code input web component"
+title: "One-time-password code input web component"
 pubDate: 2024-01-15
-description: "PIN or code input boxes (like you see when logging into PayPal, etc.), a way of doing it with a single input but appears to have 6 separate inputs"
+description: "One-time-code (OTP), PIN or code input boxes (like you see when logging into PayPal, etc.), a way of doing it with a single input but appears to have 6 separate inputs"
 author: "Michael Watts"
 tags: ["typescript", "html", "css", "web components"]
 wip: false
 ---
 
-## Example of a code input
+## Example of an OTP code input
 
-Enter or paste characters into the cells below, once it reaches the maximum characters it will de-focus.
+Here is an example of how to handle a one-time-password code input.
 
+
+**Working example:**
 <code-input></code-input>
+Enter or paste characters into the cells above. Once it reaches the maximum number of characters it will de-focus.
 
-## HTML
+## The HTML:
 
 Note the use of `autocorrect` and `spellcheck` to avoid red warning lines on the input.
 
@@ -42,9 +45,9 @@ Note the use of `autocorrect` and `spellcheck` to avoid red warning lines on the
 </div>
 ```
 
-## CSS
+## The CSS:
 
-The CSS uses a monotype font with the use of `ch` as a character measurement.
+The CSS uses a fixed-width monotype font with the use of `ch` as a character measurement.
 
 ```css
 .code-container {
@@ -97,9 +100,9 @@ The CSS uses a monotype font with the use of `ch` as a character measurement.
 }
 ```
 
-## TypeScript
+## The TypeScript:
 
-Blurring the input box when the 6th character has been entered avoids a weird overflow.
+Blurring the input box when the 6th character has been entered avoids breaking overflow.
 
 ```ts
 const handleInput = (event: InputEvent) => {
@@ -120,7 +123,7 @@ codeInput?.addEventListener("paste", () => {
 });
 ```
 
-## The full web component code
+## The full OTP input web component code:
 
 ```ts
 class CodeInput extends HTMLElement {
