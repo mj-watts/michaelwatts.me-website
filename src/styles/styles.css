@@ -7,16 +7,29 @@
     @apply bg-brand-100 text-brand-700 dark:bg-brand-950 dark:text-brand-200;
   }
 
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-100 dark:bg-brand-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-200 dark:bg-brand-600 hover:bg-brand-400 hover:dark:bg-brand-500;
+  }
+
+  /* Firefox scrollbar styles */
+  * {
+    scrollbar-color: theme('colors.brand.600') theme('colors.brand.800');
+  }
+
   html {
     @apply dark:bg-brand-900 bg-brand-50;
   }
 
   aside {
-    @apply dark:bg-brand-950 bg-brand-100;
+    @apply dark:bg-brand-950 bg-brand-300 border-r-8 border-brand-400 dark:border-brand-800;
   }
 
   a {
-    @apply text-brand-700 dark:text-brand-400 hover:text-brand-500 hover:dark:text-brand-400;
+    @apply text-brand-700 dark:text-brand-400 hover:text-brand-900 hover:dark:text-brand-100;
   }
 
   .content h2,
@@ -51,9 +64,17 @@
     @apply text-base md:text-xl;
   }
 
+  .content ul {
+    @apply list-disc text-brand-700 dark:text-brand-400;
+  }
+
   .content p,
   .content li {
     @apply text-sm md:text-base leading-normal;
+  }
+
+  .content blockquote {
+    @apply border-s-4 border-brand-700;
   }
 
   .bg-stripes-fuchsia {
@@ -214,8 +235,10 @@ code[data-language] {
 
 .language-tag {
   /* Add any additional styling you need */
-  @apply px-2 bg-brand-50 dark:bg-brand-900 rounded-md text-sm tracking-wider text-brand-50 dark:text-brand-950 font-semibold text-end absolute top-7 right-1 uppercase;
+  @apply px-2 bg-brand-50 dark:bg-brand-900 tracking-wider text-brand-50 dark:text-brand-950 font-semibold text-end absolute top-7 right-1 uppercase;
   transform: translateY(-24px);
+  font-size: 0.6rem;
+  border-radius: 0.25rem;
 }
 
 .language-tag.bash {

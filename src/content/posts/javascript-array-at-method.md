@@ -1,9 +1,9 @@
 ---
 title: "JavaScript Array at method"
 pubDate: 2025-04-24
-description: "JavaScript Array at method for picking an element with an index"
+description: "A relatively unknown method to access JavaScript Array elements, the at() method"
 author: "Michael Watts"
-tags: ["javascript",]
+tags: ["javascript"]
 wip: false
 ---
 
@@ -45,4 +45,13 @@ The `at()` method provides a more elegant way to access elements, especially wit
 
 Browser support is good https://caniuse.com/mdn-javascript_builtins_array_at
 
+### Handling errors
+
+If an element is out of range it returns `undefined`
+
+```js
+const arr = [1,2,3,4,5];
+assert.strictEqual(arr.at(2), 3);
+assert.strictEqual(arr.at(21), undefined);
+```
 

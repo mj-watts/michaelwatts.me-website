@@ -2,14 +2,14 @@
 const { href, isActive } = Astro.props;
 
 const activeClassList = isActive
-  ? "active bg-zinc-100 dark:bg-zinc-400 dark:text-zinc-900"
+  ? "active bg-brand-500 text-brand-50 dark:text-brand-900"
   : "";
 ---
 
 <a
   href={href}
   class:list={[activeClassList]}
-  class="prose dark:prose-invert rounded py-2 px-4 font-bold no-underline hover:no-underline transition-colors hover:bg-brand-100 hover:dark:bg-brand-500 hover:dark:text-zinc-900 border-8 border-brand-600"
+  class="prose dark:prose-invert rounded py-2 px-4 font-bold no-underline hover:no-underline transition-colors hover:bg-brand-100 hover:dark:bg-brand-500 hover:dark:text-brand-950 border-8 border-brand-600"
 >
   <slot />
 </a>

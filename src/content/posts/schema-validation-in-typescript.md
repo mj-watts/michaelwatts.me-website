@@ -80,7 +80,7 @@ So instead of all that we can write a schema, parse it and catch and deal with a
 
 ### Write the schema
 
-It's very simple to write a Zod schema, something like this:
+It's very simple to write a Zod schema, here's an example showing some of the methods that can be used, there's a whole list on [their website](https://zod.dev/?id=basic-usage):
 
 ```ts /urlParamsSchema/
 import { z } from "zod";
@@ -98,7 +98,7 @@ export type UrlParams = z.infer<typeof urlParamsSchema>;
 
 ### Parse the object to validate the data structure
 
-Based on our schema we can run the following to parse an object against the schema to see if there are any problems.
+Based on our schema we can run the following to parse an object against the schema to see if there are any validation errors.
 
 ```ts {13}
 let errorMode = false;
@@ -120,15 +120,15 @@ try {
 }
 ```
 
-That's a helluva lot more easier and attractive.
+That's a helluva lot more easier to read and maintain.
 
-But also, _very importantly_ when future self or another developer comes by your code and needs to know what properties are required or optional for `UserParams{:ts}`, you or they have an easy way to see. By using this line...
+But also, _very importantly_, when future you or another developer comes by your code and needs to know what properties are required or are optional for `UserParams{:ts}`, you or they have an easy way to see by using this line...
 
 ```ts showLineNumbers{11}
 export type UrlParams = z.infer<typeof urlParamsSchema>;
 ```
 
-...your IDE can infer the TypeScript type from the Zod schema, giving you a nice output of the data structure:
+...your IDE can then infer the TypeScript type from the Zod schema, giving you a nice output of the data structure:
 
 ```ts
 type UrlParams = {
@@ -139,3 +139,5 @@ type UrlParams = {
   age: string;
 };
 ```
+
+Nice and easy! 👍

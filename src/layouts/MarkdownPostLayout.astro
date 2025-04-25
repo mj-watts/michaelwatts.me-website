@@ -3,10 +3,10 @@ import PostLayout from "../layouts/PostLayout.astro";
 import StatusPanel from "../components/StatusPanel.astro";
 
 const { frontmatter } = Astro.props;
-const { wip } = frontmatter;
+const { wip, description } = frontmatter;
 ---
 
-<PostLayout pageTitle={frontmatter.title} sidebar={true}>
+<PostLayout pageTitle={frontmatter.title} pageDescription={description} sidebar={true}>
   {
     frontmatter.image ? (
       <img

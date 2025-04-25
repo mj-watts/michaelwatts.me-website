@@ -6,6 +6,16 @@ author: "Michael Watts"
 tags: ["accessibility"]
 ---
 
+export const exampleCss = {
+  ul: "list-none m-0 p-0 flex flex-col xl:flex-row gap-2 relative",
+  li: "m-0 p-0 flex flex-col gap-1",
+  header: "m-0 text-base font-bold uppercase bg-brand-500 text-brand-50 dark:bg-brand-400 dark:text-brand-950 px-3 py-1 rounded",
+  card: "xl:w-80 bg-white border border-slate-200 dark:border-0 dark:bg-brand-950 rounded overflow-hidden shadow-xl",
+  innerUl: "list-none bg-brand-50 dark:bg-brand-900 rounded font-mono p-0 m-0 text-black flex flex-col gap-1",
+  innerLi: "p-3 font-bold bg-brand-500 rounded list-none m-0",
+  innerLiLineThrough: " line-through opacity-25",
+}
+
 
 > At least 1 in 5 people in the UK have a long term illness, impairment or disability. Many more have a temporary disability.
 >
@@ -57,29 +67,32 @@ The below HTML represents a navigation list item with a link and an image. The l
 
 This is what NVDA will read out aloud from the component on the left:
 
-<ul class="list-none bg-stripes-slate rounded-lg m-0 p-1 flex flex-col xl:flex-row gap-1">
-  <li class="list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border m-0 p-0">
-    <a href="https://example.com">
-      <img
-        src="/posts/manonbeach.jpg"
-        alt="A man stands on the edge of a cliff looking out to a rough sea."
-        class="m-0 w-full lg:h-36 object-cover"
-      />
-    </a>
-    <div class="flex justify-between items-baseline p-3">
-      <p class="m-0">
-        <a href="https://example.com" class="leading-3 text-base font-bold">War a real threat and Europe not ready, warns Poland's PM</a>
-      </p>
-      <time class="text-sm">01/02/24</time>
+<ul class={exampleCss.ul}>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>News component:</p>
+    <div class={exampleCss.card}>
+      <a href="https://example.com">
+        <img
+          src="/posts/manonbeach.jpg"
+          alt="A man stands on the edge of a cliff looking out to a rough sea."
+          class="m-0 w-full lg:h-36 object-cover"
+        />
+      </a>
+      <div class="flex justify-between items-baseline p-3">
+        <p class="m-0">
+          <a href="https://example.com" class="leading-3 text-base font-bold">War a real threat and Europe not ready, warns Poland's PM</a>
+        </p>
+        <time class="text-sm">01/02/24</time>
+      </div>
     </div>
   </li>
-  <li class="list-none w-auto m-0 border p-1 rounded">
-    <h2 class="m-0 text-base uppercase mb-1 bg-white p-3 rounded">🤖 Screen reader output:</h2>
-    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-1 m-0 text-black">
-      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 link image to https://example.com</li>
-      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
-      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
-      <li class="p-3 font-bold bg-amber-500 rounded-lg list-none m-0">💬 01/02/24</li>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>🤖 Screen reader:</p>
+    <ul class={exampleCss.innerUl}>
+      <li class={exampleCss.innerLi}>💬 link image to https://example.com</li>
+      <li class={exampleCss.innerLi}>💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
+      <li class={exampleCss.innerLi}>💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
+      <li class={exampleCss.innerLi}>💬 01/02/24</li>
     </ul>
   </li>
 </ul>
@@ -90,8 +103,10 @@ And this is part of a list so it is worth considering that if there are many mor
 
 Changing the previous block to the following and using a neat little trick I nicked from the BBC website you can cut down the chatter to a single line:
 
-<ul class="list-none bg-stripes-slate rounded-lg m-0 p-1 flex flex-col xl:flex-row gap-1">
-  <li class="flex flex-col list-none xl:w-80 bg-slate-100 dark:bg-slate-800 rounded overflow-hidden shadow-2xl border relative m-0 p-0">
+<ul class={exampleCss.ul}>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>News component:</p>
+    <div  class={exampleCss.card}>
     <p class="order-2 flex justify-between items-baseline p-3 m-0">
       <a href="https://example.com" class="text-lg leading-relaxed font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99">War a real threat and Europe not ready, warns Poland's PM</a>
       <time class="text-sm">01/02/24</time>
@@ -101,14 +116,15 @@ Changing the previous block to the following and using a neat little trick I nic
       alt="A man stands on the edge of a cliff looking out to a rough sea."
       class="m-0 w-full lg:h-36 object-cover"
     />
+    </div>
   </li>
-  <li class="list-none w-auto m-0 border p-1 rounded">
-    <h2 class="m-0 text-base uppercase mb-1 bg-white p-3 rounded">🤖 Screen reader output:</h2>
-    <ul class="list-none bg-stripes-amber rounded-lg font-mono p-1 m-0 text-black">
-      <li class="p-3 font-bold bg-amber-500 mb-1 rounded-lg list-none m-0">💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-50 mb-1 rounded-lg list-none line-through m-0">💬 Image alt: "A man stands on the edge of a cliff..."</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-30 mb-1 rounded-lg list-none line-through m-0">💬 Heading tag H6 0. Link "War a real threat and Europe not...</li>
-      <li class="p-3 font-bold bg-stripes-amber opacity-15 rounded-lg list-none line-through m-0">💬 01/02/24</li>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>🤖 Screen reader:</p>
+    <ul class={exampleCss.innerUl}>
+      <li class={exampleCss.innerLi}>💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Image alt: "A man stands on the edge of a cliff..."</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Heading tag H6 0. Link "War a real threat and Europe not..."</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 01/02/24</li>
     </ul>
   </li>
 </ul>

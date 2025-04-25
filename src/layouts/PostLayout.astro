@@ -5,10 +5,10 @@ import MainFooter from "../components/Footer.astro";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
-const { pageTitle } = Astro.props;
----
+const { pageTitle, pageDescription } = Astro.props;
 
-<html lang="en" class="dark">
+---
+<html lang="en" class="dark border-8 border-brand-400 dark:border-brand-800">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -16,7 +16,7 @@ const { pageTitle } = Astro.props;
     <title>{mainTitle} | {pageTitle}</title>
     <meta
       name="description"
-      content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
+      content={pageDescription}
     />
     <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
     <script
@@ -34,7 +34,7 @@ const { pageTitle } = Astro.props;
     >
       <MainNav classList="mt-5 xl:mt-12 mb-3 prose dark:prose-invert prose-xl " />
       <slot />
-      <MainFooter classList="pb-4 prose dark:prose-invert prose-xl" />
+      <MainFooter classList="mt-12 pt-6 pb-2 border-t-8 border-brand-800" />
     </main>
 
     <script>

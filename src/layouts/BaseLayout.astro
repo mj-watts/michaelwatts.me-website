@@ -24,18 +24,18 @@ const { pageTitle } = Astro.props;
       async
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
-  <body class="md:grid">
-    <MainNav classList="container mx-auto my-12 prose dark:prose-invert prose-xl " />
+  <body class="px-5">
+    <MainNav classList="mx-auto my-12 prose dark:prose-invert prose-xl " />
 
     <main
       id="main"
       role="main"
-      class="container mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
+      class="mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
     >
       <slot />
     </main>
 
-    <MainFooter classList="container mx-auto pb-4 prose dark:prose-invert prose-xl" />
+    <MainFooter classList="mx-auto mt-2" />
 
     <script>
       // used to be able to use web components
