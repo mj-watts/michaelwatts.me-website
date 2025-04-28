@@ -70,11 +70,28 @@
 
   .content p,
   .content li {
-    @apply text-sm md:text-base leading-normal;
+    @apply text-sm md:text-base leading-normal break-words;
+  }
+
+  .content li::marker {
+    @apply text-brand-700 dark:text-brand-400;
   }
 
   .content blockquote {
     @apply border-s-4 border-brand-700;
+  }
+
+  .content table {
+    @apply border-collapse border-brand-700;
+  }
+
+  .content table th,
+  .content table td {
+    @apply border border-brand-700 p-2;
+  }
+
+  .content table th {
+    @apply bg-brand-700 text-brand-50 border-brand-800;
   }
 
   .bg-stripes-fuchsia {

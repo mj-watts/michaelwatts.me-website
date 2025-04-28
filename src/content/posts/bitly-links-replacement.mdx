@@ -1,0 +1,111 @@
+---
+title: "Bitly links replacement"
+pubDate: 2025-04-28
+description: "How to avoid Bitly links free tier advertising"
+author: "Michael Watts"
+tags: ["javascript", "cloudflare", "analytics", "logging", "Compute", "workers"]
+wip: false
+---
+
+import { Image } from 'astro:assets';
+import BitlyPreviewAdSpace from '../../../public/posts/bitly-preview-ad-space.jpg';
+
+## Quick re-router to analyse traffic to your site to replace Bitly analytics
+
+<Image
+  src={BitlyPreviewAdSpace}
+  alt="Bitly advertising preview before redirect"
+  class="rounded-md p-1 border border-brand-300 dark:border-brand-700 dark:bg-brand-950 w-full lg:w-1/2 lg:float-right lg:ml-5 mb-5"
+  width={400}
+/>
+
+Bitly are now showing a nasty looking ad page for 3 seconds before redirecting when using their free tier. If you were using Bitly to analyse links clicked then this might have seemed an okish method (I don't agree, but have seen it used). From now-on if you need to add credibility to your brand (building trust, etc) then using bitly links in free tier mode will put an end to that:
+
+
+**3 seconds of this is 3 seconds too long of your brand being associated with this hideousness.**
+
+Other services exist (TinyURL, etc) but who's to say they'll not pull the rug from under you by going down the same path. If you trust your brand to free tier plans then you need to expect difficulties right? Anyway so why not build your own quick dynamic link tracker for the shear sake of having nothing better to do for 10 minutes? It's a bit shit so don't go using it in production unless but it's still quite good fun to have a tinker with Cloudflare product offerings which I've not been able to do as too busy on other stuff. Oh, and it's free tier!
+### Example links
+
+Our router service domain is at `https://test.workers.dev`
+It takes a route query param that takes a URL as a value. `route=https://michaelwatts.me/posts/javascript-array-at-method/`
+Which is then redirected to via the worker code (see below).
+
+#### Plaintext example:
+- `https://test.workers.dev&route=https://example.com/posts/post1/`
+- `https://test.workers.dev&route=https://example.com/posts/post2/`
+
+### Worker JS:
+
+```js
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const url = new URL(request.url)
+  const redirectUrl = url.searchParams.get('route')
+
+  // If no route parameter exists, return basic instructions
+  if (!redirectUrl) {
+    return new Response(
+      'Add ?route=URL parameter to redirect\nExample: ?route=https://example.com',
+      { status: 200, headers: { 'Content-Type': 'text/plain' } }
+    )
+  }
+
+  // Create HTML with both redirect meta and visible link
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta http-equiv="refresh" content="5; url=${redirectUrl}">
+      <title>Redirecting...</title>
+    </head>
+    <body>
+      <p>Redirecting to: <a href="${redirectUrl}">${redirectUrl}</a></p>
+      <script>
+        window.location.href = "${redirectUrl}";
+      </script>
+    </body>
+    </html>
+  `
+
+  return new Response(html, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/html',
+      'Cache-Control': 'no-cache, no-store, must-revalidate'
+    }
+  })
+}
+```
+
+### Observability
+
+One way to quickly gather together some metrics might be to use Cloudflare's Observability product.
+
+Visit the Observability Query Builder page: **dashboard workers-and-pages > observability > queries** and build a query to count the total fetch amounts:
+1. Visualization can be `Count` as `Event Count`.
+2. Filter = `$metadata.message` `Includes` `GET https://reroute.watts.workers.dev/?route=` to filter any traffic coming into this route.
+3. Add a second filter on the ingested data e.g. Filter Includes `javascript-array-at-method` so that this can changed easily as it's a bit clearer to read.
+4. Group By `$workers.eventType` if you wish.
+#### Example result table:
+
+| $workers.eventType | Event Count |
+| :----------------- | :---------- |
+| `fetch`            | 4           |
+
+### Workers Free tier allowance:
+
+| Product                | Allowance                 |
+| :--------------------- | :------------------------ |
+| Worker Requests*       | 100,000  requests per day |
+| Observability events** | 200,000 events per day    |
+
+- `*` The Free plan combines requests for Workers and Pages Functions. Requests to static assets on Workers & Pages will continue to be free and unlimited. [Learn more](https://developers.cloudflare.com/pages/functions/pricing?_gl=1*1akamea*_gcl_au*MTUzNzI3MDM4My4xNzQ1ODM5MjE1*_ga*MTM1Mjk4OTc5LjE3NDU4MzkyMTU.*_ga_SQCRB0TXZW*MTc0NTg0NjI3OS4yLjEuMTc0NTg0NjU0NC4xNy4wLjA.).
+- `**` Aggregated observability events across all Workers.
+
+You might blast through the Worker Requests and Observability events quite quickly unless you somehow minimise calling them, but for handling a small number of requests it might be ok. There is a payment plan so do your maths.
+
+Another way might be to send data through to a KV store, which I'll explore another time...
