@@ -19,12 +19,20 @@ import BitlyPreviewAdSpace from '../../../public/posts/bitly-preview-ad-space.jp
   width={400}
 />
 
-Bitly are now showing a nasty looking ad page for 3 seconds before redirecting when using their free tier. If you were using Bitly to analyse links clicked then this might have seemed an okish method (I don't agree, but have seen it used). From now-on if you need to add credibility to your brand (building trust, etc) then using bitly links in free tier mode will put an end to that:
+Bitly are now showing a nasty looking ad page for 3 seconds before redirecting when using their free plan.
+If you were using Bitly to analyse links clicked then this might have seemed an okish method (I don't agree, but have seen it used).
+From now-on if you need to add credibility and build trust for your brand then using bitly links in free tier mode will put an end to that.
 
+Other services exist (TinyURL, etc) but who's to say they'll not follow the same path as Bitly to generate revenue.
 
-**3 seconds of this is 3 seconds too long of your brand being associated with this hideousness.**
+If you trust your brand to free tier plans then you need to expect difficulties right?
 
-Other services exist (TinyURL, etc) but who's to say they'll not pull the rug from under you by going down the same path. If you trust your brand to free tier plans then you need to expect difficulties right? Anyway so why not build your own quick dynamic link tracker for the shear sake of having nothing better to do for 10 minutes? It's a bit shit so don't go using it in production unless but it's still quite good fun to have a tinker with Cloudflare product offerings which I've not been able to do as too busy on other stuff. Oh, and it's free tier!
+So why not build your own quick dynamic link tracker with Cloudflare Workers and Pages for the shear sake of having nothing better to do for 10 minutes?
+
+It's quick and dirty and a bit shit so don't go using it in production unless you test and improve it obviously,
+but it's quite good fun to have a tinker around with Cloudflare product offerings which I've not been able to do for a while.
+Oh, and it's free tier but Cloudflare have a payment plan and their free plan is pretty generous!
+
 ### Example links
 
 Our router service domain is at `https://test.workers.dev`
@@ -103,9 +111,18 @@ Visit the Observability Query Builder page: **dashboard workers-and-pages > obse
 | Worker Requests*       | 100,000  requests per day |
 | Observability events** | 200,000 events per day    |
 
-- `*` The Free plan combines requests for Workers and Pages Functions. Requests to static assets on Workers & Pages will continue to be free and unlimited. [Learn more](https://developers.cloudflare.com/pages/functions/pricing?_gl=1*1akamea*_gcl_au*MTUzNzI3MDM4My4xNzQ1ODM5MjE1*_ga*MTM1Mjk4OTc5LjE3NDU4MzkyMTU.*_ga_SQCRB0TXZW*MTc0NTg0NjI3OS4yLjEuMTc0NTg0NjU0NC4xNy4wLjA.).
-- `**` Aggregated observability events across all Workers.
+`*` The Free plan combines requests for Workers and Pages Functions. Requests to static assets on Workers & Pages will continue to be free and unlimited. [Learn more](https://developers.cloudflare.com/pages/functions/pricing?_gl=1*1akamea*_gcl_au*MTUzNzI3MDM4My4xNzQ1ODM5MjE1*_ga*MTM1Mjk4OTc5LjE3NDU4MzkyMTU.*_ga_SQCRB0TXZW*MTc0NTg0NjI3OS4yLjEuMTc0NTg0NjU0NC4xNy4wLjA.).
 
-You might blast through the Worker Requests and Observability events quite quickly unless you somehow minimise calling them, but for handling a small number of requests it might be ok. There is a payment plan so do your maths.
+`**` Aggregated observability events across all Workers.
+
+You might blast through the Worker Requests and Observability events allowance quite quickly unless you somehow minimise requests,
+but for handling a small number of requests it might be OK.
+There is a payment plan so you could expand this to handle a larger number of requests.
 
 Another way might be to send data through to a KV store, which I'll explore another time...
+
+### Conclusion
+
+This was a fun little project to play around with Cloudflare Workers and Pages.
+It's not production ready by any means but it's a fun way to learn about the Cloudflare product offerings and see how it works.
+
