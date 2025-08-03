@@ -1,16 +1,17 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  const ToggleThemeMode = {
+    Light: "light",
+    Dark: "dark",
+  } as const;
 
-  enum ToggleThemeMode {
-    Light = "light",
-    Dark = "dark",
-  }
+  type ToggleThemeModeType =
+    (typeof ToggleThemeMode)[keyof typeof ToggleThemeMode];
 
-  let mode = ToggleThemeMode.Light;
-  let button: HTMLButtonElement | null;
-  let icon: SVGSVGElement | null;
+  let mode = $state<ToggleThemeModeType>(ToggleThemeMode.Light);
+  let button = $state<HTMLButtonElement | null>(null);
+  let icon = $state<SVGSVGElement | null>(null);
 
-  onMount(() => {
+  $effect(() => {
     if (localStorage.getItem("theme") === ToggleThemeMode.Dark) {
       mode = ToggleThemeMode.Dark;
     } else {
@@ -65,6 +66,11 @@
   }
 
   function setAnimationClass() {
+    if (!button) {
+      console.warn("Button element is null");
+      return;
+    }
+
     button?.classList.add("animating");
 
     setTimeout(() => {
@@ -89,9 +95,9 @@
 <button
   id="toggle-theme"
   aria-label="Toggle light/dark mode"
-  class="dark animating done-animating hover:scale-125"
+  class="dark hover:scale-125"
   bind:this={button}
-  on:click={handleClick}
+  onclick={handleClick}
 >
   <div class="icon-container">
     <svg id="icon" class="icon" bind:this={icon}>
@@ -113,14 +119,9 @@
 </svg>
 
 <style>
-  :root {
-    --icon-background-color-dark: rgb(5 150 105);
-    --icon-background-color-light: rgb(5 150 105);
-    --icon-color: #f0e68c;
-    --icon-color-darker: #ffc72c;
-  }
   button {
-    background: var(--icon-background-color-light);
+    --icon-color: var(--color-brand-50);
+    background: var(--color-brand-400);
     transition: background-color 0.3s ease;
     border-radius: 50%;
     overflow: hidden;
@@ -131,11 +132,11 @@
     width: 26px;
     height: 26px;
     padding: 0;
-    box-shadow: 0 1px 1px 0 rgb(from var(--icon-color) r g b / 0.3) inset;
     transition: transform 0.3s ease;
   }
   button.dark {
-    background: var(--icon-background-color-dark);
+    --icon-color: var(--color-brand-400);
+    background: var(--color-brand-950);
   }
   button:hover {
     cursor: pointer;
@@ -168,7 +169,7 @@
     fill: var(--icon-color);
   }
   button.dark .icon {
-    fill: var(--icon-color-darker);
+    fill: var(--icon-color);
   }
   .hidden {
     display: none;

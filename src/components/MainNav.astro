@@ -12,11 +12,16 @@ const currentPath = pathname.slice(1);
   role="banner"
 >
   <ul role="navigation" class="flex gap-4 list-none m-0 p-0">
-    <li class:list={["font-bold", currentPath === "" ? "active" : null]}>
+    <li
+      class:list={["font-bold mx-0 px-0", currentPath === "" ? "active" : null]}
+    >
       <MainNavLink href="/" isActive={currentPath === ""}>Home</MainNavLink>
     </li>
     <li
-      class:list={["font-bold", currentPath === "about" ? "active" : null]}
+      class:list={[
+        "font-bold mx-0 px-0",
+        currentPath === "about" ? "active" : null,
+      ]}
     >
       <MainNavLink href="/about" isActive={currentPath === "about"}>
         About
@@ -28,9 +33,3 @@ const currentPath = pathname.slice(1);
     <ToggleTheme client:only="svelte" />
   </div>
 </nav>
-
-<style>
-  li {
-    @apply mx-0 px-0;
-  }
-</style>

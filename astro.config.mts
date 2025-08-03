@@ -1,15 +1,16 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerNotationDiff } from "@shikijs/transformers";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://michaelwatts.me",
-  integrations: [mdx(), tailwind(), svelte()],
+  integrations: [mdx(), svelte()],
+
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [
@@ -39,5 +40,9 @@ export default defineConfig({
         },
       ],
     ],
+  },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

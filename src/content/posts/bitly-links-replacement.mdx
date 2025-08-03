@@ -5,10 +5,11 @@ description: "How to avoid Bitly links free tier advertising"
 author: "Michael Watts"
 tags: ["javascript", "cloudflare", "analytics", "logging", "Compute", "workers"]
 wip: false
+draft: true
 ---
 
-import { Image } from 'astro:assets';
-import BitlyPreviewAdSpace from '../../../public/posts/bitly-preview-ad-space.jpg';
+import { Image } from "astro:assets";
+import BitlyPreviewAdSpace from "../../../public/posts/bitly-preview-ad-space.jpg";
 
 ## Quick re-router to analyse traffic to your site to replace Bitly analytics
 
@@ -40,26 +41,27 @@ It takes a route query param that takes a URL as a value. `route=https://michael
 Which is then redirected to via the worker code (see below).
 
 #### Plaintext example:
+
 - `https://test.workers.dev&route=https://example.com/posts/post1/`
 - `https://test.workers.dev&route=https://example.com/posts/post2/`
 
 ### Worker JS:
 
 ```js
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+addEventListener("fetch", (event) => {
+  event.respondWith(handleRequest(event.request));
+});
 
 async function handleRequest(request) {
-  const url = new URL(request.url)
-  const redirectUrl = url.searchParams.get('route')
+  const url = new URL(request.url);
+  const redirectUrl = url.searchParams.get("route");
 
   // If no route parameter exists, return basic instructions
   if (!redirectUrl) {
     return new Response(
-      'Add ?route=URL parameter to redirect\nExample: ?route=https://example.com',
-      { status: 200, headers: { 'Content-Type': 'text/plain' } }
-    )
+      "Add ?route=URL parameter to redirect\nExample: ?route=https://example.com",
+      { status: 200, headers: { "Content-Type": "text/plain" } }
+    );
   }
 
   // Create HTML with both redirect meta and visible link
@@ -77,15 +79,15 @@ async function handleRequest(request) {
       </script>
     </body>
     </html>
-  `
+  `;
 
   return new Response(html, {
     status: 200,
     headers: {
-      'Content-Type': 'text/html',
-      'Cache-Control': 'no-cache, no-store, must-revalidate'
-    }
-  })
+      "Content-Type": "text/html",
+      "Cache-Control": "no-cache, no-store, must-revalidate",
+    },
+  });
 }
 ```
 
@@ -94,10 +96,12 @@ async function handleRequest(request) {
 One way to quickly gather together some metrics might be to use Cloudflare's Observability product.
 
 Visit the Observability Query Builder page: **dashboard workers-and-pages > observability > queries** and build a query to count the total fetch amounts:
+
 1. Visualization can be `Count` as `Event Count`.
 2. Filter = `$metadata.message` `Includes` `GET https://reroute.watts.workers.dev/?route=` to filter any traffic coming into this route.
 3. Add a second filter on the ingested data e.g. Filter Includes `javascript-array-at-method` so that this can changed easily as it's a bit clearer to read.
 4. Group By `$workers.eventType` if you wish.
+
 #### Example result table:
 
 | $workers.eventType | Event Count |
@@ -106,10 +110,10 @@ Visit the Observability Query Builder page: **dashboard workers-and-pages > obse
 
 ### Workers Free tier allowance:
 
-| Product                | Allowance                 |
-| :--------------------- | :------------------------ |
-| Worker Requests*       | 100,000  requests per day |
-| Observability events** | 200,000 events per day    |
+| Product                  | Allowance                |
+| :----------------------- | :----------------------- |
+| Worker Requests\*        | 100,000 requests per day |
+| Observability events\*\* | 200,000 events per day   |
 
 `*` The Free plan combines requests for Workers and Pages Functions. Requests to static assets on Workers & Pages will continue to be free and unlimited. [Learn more](https://developers.cloudflare.com/pages/functions/pricing?_gl=1*1akamea*_gcl_au*MTUzNzI3MDM4My4xNzQ1ODM5MjE1*_ga*MTM1Mjk4OTc5LjE3NDU4MzkyMTU.*_ga_SQCRB0TXZW*MTc0NTg0NjI3OS4yLjEuMTc0NTg0NjU0NC4xNy4wLjA.).
 
@@ -125,4 +129,3 @@ Another way might be to send data through to a KV store, which I'll explore anot
 
 This was a fun little project to play around with Cloudflare Workers and Pages.
 It's not production ready by any means but it's a fun way to learn about the Cloudflare product offerings and see how it works.
-
