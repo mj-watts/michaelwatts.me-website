@@ -6,25 +6,22 @@ const { frontmatter } = Astro.props;
 const { wip, description } = frontmatter;
 ---
 
-<PostLayout pageTitle={frontmatter.title} pageDescription={description} sidebar={true}>
-  {
-    frontmatter.image ? (
-      <img
-        src={frontmatter.image.url}
-        srcset={`${frontmatter.image.url} 1x, ${frontmatter.image.url2x} 2x, ${frontmatter.image.url3x} 3x`}
-        alt={frontmatter.image.alt}
-        class="w-full rounded-lg shadow-md mb-4"
-      />
-    ) : null
-  }
-
-  <h1 class="text-brand-600 dark:text-brand-200 pt-6 text-4xl leading-tight font-bold">
+<PostLayout
+  pageTitle={frontmatter.title}
+  pageDescription={description}
+  sidebar={true}
+>
+  <h1
+    class="text-brand-600 dark:text-brand-950 text-4xl leading-tight font-bold text-balance dark:bg-brand-500 -ms-10 ps-10 -me-5 -mt-8 pb-10 pt-8"
+  >
     {frontmatter.title}
   </h1>
 
   {wip && <StatusPanel>Work in progress...</StatusPanel>}
 
-  <slot />
+  <div class="prose dark:prose-invert prose-xl">
+    <slot />
+  </div>
 </PostLayout>
 
 <script>

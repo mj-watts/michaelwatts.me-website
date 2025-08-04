@@ -3,6 +3,11 @@ title: "Writing Expressive Tests with Gherkin and Vitest in TypeScript"
 pubDate: 2024-07-24
 description: "Learn how to write clear, behaviour-driven tests using Gherkin syntax with Vitest and TypeScript, enhanced by AI-powered coding assistance."
 author: "Michael Watts"
+previewImage:
+  url: "/posts/test-image-2.png"
+  url2x: "/posts/test-image-2.png"
+  url3x: "/posts/test-image-2.png"
+  alt: "Gherkin syntax"
 image:
   url: "/posts/gherkin-illustration.png"
   url2x: "/posts/gherkin-illustration@2x.png"
@@ -16,6 +21,7 @@ Behaviour-Driven Development (BDD) helps us write tests that read like specifica
 ## What is Gherkin?
 
 Gherkin is a plain-text language that uses a simple set of keywords to describe software behaviour. The most common keywords are:
+
 - **Feature**: To describe the feature or scenario
 - **Scenario**: To describe a specific scenario
 - **Given**: To set up the initial context
@@ -30,6 +36,7 @@ There are other keywords that can be used to describe the test, but these are th
 Here are a few practical examples of Gherkin syntax in action:
 
 ### Basic Example
+
 ```gherkin
 Feature: Shopping Basket
 
@@ -55,6 +62,7 @@ Feature: Shopping Basket
 ```
 
 ### Using Background to set up the context
+
 ```gherkin
 Feature: Shopping Cart Discounts
   Background:
@@ -75,6 +83,7 @@ Feature: Shopping Cart Discounts
 ```
 
 ### Scenario Outline with Examples
+
 ```gherkin
 Feature: Bulk Discounts
   Scenario Outline: Volume-based discounts
@@ -107,12 +116,12 @@ Create a `vitest.config.ts`:
 
 ```ts
 // vitest.config.ts
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'node',
+    environment: "node",
   },
 });
 ```
@@ -131,85 +140,85 @@ export class ShoppingBasket {
   }
 
   getTotal() {
-   return this.items.reduce((sum, item) => sum + item.price, 0);
+    return this.items.reduce((sum, item) => sum + item.price, 0);
   }
 }
 ```
 
 ```ts
 // src/ShoppingBasket.test.ts
-import { defineFeature, loadFeature } from '@amiceli/vitest-cucumber';
-import { ShoppingBasket } from './ShoppingBasket';
+import { defineFeature, loadFeature } from "@amiceli/vitest-cucumber";
+import { ShoppingBasket } from "./ShoppingBasket";
 
-const feature = loadFeature('./features/shopping-basket.feature');
+const feature = loadFeature("./features/shopping-basket.feature");
 
-defineFeature(feature, test => {
-  test('Adding items to cart', ({ given, when, then }) => {
+defineFeature(feature, (test) => {
+  test("Adding items to cart", ({ given, when, then }) => {
     let basket: ShoppingBasket;
 
-    given('an empty shopping cart', () => {
+    given("an empty shopping cart", () => {
       basket = new ShoppingBasket();
     });
 
-    when('the user adds a £10 book', () => {
-      basket.addItem('book', 10);
+    when("the user adds a £10 book", () => {
+      basket.addItem("book", 10);
     });
 
-    when('the user adds a £2 pen', () => {
-      basket.addItem('pen', 2);
+    when("the user adds a £2 pen", () => {
+      basket.addItem("pen", 2);
     });
 
-    then('the total should be £12', () => {
+    then("the total should be £12", () => {
       expect(basket.getTotal()).toBe(12);
     });
   });
 
-  test('Applying valid discount code', ({ given, when, then }) => {
+  test("Applying valid discount code", ({ given, when, then }) => {
     let basket: ShoppingBasket;
     let total: number;
 
-    given('a logged-in user', () => {
+    given("a logged-in user", () => {
       // Assume user is logged in
     });
 
-    given('an empty shopping cart', () => {
+    given("an empty shopping cart", () => {
       basket = new ShoppingBasket();
     });
 
-    when('the user adds items worth £100', () => {
-      basket.addItem('expensive item', 100);
+    when("the user adds items worth £100", () => {
+      basket.addItem("expensive item", 100);
     });
 
     when('enters discount code "SAVE10"', () => {
-      total = basket.getTotal('SAVE10');
+      total = basket.getTotal("SAVE10");
     });
 
-    then('a 10% discount should be applied', () => {
+    then("a 10% discount should be applied", () => {
       expect(total).toBe(90);
     });
   });
 
-  test('Invalid discount code', ({ given, when, then }) => {
+  test("Invalid discount code", ({ given, when, then }) => {
     let basket: ShoppingBasket;
     let total: number;
 
-    given('a logged-in user', () => {
+    given("a logged-in user", () => {
       // Assume user is logged in
     });
 
-    given('an empty shopping cart', () => {
+    given("an empty shopping cart", () => {
       basket = new ShoppingBasket();
     });
 
-    when('the user adds items worth £100', () => {
-      basket.addItem('expensive item', 100);
+    when("the user adds items worth £100", () => {
+      basket.addItem("expensive item", 100);
     });
 
     when('enters discount code "INVALID"', () => {
-      total = basket.getTotal('INVALID');
+      total = basket.getTotal("INVALID");
     });
 
-    then('no discount should be applied', () => {
+    then("no discount should be applied", () => {
       expect(total).toBe(100);
     });
   });
@@ -230,10 +239,9 @@ export class ShoppingBasket {
   }
 
   getTotal(discountCode?: string) {
-    const subtotal =
-      this.items.reduce((sum, item) => sum + item.price, 0);
+    const subtotal = this.items.reduce((sum, item) => sum + item.price, 0);
 
-    if (discountCode === 'SAVE10') {
+    if (discountCode === "SAVE10") {
       return subtotal * 0.9;
     }
 
@@ -249,57 +257,57 @@ Here are our tests for the discount functionality:
 
 // existing content
 
-test('Applying valid discount code', ({ given, when, then }) => {
-    let basket: ShoppingBasket;
-    let total: number;
+test("Applying valid discount code", ({ given, when, then }) => {
+  let basket: ShoppingBasket;
+  let total: number;
 
-    given('a logged-in user', () => {
-      // Assume user is logged in
-    });
-
-    given('an empty shopping cart', () => {
-      basket = new ShoppingBasket();
-    });
-
-    when('the user adds items worth £100', () => {
-      basket.addItem('expensive item', 100);
-    });
-
-    when('enters discount code "SAVE10"', () => {
-      total = basket.getTotal('SAVE10');
-    });
-
-    then('a 10% discount should be applied', () => {
-      expect(total).toBe(90);
-    });
+  given("a logged-in user", () => {
+    // Assume user is logged in
   });
 
-  test('Invalid discount code', ({ given, when, then }) => {
-    let basket: ShoppingBasket;
-    let total: number;
-
-    given('a logged-in user', () => {
-      // Assume user is logged in
-    });
-
-    given('an empty shopping cart', () => {
-      basket = new ShoppingBasket();
-    });
-
-    when('the user adds items worth £100', () => {
-      basket.addItem('expensive item', 100);
-    });
-
-    when('enters discount code "INVALID"', () => {
-      total = basket.getTotal('INVALID');
-    });
-
-    then('no discount should be applied', () => {
-      expect(total).toBe(100);
-    });
+  given("an empty shopping cart", () => {
+    basket = new ShoppingBasket();
   });
 
-  // existing content
+  when("the user adds items worth £100", () => {
+    basket.addItem("expensive item", 100);
+  });
+
+  when('enters discount code "SAVE10"', () => {
+    total = basket.getTotal("SAVE10");
+  });
+
+  then("a 10% discount should be applied", () => {
+    expect(total).toBe(90);
+  });
+});
+
+test("Invalid discount code", ({ given, when, then }) => {
+  let basket: ShoppingBasket;
+  let total: number;
+
+  given("a logged-in user", () => {
+    // Assume user is logged in
+  });
+
+  given("an empty shopping cart", () => {
+    basket = new ShoppingBasket();
+  });
+
+  when("the user adds items worth £100", () => {
+    basket.addItem("expensive item", 100);
+  });
+
+  when('enters discount code "INVALID"', () => {
+    total = basket.getTotal("INVALID");
+  });
+
+  then("no discount should be applied", () => {
+    expect(total).toBe(100);
+  });
+});
+
+// existing content
 ```
 
 ## Working with Tabular Data
@@ -326,10 +334,10 @@ Here's how we can implement this test using Vitest:
 
 ```ts
 // src/ShoppingBasket.test.ts
-import { describe, it, expect } from 'vitest';
-import { ShoppingBasket } from './ShoppingBasket';
+import { describe, it, expect } from "vitest";
+import { ShoppingBasket } from "./ShoppingBasket";
 
-describe('Bulk Purchase Discounts', () => {
+describe("Bulk Purchase Discounts", () => {
   const testCases = [
     { quantity: 1, price: 10, subtotal: 10, discount: 0, final: 10 },
     { quantity: 5, price: 10, subtotal: 50, discount: 10, final: 45 },
@@ -343,7 +351,7 @@ describe('Bulk Purchase Discounts', () => {
 
       // When
       for (let i = 0; i < quantity; i++) {
-        basket.addItem('test-item', price);
+        basket.addItem("test-item", price);
       }
 
       // Then

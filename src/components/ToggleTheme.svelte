@@ -95,7 +95,7 @@
 <button
   id="toggle-theme"
   aria-label="Toggle light/dark mode"
-  class="dark hover:scale-125"
+  class="done-animating animating dark hover:scale-125"
   bind:this={button}
   onclick={handleClick}
 >
@@ -122,7 +122,9 @@
   button {
     --icon-color: var(--color-brand-50);
     background: var(--color-brand-400);
-    transition: background-color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.3s ease;
     border-radius: 50%;
     overflow: hidden;
     display: flex;

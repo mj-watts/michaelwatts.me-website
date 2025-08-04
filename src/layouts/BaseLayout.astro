@@ -1,6 +1,5 @@
 ---
 import MainNav from "../components/MainNav.astro";
-import Sidebar from "../components/Sidebar.astro";
 import MainFooter from "../components/Footer.astro";
 import "../styles/styles.css";
 
@@ -8,7 +7,7 @@ const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark dark:bg-brand-950">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
@@ -25,23 +24,16 @@ const { pageTitle } = Astro.props;
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
   <body class="px-5">
-    <MainNav classList="mx-auto my-12 prose dark:prose-invert prose-xl " />
+    <MainNav classList="mt-12 mb-48 px-5" />
 
     <main
       id="main"
       role="main"
-      class="mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
+      class="container mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
     >
       <slot />
+
+      <MainFooter classList="mx-auto mt-2" />
     </main>
-
-    <MainFooter classList="mx-auto mt-2" />
-
-    <script>
-      // used to be able to use web components
-      await import.meta.glob("../web-components/**/*.ts", {
-        eager: true,
-      });
-    </script>
   </body>
 </html>

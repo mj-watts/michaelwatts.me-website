@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BlogPost from "../components/BlogPost.astro";
-import Avatar from "../components/Avatar.astro";
+import PostListItem from "../components/PostListItem.astro";
 
 const { classList } = Astro.props;
 
@@ -14,28 +13,24 @@ const publishedPosts = allPosts
   );
 ---
 
-<aside class:list={[classList]} class="p-3 xl:p-5">
-  <header
-    class="main-nav flex justify-between items-center p-3 xl:p-5 xl:mt-6 ms-0"
-    role="banner"
+<aside
+  class:list={[classList]}
+  class="px-8 py-8 dark:bg-brand-900 bg-brand-300 border-r-8 border-brand-400 dark:border-brand-950"
+>
+  <a
+    href="#main"
+    class="sr-only ml-3 px-2 focus:static focus:w-auto focus:h-auto focus:overflow-visible"
+    >Skip to main content</a
   >
-    <Avatar />
-
-    <a
-      href="#main"
-      class="sr-only ml-3 px-2 focus:static focus:w-auto focus:h-auto focus:overflow-visible"
-      >Skip to main content</a
-    >
-  </header>
 
   <ul
     id="menu-list"
-    class="list-none m-0 flex-col items-center p-4 pe-12"
+    class="list-none mt-0 mb-0 flex-col items-center p-4 pe-12"
     role="navigation"
   >
     {
       publishedPosts.map((post) => (
-        <BlogPost
+        <PostListItem
           url={`/posts/${post.slug}/`}
           title={post.data.title}
           date={post.data.pubDate}

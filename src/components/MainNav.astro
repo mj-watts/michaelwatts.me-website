@@ -1,6 +1,6 @@
 ---
-import MainNavLink from "./MainNavLink.astro";
-import ToggleTheme from "./ToggleTheme.svelte";
+import Avatar from "./Avatar.astro";
+import NavItem from "./NavItem.astro";
 
 const { classList } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname;
@@ -11,25 +11,25 @@ const currentPath = pathname.slice(1);
   class:list={["flex justify-between items-center", classList]}
   role="banner"
 >
-  <ul role="navigation" class="flex gap-4 list-none m-0 p-0">
+  <Avatar />
+  <ul role="navigation" class="flex gap-4 list-none mt-0 mb-0">
     <li
-      class:list={["font-bold mx-0 px-0", currentPath === "" ? "active" : null]}
+      class:list={[
+        "font-bold mx-0 px-0 mt-0 mb-0",
+        currentPath === "" ? "active" : null,
+      ]}
     >
-      <MainNavLink href="/" isActive={currentPath === ""}>Home</MainNavLink>
+      <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
     </li>
     <li
       class:list={[
-        "font-bold mx-0 px-0",
+        "font-bold mx-0 px-0 mt-0 mb-0",
         currentPath === "about" ? "active" : null,
       ]}
     >
-      <MainNavLink href="/about" isActive={currentPath === "about"}>
+      <NavItem href="/about" isActive={currentPath === "about"}>
         About
-      </MainNavLink>
+      </NavItem>
     </li>
   </ul>
-
-  <div>
-    <ToggleTheme client:only="svelte" />
-  </div>
 </nav>

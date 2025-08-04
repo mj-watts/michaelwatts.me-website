@@ -2,6 +2,11 @@
 title: "JavaScript Proxy objects"
 pubDate: 2025-04-25
 description: "The power of proxy objects in JavaScript"
+previewImage:
+  url: "/posts/proxy-objects.png"
+  url2x: "/posts/proxy-objects@2x.png"
+  url3x: "/posts/proxy-objects@3x.png"
+  alt: "Proxy objects"
 author: "Michael Watts"
 tags: ["javascript"]
 wip: false
@@ -17,13 +22,13 @@ A Proxy wraps an existing object and can intercept operations performed on it. H
 
 ```js
 const target = {
-  name: 'John'
+  name: "John",
 };
 
 const handler = {
-  get: function(target, prop) {
+  get: function (target, prop) {
     return target[prop];
-  }
+  },
 };
 
 const proxy = new Proxy(target, handler);
@@ -37,19 +42,19 @@ Here's a practical example of using a Proxy to validate property values:
 
 ```js
 const userHandler = {
-  set: function(obj, prop, value) {
-    if (prop === 'age' && typeof value !== 'number') {
-      throw new TypeError('Age must be a number');
+  set: function (obj, prop, value) {
+    if (prop === "age" && typeof value !== "number") {
+      throw new TypeError("Age must be a number");
     }
 
-    if (prop === 'age' && value < 0) {
-      throw new RangeError('Age cannot be negative');
+    if (prop === "age" && value < 0) {
+      throw new RangeError("Age cannot be negative");
     }
 
     obj[prop] = value;
 
     return true;
-  }
+  },
 };
 
 const user = new Proxy({}, userHandler);
@@ -65,16 +70,16 @@ Proxies can provide default values for non-existent properties:
 
 ```js
 const handler = {
-  get: function(target, prop) {
-    return prop in target ? target[prop] : 'Property not found';
-  }
+  get: function (target, prop) {
+    return prop in target ? target[prop] : "Property not found";
+  },
 };
 
 const object = new Proxy({}, handler);
-object.name = 'Test';
+object.name = "Test";
 
 console.log(object.name); // Output: "Test"
-console.log(object.age);  // Output: "Property not found"
+console.log(object.age); // Output: "Property not found"
 ```
 
 #### 3. Logging
@@ -83,25 +88,26 @@ A practical use case for monitoring property access:
 
 ```js
 const handler = {
-  get: function(target, prop) {
+  get: function (target, prop) {
     console.log(`Accessing property: ${prop}`);
     return target[prop];
   },
-  set: function(target, prop, value) {
+  set: function (target, prop, value) {
     console.log(`Setting property: ${prop} = ${value}`);
     target[prop] = value;
     return true;
-  }
+  },
 };
 
 const user = new Proxy({}, handler);
-user.name = 'John'; // Logs: "Setting property: name = John"
+user.name = "John"; // Logs: "Setting property: name = John"
 console.log(user.name); // Logs: "Accessing property: name" then "John"
 ```
 
 ### When to Use Proxies
 
 Use Proxies when you need to:
+
 - Validate data before it's set
 - Provide default values
 - Log access to properties

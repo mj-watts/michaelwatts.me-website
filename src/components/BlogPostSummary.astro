@@ -1,5 +1,35 @@
 ---
-const { url, title, date, description } = Astro.props;
+import { Image } from "astro:assets";
+import foodIconImage from "../images/food-icon.png";
+
+const { url, title, date, description, previewImage, tags } = Astro.props;
+
+function getRandomGradient() {
+  const gradients = [
+    "bg-gradient-to-tr from-indigo-200 via-sky-200 to-emerald-200",
+    "bg-gradient-to-tr from-cyan-200 via-blue-200 to-purple-200",
+    "bg-gradient-to-tr from-red-200 via-pink-200 to-rose-200",
+    "bg-gradient-to-tr from-green-200 via-teal-200 to-cyan-200",
+    "bg-gradient-to-tr from-pink-200 via-yellow-200 to-amber-200",
+    "bg-gradient-to-tr from-blue-200 via-purple-200 to-violet-200",
+    "bg-gradient-to-tr from-fuchsia-200 via-indigo-200 to-purple-200",
+    "bg-gradient-to-tr from-amber-200 via-rose-200 to-pink-200",
+    "bg-gradient-to-tr from-lime-200 via-green-200 to-emerald-200",
+    "bg-gradient-to-tr from-violet-200 via-purple-200 to-fuchsia-200",
+    "bg-gradient-to-tr from-orange-200 via-red-200 to-rose-200",
+    "bg-gradient-to-tr from-teal-200 via-cyan-200 to-blue-200",
+    "bg-gradient-to-tr from-emerald-200 via-lime-200 to-green-200",
+    "bg-gradient-to-tr from-yellow-200 via-amber-200 to-orange-200",
+    "bg-gradient-to-tr from-purple-200 via-fuchsia-200 to-indigo-200",
+    "bg-gradient-to-tr from-sky-200 via-blue-200 to-teal-200",
+    "bg-gradient-to-tr from-rose-200 via-pink-200 to-red-200",
+    "bg-gradient-to-tr from-indigo-200 via-violet-200 to-purple-200",
+    "bg-gradient-to-tr from-cyan-200 via-teal-200 to-blue-200",
+  ];
+  return gradients[Math.floor(Math.random() * gradients.length)];
+}
+
+const gradientBg = getRandomGradient();
 
 const formattedDate = date
   ? new Date(date).toLocaleDateString("en-gb", {
@@ -8,19 +38,40 @@ const formattedDate = date
       day: "numeric",
     })
   : null;
+
+const isRecipe = tags && tags.includes("recipes");
 ---
 
-<a href={url} class="group block pb-7 mb-0 !no-underline">
+<a href={url} class="group block pb-7 mb-18 !no-underline relative">
+  {
+    isRecipe ? (
+      <span class="text-xs uppercase text-brand-500 font-semibold tracking-widest mb-2 absolute -top-64 -right-24 transform rotate-15">
+        <Image src={foodIconImage} alt="A bowl of food." class="w-64 h-64" />
+      </span>
+    ) : null
+  }
   <article class="flex flex-col">
-    <div class="md:flex justify-between items-baseline mb-0">
-      <h4
-        class="text-brand-500 transition-colors text-sm md:text-base leading-normal m-0 group-hover:text-brand-400 group-hover:underline"
-      >
-        {title}
-      </h4>
+    <div
+      class={`flex justify-center items-center aspect-video w-full rounded mb-12 overflow-hidden ${gradientBg} bg-cover bg-center`}
+    >
+      {
+        previewImage ? (
+          <img
+            src={previewImage.url}
+            srcset={`${previewImage.url} 1x, ${previewImage.url2x} 2x, ${previewImage.url3x} 3x`}
+            alt={previewImage.alt}
+            class="mt-0 mb-0 w-full object-cover"
+          />
+        ) : null
+      }
     </div>
+    <h2
+      class="text-brand-500 transition-colors text-2xl leading-snug mt-0 mb-12 group-hover:text-brand-300 group-hover:underline"
+    >
+      {title}
+    </h2>
     <p
-      class="w-2/3 text-sm md:text-base leading-normal m-0 group-hover:text-brand-950 group-hover:dark:text-brand-200"
+      class="text-sm md:text-base mt-0 mb-0 group-hover:text-brand-950 group-hover:dark:text-brand-200"
     >
       {description}
     </p>

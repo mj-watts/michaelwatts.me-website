@@ -1,0 +1,45 @@
+---
+const { url, title, date, description, previewImage } = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-gb", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  : null;
+---
+
+<a
+  href={url}
+  class="group block !no-underline focus:focus-ring-2 focus:focus:ring-brand-500 focus:focus:ring-offset-2"
+>
+  <article class="flex flex-col md:flex-row">
+    <div
+      class="flex justify-center items-center aspect-video w-full overflow-hidden rounded bg-gradient-to-tr from-indigo-500 via-sky-500 to-emerald-500"
+    >
+      {
+        previewImage ? (
+          <img
+            src={previewImage.url}
+            srcset={`${previewImage.url} 1x, ${previewImage.url2x} 2x, ${previewImage.url3x} 3x`}
+            alt={previewImage.alt}
+            class="mt-0 mb-0 w-full object-cover"
+          />
+        ) : null
+      }
+    </div>
+    <div class="flex flex-col mt-12 md:mt-0 md:ms-32">
+      <h2
+        class="text-brand-500 transition-colors text-5xl leading-tight mt-0 mb-12 group-hover:text-brand-300 group-hover:underline"
+      >
+        {title}
+      </h2>
+      <p
+        class="w-2/3 text-sm md:text-base leading-normal mt-0 mb-0 group-hover:text-brand-950 group-hover:dark:text-brand-200"
+      >
+        {description}
+      </p>
+    </div>
+  </article>
+</a>

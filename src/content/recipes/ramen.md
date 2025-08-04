@@ -2,9 +2,14 @@
 title: "Quick Ramen"
 pubDate: 2024-03-07
 description: "A very quick base recipe to use as a springboard to ramen heights (or depths depending on how you look at it)..."
+previewImage:
+  url: "/posts/ramen.png"
+  url2x: "/posts/ramen@2x.png"
+  url3x: "/posts/ramen@3x.png"
+  alt: "Ramen bowl"
 author: "Michael Watts"
 tags: ["recipes"]
-draft: true
+draft: false
 ---
 
 ## Tare
