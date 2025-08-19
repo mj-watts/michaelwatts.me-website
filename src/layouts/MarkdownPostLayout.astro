@@ -1,0 +1,46 @@
+---
+import PostLayout from "../layouts/PostLayout.astro";
+import StatusPanel from "../components/StatusPanel.astro";
+
+const { frontmatter } = Astro.props;
+const { wip, description } = frontmatter;
+---
+
+<PostLayout
+  pageTitle={frontmatter.title}
+  pageDescription={description}
+  sidebar={true}
+>
+  <h1
+    class="border-b-1 border-brand-950 text-brand-50 text-4xl leading-tight font-bold text-balance bg-brand-800 -ms-5 ps-10 -me-5 -mt-8 pb-10 pt-8"
+  >
+    {frontmatter.title}
+  </h1>
+
+  {wip && <StatusPanel>Work in progress...</StatusPanel>}
+
+  <div class="prose dark:prose-invert prose-xl ms-12">
+    <slot />
+  </div>
+</PostLayout>
+
+<script>
+  const codeFigures = document.querySelectorAll(
+    "figure[data-rehype-pretty-code-figure]"
+  );
+
+  codeFigures.forEach((figure) => {
+    const pre = figure.querySelector("pre");
+    if (pre) {
+      const lang = pre.dataset.language;
+
+      if (!lang) return;
+
+      const div = document.createElement("div");
+      div.textContent = lang ?? "";
+      div.classList.add("language-tag");
+      div.classList.add(lang.toLowerCase().replace(" ", "-"));
+      figure.prepend(div);
+    }
+  });
+</script>

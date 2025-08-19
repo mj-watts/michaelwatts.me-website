@@ -1,0 +1,62 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPostSummary from "../components/BlogPostSummary.astro";
+import BlogPostHero from "../components/BlogPostHero.astro";
+
+const pageTitle = "About";
+const allPosts = await getCollection("posts");
+const allRecipes = await getCollection("recipes");
+
+const allPostsAndRecipes = [...allPosts, ...allRecipes].sort(
+  (a, b) =>
+    (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+);
+
+const publishedPostsAndRecipes = allPostsAndRecipes
+  .filter((post) => post.data.draft !== true)
+  .sort(
+    (a, b) =>
+      (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+  );
+---
+
+<BaseLayout pageTitle={pageTitle} sidebar={true}>
+  <h1>Posts</h1>
+
+  <section>
+    <article>
+      {
+        publishedPostsAndRecipes
+          .map((post) => (
+            <BlogPostHero
+              url={`/posts/${post.slug}/`}
+              title={post.data.title}
+              date={post.data.pubDate}
+              description={post.data.description}
+              previewImage={post.data.previewImage}
+              tags={post.data.tags}
+            />
+          ))
+          .at(0)
+      }
+    </article>
+  </section>
+
+  <ul class="mt-64 p-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-32">
+    {
+      publishedPostsAndRecipes
+        .slice(1)
+        .map((post) => (
+          <BlogPostSummary
+            url={`/posts/${post.slug}/`}
+            title={post.data.title}
+            date={post.data.pubDate}
+            description={post.data.description}
+            previewImage={post.data.previewImage}
+            tags={post.data.tags}
+          />
+        ))
+    }
+  </ul>
+</BaseLayout>

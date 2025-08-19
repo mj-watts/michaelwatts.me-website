@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import PostListItem from "../components/PostListItem.astro";
+
+const { classList } = Astro.props;
+
+const allPosts = await getCollection("posts");
+const publishedPosts = allPosts
+  .filter((post) => post.data.draft !== true)
+  .sort(
+    (a, b) =>
+      (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+  );
+---
+
+<aside
+  class:list={[classList]}
+  class="px-8 py-8 dark:bg-brand-900 bg-brand-300 border-r-1 border-brand-400 dark:border-brand-950"
+>
+  <a
+    href="#main"
+    class="sr-only ml-3 px-2 focus:static focus:w-auto focus:h-auto focus:overflow-visible"
+    >Skip to main content</a
+  >
+
+  <ul
+    id="menu-list"
+    class="list-none mt-0 mb-0 flex-col items-center p-4 pe-12"
+    role="navigation"
+  >
+    {
+      publishedPosts.map((post) => (
+        <PostListItem
+          url={`/posts/${post.slug}/`}
+          title={post.data.title}
+          date={post.data.pubDate}
+        />
+      ))
+    }
+  </ul>
+</aside>

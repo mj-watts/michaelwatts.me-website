@@ -1,0 +1,173 @@
+---
+
+---
+
+<style>
+  @layer properties {
+    @property --bg-x {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 50;
+    }
+    @property --bg-y {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: -200;
+    }
+    @property --glow-size {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --flash-color {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: hsl(calc(var(--accent-color-hue) * 1deg) 100% 58%);
+    }
+    @property --flash-size {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --text-flash-size {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --accent-color-hue {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --accent-color-hue {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --accent-color {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: hsl(calc(var(--accent-color-hue) * 1deg) 100% 58%);
+    }
+    @property --radial-bg-color {
+      syntax: "<color>";
+      inherits: true;
+      initial-value: black;
+    }
+  }
+
+  .glowing-button {
+    background-color: #121212;
+  }
+
+  .btn {
+    --background-color: hsl(270deg 92% 5%);
+    --dark-color: hsl(270deg 92% 2%);
+    --dark-color-hover: hsl(270deg 92% 12%);
+    --light-color: hsl(211deg 23% 51%);
+    --accent-color-hue: 260;
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 20%);
+    --radial-bg-color: var(--dark-color);
+    --bg-y: -50;
+    --bg-x: 200;
+    --glow-size: 2;
+    --flash-color: var(--accent-color);
+    --flash-size: 0;
+    --text-flash-size: 0;
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 80%);
+
+    /* Misc */
+    --outer-radius: 5px;
+    --inner-padding: 16px;
+    --outline-color: hsla(
+      calc(var(--accent-color-hue) * 1deg) 100% 58% / calc(var(--a11y) * 100%)
+    );
+  }
+
+  .btn {
+    background: var(--dark-color)
+      radial-gradient(
+        ellipse 70% 70% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
+        var(--radial-bg-color) 0%,
+        var(--dark-color) 100%
+      );
+    border-radius: var(--outer-radius);
+    z-index: 1;
+    box-shadow: 0 0 calc(var(--flash-size) * 1px) var(--flash-color);
+    text-shadow: 0 0 calc(var(--text-flash-size) * 1px) var(--text-flash-color);
+  }
+
+  .btn:before {
+    --padding: calc(var(--glow-size) * 1px);
+    content: "";
+    display: block;
+    position: absolute;
+    width: calc(100% - var(--padding));
+    height: calc(100% - var(--padding));
+    top: calc(var(--padding) / 2);
+    left: calc(var(--padding) / 2);
+    background: var(--dark-color);
+    border-radius: var(--outer-radius);
+    transition: background-color 0.8s ease;
+    z-index: -1;
+  }
+
+  .btn:hover {
+    animation:
+      glow 0.8s ease-in-out,
+      flash 0.3s ease-out,
+      text-flash 0.2 ease-out;
+    cursor: pointer;
+  }
+
+  .btn:hover:before {
+    background: var(--dark-color-hover);
+  }
+
+  @keyframes glow {
+    from {
+      --radial-bg-color: hsl(290deg 100% 100%);
+      --bg-x: 100;
+      --bg-y: 0;
+    }
+    50% {
+      --radial-bg-color: var(--accent-color);
+      --bg-x: 60;
+      --bg-y: 120;
+    }
+    to {
+      --radial-bg-color: var(--dark-color);
+      --bg-x: 60;
+      --bg-y: 120;
+    }
+  }
+
+  @keyframes flash {
+    from {
+      --flash-color: var(--accent-color);
+      --flash-size: 0;
+      --text-flash-size: 0;
+    }
+    10% {
+      --flash-color: var(--accent-color);
+      --flash-size: 5;
+      --text-flash-size: 2;
+    }
+    90% {
+      --flash-color: var(--accent-color);
+      --flash-size: 150;
+      --text-flash-size: 150;
+    }
+    to {
+      --flash-color: var(--accent-color);
+      --flash-size: 0;
+      --text-flash-size: 0;
+    }
+  }
+</style>
+
+<div class="glowing-button p-3 rounded-sm">
+  <button class="btn tracking-wide text-white border-none relative w-48 p-5"
+    >Button 1</button
+  >
+</div>

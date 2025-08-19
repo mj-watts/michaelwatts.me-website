@@ -1,0 +1,39 @@
+---
+import MainNav from "../components/MainNav.astro";
+import MainFooter from "../components/Footer.astro";
+import "../styles/styles.css";
+
+const mainTitle = "Michael Watts, Software Engineer";
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{mainTitle} | {pageTitle}</title>
+    <meta
+      name="description"
+      content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
+    <script
+      data-collect-dnt="true"
+      async
+      src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </head>
+  <body class="px-5">
+    <MainNav classList="mt-12 mb-48 px-5" />
+
+    <main
+      id="main"
+      role="main"
+      class="container mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
+    >
+      <slot />
+
+      <MainFooter />
+    </main>
+  </body>
+</html>

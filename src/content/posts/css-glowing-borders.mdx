@@ -1,0 +1,241 @@
+---
+title: "CSS glowing borders on hover"
+pubDate: 2024-02-23
+description: "A bit of arsing about with CSS to make a button glow on hover using CSS custom properties and keyframes"
+author: "Michael Watts"
+tags: ["html", "css"]
+wip: false
+---
+
+import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleForPost.astro";
+
+## Working example
+
+<GlowingButtonExampleForPost />
+
+## HTML
+
+```html
+<main>
+  <button class="btn">Button</button>
+  <button class="btn">Button</button>
+  <button class="btn">Button</button>
+</main>
+```
+
+## CSS breakdown
+
+### The `@property` rule
+
+The `@property` rule is part of a set of low-level APIs labeled [Houdini](https://developer.mozilla.org/en-US/docs/Web/API/Houdini_APIs).
+Houdini exposes parts of the CSS engine, allowing us to develop new CSS features.
+The `@property` itself lets us explicitly define our [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) like `--text-color` that can be used in CSS.
+With `@property`, we can define the syntax (type checking and constraining), set initial values, and define whether a custom property can inherit values or not.
+
+#### `@property` definition:
+
+```css
+@property --property-name {
+  syntax: "<type>";
+  inherits: true | false;
+  initial-value: <value>;
+}
+```
+
+Syntax type can be any of the following:
+
+- `<color>`
+- `<image>`
+- `<number>`
+- `<percentage>`
+- `<length>`
+- `<number>`
+- `<angle>`
+- [and more...](https://developer.mozilla.org/en-US/docs/Web/CSS/@property/syntax)
+
+#### `@property` usage example:
+
+```css
+@property --radial-bg-color {
+  syntax: "<>";>";
+  inherits: true;
+  initial-value: black;
+}
+```
+
+So for an example in the CSS below, we have defined a set of custom properties using the `@property` rule.
+One of those is the `--radial-bg-color` custom property, which updates our radial gradient color.
+
+Here `--radial-bg-color` is initially set to `black` but more crucially it can inherit values further down the chain.
+In our animation the `--radial-bg-color` property is animated from `hsl(290deg 100% 100%)` to `var(--accent-color)` to `var(--dark-color)` by assigning new values to it.
+
+If `--radial-bg-color` hadn't been defined in the first place as a custom property, the animation wouldn't work as expected.
+
+---
+
+## The whole CSS
+
+```css
+@layer properties {
+  @property --bg-x {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 50;
+  }
+  @property --bg-y {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: -200;
+  }
+  @property --glow-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --flash-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: hsl(calc(var(--accent-color-hue) * 1deg) 100% 58%);
+  }
+  @property --flash-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --text-flash-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --accent-color-hue {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --accent-color-hue {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --accent-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: hsl(calc(var(--accent-color-hue) * 1deg) 100% 58%);
+  }
+  @property --radial-bg-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: black;
+  }
+}
+
+.btn {
+  --background-color: hsl(270deg 92% 5%);
+  --dark-color: hsl(270deg 92% 2%);
+  --dark-color-hover: hsl(270deg 92% 12%);
+  --light-color: hsl(211deg 23% 51%);
+  --accent-color-hue: 260;
+  --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 20%);
+  --radial-bg-color: var(--dark-color);
+  --bg-y: -50;
+  --bg-x: 200;
+  --glow-size: 2;
+  --flash-color: var(--accent-color);
+  --flash-size: 0;
+  --text-flash-size: 0;
+  --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 80%);
+
+  /* Misc */
+  --outer-radius: 5px;
+  --inner-padding: 16px;
+  --outline-color: hsla(
+    calc(var(--accent-color-hue) * 1deg) 100% 58% / calc(var(--a11y) * 100%)
+  );
+}
+
+.btn {
+  font-family: "Mona sans", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: white;
+  border: none;
+  background: var(--dark-color) radial-gradient(
+      ellipse 70% 70% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
+      var(--radial-bg-color) 0%,
+      var(--dark-color) 100%
+    );
+  padding: var(--inner-padding);
+  border-radius: var(--outer-radius);
+  position: relative;
+  width: 200px;
+  z-index: 1;
+  box-shadow: 0 0 calc(var(--flash-size) * 1px) var(--flash-color);
+  text-shadow: 0 0 calc(var(--text-flash-size) * 1px) var(--text-flash-color);
+}
+
+.btn:before {
+  --padding: calc(var(--glow-size) * 1px);
+  content: "";
+  display: block;
+  position: absolute;
+  width: calc(100% - var(--padding));
+  height: calc(100% - var(--padding));
+  top: calc(var(--padding) / 2);
+  left: calc(var(--padding) / 2);
+  background: var(--dark-color);
+  border-radius: var(--outer-radius);
+  transition: background-color 0.8s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  animation: glow 0.8s ease-in-out, flash 0.3s ease-out, text-flash 0.2 ease-out;
+  cursor: pointer;
+}
+
+.btn:hover:before {
+  background: var(--dark-color-hover);
+}
+
+@keyframes glow {
+  from {
+    --radial-bg-color: hsl(290deg 100% 100%);
+    --bg-x: 100;
+    --bg-y: 0;
+  }
+  50% {
+    --radial-bg-color: var(--accent-color);
+    --bg-x: 60;
+    --bg-y: 120;
+  }
+  to {
+    --radial-bg-color: var(--dark-color);
+    --bg-x: 60;
+    --bg-y: 120;
+  }
+}
+
+@keyframes flash {
+  from {
+    --flash-color: var(--accent-color);
+    --flash-size: 0;
+    --text-flash-size: 0;
+  }
+  10% {
+    --flash-color: var(--accent-color);
+    --flash-size: 5;
+    --text-flash-size: 2;
+  }
+  90% {
+    --flash-color: var(--accent-color);
+    --flash-size: 150;
+    --text-flash-size: 150;
+  }
+  to {
+    --flash-color: var(--accent-color);
+    --flash-size: 0;
+    --text-flash-size: 0;
+  }
+}
+```

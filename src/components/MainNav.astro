@@ -1,0 +1,35 @@
+---
+import Avatar from "./Avatar.astro";
+import NavItem from "./NavItem.astro";
+
+const { classList } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<nav
+  class:list={["flex justify-between items-center", classList]}
+  role="banner"
+>
+  <Avatar />
+  <ul role="navigation" class="flex gap-4 list-none mt-0 mb-0">
+    <li
+      class:list={[
+        "font-bold mx-0 px-0 mt-0 mb-0",
+        currentPath === "" ? "active" : null,
+      ]}
+    >
+      <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
+    </li>
+    <li
+      class:list={[
+        "font-bold mx-0 px-0 mt-0 mb-0",
+        currentPath === "about" ? "active" : null,
+      ]}
+    >
+      <NavItem href="/about" isActive={currentPath === "about"}>
+        About
+      </NavItem>
+    </li>
+  </ul>
+</nav>

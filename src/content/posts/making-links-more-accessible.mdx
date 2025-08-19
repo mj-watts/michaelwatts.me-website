@@ -1,0 +1,174 @@
+---
+title: "Making links more accessible"
+pubDate: 2023-08-19
+description: "Making links more accessible for screen readers"
+author: "Michael Watts"
+tags: ["accessibility"]
+---
+
+export const exampleCss = {
+  ul: "list-none p-0 flex flex-col xl:flex-row gap-2 relative mt-0 mb-0 rounded-xs",
+  li: "p-0 mt-0 mb-0 flex flex-col gap-1 w-full",
+  header: "text-base font-bold uppercase bg-amber-500 text-brand-950 p-8 rounded mt-0 mb-1",
+  card: "border border-slate-200 border-0 bg-brand-950 rounded overflow-hidden shadow-xl flex flex-col",
+  innerUl: "mt-0 mb- 0 w-full list-none bg-brand-900 rounded font-mono p-0 text-black flex flex-col gap-1",
+  innerLi: "p-8 mb-0 mt-0 font-bold bg-brand-500 rounded list-none w-full",
+  innerLiLineThrough: " line-through opacity-25",
+  image: "object-cover aspect-auto w-full mt-0 mb-0 order-1"
+}
+
+
+> At least 1 in 5 people in the UK have a long term illness, impairment or disability. Many more have a temporary disability.
+>
+> &mdash; <cite>gov.uk website - Understanding accessibility</cite>
+
+There are [16 million people in the UK](https://www.scope.org.uk/media/disability-facts-figures/) who have a long term disability,
+many more with a temporary disability. Any one of us, at any given time, could experience an injury or illness that results in some form of disability
+with mobility, hearing, vision, or other potential impairments.
+
+To cover issues with visual impairments, I will focus on screen readers and how they interpret links on a web page.
+
+## Navigating web pages with a screen reader
+
+Testing pages with a screen reader is relatively easy if you're on windows you can grab a free copy of NVDA.
+NVDA documentation provides a list of shortcuts to navigate a website ([see here for a full list](https://webaim.org/resources/shortcuts/nvda)).
+
+### Navigating pages
+
+If you have not used a screen reader to navigate a web page, the amount of information fed back to you can be overwhelming. It can be a bit like visiting one of those busy old websites from the 90s, with flashing gifs, tickers, rainbows, etc. There is too much noise.
+
+One thing I've learned is the need for manually testing components with a screen reader during development. In the context of delivering information concisely to the user, the main objective is to provide an experience that is both minimalistic and tranquil so that the user does not feel overwhelmed, does not waste time and gets the information they are looking for. It's worth noting that automated methods such as UI or unit testing were less effective in attaining this goal. I'm not yet aware of any automated testing software that help in this regard.
+
+### Building a web component that provides concise information
+
+Below is an example of a very simple web component that provides too much information (for what it is conveying) and another example with improvements.
+
+#### Typical HTML for a list item with a link
+
+The below HTML represents a navigation list item with a link and an image. The link is wrapped around the image and the image has an alt tag. The link is also wrapped around a heading tag and a time tag.
+
+```html {1,3-4} /War a real/#a /A man stands/#b /01/02/24/#c
+<li>
+  <a href="https://example.com">
+    <img
+      src="/posts/manonbeach.jpg"
+      alt="A man stands on the edge of a cliff looking out to a rough sea."
+    />
+  </a>
+  <div>
+    <div>
+      <a href="https://example.com">
+        War a real threat and Europe not ready, warns Poland's PM
+      </a>
+    </div>
+    <time>01/02/24</time>
+  </div>
+</li>
+```
+
+This is what NVDA will read out aloud from the component on the left:
+
+<ul class={exampleCss.ul}>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>News component:</p>
+    <div class={exampleCss.card}>
+      <a href="https://example.com">
+        <img
+          src="/posts/manonbeach.jpg"
+          alt="A man stands on the edge of a cliff looking out to a rough sea."
+          class={exampleCss.image}
+        />
+      </a>
+      <div class="flex justify-between items-baseline p-8">
+        <p class="mb-0 mt-0">
+          <a href="https://example.com" class="leading-3 text-base font-bold">War a real threat and Europe not ready, warns Poland's PM</a>
+        </p>
+        <time class="text-sm">01/02/24</time>
+      </div>
+    </div>
+  </li>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>🤖 Screen reader:</p>
+    <ul class={exampleCss.innerUl}>
+      <li class={exampleCss.innerLi}>💬 link image to https://example.com</li>
+      <li class={exampleCss.innerLi}>💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
+      <li class={exampleCss.innerLi}>💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
+      <li class={exampleCss.innerLi}>💬 01/02/24</li>
+    </ul>
+  </li>
+</ul>
+
+And this is part of a list so it is worth considering that if there are many more items it could potentially overwhelm users relying on screen readers.
+
+#### Improving the component
+
+Changing the previous block to the following and using a neat little trick I nicked from the BBC website you can cut down the chatter to a single line:
+
+<ul class={exampleCss.ul}>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>News component:</p>
+    <div  class={exampleCss.card}>
+      <p class="order-2 flex justify-between items-baseline p-8 mt-0 mb-0">
+        <a href="https://example.com" class="text-lg leading-relaxed font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99">War a real threat and Europe not ready, warns Poland's PM</a>
+        <time class="text-sm">01/02/24</time>
+      </p>
+      <img
+        src="/posts/manonbeach.jpg"
+        alt="A man stands on the edge of a cliff looking out to a rough sea."
+        class={exampleCss.image}
+      />
+    </div>
+  </li>
+  <li class={exampleCss.li}>
+    <p class={exampleCss.header}>🤖 Screen reader:</p>
+    <ul class={exampleCss.innerUl}>
+      <li class={exampleCss.innerLi}>💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Image alt: "A man stands on the edge of a cliff..."</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Heading tag H6 0. Link "War a real threat and Europe not..."</li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 01/02/24</li>
+    </ul>
+  </li>
+</ul>
+
+Looks the same but the HTML is slightly different (see below). Essentially the image has an empty content pseudo element that is absolutely positioned
+over the image which is the trick to prevent the screen reader from reading out _everything_, it will read the essential lines of the headline and not announce headings or image alt text.
+
+##### HTML
+
+```html
+<ul>
+  <li class="article-block">
+    <p class="order-2">
+      <a href="https://example.com">
+        War a real threat and Europe not ready, warns Poland's PM
+      </a>
+      <time>01/02/24</time>
+    </p>
+    <img
+      src="https://example.com/source.png"
+      alt="A man stands on the edge of a cliff looking out to a rough sea"
+    />
+  </li>
+</ul>
+
+<style>
+  .article-block {
+    display: flex;
+    position: relative;
+  }
+
+  .article-block a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+  }
+</style>
+```
+
+From the above HTML, now only a single line is read out to the listener, all other (perhaps/perhaps not irrelevant) information is no longer presented.
+It's up to you to decide if this is a good thing or not in terms of the content that you wish to present to your users, but it does illustrate the importance of
+considering the semantics of your HTML structure, but also considering when it does look correct that the screen reader might not interpret it in the same way which is a key takeaway for me.

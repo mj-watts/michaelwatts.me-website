@@ -1,0 +1,13 @@
+---
+const { classList } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer role="contentinfo" class:list={["", classList]}>
+  <div class="prose dark:prose-invert prose-xl">
+    <p class="mt-0 mb-0 text-sm md:text-base opacity-75">
+      © Michael Watts, 2022 - {currentYear}
+    </p>
+  </div>
+</footer>

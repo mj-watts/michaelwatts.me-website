@@ -1,0 +1,60 @@
+---
+title: "The new CSS type attr"
+pubDate: 2025-08-19
+description: "Explore the new typed attr() function in CSS, which lets you use HTML attribute values as numbers, colours, lengths, and more for dynamic, data-driven styling."
+author: "Michael Watts"
+tags: ["CSS"]
+wip: false
+---
+
+CSS has long had the `attr()` function, but it's been limited to returning string values. The new typed `attr()` function changes this by allowing us to extract HTML attribute values and use them as proper CSS data types like numbers, colours, and lengths.
+
+## Piano Chords with Sound
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="Piano Chords in CSS with Sound" src="https://codepen.io/altescape/embed/PwPQByo?default-tab=&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/altescape/pen/PwPQByo">
+  Piano Chords in CSS with Sound</a> by Michael Watts (<a href="https://codepen.io/altescape">@altescape</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+## How it works
+
+The syntax is straightforward: `attr(attribute-name type, fallback)`. The type parameter tells CSS how to interpret the attribute value:
+
+- `string` - the default, returns text
+- `number` - parses numeric values
+- `length` - interprets as CSS length units (px, em, etc.)
+- `color` - parses colour values
+- `url` - handles URL references
+
+## Practical example
+
+Instead of writing:
+
+```css
+.element {
+  width: 100px;
+  height: 100px;
+}
+```
+
+You can now define dimensions directly in HTML:
+
+```html
+<div data-width="100" data-height="150"></div>
+```
+
+And use them in CSS:
+
+```css
+.element {
+  width: attr(data-width px, 100px);
+  height: attr(data-height px, 100px);
+}
+```
+
+This approach creates more dynamic, data-driven styling where HTML attributes control CSS properties. It's particularly useful for components that need varying dimensions or styling based on content.
+
+## Browser support
+
+Currently, browser support is limited, with only basic string support widely available. The typed variants are still experimental, but they represent an exciting direction for more flexible CSS styling.

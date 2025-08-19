@@ -1,0 +1,277 @@
+---
+title: "The new CSS @function rule"
+pubDate: 2025-08-18
+description: "Explore the new CSS @function rule—now available in Chrome—with examples, syntax, and practical use cases. Learn how custom functions and @scope can enhance your stylesheets as browser support expands."
+author: "Michael Watts"
+tags: ["CSS"]
+wip: false
+---
+
+CSS continues to evolve with powerful new features that bring programming-like capabilities directly to stylesheets. One of the most exciting recent additions is the `@function` rule, which allows developers to create custom CSS functions with parameters and logic. Let's explore this groundbreaking feature and how it can transform your styling workflow.
+
+## What is the @function Rule?
+
+The CSS `@function` rule enables you to define custom functions that can accept parameters, perform calculations, and return values. This brings a level of abstraction and reusability to CSS that was previously only available through preprocessors like Sass.
+
+```css
+@function rem-to-px(rem-value, base-size: 16px) {
+  result: calc(rem-value * base-size);
+}
+
+.header {
+  font-size: rem-to-px(1.5rem); /* Returns 24px */
+  margin: rem-to-px(2rem, 18px); /* Returns 36px with custom base */
+}
+```
+
+## Browser Support and Current Status
+
+As of August 2025, the `@function` rule has limited browser support:
+
+- **Chrome 139+**: Supported
+- **Firefox**: In development
+- **Safari**: Under consideration
+
+## Core Syntax and Structure
+
+The basic syntax follows this pattern:
+
+```css
+@function function-name(parameter1, parameter2: default-value) {
+  /* Function body with calculations */
+  result: /* return value */ ;
+}
+```
+
+### Parameters and Default Values
+
+Functions can accept multiple parameters with optional default values:
+
+```css
+@function spacing-scale(step, base: 1rem, ratio: 1.25) {
+  result: calc(base * pow(ratio, step));
+}
+
+.small-margin {
+  margin: spacing-scale(1);
+} /* 1.25rem */
+.large-margin {
+  margin: spacing-scale(3);
+} /* 1.953rem */
+.custom-margin {
+  margin: spacing-scale(2, 0.5rem, 1.5);
+} /* 1.125rem */
+```
+
+## Practical Examples
+
+### 1. Fluid Typography Function
+
+Create responsive typography that scales smoothly between viewport sizes:
+
+```css
+@function fluid-type(min-size, max-size, min-width: 320px, max-width: 1200px) {
+  slope: calc((max-size - min-size) / (max-width - min-width));
+  y-intercept: calc(min-size - slope * min-width);
+  result: clamp(min-size, calc(y-intercept + slope * 100vw), max-size);
+}
+
+.heading {
+  font-size: fluid-type(1.5rem, 3rem);
+}
+```
+
+### 2. Colour Manipulation Functions
+
+Generate colour variations programmatically:
+
+```css
+@function lighten-color(color, amount: 10%) {
+  result: color-mix(in oklch, color, white amount);
+}
+
+@function darken-color(color, amount: 10%) {
+  result: color-mix(in oklch, color, black amount);
+}
+
+:root {
+  --primary: #3498db;
+  --primary-light: lighten-color(var(--primary), 20%);
+  --primary-dark: darken-color(var(--primary), 15%);
+}
+```
+
+### 3. Grid Layout Helper
+
+Simplify CSS Grid calculations:
+
+```css
+@function grid-span(columns, total-columns: 12, gap: 2rem) {
+  column-width: calc((100% - (total-columns - 1) * gap) / total-columns);
+  result: calc(column-width * columns + (columns - 1) * gap);
+}
+
+.sidebar {
+  width: grid-span(3); /* Spans 3 of 12 columns */
+}
+
+.main-content {
+  width: grid-span(9); /* Spans 9 of 12 columns */
+}
+```
+
+## Understanding CSS @scope (Bonus Feature)
+
+While we're discussing new CSS features, it's worth mentioning `@scope`, another powerful addition that works well with custom functions.
+
+### What is @scope?
+
+The `@scope` rule allows you to limit CSS rules to specific DOM subtrees, providing better encapsulation and preventing style conflicts.
+
+```css
+@scope (.card) {
+  h2 {
+    color: var(--card-heading-color);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+}
+```
+
+### Combining @scope with @function
+
+You can use custom functions within scoped styles:
+
+```css
+@function card-spacing(multiplier: 1) {
+  result: calc(1rem * multiplier);
+}
+
+@scope (.product-card) {
+  .title {
+    margin-bottom: card-spacing(0.5);
+  }
+
+  .description {
+    padding: card-spacing(1.5);
+  }
+
+  .price {
+    margin-top: card-spacing(2);
+  }
+}
+```
+
+### Scope Boundaries
+
+You can also define lower boundaries to exclude certain elements:
+
+```css
+@scope (.article) to (.code-block) {
+  /* Styles apply to .article content but stop at .code-block */
+  p {
+    font-family: serif;
+  }
+}
+```
+
+## Benefits and Use Cases
+
+### 1. DRY (Don't Repeat Yourself) Principle
+
+Custom functions eliminate repetitive calculations:
+
+```css
+/* Before */
+.card-sm {
+  padding: calc(1rem * 0.75);
+}
+.card-md {
+  padding: calc(1rem * 1.25);
+}
+.card-lg {
+  padding: calc(1rem * 1.75);
+}
+
+/* After */
+@function size-scale(size) {
+  result: calc(1rem * size);
+}
+
+.card-sm {
+  padding: size-scale(0.75);
+}
+.card-md {
+  padding: size-scale(1.25);
+}
+.card-lg {
+  padding: size-scale(1.75);
+}
+```
+
+### 2. Maintainable Design Systems
+
+Create consistent spacing and sizing across components:
+
+```css
+@function design-token(category, scale) {
+  base-values: [
+    spacing: 0.5rem,
+    font-size: 1rem,
+    border-radius: 0.25rem
+  ];
+  result: calc(base-values[category] * scale);
+}
+```
+
+### 3. Complex Mathematical Operations
+
+Perform advanced calculations that would be difficult with basic calc():
+
+```css
+@function golden-ratio(step: 1) {
+  phi: 1.618033988749;
+  result: calc(1rem * pow(phi, step));
+}
+```
+
+## Best Practices
+
+1. **Use Descriptive Names**: Make function purposes clear
+2. **Provide Defaults**: Include sensible default values for parameters
+3. **Document Complex Logic**: Add comments for intricate calculations
+4. **Test Thoroughly**: Verify functions work across different contexts
+5. **Progressive Enhancement**: Provide fallbacks for unsupported browsers
+
+```css
+@function responsive-padding(size: medium) {
+  /* Fallback for browsers without @function support */
+  padding: 1rem;
+
+  /* Enhanced version */
+  @supports (result: test) {
+    sizes: [small: 0.75rem, medium: 1rem, large: 1.5rem];
+    result: sizes[size];
+  }
+}
+```
+
+## Looking Forward
+
+The `@function` rule represents a significant step toward making CSS more powerful and maintainable. As browser support improves, we can expect to see:
+
+- More complex design system implementations
+- Better integration with CSS custom properties
+- Enhanced developer tooling and debugging support
+- Community-driven function libraries
+
+## Conclusion
+
+CSS `@function` brings programming concepts directly to stylesheets, enabling more maintainable and reusable code. While still experimental, this feature promises to transform how we write CSS, making it more powerful and expressive than ever before.
+
+Combined with other modern CSS features like `@scope`, we're entering an era where CSS can handle complex design challenges without requiring external preprocessors or JavaScript solutions.
+
+Start experimenting with these features today in Chrome, and prepare for a future where CSS is more capable and developer-friendly than ever.

@@ -1,0 +1,27 @@
+---
+const { url, title, date, description, previewImage } = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-gb", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  : null;
+---
+
+<a
+  href={url}
+  class="group !no-underline flex flex-col items-start justify-center md:flex-row"
+>
+  <h2
+    class="text-brand-300 transition-colors text-5xl leading-tighter -mt-5 mb-0 me-24 group-hover:text-amber-400 group-focus:text-amber-400 text-balance border-b-8 border-brand-300 group-hover:border-amber-200 group-focus:border-amber-200 pb-24"
+  >
+    {title}
+  </h2>
+  <p
+    class="w-1/3 text-sm md:text-base leading-normal mt-0 mb-0 group-hover:text-amber-200 group-focus:text-amber-200"
+  >
+    {description}
+  </p>
+</a>
