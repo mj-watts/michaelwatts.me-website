@@ -11,7 +11,7 @@ CSS has long had the `attr()` function, but it's been limited to returning strin
 
 ## Piano Chords with Sound
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Piano Chords in CSS with Sound" src="https://codepen.io/altescape/embed/PwPQByo?default-tab=&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="580" style="width: 100%;" scrolling="no" title="Piano Chords in CSS with Sound" src="https://codepen.io/altescape/embed/PwPQByo?default-tab=&theme-id=dark" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/altescape/pen/PwPQByo">
   Piano Chords in CSS with Sound</a> by Michael Watts (<a href="https://codepen.io/altescape">@altescape</a>)
   on <a href="https://codepen.io">CodePen</a>.
