@@ -61,26 +61,25 @@
   }
 
   .btn {
-    --background-color: hsl(270deg 92% 5%);
-    --dark-color: hsl(270deg 92% 2%);
-    --dark-color-hover: hsl(270deg 92% 12%);
-    --light-color: hsl(211deg 23% 51%);
-    --accent-color-hue: 260;
-    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 20%);
-    --radial-bg-color: var(--dark-color);
+    --background-color: hsl(210deg 92% 20%);
+    --dark-color: hsl(210deg 92% 10%);
+    --dark-color-hover: hsl(210deg 92% 30%);
+    --light-color: hsl(210deg 92% 80%);
+    --accent-color-hue: 210;
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --radial-bg-color: var(--light-color);
     --bg-y: -50;
     --bg-x: 200;
-    --glow-size: 2;
-    --flash-color: var(--accent-color);
+    --glow-size: 10;
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.2);
     --flash-size: 0;
     --text-flash-size: 0;
-    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 80%);
-
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
     /* Misc */
     --outer-radius: 5px;
     --inner-padding: 16px;
     --outline-color: hsla(
-      calc(var(--accent-color-hue) * 1deg) 100% 58% / calc(var(--a11y) * 100%)
+      calc(var(--accent-color-hue) * 1deg) 100% 70% / calc(var(--a11y) * 100%)
     );
   }
 
@@ -114,7 +113,7 @@
 
   .btn:hover {
     animation:
-      glow 0.8s ease-in-out,
+      glow 0.2s ease-in-out,
       flash 0.3s ease-out,
       text-flash 0.2 ease-out;
     cursor: pointer;
@@ -154,8 +153,8 @@
       --text-flash-size: 2;
     }
     90% {
-      --flash-color: var(--accent-color);
-      --flash-size: 150;
+      --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.5);
+      --flash-size: 50;
       --text-flash-size: 150;
     }
     to {
@@ -167,7 +166,7 @@
 </style>
 
 <div class="glowing-button p-3 rounded-sm">
-  <button class="btn tracking-wide text-white border-none relative w-48 p-5"
+  <button class="btn tracking-wide text-white border-none relative w-full p-5"
     >Button 1</button
   >
 </div>

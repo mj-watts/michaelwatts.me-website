@@ -42,12 +42,15 @@ const isRecipe = tags && tags.includes("recipes");
 {
   !isRecipe ? (
     <li class="list-none p-0 mt-0 mb-0">
-      <a href={url} class="group block pb-7 mb-18 !no-underline relative">
+      <a
+        href={url}
+        class="group block pb-7 mb-18 !no-underline relative focus:bg-amber-950"
+      >
         <article class="flex flex-col">
-          <h2 class="text-brand-300 transition-colors text-2xl leading-snug mt-0 mb-12 group-hover:text-amber-400 group-focus:text-amber-400">
+          <h2 class="font-serif font-semibold text-brand-300 transition-colors text-2xl leading-snug mt-0 mb-12 group-hover:text-amber-400 group-focus:text-amber-400">
             {title}
           </h2>
-          <p class="text-sm md:text-base mt-0 mb-0 group-hover:text-amber-200 group-focus:text-amber-200">
+          <p class="font-serif text-sm md:text-base mt-0 mb-0 group-hover:text-amber-200 group-focus:text-amber-200">
             {description}
           </p>
         </article>

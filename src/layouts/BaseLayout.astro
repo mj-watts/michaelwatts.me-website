@@ -23,17 +23,13 @@ const { pageTitle } = Astro.props;
       async
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
-  <body class="px-5">
+  <body>
     <MainNav classList="mt-12 mb-48 px-5" />
 
-    <main
-      id="main"
-      role="main"
-      class="container mx-auto pb-4 prose dark:prose-invert prose-xl text-pretty"
-    >
+    <main id="main" role="main">
       <slot />
-
-      <MainFooter />
     </main>
+
+    <MainFooter />
   </body>
 </html>

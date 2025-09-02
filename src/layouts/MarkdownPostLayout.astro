@@ -1,6 +1,7 @@
 ---
 import PostLayout from "../layouts/PostLayout.astro";
-import StatusPanel from "../components/StatusPanel.astro";
+import MainNav from "../components/MainNav.astro";
+import MainFooter from "../components/Footer.astro";
 
 const { frontmatter } = Astro.props;
 const { wip, description } = frontmatter;
@@ -11,18 +12,24 @@ const { wip, description } = frontmatter;
   pageDescription={description}
   sidebar={true}
 >
-  <h1
-    class="border-b-1 border-brand-950 text-brand-50 text-4xl leading-tight font-bold text-balance bg-brand-800 -ms-5 ps-10 -me-5 -mt-8 pb-10 pt-8"
-  >
-    {frontmatter.title}
-  </h1>
+  <div class="prose dark:prose-invert prose-2xl mt-72 font-serif">
+    <h1
+      class="text-brand-50 md:text-7xl md:leading-72 font-black md:font-display text-balance"
+    >
+      {frontmatter.title}
+    </h1>
 
-  {wip && <StatusPanel>Work in progress...</StatusPanel>}
-
-  <div class="prose dark:prose-invert prose-xl ms-12">
     <slot />
+
+    <MainFooter classList="mt-12 pt-6 pb-2 px-8" />
   </div>
 </PostLayout>
+
+<script>
+  const webComponentsJS = await import.meta.glob("../web-components/**/*.ts", {
+    eager: true,
+  });
+</script>
 
 <script>
   const codeFigures = document.querySelectorAll(

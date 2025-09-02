@@ -17,17 +17,9 @@
   --color-brand-900: #0c4a6e;
   --color-brand-950: #082f49;
 
-  --font-display: 'proxima-nova', sans-serif;
+  --font-display: 'rl-folklor', sans-serif;
   --font-sans: 'proxima-nova', sans-serif;
-
-  --text-sm: 0.9rem;
-  --text-base: 1.1rem;
-  --text-lg: 1.18rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.563rem;
-  --text-3xl: 1.953rem;
-  --text-4xl: 2.441rem;
-  --text-5xl: 3.052rem;
+  --font-serif: 'study-variable', serif;
 
   --spacing: 1px;
 }
@@ -41,7 +33,7 @@
   }
 
   html {
-    @apply p-4 bg-brand-950;
+    @apply p-4 bg-brand-950 md:text-xl;
     scrollbar-color: #bae6fd #082f49;
   }
 
@@ -49,8 +41,12 @@
     @apply text-brand-400 hover:text-amber-400 focus:text-amber-400 focus:outline-2 focus:outline-offset-6 focus:outline-amber-400 rounded-xs;
   }
 
-  .content p:first-of-type {
-    @apply text-base md:text-xl;
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6 {
+    @apply text-balance;
   }
 
   .content ul {
