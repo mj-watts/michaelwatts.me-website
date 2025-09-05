@@ -54,11 +54,12 @@ body {
   background-color: var(--color-background);
   margin: 0;
   padding: 0;
-  padding-top: var(--nav-clearance, 0);
   zoom: var(--zoom);
 }
 
-
+#main {
+  padding-top: var(--nav-clearance, 0);
+}
 
 a {
   color: var(--color-text-link);

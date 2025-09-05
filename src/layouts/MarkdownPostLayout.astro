@@ -1,10 +1,8 @@
 ---
 import PostLayout from "../layouts/PostLayout.astro";
-import MainNav from "../components/MainNav.astro";
-import MainFooter from "../components/Footer.astro";
 
 const { frontmatter } = Astro.props;
-const { wip, description } = frontmatter;
+const { description } = frontmatter;
 ---
 
 <PostLayout
@@ -18,8 +16,6 @@ const { wip, description } = frontmatter;
     </h1>
 
     <slot />
-
-    <MainFooter />
   </div>
 </PostLayout>
 
