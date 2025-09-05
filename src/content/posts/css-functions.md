@@ -3,6 +3,7 @@ title: "The new CSS @function rule"
 pubDate: 2025-08-18
 description: "Explore the new CSS @function rule—now available in Chrome—with examples, syntax, and practical use cases. Learn how custom functions and @scope can enhance your stylesheets as browser support expands."
 author: "Michael Watts"
+readTime: 8
 tags: ["CSS"]
 wip: false
 ---

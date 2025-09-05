@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import PostListItem from "../components/PostListItem.astro";
+import AsideBlogListItem from "../components/AsideBlogListItem.astro";
 
 const { classList } = Astro.props;
 
@@ -13,24 +13,13 @@ const publishedPosts = allPosts
   );
 ---
 
-<aside
-  class:list={[classList]}
-  class="px-8 py-8 dark:bg-brand-900 bg-brand-300 border-r-1 border-brand-400 dark:border-brand-950"
->
-  <a
-    href="#main"
-    class="sr-only ml-3 px-2 focus:static focus:w-auto focus:h-auto focus:overflow-visible"
-    >Skip to main content</a
-  >
+<aside class:list={[classList]}>
+  <a href="#main">Skip to main content</a>
 
-  <ul
-    id="menu-list"
-    class="list-none mt-0 mb-0 flex-col items-center p-4 pe-12"
-    role="navigation"
-  >
+  <ul id="menu-list" role="navigation">
     {
       publishedPosts.map((post) => (
-        <PostListItem
+        <AsideBlogListItem
           url={`/posts/${post.slug}/`}
           title={post.data.title}
           date={post.data.pubDate}

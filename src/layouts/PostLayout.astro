@@ -20,12 +20,10 @@ const { pageTitle, pageDescription } = Astro.props;
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
   <body>
-    <MainNav classList="mt-12 mb-48 px-5" />
+    <MainNav />
 
-    <div class="md:grid md:grid-cols-8 gap-1">
-      <main id="main" role="main" class="md:col-span-6 md:col-start-2">
-        <slot />
-      </main>
-    </div>
+    <main id="main" role="main" class="container">
+      <slot />
+    </main>
   </body>
 </html>

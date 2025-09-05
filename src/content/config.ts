@@ -7,22 +7,7 @@ const postsCollection = defineCollection({
     pubDate: z.date(),
     description: z.string(),
     author: z.string(),
-    previewImage: z
-      .object({
-        url: z.string(),
-        url2x: z.string(),
-        url3x: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
-    image: z
-      .object({
-        url: z.string(),
-        url2x: z.string(),
-        url3x: z.string(),
-        alt: z.string(),
-      })
-      .optional(),
+    readTime: z.number().min(1),
     tags: z.array(z.string()),
     draft: z.boolean().optional(),
   }),

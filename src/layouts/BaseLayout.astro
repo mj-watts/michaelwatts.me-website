@@ -24,9 +24,9 @@ const { pageTitle } = Astro.props;
       src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
   <body>
-    <MainNav classList="mt-12 mb-48 px-5" />
+    <MainNav />
 
-    <main id="main" role="main">
+    <main id="main" role="main" class="container">
       <slot />
     </main>
 

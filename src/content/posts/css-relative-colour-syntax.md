@@ -1,8 +1,9 @@
 ---
 title: "CSS relative colour syntax"
 pubDate: 2024-02-16
-description: "Exploring new proposal for adapting colours based on another colour's channels and values"
+description: "Exploring new proposal for adapting colours based on another colour's channels and values."
 author: "Michael Watts"
+readTime: 4
 tags: ["typescript", "html", "css"]
 wip: false
 ---

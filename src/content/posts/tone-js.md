@@ -1,8 +1,9 @@
 ---
 title: "Exploring possibilities of Tone.js"
 pubDate: 2025-08-20
-description: "A deep dive into Tone.js synthesisers, envelopes, and effects - creating rich sonic landscapes in the browser"
+description: "A deep dive into Tone.js synthesisers, envelopes, and effects - creating rich sonic landscapes in the browser."
 author: "Michael Watts"
+readTime: 5
 tags: ["javascript", "music"]
 wip: false
 ---

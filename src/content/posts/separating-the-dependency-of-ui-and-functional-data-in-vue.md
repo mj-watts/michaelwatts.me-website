@@ -2,11 +2,7 @@
 title: "Separating UI and Functional Data Dependencies in Vue"
 pubDate: 2025-02-13
 description: "Learn how to cleanly separate user interface state from business logic in Vue applications using the Composition API, improving maintainability and testing."
-previewImage:
-  url: "/posts/function-ui-data-separation.png"
-  url2x: "/posts/function-ui-data-separation@2x.png"
-  url3x: "/posts/function-ui-data-separation@3x.png"
-  alt: "Separating UI and functional data"
+readTime: 8
 author: "Michael Watts"
 tags: ["vue", "composition api", "architecture", "state management"]
 ---

@@ -3,16 +3,7 @@ title: "Writing Expressive Tests with Gherkin and Vitest in TypeScript"
 pubDate: 2024-07-24
 description: "Learn how to write clear, behaviour-driven tests using Gherkin syntax with Vitest and TypeScript, enhanced by AI-powered coding assistance."
 author: "Michael Watts"
-previewImage:
-  url: "/posts/test-image-2.png"
-  url2x: "/posts/test-image-2.png"
-  url3x: "/posts/test-image-2.png"
-  alt: "Gherkin syntax"
-image:
-  url: "/posts/gherkin-illustration.png"
-  url2x: "/posts/gherkin-illustration@2x.png"
-  url3x: "/posts/gherkin-illustration@3x.png"
-  alt: "Gherkin syntax"
+readTime: 10
 tags: ["ai", "cursor", "vitest", "gherkin"]
 ---
 

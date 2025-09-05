@@ -1,8 +1,9 @@
 ---
 title: "Diff notation test with Shiki"
 pubDate: 2024-04-23
-description: "Testing  Shiki diff notation transformer plugin"
+description: "Testing  Shiki diff notation transformer plugin."
 author: "Michael Watts"
+readTime: 2
 tags: ["shiki"]
 wip: false
 ---
@@ -35,10 +36,10 @@ Let's look at some more practical examples. Here's a TypeScript interface modifi
 
 ```ts
 interface User {
-    name: string;
-    age: number; // [!code --]
-    dateOfBirth: Date; // [!code ++]
-    email: string;
+  name: string;
+  age: number; // [!code --]
+  dateOfBirth: Date; // [!code ++]
+  email: string;
 }
 ```
 
@@ -86,4 +87,4 @@ If you're interested in implementing this yourself, you'll need to install the S
 
 ---
 
-*Note: This post will be updated as I discover more features and workarounds.*
+_Note: This post will be updated as I discover more features and workarounds._

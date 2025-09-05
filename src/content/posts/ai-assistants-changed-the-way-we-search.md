@@ -3,6 +3,7 @@ title: "How AI assistants have changed the way we search the internet"
 pubDate: 2024-06-11
 description: "From Google's multi-tab searches to conversational AI assistants like Perplexity and Cursor, artificial intelligence has vastly transformed the way we find and interact with information online."
 author: "Michael Watts"
+readTime: 6
 tags: ["ai", "cursor", "internet"]
 ---
 
@@ -11,6 +12,7 @@ Remember when searching the internet meant crafting the perfect Google query, op
 ## The Old Way: Google's Link Paradise
 
 Just a few years ago, our typical workflow for finding information looked something like this:
+
 1. Type a carefully worded query into Google
 2. Open 4-5 promising links in new tabs
 3. Scan each page for relevant information
@@ -33,11 +35,13 @@ The experience is more like having a conversation with a well-read friend than h
 ## Cursor: Revolutionising Developer Workflows
 
 For developers, the transformation is even more dramatic. Cursor has changed how we approach coding challenges and documentation. The old way:
+
 - Searching Stack Overflow
 - Reading through lengthy documentation
 - Trial and error with different solutions
 
 We can now:
+
 - Ask Cursor directly about our code
 - Get contextually aware suggestions
 - Receive explanations tailored to our specific implementation
@@ -53,6 +57,3 @@ This shift from "searching for pages" to "asking AI assistants" represents a fun
 The old way of searching isn't going away entirely - there will always be times when we want to dive deep into source material. But for many of our daily questions and challenges, AI assistants have become the go-to solution. They've removed the friction between having a question and finding an answer, making information truly accessible in a way that wasn't possible before.
 
 As these tools continue to evolve, the gap between how we think and how we access information will continue to shrink. The future of search isn't about better algorithms for finding pages - it's about more intelligent ways of understanding and answering our questions.
-
-
-

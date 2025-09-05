@@ -1,8 +1,9 @@
 ---
 title: "Web components"
 pubDate: 2023-10-26
-description: "A paddle in the shallows of web components, a deeper dive to come later"
+description: "How to create custom elements and handle attributes using JavaScript and TypeScript."
 author: "Michael Watts"
+readTime: 4
 tags: ["web-components", "JavaScript", "TypeScript"]
 ---
 

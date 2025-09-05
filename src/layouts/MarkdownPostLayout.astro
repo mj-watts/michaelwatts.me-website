@@ -12,16 +12,14 @@ const { wip, description } = frontmatter;
   pageDescription={description}
   sidebar={true}
 >
-  <div class="prose dark:prose-invert prose-2xl mt-72 font-serif">
-    <h1
-      class="text-brand-50 md:text-7xl md:leading-72 font-black md:font-display text-balance"
-    >
+  <div>
+    <h1>
       {frontmatter.title}
     </h1>
 
     <slot />
 
-    <MainFooter classList="mt-12 pt-6 pb-2 px-8" />
+    <MainFooter />
   </div>
 </PostLayout>
 

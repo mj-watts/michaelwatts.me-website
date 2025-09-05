@@ -3,6 +3,7 @@ title: "JavaScript Proxy objects"
 pubDate: 2025-04-20
 description: "Explore how JavaScript Proxy objects enable powerful patterns for validation, logging, default values, and more by intercepting and customizing object operations."
 author: "Michael Watts"
+readTime: 5
 tags: ["javascript"]
 wip: false
 ---

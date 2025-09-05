@@ -1,13 +1,9 @@
 ---
 title: "JavaScript Array at method"
 pubDate: 2025-04-24
-description: "A relatively unknown method to access JavaScript Array elements, the at() method"
-previewImage:
-  url: "/posts/array-methods.png"
-  url2x: "/posts/array-methods@2x.png"
-  url3x: "/posts/array-methods@3x.png"
-  alt: "Array methods"
+description: "A relatively unknown method to access JavaScript Array elements, the at() method."
 author: "Michael Watts"
+readTime: 4
 tags: ["javascript"]
 wip: false
 ---

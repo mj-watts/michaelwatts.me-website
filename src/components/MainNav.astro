@@ -2,21 +2,68 @@
 import Avatar from "./Avatar.astro";
 import NavItem from "./NavItem.astro";
 
-const { classList } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav
-  class:list={["flex justify-between items-center", classList]}
-  role="banner"
->
-  <Avatar />
-  <ul role="navigation" class="flex gap-4 list-none mt-0 mb-0 font-serif">
-    <li
-      class:list={["mx-0 px-0 mt-0 mb-0", currentPath === "" ? "active" : null]}
-    >
-      <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
-    </li>
-  </ul>
+<nav role="banner">
+  <div class="container">
+    <div class="left">
+      <Avatar />
+      <ol role="navigation">
+        <li class:list={[currentPath === "" ? "active" : null]}>
+          <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
+        </li>
+        <li class:list={[currentPath === "work" ? "active" : null]}>
+          <NavItem href="/work" isActive={currentPath === "work"}>Work</NavItem>
+        </li>
+      </ol>
+    </div>
+    <div class="right">Software Engineer</div>
+  </div>
 </nav>
+
+<style>
+  nav {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-10);
+    padding: var(--space-2) 0;
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      position: fixed;
+      width: 100%;
+      background-color: var(--color-background);
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px hsla(from var(--color-text), 0.5);
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+  }
+
+  ol {
+    list-style: none;
+    display: flex;
+    gap: var(--space-8);
+    padding: 0;
+    margin: 0;
+  }
+
+  li.active a {
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>

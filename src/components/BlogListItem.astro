@@ -1,0 +1,128 @@
+---
+const { url, title, date, description, tags, readTime } = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("en-gb", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })
+  : null;
+
+const isRecipe = tags && tags.includes("recipes");
+---
+
+{
+  !isRecipe ? (
+    <li>
+      {formattedDate ? (
+        <time datetime={new Date(date).toISOString()}>{formattedDate}</time>
+      ) : null}
+      {readTime ? (
+        <span class="separator">•</span>
+
+        <time datetime={`PT${readTime}M`}>{readTime} min read</time>
+      ) : null}
+      <div role="heading">
+        <a href={url} tabindex="-1">
+          {title}
+        </a>
+      </div>
+      <div role="contentinfo">
+        {description}{" "}
+        <a href={url} aria-label={`Read more about ${title}`}>
+          Read more
+        </a>
+      </div>
+    </li>
+  ) : null
+}
+
+<style>
+  li {
+    list-style: none;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  time {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .separator {
+    margin: 0 var(--space-4);
+    color: var(--color-text-secondary);
+    opacity: 0.5;
+  }
+
+  [role="heading"] {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: var(--space-1) 0;
+  }
+
+  [role="heading"] a {
+    text-decoration: none;
+  }
+
+  [role="contentinfo"] {
+    margin-bottom: var(--space-1);
+    text-wrap: pretty;
+  }
+
+  [role="contentinfo"] a {
+    anchor-name: --read-more-anchor;
+    font-weight: bold;
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-background);
+    transition: border-color 0.1s ease-in-out;
+  }
+
+  [role="contentinfo"] a:hover {
+    border-color: var(--color-text-link-hover);
+  }
+
+  [role="contentinfo"] a:after {
+    content: "↦";
+    position: absolute;
+    position-anchor: --read-more-anchor;
+    transform: translateX(0) translateY(2px);
+    opacity: 0;
+    transition:
+      opacity 0.2s ease-in-out,
+      transform 0.2s ease-in-out;
+  }
+
+  [role="contentinfo"] a:hover:after {
+    opacity: 1;
+    transform: translateX(5px) translateY(2px);
+  }
+
+  [role="contentinfo"] a:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: 5px;
+    bottom: -5px;
+    border-radius: 2px;
+  }
+
+  [role="contentinfo"] a:focus {
+    background: var(--color-text-link-hover);
+    color: var(--color-background);
+  }
+
+  [role="contentinfo"] a:focus:before {
+    border: 1px solid var(--color-text-link-hover);
+    background-color: hsla(var(--color-text-link-hsl), 20%);
+    color: var(--color-background);
+  }
+
+  [role="contentinfo"] a:focus:after {
+    display: none;
+  }
+</style>
+</style>

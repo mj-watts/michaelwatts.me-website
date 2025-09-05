@@ -1,8 +1,9 @@
 ---
 title: "Schema validation in TypeScript"
 pubDate: 2024-04-11
-description: "Implement TypeScript friendly schema validation easily with Zod"
+description: "Implement TypeScript friendly schema validation easily with Zod."
 author: "Michael Watts"
+readTime: 5
 tags: ["typescript"]
 wip: false
 ---

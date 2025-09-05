@@ -1,12 +1,8 @@
 ---
 title: "Making long tests more readable with function composition"
 pubDate: 2025-02-12
-description: "Improve test readability by extracting repeated steps into reusable functions"
-previewImage:
-  url: "/posts/readable-tests.png"
-  url2x: "/posts/readable-tests@2x.png"
-  url3x: "/posts/readable-tests@3x.png"
-  alt: "Proxy objects"
+description: "Improve test readability by extracting repeated steps into reusable functions."
+readTime: 5
 author: "Michael Watts"
 tags: ["vitest", "gherkin"]
 ---

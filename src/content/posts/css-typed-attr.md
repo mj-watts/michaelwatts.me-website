@@ -3,6 +3,7 @@ title: "The new CSS type attr"
 pubDate: 2025-08-19
 description: "Explore the new typed attr() function in CSS, which lets you use HTML attribute values as numbers, colours, lengths, and more for dynamic, data-driven styling."
 author: "Michael Watts"
+readTime: 5
 tags: ["CSS"]
 wip: false
 ---

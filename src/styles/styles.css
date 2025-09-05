@@ -1,252 +1,177 @@
-@import 'tailwindcss';
-
-@layer theme, base, components, utilities;
-@plugin "@tailwindcss/typography";
-@custom-variant hover (&:hover);
-
-@theme {
-  --color-brand-50: #f0f9ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-200: #bae6fd;
-  --color-brand-300: #7dd3fc;
-  --color-brand-400: #38bdf8;
-  --color-brand-500: #0ea5e9;
-  --color-brand-600: #0284c7;
-  --color-brand-700: #0369a1;
-  --color-brand-800: #075985;
-  --color-brand-900: #0c4a6e;
-  --color-brand-950: #082f49;
-
-  --font-display: 'rl-folklor', sans-serif;
+:root {
+  --font-display: 'study-variable', sans-serif;
   --font-sans: 'proxima-nova', sans-serif;
   --font-serif: 'study-variable', serif;
 
-  --spacing: 1px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-9: 2.25rem;
+  --space-10: 2.5rem;
+  --space-11: 2.75rem;
+  --space-12: 3rem;
+
+  --container-width: 100%;
+  --zoom: 100%;
+
+  --color-background: #ffffff;
+  --color-primary: #6b46c1;
+  --color-primary-hsl: 271, 76%, 53%;
+  --color-secondary: #718096;
+  --color-secondary-hsl: 210, 16%, 51%;
+  --color-border: #e1e1e1;
+  --color-text: #333333;
+  --color-text-secondary: #555555;
+  --color-text-link: var(--color-primary);
+  --color-text-link-hsl: var(--color-primary-hsl);
+  --color-text-link-hover: hsl(from var(--color-text-link) h s calc(l / 1.5));
 }
 
-@reference "tailwindcss";
-
-
-@layer base {
-  ::selection {
-    @apply bg-brand-950 text-brand-200;
+@media (min-width: 640px) {
+  :root {
+    --container-width: 640px;
+    --zoom: 120%;
   }
+}
 
-  html {
-    @apply p-4 bg-brand-950 md:text-xl;
-    scrollbar-color: #bae6fd #082f49;
+@media (min-width: 768px) {
+  :root {
+    --container-width: 768px;
+    --zoom: 135%;
+    --nav-clearance: 5rem;
   }
+}
 
-  a {
-    @apply text-brand-400 hover:text-amber-400 focus:text-amber-400 focus:outline-2 focus:outline-offset-6 focus:outline-amber-400 rounded-xs;
-  }
+body {
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  margin: 0;
+  padding: 0;
+  padding-top: var(--nav-clearance, 0);
+  zoom: var(--zoom);
+}
 
-  .content h2,
-  .content h3,
-  .content h4,
-  .content h5,
-  .content h6 {
-    @apply text-balance;
-  }
 
-  .content ul {
-    @apply list-disc;
-  }
 
-  .content p,
-  .content li {
-    @apply text-sm md:text-base leading-normal break-words;
-  }
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+  transition: color 0.3s;
+}
 
-  .content li::marker {
-    @apply !text-brand-400;
-  }
+a:hover,
+a:focus {
+  color: var(--color-text-link-hover);
+}
 
-  .content blockquote {
-    @apply border-s-4 !border-brand-200;
-  }
+.container {
+  max-width: var(--container-width);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .content table {
-    @apply border-collapse border-brand-400;
-  }
 
-  .content table th,
-  .content table td {
-    @apply border border-brand-700 p-2;
-  }
+.content figure[data-rehype-pretty-code-figure] {
+  margin-top: 0;
+}
 
-  .content table th {
-    @apply bg-brand-700 text-brand-50 border-brand-800;
-  }
+figure[data-rehype-pretty-code-figure] {
+  position: relative;
+  margin: 2rem 0;
+}
 
-  .bg-stripes-fuchsia {
-    background-color: #e879f91a;
-    background-image: linear-gradient(
-      135deg,
-      #d946ef80 10%,
-      #0000 0,
-      #0000 50%,
-      #d946ef80 0,
-      #d946ef80 60%,
-      #0000 0,
-      #0000
-    );
-    background-size: 7.07px 7.07px;
-  }
+figure[data-rehype-pretty-code-figure] pre {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem;
+  margin-bottom: 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
 
-  .bg-stripes-amber {
-    background-color: #f59e0b1a;
-    background-image: linear-gradient(
-      135deg,
-      #f59e0b80 10%,
-      #0000 0,
-      #0000 50%,
-      #f59e0b80 0,
-      #f59e0b80 60%,
-      #0000 0,
-      #0000
-    );
-    background-size: 7.07px 7.07px;
-  }
-
-  .bg-stripes-slate {
-    background-color: #6c757d80;
-    background-image: linear-gradient(
-      135deg,
-      #6c757d80 10%,
-      #0000 0,
-      #0000 50%,
-      #6c757d80 0,
-      #6c757d80 60%,
-      #0000 0,
-      #0000
-    );
-    background-size: 7.07px 7.07px;
-  }
-
-  .content figure[data-rehype-pretty-code-figure] {
-    @apply !mt-0;
-  }
-
-  /* Code blocks */
-  figure[data-rehype-pretty-code-figure] {
-    @apply relative my-3;
-  }
-
+@media (min-width: 768px) {
   figure[data-rehype-pretty-code-figure] pre {
-    @apply p-2 md:p-4 mb-5 rounded-lg overflow-x-auto border border-slate-200 bg-slate-50;
+    padding: 1rem;
   }
+}
 
-  html.dark figure[data-rehype-pretty-code-figure] pre {
-    @apply bg-slate-950 border-slate-800;
-  }
+pre.has-diff code .diff {
+  position: relative;
+  transition: background-color 0.5s;
+  margin: 0 -24px;
+  padding: 0 24px;
+  width: calc(100% + 48px);
+  display: inline-block;
+}
 
-  [data-highlighted-line] {
-    background: rgba(255, 234, 200, 0.07);
-  }
+pre.has-diff code .diff.remove {
+  background-color: rgba(239, 68, 68, 0.2); /* Tailwind red-500 */
+}
 
-  [data-highlighted-chars] {
-    @apply bg-zinc-600/50 rounded;
-    box-shadow: 0 0 0 4px rgb(255, 234, 200 / 0.5);
-  }
+pre.has-diff code .diff.add {
+  background-color: rgba(34, 197, 94, 0.2); /* Tailwind green-500 */
+}
 
-  [data-chars-id] {
-    border-bottom-width: 2px;
-    padding: 0.25rem;
-    --tw-shadow: 0 0 #0000;
-    --tw-shadow-colored: 0 0 #0000;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-      var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
+pre.has-diff code .diff:before {
+  position: absolute;
+  left: 10px;
+}
 
-  [data-chars-id] {
-    @apply shadow-none p-1 border-b-2;
-  }
+pre.has-diff code .diff.add:before {
+  content: "+";
+  color: #22c55e; /* Tailwind green-500 */
+}
 
-  [data-chars-id] span {
-    @apply text-inherit!;
-  }
+pre.has-diff code .diff.remove:before {
+  content: "-";
+  color: #ef4444; /* Tailwind red-500 */
+}
 
-  [data-chars-id="a"] {
-    @apply text-pink-300! bg-rose-800/50 border-b-pink-600 font-bold;
-  }
+html.dark code[data-theme*=" "],
+html.dark code[data-theme*=" "] span {
+  background: transparent;
+  color: var(--shiki-dark);
+}
 
-  [data-chars-id="b"] {
-    @apply text-yellow-300! bg-yellow-800/50 border-b-yellow-600 font-bold;
-  }
-
-  [data-chars-id="c"] {
-    @apply text-purple-200! bg-purple-800/50 border-b-purple-600 font-bold;
-  }
-
-  [data-rehype-pretty-code-title] {
-    @apply bg-zinc-700 text-zinc-200 rounded-t-lg py-2 px-3 font-semibold text-sm;
-  }
-
-  figcaption + pre {
-    @apply rounded-t-none!;
-  }
-
-  /* Diff notatation */
-  pre.has-diff code .diff {
-    position: relative;
-    transition: background-color 0.5s;
-    margin: 0 -24px;
-    padding: 0 24px;
-    width: calc(100% + 48px);
-    display: inline-block;
-  }
-
-  pre.has-diff code .diff.remove {
-    @apply bg-red-500/20;
-  }
-
-  pre.has-diff code .diff.add {
-    @apply bg-green-500/20;
-  }
-
-  pre.has-diff code .diff:before {
-    position: absolute;
-    left: 10px;
-  }
-
-  pre.has-diff code .diff.add:before {
-    content: "+";
-    @apply text-green-500;
-  }
-
-  pre.has-diff code .diff.remove:before {
-    content: "-";
-    @apply text-red-500;
-  }
-
-  /* Dark/Light mode */
-  html.dark code[data-theme*=" "],
-  html.dark code[data-theme*=" "] span {
-    @apply bg-transparent;
-    color: var(--shiki-dark);
-  }
-
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    @apply bg-transparent;
-    color: var(--shiki-light);
-  }
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+  background: transparent;
+  color: var(--shiki-light);
 }
 
 code[data-language] {
   font-size: 0.75rem;
-  @apply relative md:text-sm;
+  position: relative;
+}
+@media (min-width: 768px) {
+  code[data-language] {
+    font-size: 1rem;
+  }
 }
 
 .language-tag {
-  /* Add any additional styling you need */
-  @apply px-2 bg-brand-50 dark:bg-brand-900 tracking-wider text-brand-50 dark:text-brand-950 font-semibold text-end absolute top-8 right-8 uppercase text-xs;
-  border-radius: 0.25rem;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  text-align: end;
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
 .language-tag.bash {
-  @apply text-green-500;
+  color: #22c55e;
 }
 
 .language-tag.typescript,
@@ -255,17 +180,17 @@ code[data-language] {
 .language-tag.js,
 .language-tag.jsx,
 .language-tag.tsx {
-  @apply text-blue-400;
+  color: #60a5fa;
 }
 
 .language-tag.gherkin {
-  @apply text-yellow-500;
+  color: #eab308;
 }
 
 .language-tag.css {
-  @apply text-pink-500;
+  color: #ec4899;
 }
 
 .language-tag.html {
-  @apply text-orange-500;
+  color: #f97316;
 }

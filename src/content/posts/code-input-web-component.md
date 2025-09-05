@@ -1,8 +1,9 @@
 ---
 title: "One-time-password code input web component"
 pubDate: 2024-01-15
-description: "One-time-code (OTP), PIN or code input boxes (like you see when logging into PayPal, etc.), a way of doing it with a single input but appears to have 6 separate inputs"
+description: "One-time-code (OTP), PIN or code input boxes (like you see when logging into PayPal, etc.), a way of doing it with a single input but appears to have 6 separate inputs."
 author: "Michael Watts"
+readTime: 10
 tags: ["typescript", "html", "css", "web components"]
 wip: false
 ---
@@ -10,7 +11,6 @@ wip: false
 ## Example of an OTP code input
 
 Here is an example of how to handle a one-time-password code input.
-
 
 **Working example:**
 <code-input></code-input>
