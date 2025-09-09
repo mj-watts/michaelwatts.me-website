@@ -14,13 +14,17 @@ const { pageTitle, pageDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{mainTitle} | {pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
-    <script
-      data-collect-dnt="true"
-      async
-      src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   </head>
   <body>
+    <script>
+      window.addEventListener("load", () => {
+        let link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "https://use.typekit.net/eaq6veo.css";
+        document.head.appendChild(link);
+      });
+    </script>
     <MainNav />
 
     <main id="main" role="main" class="container">
