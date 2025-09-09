@@ -17,17 +17,9 @@ const { pageTitle } = Astro.props;
       name="description"
       content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
     />
+    <link rel="preload" as="style" href="https://use.typekit.net/eaq6veo.css" />
   </head>
   <body>
-    <script>
-      window.addEventListener("load", () => {
-        let link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.type = "text/css";
-        link.href = "https://use.typekit.net/eaq6veo.css";
-        document.head.appendChild(link);
-      });
-    </script>
     <MainNav />
 
     <main id="main" role="main" class="container">
