@@ -6,11 +6,11 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav role="banner">
+<nav>
   <div class="container">
     <div class="left">
       <Avatar />
-      <ol role="navigation">
+      <ol>
         <li class:list={[currentPath === "" ? "active" : null]}>
           <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
         </li>

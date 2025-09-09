@@ -23,7 +23,7 @@ const isRecipe = tags && tags.includes("recipes");
 
         <time datetime={`PT${readTime}M`}>{readTime} min read</time>
       ) : null}
-      <div role="heading">
+      <div role="heading" aria-level="2">
         <a href={url} tabindex="-1">
           {title}
         </a>
