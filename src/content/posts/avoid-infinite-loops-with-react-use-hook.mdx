@@ -1,0 +1,59 @@
+---
+title: "Avoid infinite loops with React use hook when fetching data"
+pubDate: 2025-09-14
+description: "How to avoid infinite loops with React use hook when fetching data."
+author: "Michael Watts"
+readTime: 7
+tags: ["react", "hooks", "use", "data-fetching"]
+---
+
+React 19 introduces the new `use` hook, which is designed to work seamlessly with Suspense and ErrorBoundary. This addition to the React toolkit makes data fetching in components much more straightforward, but it does come with a few caveats that developers should be aware of.
+
+One common pitfall when using the `use` hook for data fetching is accidentally causing infinite render loops. This typically happens when a promise is created inside the component itself, rather than outside. Each render creates a new promise, which in turn triggers another render, and so on—leading to a never-ending cycle.
+
+To avoid this, it’s best practice to assign your promise to a variable outside the component. This ensures that the promise is only created once, and React can manage its state correctly without getting stuck in a loop.
+
+Let’s look at a simple example. Suppose you want to fetch a list of todos from an API and display them in your component. Here’s how you might do it using the `use` hook:
+
+```tsx
+import { use } from 'react';
+
+async function fetchTodos(): Promise<TodosResponse> {
+  // Mock a network delay for 2 seconds
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const res = await fetch("https://api.example.com/todos");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch todos");
+  }
+
+  return await res.json();
+}
+
+// Assign promise to variable outside component to prevent infinite rerender loops
+const todosPromise = fetchTodos();
+
+function Todos() {
+  const todos = use(todosPromise);
+  
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo.id}>{todo.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading todos...</div>}>
+      <Todos />
+    </Suspense>
+  );
+}
+```
+
+Notice how the `todosPromise` is declared outside the `Todos` component. This is the crucial step that prevents React from falling into an infinite loop. If you were to move the promise creation inside the component, React would keep trying to resolve a new promise on every render, which is exactly what we want to avoid.
+
+In summary, when using the `use` hook for data fetching in React 19, always ensure your promise is created outside the component. This simple pattern will help you avoid unnecessary headaches and keep your components running smoothly.

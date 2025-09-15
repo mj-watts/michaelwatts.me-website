@@ -43,6 +43,14 @@ const isRecipe = tags && tags.includes("recipes");
     list-style: none;
     margin-bottom: 2rem;
     position: relative;
+    border-bottom: 3px dashed var(--color-border);
+    padding-bottom: var(--space-5);
+  }
+
+  li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   div:nth-child(1) {

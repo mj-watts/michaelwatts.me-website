@@ -1,0 +1,175 @@
+---
+title: "Set up a mock API with MSW and React with Vite"
+pubDate: 2025-09-15
+description: "How to set up a mock API using MSW (Mock Service Worker) in a React application bootstrapped with Vite in your browser and testing environment."
+author: "Michael Watts"
+readTime: 7
+tags: ["msw", "react", "vite", "mock-api"]
+---
+
+Install the required dependencies:
+
+```bash
+npm install msw
+```
+
+## Set up MSW for testing with Vitest
+
+Add a **vitest.setup.ts** file to your project root, if not already present:
+
+```typescript
+import { beforeAll, afterEach, afterAll } from "vitest";
+import { server } from "./src/mocks/node";
+
+beforeAll(() => {
+  server.listen();
+});
+
+afterEach(() => {
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  server.close();
+});
+```
+
+## Add your mock API handlers
+
+Add a directory called **mocks** to your **src** directory.
+
+In the **mocks** directory create a file called **browser.ts** and add the following code:
+```typescript
+import { setupWorker } from "msw/browser";
+import { handlers } from "./handlers.ts";
+
+export const worker = setupWorker(...handlers);
+```
+
+
+In the **mocks** directory create a file called **node.ts**, add the following:
+```typescript
+import { setupServer } from "msw/node";
+import { handlers } from "./handlers.ts";
+
+export const server = setupServer(...handlers);
+```
+
+And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following:
+
+```typescript
+import { http, HttpResponse } from "msw";
+import { type PaymentsResponse } from "../types";
+
+export const handlers = [
+  http.get("https://api.example.com/user", () => {
+    return HttpResponse.json({
+      id: "abc-123",
+      firstName: "John",
+      lastName: "Maverick",
+    });
+  }),
+
+  http.get("https://api.example.com/payments", () => {
+    return HttpResponse.json<PaymentsResponse>({
+      payments: [
+        {
+          id: "payment-1",
+          customerName: "John Doe",
+          date: "2025-08-05T05:34:33.231Z",
+          amount: 100,
+          status: "completed",
+        },
+        {
+          id: "payment-2",
+          customerName: "Jane Smith",
+          date: "2025-09-06T05:34:33.231Z",
+          amount: 200,
+          status: "pending",
+        },
+        {
+          id: "payment-3",
+          customerName: "Alice Johnson",
+          date: "2025-10-07T05:34:33.231Z",
+          amount: 150,
+          status: "failed",
+        },
+      ],
+      metadata: {
+        result_set: {
+          count: 10,
+          offset: 0,
+          limit: 10,
+          total: 3,
+        },
+      },
+    });
+  }),
+];
+```
+
+## Only enabled in development
+
+In your **main.tsx** file, import and start the service worker _only_ in development mode.
+
+See below:
+
+```typescript
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+
+async function enableMocking() {
+  if (process.env.NODE_ENV !== "development") {
+    return;
+  }
+
+  const { worker } = await import("./mocks/browser.ts");
+
+  return worker.start();
+}
+
+enableMocking().then(() => {
+  createRoot(document.getElementById("root")!).render(
+    <App />
+  );
+});
+```
+
+## Add service worker to public directory
+
+Finally, add the **mockServiceWorker.js** file to your public directory.
+
+See https://mswjs.io/docs/integrations/browser/#generating-the-worker-script for instructions to copy the necessary service worker file into the public directory.
+
+But basically it involves running the following command:
+
+```bash
+npx msw init <PUBLIC_DIR> --save
+```
+
+Where `<PUBLIC_DIR>` is the path to your public directory.
+**mockServiceWorker.js** should now be in your public directory, no need to change it.
+
+In **package.json** add the following configuration:
+
+```json
+```bash
+npx msw init <PUBLIC_DIR> --save
+```
+
+Where `<PUBLIC_DIR>` is the path to your public directory.
+**mockServiceWorker.js** should now be in your public directory, no need to change it.
+
+In **package.json** add the following configuration:
+
+```json
+//...existing
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+//...existing
+```
+
+Now, during dev making any fetch requests to the URLs defined in your handlers will return the mock data.
