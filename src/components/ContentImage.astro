@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import ImageContainer from "./ImageContainer.astro";
+
+const {
+  src,
+  alt,
+  backgroundColor = "var(--color-primary)",
+  width = 840,
+  height = 354,
+} = Astro.props;
+---
+
+<ImageContainer height={height} width={width} backgroundColor={backgroundColor}>
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    style={{ objectFit: "cover", width: "100%" }}
+  />
+</ImageContainer>

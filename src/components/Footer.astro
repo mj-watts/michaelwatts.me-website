@@ -1,22 +1,24 @@
 ---
+import Container from "./Container.astro";
+
 const { classList } = Astro.props;
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer role="contentinfo" class:list={["", classList]}>
-  <div class="container">
-    <a href="#main">Back to top</a>
+<footer class:list={["", classList]}>
+  <Container>
     <div>
       © Michael Watts, 2022 - {currentYear}
     </div>
-  </div>
+  </Container>
 </footer>
 
 <style>
   footer {
-    border-top: 1px solid var(--color-border);
+    background-color: var(--color-border);
     margin-top: var(--space-10);
-    padding: var(--space-2) 0;
+    padding: var(--space-4) 0 var(--space-2);
+    text-align: center;
   }
 </style>

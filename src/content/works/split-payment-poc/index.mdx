@@ -1,0 +1,66 @@
+---
+title: "Split payment admin dashboard for HMRC"
+sectors: ["Fintech", "Taxation", "Payment Systems"]
+pubDate: 2025-09-08
+summary: "Helped conceive and develop an advanced admin portal as a proof of concept (POC) for HMRC, capable of handling and querying database transactions using Elasticsearch and Kibana for querying the data backend. Presented to HMRC’s technical review team at regular Sprint Reviews."
+image: "./cover.png"
+backgroundColor: "#573d7b"
+type: "Web Applications, Payment Systems"
+tags:
+  [
+    "TypeScript",
+    "Figma",
+    "Vue",
+    "Elasticsearch",
+    "Kibana",
+    "Vitest",
+    "Gherkin",
+    "GraphQL",
+  ]
+recommendationImage: '../../../images/chris-chorley.png'
+recommendationText: 'Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation.'
+recommendationFooter: 'Chris Chorley - Head of Engineering'
+recommendedWorks: [
+  {
+    image: '../sita-calculator/cover.png',
+    title: 'Sita Calculator',
+    description: 'A tool for calculating carbon footprints.',
+    bgcolor: '#4681cb',
+    link: '/works/sita-calculator',
+  },
+  {
+    image: '../ecomm-sites/cover.png',
+    title: 'E-commerce',
+    description: 'E-commerce websites and payment integrations.',
+    bgcolor: '#3c5f55',
+    link: '/works/ecomm-sites',
+  },
+  {
+    image: '../carbon-calculator/cover.png',
+    title: 'Carbon Footprint Calculator',
+    description: 'A tool for calculating carbon footprints.',
+    bgcolor: '#74c050',
+    link: '/works/carbon-calculator',
+  },
+]
+---
+import { Image } from "astro:assets";
+import ImageContainer from "../../../components/ImageContainer.astro";
+import ContentImage from "../../../components/ContentImage.astro";
+import coverImage from "./cover.png";
+import adminImage from "../swiftaid/admin.png"
+
+<ImageContainer height="410px">
+  <Image src={adminImage} alt="Collection of applications and websites." width={840} loading="lazy" />
+</ImageContainer>
+
+As part of Streeva’s collaboration with HMRC, I played a key role in conceiving and developing an advanced administrative portal as a proof of concept. The goal was to create a system capable of securely handling and querying large volumes of transactional data. To achieve this, I integrated Elasticsearch and Kibana, enabling powerful indexing, searching, and visualisation of the database backend.
+
+A crucial aspect of this project was ensuring transparency and demonstrating progress in line with HMRC’s technical requirements. I regularly presented the portal to HMRC’s technical review team during Sprint Reviews, showcasing new functionality, gathering feedback, and refining the system to meet their needs. This close collaboration ensured the solution not only addressed complex data challenges but also aligned with HMRC’s expectations for compliance and performance.
+
+We worked with Gherkin specifications to define behaviour-driven development (BDD) scenarios, which were then translated into unit tests using Vitest. This approach ensured that new features were delivered with consistency and reliability, reducing the risk of regressions and enhancing overall code quality.
+
+<ContentImage src={coverImage} alt="Collection of applications and websites." height={150} />
+
+The data is filtered using Elasticsearch, allowing for efficient querying and analysis.
+

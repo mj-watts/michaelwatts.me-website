@@ -1,57 +1,82 @@
 ---
 import Avatar from "./Avatar.astro";
 import NavItem from "./NavItem.astro";
+import Container from "./Container.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
 <nav>
-  <div class="container">
-    <div class="left">
-      <Avatar />
-      <ol>
-        <li class:list={[currentPath === "" ? "active" : null]}>
-          <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
-        </li>
-        <li class:list={[currentPath === "work" ? "active" : null]}>
-          <NavItem href="/work" isActive={currentPath === "work"}>Work</NavItem>
-        </li>
-      </ol>
+  <Container>
+    <div>
+      <div>
+        <Avatar />
+        <ol>
+          <li class:list={[currentPath === "" ? "active" : null]}>
+            <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
+          </li>
+          <li class:list={[currentPath === "works" ? "active" : null]}>
+            <NavItem href="/works" isActive={currentPath === "works"}
+              >Work</NavItem
+            >
+          </li>
+        </ol>
+      </div>
+      <div>Software Engineer</div>
     </div>
-    <div class="right">Software Engineer</div>
-  </div>
+  </Container>
 </nav>
 
 <style>
   nav {
-    border-bottom: 1px solid var(--color-border);
     margin-bottom: var(--space-10);
     padding: var(--space-2) 0;
+    background-color: var(--color-border);
   }
 
   @media (min-width: 768px) {
     nav {
       position: fixed;
       width: 100%;
-      background-color: var(--color-background);
       top: 0;
       left: 0;
       z-index: 100;
-      box-shadow: 0 2px 20px hsla(from var(--color-text), 0.5);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      background-color: var(--color-background);
+      transition: box-shadow 0.3s ease;
+    }
+
+    body.header-not-at-top nav {
+      background-color: var(--color-border);
+      box-shadow:
+        0 2px 20px rgba(0, 0, 0, 0.1),
+        0 2px 5px rgba(0, 0, 0, 0.1);
     }
   }
 
-  .container {
+  div:nth-child(1) {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .left {
+  div:nth-child(1) > div:first-child {
     display: flex;
     align-items: center;
     gap: var(--space-12);
+  }
+
+  div:nth-child(1) > div:last-child {
+    color: var(--color-secondary);
+    font-weight: 800;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    div:nth-child(1) > div:last-child {
+      display: block;
+    }
   }
 
   ol {
@@ -61,9 +86,24 @@ const currentPath = pathname.slice(1);
     padding: 0;
     margin: 0;
   }
-
-  li.active a {
-    font-weight: bold;
-    text-decoration: none;
-  }
 </style>
+
+<script>
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    let observer = new IntersectionObserver((entries) => {
+      if (entries[0].boundingClientRect.y < 0) {
+        document.body.classList.add("header-not-at-top");
+      } else {
+        document.body.classList.remove("header-not-at-top");
+      }
+    });
+    const anchor = document.querySelector("#top-of-site-pixel-anchor");
+    if (anchor) {
+      observer.observe(anchor);
+    }
+  }
+</script>

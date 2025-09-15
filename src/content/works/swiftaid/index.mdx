@@ -1,0 +1,83 @@
+---
+title: "Swiftaid"
+sectors: ["Fintech", "Charity", "Social Impact"]
+pubDate: 2025-09-09
+summary: "Used by JustGiving, Shelter and Comic Relief, amongst others, Swiftaid automates Gift Aid helping charities raise millions in additional funds to support their vital work."
+image: "./cover.png"
+type: "Web Applications, Design Systems"
+backgroundColor: "#be5d8e"
+tags:
+  [
+    "TypeScript",
+    "Preact",
+    "Vue",
+    "Vitest",
+    "Figma",
+    "C#",
+    "SPA",
+    "RestAPI",
+    "Stripe",
+    "Sentry",
+    "Payment systems",
+    "Azure",
+    "Cloudflare Workers",
+  ]
+recommendationImage: '../../../images/chris-chorley.png'
+recommendationText: 'Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation.'
+recommendationFooter: 'Chris Chorley - Head of Engineering'
+recommendedWorks: [
+  {
+    image: '../carbon-calculator/cover.png',
+    title: 'Carbon Footprint Calculator',
+    description: 'A tool for calculating carbon footprints.',
+    bgcolor: '#74c050',
+    link: '/works/carbon-calculator',
+  },
+  {
+    image: '../split-payment-poc/cover.png',
+    title: 'Split Payment Admin Dashboard',
+    description: 'A proof of concept for HMRC.',
+    bgcolor: '#573d7b',
+    link: '/works/split-payment-poc',
+  },
+  {
+    image: '../io-music/cover.png',
+    title: 'Music Mobile App',
+    description: 'A platform for discovering and sharing music.',
+    bgcolor: '#54519d',
+    link: '/works/io-music',
+  },
+]
+---
+import { Image } from "astro:assets";
+import ImageContainer from "../../../components/ImageContainer.astro";
+import ContentImage from "../../../components/ContentImage.astro";
+import coverImage from "./cover.png";
+import charityImage from "./charity.png";
+import adminImage from "./admin.png"
+
+<ImageContainer height="410px">
+  <Image src={coverImage} alt="Collection of applications and websites." width={840} loading="lazy" />
+</ImageContainer>
+
+Streeva is a fintech company on a mission to make transactions smarter. One of its flagship products, Swiftaid, is already trusted by major organisations such as JustGiving, Shelter, and Comic Relief. By automating the complex process of claiming Gift Aid, Swiftaid enables charities to secure millions in additional funding, ensuring more resources can be directed towards their vital work.
+
+When I joined the team, one of the key challenges was ensuring that Swiftaid could scale while maintaining reliability and compliance. The existing codebase relied heavily on JavaScript, which limited maintainability across a growing product suite. To address this, I led the transition from JavaScript to TypeScript, aligning the Vue.js applications with the C# backend services. This significantly improved both reliability and code quality, setting a stronger foundation for long-term growth.
+
+<ImageContainer height="310px">
+  <Image src={charityImage} alt="Collection of applications and websites." width={840} loading="lazy" />
+</ImageContainer>
+
+As part of Streeva’s collaboration with HMRC, I conceived and delivered an advanced administrative portal as a proof of concept. This involved integrating Elasticsearch and Kibana to manage and analyse complex database transactions, while also ensuring that the system met strict accessibility standards. Throughout this process, I worked closely with HMRC stakeholders, presenting sprint reviews to demonstrate progress and shape the platform to their requirements.
+
+<ImageContainer height="280px">
+  <Image src={adminImage} alt="Collection of applications and websites." width={840} loading="lazy" />
+</ImageContainer>
+
+Alongside this, I developed a secure portal using Vue and C# to give administrators greater transparency and control over donors, donations, and charity records. This system enabled staff to update, amend, or correct information with confidence, streamlining essential workflows and reducing the risk of errors. To further strengthen development practices, I introduced Behaviour-Driven Development through detailed Gherkin specifications, which were then translated into unit tests. This ensured that new features were delivered with consistency and a high degree of reliability.
+
+<ContentImage src={coverImage} alt="Collection of applications and websites." height={150} />
+
+I also worked on the early-stage prototyping of new applications and features using Figma, transforming design concepts into working products built with Vue and Preact. In addition, I helped design API specifications, identified and resolved security vulnerabilities, automated deployment processes, and documented systems to ensure they were easy to maintain and extend.
+
+Together, these efforts not only improved the robustness of Swiftaid but also equipped the platform to scale securely and sustainably. The results of this work have directly contributed to Swiftaid’s ability to support charities in raising millions more through Gift Aid—demonstrating how technical innovation can deliver meaningful social impact.

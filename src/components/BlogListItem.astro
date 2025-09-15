@@ -1,4 +1,6 @@
 ---
+import ListHeading from "./ListHeading.astro";
+
 const { url, title, date, description, tags, readTime } = Astro.props;
 
 const formattedDate = date
@@ -15,20 +17,18 @@ const isRecipe = tags && tags.includes("recipes");
 {
   !isRecipe ? (
     <li>
+      <div>
       {formattedDate ? (
         <time datetime={new Date(date).toISOString()}>{formattedDate}</time>
       ) : null}
       {readTime ? (
-        <span class="separator">•</span>
+        <span>•</span>
 
         <time datetime={`PT${readTime}M`}>{readTime} min read</time>
       ) : null}
-      <div role="heading" aria-level="2">
-        <a href={url} tabindex="-1">
-          {title}
-        </a>
       </div>
-      <div role="contentinfo">
+      <ListHeading role="heading" aria-level="2" url={url} title={title} />
+      <div>
         {description}{" "}
         <a href={url} aria-label={`Read more about ${title}`}>
           Read more
@@ -45,33 +45,24 @@ const isRecipe = tags && tags.includes("recipes");
     position: relative;
   }
 
-  time {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
+  div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    font-size: smaller;
+    opacity: 0.7;
+    gap: var(--space-3);
   }
 
-  .separator {
-    margin: 0 var(--space-4);
-    color: var(--color-text-secondary);
+  div:nth-child(1) > span {
     opacity: 0.5;
   }
 
-  [role="heading"] {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: var(--space-1) 0;
-  }
-
-  [role="heading"] a {
-    text-decoration: none;
-  }
-
-  [role="contentinfo"] {
+  div:nth-child(3) {
     margin-bottom: var(--space-1);
     text-wrap: pretty;
   }
 
-  [role="contentinfo"] a {
+  div:nth-child(3) a {
     anchor-name: --read-more-anchor;
     font-weight: bold;
     white-space: nowrap;
@@ -80,11 +71,11 @@ const isRecipe = tags && tags.includes("recipes");
     transition: border-color 0.1s ease-in-out;
   }
 
-  [role="contentinfo"] a:hover {
-    border-color: var(--color-text-link-hover);
+  div:nth-child(3) a:hover {
+    border-color: var(--color-link-hover);
   }
 
-  [role="contentinfo"] a:after {
+  div:nth-child(3) a:after {
     content: "↦";
     position: absolute;
     position-anchor: --read-more-anchor;
@@ -95,12 +86,12 @@ const isRecipe = tags && tags.includes("recipes");
       transform 0.2s ease-in-out;
   }
 
-  [role="contentinfo"] a:hover:after {
+  div:nth-child(3) a:hover:after {
     opacity: 1;
     transform: translateX(5px) translateY(2px);
   }
 
-  [role="contentinfo"] a:before {
+  div:nth-child(3) a:before {
     content: "";
     position: absolute;
     top: -5px;
@@ -110,19 +101,19 @@ const isRecipe = tags && tags.includes("recipes");
     border-radius: 2px;
   }
 
-  [role="contentinfo"] a:focus {
-    background: var(--color-text-link-hover);
+  div:nth-child(3) a:focus {
+    background: var(--color-link-hover);
+    color: var(--color-secondary);
+    outline: none;
+  }
+
+  div:nth-child(3) a:focus:before {
+    border: 1px solid var(--color-link-hover);
+    background-color: hsl(from var(--color-primary) h s l / 0.1);
     color: var(--color-background);
   }
 
-  [role="contentinfo"] a:focus:before {
-    border: 1px solid var(--color-text-link-hover);
-    background-color: hsla(var(--color-text-link-hsl), 20%);
-    color: var(--color-background);
-  }
-
-  [role="contentinfo"] a:focus:after {
+  div:nth-child(3) a:focus:after {
     display: none;
   }
-</style>
 </style>

@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import svelte from "@astrojs/svelte";
+import react from "@astrojs/react";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerNotationDiff } from "@shikijs/transformers";
@@ -8,7 +9,7 @@ import { transformerNotationDiff } from "@shikijs/transformers";
 // https://astro.build/config
 export default defineConfig({
   site: "https://michaelwatts.me",
-  integrations: [mdx(), svelte()],
+  integrations: [mdx(), svelte(), react()],
 
   markdown: {
     syntaxHighlight: false,
@@ -42,6 +43,9 @@ export default defineConfig({
   },
 
   vite: {
+    esbuild: {
+      loader: "tsx",
+    },
     plugins: [],
   },
 });

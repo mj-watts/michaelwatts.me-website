@@ -1,0 +1,45 @@
+---
+const { color = "--color-primary", invert, large } = Astro.props;
+
+const invertClass = invert ? "invert" : "";
+const largeClass = large ? "large" : "";
+---
+
+<span class:list={[invertClass, largeClass]}>
+  <slot />
+</span>
+
+<style define:vars={{ color }}>
+  span {
+    --height: 20px;
+    --border-radius: calc(var(--height) / 2);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: hsl(from var(--color) h s l / 0.1);
+    color: hsl(from var(--color) h s l / 0.9);
+    font-size: smaller;
+    font-style: italic;
+    padding: 0 var(--space-3);
+    white-space: nowrap;
+    margin: 0;
+    height: var(--height);
+    border-radius: var(--border-radius);
+    border: 1px solid hsl(from var(--color) h s l / 0.2);
+    zoom: 0.8;
+  }
+
+  span.invert {
+    background-color: hsl(from var(--color) h s calc(l * 0.9));
+    color: var(--color-background);
+    border: 1px solid hsl(from var(--color) h s calc(l * 0.9));
+  }
+
+  span.large {
+    --height: 28px;
+    --border-radius: calc(var(--height) / 2);
+    font-size: initial;
+    zoom: 1;
+  }
+</style>

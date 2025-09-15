@@ -1,20 +1,14 @@
 ---
 import PostLayout from "../layouts/PostLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
 
 const { frontmatter } = Astro.props;
 const { description } = frontmatter;
 ---
 
-<PostLayout
-  pageTitle={frontmatter.title}
-  pageDescription={description}
-  sidebar={true}
->
+<PostLayout pageTitle={frontmatter.title} pageDescription={description}>
   <div>
-    <h1>
-      {frontmatter.title}
-    </h1>
-
+    <PageTitle>{frontmatter.title}</PageTitle>
     <slot />
   </div>
 </PostLayout>

@@ -1,6 +1,8 @@
 ---
 import MainNav from "../components/MainNav.astro";
+import Main from "../components/Main.astro";
 import MainFooter from "../components/Footer.astro";
+import Container from "../components/Container.astro";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
@@ -22,9 +24,12 @@ const { pageTitle } = Astro.props;
   <body>
     <MainNav />
 
-    <main id="main" role="main" class="container">
-      <slot />
-    </main>
+    <Main>
+      <div id="top-of-site-pixel-anchor"></div>
+      <Container>
+        <slot />
+      </Container>
+    </Main>
 
     <MainFooter />
   </body>

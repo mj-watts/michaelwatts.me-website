@@ -17,32 +17,31 @@
   --space-12: 3rem;
 
   --container-width: 100%;
-  --zoom: 100%;
+  --font-size-base: 16px;
 
-  --color-background: #ffffff;
-  --color-primary: #6b46c1;
-  --color-primary-hsl: 271, 76%, 53%;
-  --color-secondary: #718096;
-  --color-secondary-hsl: 210, 16%, 51%;
-  --color-border: #e1e1e1;
-  --color-text: #333333;
-  --color-text-secondary: #555555;
-  --color-text-link: var(--color-primary);
-  --color-text-link-hsl: var(--color-primary-hsl);
-  --color-text-link-hover: hsl(from var(--color-text-link) h s calc(l / 1.5));
+  --color-primary: #be5d8e;
+  --color-secondary: #06061d;
+
+  --color-background: hsl(from var(--color-primary) h s calc(l * 1.9));
+  --color-border: hsl(from var(--color-primary) h s calc(l * 1.75));
+  --color-skeleton: #eeeeee;
+
+  --color-text: hsl(from var(--color-primary) h s calc(l * 0.4));
+  --color-link: hsl(from var(--color-link) h s calc(l / 1.5));
+  --color-link-hover: hsl(from var(--color-link) h s calc(l / 1.9));
 }
 
 @media (min-width: 640px) {
   :root {
     --container-width: 640px;
-    --zoom: 120%;
+    --font-size-base: 18px;
   }
 }
 
 @media (min-width: 768px) {
   :root {
-    --container-width: 768px;
-    --zoom: 135%;
+    --container-width: 840px;
+    --font-size-base: 23px;
     --nav-clearance: 5rem;
   }
 }
@@ -54,30 +53,18 @@ body {
   background-color: var(--color-background);
   margin: 0;
   padding: 0;
-  zoom: var(--zoom);
-}
-
-#main {
-  padding-top: var(--nav-clearance, 0);
+  font-size: var(--font-size-base);
 }
 
 a {
-  color: var(--color-text-link);
+  color: var(--color-link);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 a:hover,
 a:focus {
-  color: var(--color-text-link-hover);
-}
-
-.container {
-  max-width: var(--container-width);
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-  margin-left: auto;
-  margin-right: auto;
+  color: var(--color-link-hover);
 }
 
 
@@ -114,11 +101,11 @@ pre.has-diff code .diff {
 }
 
 pre.has-diff code .diff.remove {
-  background-color: rgba(239, 68, 68, 0.2); /* Tailwind red-500 */
+  background-color: rgba(239, 68, 68, 0.2);
 }
 
 pre.has-diff code .diff.add {
-  background-color: rgba(34, 197, 94, 0.2); /* Tailwind green-500 */
+  background-color: rgba(34, 197, 94, 0.2);
 }
 
 pre.has-diff code .diff:before {
@@ -128,12 +115,12 @@ pre.has-diff code .diff:before {
 
 pre.has-diff code .diff.add:before {
   content: "+";
-  color: #22c55e; /* Tailwind green-500 */
+  color: #22c55e;
 }
 
 pre.has-diff code .diff.remove:before {
   content: "-";
-  color: #ef4444; /* Tailwind red-500 */
+  color: #ef4444;
 }
 
 html.dark code[data-theme*=" "],

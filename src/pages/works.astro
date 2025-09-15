@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import LeadParagraph from "../components/LeadParagraph.astro";
+import WorkListItem from "../components/WorkListItem.astro";
+import UnorderedList from "../components/UnorderedList.astro";
+
+const pageTitle = "Selected work";
+const allWorks = await getCollection("works");
+
+const orderedWorks = allWorks.sort((a, b) => {
+  return (
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
+});
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <header>
+    <PageTitle>{pageTitle}</PageTitle>
+    <LeadParagraph>
+      A showcase of projects ranging from web applications to design systems.
+      Each project represents a unique challenge and creative solution.
+    </LeadParagraph>
+  </header>
+  <UnorderedList>
+    {
+      orderedWorks.map((work) => (
+        <WorkListItem
+          url={`/works/${work.slug}/`}
+          image={work.data.image}
+          title={work.data.title}
+          sectors={work.data.sectors}
+          summary={work.data.summary}
+          type={work.data.type}
+          tags={work.data.tags}
+          backgroundColor={work.data.backgroundColor}
+        />
+      ))
+    }
+  </UnorderedList>
+</BaseLayout>

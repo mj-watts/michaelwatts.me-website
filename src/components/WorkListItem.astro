@@ -1,0 +1,122 @@
+---
+import Chip from "./Chip.astro";
+import ListHeading from "./ListHeading.astro";
+import ContentImage from "./ContentImage.astro";
+
+const { url, title, sectors, summary, type, image, tags, backgroundColor } =
+  Astro.props;
+---
+
+<li>
+  <ContentImage
+    src={image}
+    alt={`${title} screenshot`}
+    height={300}
+    backgroundColor={backgroundColor || "var(--color-primary)"}
+  />
+  <div class="type">
+    <Chip color={backgroundColor} invert large>{type}</Chip>
+  </div>
+  <div class="title">
+    <ListHeading role="heading" aria-level="2" url={url} title={title} />
+  </div>
+  <div class="sectors">
+    {sectors.join(" • ")}
+  </div>
+  <div class="summary">
+    {summary}{" "}
+    <a href={url} aria-label={`View ${title}`}> View project </a>
+  </div>
+  <div class="tags">
+    {
+      tags.map((tag: string, index: number) => (
+        <Chip color={backgroundColor}>{tag}</Chip>
+      ))
+    }
+  </div>
+</li>
+
+<style define:vars={{ backgroundColor }}>
+  li {
+    list-style: none;
+    margin-bottom: 2rem;
+    position: relative;
+    border-top: 3px dashed hsl(from var(--backgroundColor) h s l / 0.1);
+    padding-top: var(--space-2);
+  }
+
+  li:hover {
+    border-top-color: transparent;
+  }
+
+  li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-background);
+    border-radius: 0;
+    z-index: -1;
+  }
+
+  li:hover:before {
+    top: calc(var(--space-1) * -1);
+    left: calc(var(--space-3) * -1);
+    right: calc(var(--space-3) * -1);
+    bottom: calc(var(--space-3) * -1);
+    border-radius: 8px;
+    background-color: hsl(from var(--backgroundColor) h s l / 0.1);
+  }
+
+  .type {
+    position: absolute;
+    top: var(--space-1);
+    left: var(--space-2);
+    margin: var(--space-3) 0 0;
+  }
+
+  .title {
+    margin: var(--space-3) 0 0;
+  }
+
+  .sectors {
+    margin-bottom: var(--space-3);
+    color: hsl(from var(--backgroundColor) h s calc(l * 0.3));
+    font-size: smaller;
+    font-style: italic;
+  }
+
+  .summary {
+    color: hsl(from var(--backgroundColor) h s calc(l * 0.7));
+    margin-bottom: var(--space-5);
+    text-wrap: pretty;
+  }
+
+  .summary a {
+    anchor-name: --read-more-anchor;
+    font-weight: bold;
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-background);
+    transition: border-color 0.1s ease-in-out;
+  }
+
+  .summary a:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .summary a:hover {
+    border-color: var(--color-link-hover);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+</style>

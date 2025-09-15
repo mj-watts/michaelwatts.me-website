@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogListItem from "../components/BlogListItem.astro";
+import UnorderedList from "../components/UnorderedList.astro";
 
 const pageTitle = "About";
 const allPosts = await getCollection("posts");
@@ -20,8 +21,8 @@ const publishedPostsAndRecipes = allPostsAndRecipes
   );
 ---
 
-<BaseLayout pageTitle={pageTitle} sidebar={true}>
-  <ul>
+<BaseLayout pageTitle={pageTitle}>
+  <UnorderedList>
     {
       publishedPostsAndRecipes.map((post) => (
         <BlogListItem
@@ -34,12 +35,5 @@ const publishedPostsAndRecipes = allPostsAndRecipes
         />
       ))
     }
-  </ul>
+  </UnorderedList>
 </BaseLayout>
-
-<style>
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-</style>
