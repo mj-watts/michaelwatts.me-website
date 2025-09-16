@@ -55,13 +55,16 @@ import { handlers } from "./handlers.ts";
 export const server = setupServer(...handlers);
 ```
 
-And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following:
+And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following with a delay function to simulate network latency:
 
 ```typescript
-import { http, HttpResponse } from "msw";
+import { http, delay, HttpResponse } from "msw";
 import { type PaymentsResponse } from "../types";
 
 export const handlers = [
+  http.all('*', async () => {
+    await delay(1000)
+  }),
   http.get("https://api.example.com/user", () => {
     return HttpResponse.json({
       id: "abc-123",

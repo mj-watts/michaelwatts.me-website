@@ -19,8 +19,6 @@ Let’s look at a simple example. Suppose you want to fetch a list of todos from
 import { use } from 'react';
 
 async function fetchTodos(): Promise<TodosResponse> {
-  // Mock a network delay for 2 seconds
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch("https://api.example.com/todos");
 
   if (!res.ok) {
