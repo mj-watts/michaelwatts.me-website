@@ -15,7 +15,7 @@ To avoid this, it’s best practice to assign your promise to a variable outside
 
 Let’s look at a simple example. Suppose you want to fetch a list of todos from an API and display them in your component. Here’s how you might do it using the `use` hook:
 
-```tsx
+```tsx title="App.tsx"
 import { use } from 'react';
 
 async function fetchTodos(): Promise<TodosResponse> {

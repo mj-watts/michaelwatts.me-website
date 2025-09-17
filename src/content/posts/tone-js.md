@@ -67,7 +67,7 @@ Here's a complete example that demonstrates synthesisers, envelopes, and effects
 
 And a look at the code:
 
-```html
+```html title="synth.html"
 <!DOCTYPE html>
 <html>
   <head>

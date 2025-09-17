@@ -17,7 +17,7 @@ npm install msw
 
 Add a **vitest.setup.ts** file to your project root, if not already present:
 
-```typescript
+```typescript title="vitest.setup.ts"
 import { beforeAll, afterEach, afterAll } from "vitest";
 import { server } from "./src/mocks/node";
 
@@ -39,7 +39,7 @@ afterAll(() => {
 Add a directory called **mocks** to your **src** directory.
 
 In the **mocks** directory create a file called **browser.ts** and add the following code:
-```typescript
+```typescript title="mocks/browser.ts"
 import { setupWorker } from "msw/browser";
 import { handlers } from "./handlers.ts";
 
@@ -48,7 +48,7 @@ export const worker = setupWorker(...handlers);
 
 
 In the **mocks** directory create a file called **node.ts**, add the following:
-```typescript
+```typescript title="mocks/node.ts"
 import { setupServer } from "msw/node";
 import { handlers } from "./handlers.ts";
 
@@ -57,7 +57,7 @@ export const server = setupServer(...handlers);
 
 And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following with a delay function to simulate network latency:
 
-```typescript
+```typescript title="mocks/handlers.ts"
 import { http, delay, HttpResponse } from "msw";
 import { type PaymentsResponse } from "../types";
 
@@ -117,7 +117,7 @@ In your **main.tsx** file, import and start the service worker _only_ in develop
 
 See below:
 
-```typescript
+```typescript title="main.tsx"
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 
@@ -155,7 +155,6 @@ Where `<PUBLIC_DIR>` is the path to your public directory.
 
 In **package.json** add the following configuration:
 
-```json
 ```bash
 npx msw init <PUBLIC_DIR> --save
 ```
@@ -165,7 +164,7 @@ Where `<PUBLIC_DIR>` is the path to your public directory.
 
 In **package.json** add the following configuration:
 
-```json
+```json title="package.json"
 //...existing
   "msw": {
     "workerDirectory": [
