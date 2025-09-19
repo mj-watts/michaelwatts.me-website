@@ -7,8 +7,12 @@ readTime: 4
 tags: ["typescript", "html", "css"]
 wip: false
 ---
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
-Relative colour syntax in CSS allows seamless colour manipulation, enabling developers to perform various actions such as lightening, darkening, saturating, desaturating, adjusting opacity, and inverting to name just a few.
+<LeadParagraph>
+  Relative colour syntax in CSS allows seamless colour manipulation, enabling developers to perform various actions such as lightening, darkening, saturating, desaturating, adjusting opacity, and inverting to name just a few.
+</LeadParagraph>
 
 ## Example 1: Lightening a brand colour
 
@@ -17,6 +21,7 @@ Here we are converting hue, saturation, lightness (`hsl`) channels because we're
 
 Each channel can then be edited as can be seen below a multiplier has been added to the lightness channel of `hsl`.
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 :root {
   --brand-color: hsl(300deg 75% 50%);
@@ -26,6 +31,7 @@ Each channel can then be edited as can be seen below a multiplier has been added
   background: hsl(from var(--brand-color) h s calc(l * 1.25));
 }
 ```
+</CodeBlock>
 
 ### Breaking it down:
 
@@ -37,7 +43,7 @@ If we replace the variable `var(--brand-color)` with `blue` it will make it clea
 4. `h s` are the unmodified `h` and `s` channels, there values have effectively come straight through
 5. `calc(l * 1.25)` the modified `l` channel where the value of `l` is being multiplied by `1.25`
 
-## Running example
+## Running example:
 
 <relative-color-syntax-example></relative-color-syntax-example>
 
@@ -45,6 +51,7 @@ If we replace the variable `var(--brand-color)` with `blue` it will make it clea
 
 Before relative colour syntax, to change the opacity of a colour, the rgb equivalent of a colour would have to be stored. A typical example, when using CSS variables, might be:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 :root {
   --brand-color: #ffcc00;
@@ -55,14 +62,17 @@ Before relative colour syntax, to change the opacity of a colour, the rgb equiva
   color: rgba(var(--brand-color-rgb), 0.5);
 }
 ```
+</CodeBlock>
 
 With CSS relative colour syntax the following is possible:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 .decrease-opacity-by-25 {
   background: rgb(from var(--brand-color) r g b / calc(alpha / 2));
 }
 ```
+</CodeBlock>
 
 Cutting out the need for repetitive rgb colour space conversions of existing variables.
 

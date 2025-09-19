@@ -10,7 +10,6 @@ import { transformerNotationDiff } from "@shikijs/transformers";
 export default defineConfig({
   site: "https://michaelwatts.me",
   integrations: [mdx(), svelte(), react()],
-
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [

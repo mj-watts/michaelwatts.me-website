@@ -7,7 +7,9 @@ author: "Michael Watts"
 tags: ["vitest", "gherkin"]
 ---
 
-Following on from my last post about [writing tests with Gherkin](/posts/writing-tests-with-gherkin-and-cursor). I thought I'd follow up with a post on how to make tests more readable.
+<LeadParagraph>
+  Following on from my last post about [writing tests with Gherkin](/posts/writing-tests-with-gherkin-and-cursor). I thought I'd follow up with a post on how to make tests more readable.
+</LeadParagraph>
 
 Sometimes tests can get really long, very fast. They become harder to read and more difficult to navigate making them a pain to maintain.
 
@@ -15,6 +17,7 @@ In this post I'll show a way to make long tests more readable by using function 
 
 If we have a test, something like this:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 test("Adding items to cart", ({ given, when, then }) => {
   let basket: ShoppingBasket;
@@ -36,6 +39,7 @@ test("Adding items to cart", ({ given, when, then }) => {
   });
 });
 ```
+</CodeBlock>
 
 It's fine at the moment but once it starts to grow it can get hard to read and difficult to navigate.
 
@@ -45,6 +49,7 @@ Pick out the repeated steps and extract them into functions, stick them at the t
 
 Here's an example of what the functions might look like...keeping it simple:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 const givenAnEmptyShoppingCart = (given) => {
   given("an empty shopping cart", () => {
@@ -64,9 +69,11 @@ const thenTheTotalShouldBe = (then, total) => {
   });
 };
 ```
+</CodeBlock>
 
 Update the test to use the new functions:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 test("Adding items to cart", ({ given, when, then }) => {
   givenAnEmptyShoppingCart(given);
@@ -75,5 +82,6 @@ test("Adding items to cart", ({ given, when, then }) => {
   thenTheTotalShouldBe(then, 12);
 });
 ```
+</CodeBlock>
 
 And the test is much shorter and easier to read and maintain.

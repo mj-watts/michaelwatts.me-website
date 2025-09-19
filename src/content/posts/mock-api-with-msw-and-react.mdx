@@ -7,17 +7,24 @@ readTime: 7
 tags: ["msw", "react", "vite", "mock-api"]
 ---
 
+<LeadParagraph>
+  How to set up a mock API using MSW (Mock Service Worker) in a React application bootstrapped with Vite in your browser and testing environment.
+</LeadParagraph>
+
 Install the required dependencies:
 
+<CodeBlock filename="Terminal">
 ```bash
 npm install msw
 ```
+</CodeBlock>
 
 ## Set up MSW for testing with Vitest
 
 Add a **vitest.setup.ts** file to your project root, if not already present:
 
-```typescript title="vitest.setup.ts"
+<CodeBlock lang="typescript" filename="vitest.setup.ts">
+```typescript
 import { beforeAll, afterEach, afterAll } from "vitest";
 import { server } from "./src/mocks/node";
 
@@ -33,31 +40,39 @@ afterAll(() => {
   server.close();
 });
 ```
+</CodeBlock>
 
 ## Add your mock API handlers
 
 Add a directory called **mocks** to your **src** directory.
 
 In the **mocks** directory create a file called **browser.ts** and add the following code:
-```typescript title="mocks/browser.ts"
+
+<CodeBlock lang="typescript" filename="mocks/browser.ts">
+```typescript
 import { setupWorker } from "msw/browser";
 import { handlers } from "./handlers.ts";
 
 export const worker = setupWorker(...handlers);
 ```
+</CodeBlock>
 
 
 In the **mocks** directory create a file called **node.ts**, add the following:
-```typescript title="mocks/node.ts"
+
+<CodeBlock lang="typescript" filename="mocks/node.ts">
+```typescript
 import { setupServer } from "msw/node";
 import { handlers } from "./handlers.ts";
 
 export const server = setupServer(...handlers);
 ```
+</CodeBlock>
 
 And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following with a delay function to simulate network latency:
 
-```typescript title="mocks/handlers.ts"
+<CodeBlock lang="typescript" filename="mocks/handlers.ts">
+```typescript
 import { http, delay, HttpResponse } from "msw";
 import { type PaymentsResponse } from "../types";
 
@@ -110,6 +125,7 @@ export const handlers = [
   }),
 ];
 ```
+</CodeBlock>
 
 ## Only enabled in development
 
@@ -117,7 +133,8 @@ In your **main.tsx** file, import and start the service worker _only_ in develop
 
 See below:
 
-```typescript title="main.tsx"
+<CodeBlock lang="typescript" filename="main.tsx">
+```typescript
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 
@@ -137,6 +154,8 @@ enableMocking().then(() => {
   );
 });
 ```
+</CodeBlock>
+
 
 ## Add service worker to public directory
 
@@ -146,24 +165,18 @@ See https://mswjs.io/docs/integrations/browser/#generating-the-worker-script for
 
 But basically it involves running the following command:
 
+<CodeBlock filename="Terminal">
 ```bash
 npx msw init <PUBLIC_DIR> --save
 ```
+</CodeBlock>
 
 Where `<PUBLIC_DIR>` is the path to your public directory.
 **mockServiceWorker.js** should now be in your public directory, no need to change it.
 
 In **package.json** add the following configuration:
 
-```bash
-npx msw init <PUBLIC_DIR> --save
-```
-
-Where `<PUBLIC_DIR>` is the path to your public directory.
-**mockServiceWorker.js** should now be in your public directory, no need to change it.
-
-In **package.json** add the following configuration:
-
+<CodeBlock lang="json" filename="package.json">
 ```json title="package.json"
 //...existing
   "msw": {
@@ -173,5 +186,6 @@ In **package.json** add the following configuration:
   }
 //...existing
 ```
+</CodeBlock>
 
 Now, during dev making any fetch requests to the URLs defined in your handlers will return the mock data.

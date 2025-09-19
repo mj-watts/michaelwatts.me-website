@@ -2,4 +2,4 @@
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Referrer-Policy: strict-origin
   Permissions-Policy: geolocation=(), microphone=(), sync-xhr=(self)
-  Content-Security-Policy: default-src https:; script-src 'self' https://static.cloudflareinsights.com 'sha256-1b+UlZJhHcIsue2osUQsDd414wmphINjaNArSL5UiRs='; img-src 'self' data:; frame-ancestors 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline' https://*.typekit.net;
+  Content-Security-Policy: default-src https:; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com 'sha256-1b+UlZJhHcIsue2osUQsDd414wmphINjaNArSL5UiRs='; img-src 'self' data:; frame-ancestors 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' 'unsafe-inline' https://*.typekit.net;

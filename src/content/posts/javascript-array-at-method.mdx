@@ -8,18 +8,25 @@ tags: ["javascript"]
 wip: false
 ---
 
+<LeadParagraph>
+  A relatively unknown method to access JavaScript Array elements, the at() method.
+</LeadParagraph>
+
 ## JavaScript Array at() method
 
 `Array.prototype.at()` is a nice way to access elements in an array particularly the last.
 
 ### Here's our array:
 
+<CodeBlock lang="js" filename="example.js">
 ```js
 const arr = [1, 2, 3, 4, 5];
 ```
+</CodeBlock>
 
 ### New Array.prototype.at method:
 
+<CodeBlock lang="js" filename="example.js">
 ```js
 // Getting the last element
 arr.at(-1); // Output: 5
@@ -27,11 +34,13 @@ arr.at(-1); // Output: 5
 // Getting element at index 2
 arr.at(2); // Output: 3
 ```
+</CodeBlock>
 
 ### Comparison with traditional array access:
 
 Here's how the same operations would look using traditional array access:
 
+<CodeBlock lang="js" filename="example.js">
 ```js
 // Getting the last element
 arr[arr.length - 1]; // Output: 5
@@ -39,6 +48,7 @@ arr[arr.length - 1]; // Output: 5
 // Getting element at index 2
 arr[2]; // Output: 3
 ```
+</CodeBlock>
 
 The `at()` method provides a more elegant way to access elements, especially with the last element silliness that used to happen.
 
@@ -50,8 +60,11 @@ Browser support is good https://caniuse.com/mdn-javascript_builtins_array_at
 
 If an element is out of range it returns `undefined`
 
+<CodeBlock lang="js" filename="example.js">
 ```js
 const arr = [1, 2, 3, 4, 5];
 assert.strictEqual(arr.at(2), 3);
 assert.strictEqual(arr.at(21), undefined);
 ```
+</CodeBlock>
+

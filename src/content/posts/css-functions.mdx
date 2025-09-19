@@ -7,13 +7,18 @@ readTime: 8
 tags: ["CSS"]
 wip: false
 ---
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
-CSS continues to evolve with powerful new features that bring programming-like capabilities directly to stylesheets. One of the most exciting recent additions is the `@function` rule, which allows developers to create custom CSS functions with parameters and logic. Let's explore this groundbreaking feature and how it can transform your styling workflow.
+<LeadParagraph>
+  CSS continues to evolve with powerful new features that bring programming-like capabilities directly to stylesheets. One of the most exciting recent additions is the `@function` rule, which allows developers to create custom CSS functions with parameters and logic. Let's explore this groundbreaking feature and how it can transform your styling workflow.
+</LeadParagraph>
 
 ## What is the @function Rule?
 
 The CSS `@function` rule enables you to define custom functions that can accept parameters, perform calculations, and return values. This brings a level of abstraction and reusability to CSS that was previously only available through preprocessors like Sass.
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function rem-to-px(rem-value, base-size: 16px) {
   result: calc(rem-value * base-size);
@@ -24,6 +29,7 @@ The CSS `@function` rule enables you to define custom functions that can accept 
   margin: rem-to-px(2rem, 18px); /* Returns 36px with custom base */
 }
 ```
+</CodeBlock>
 
 ## Browser Support and Current Status
 
@@ -37,17 +43,20 @@ As of August 2025, the `@function` rule has limited browser support:
 
 The basic syntax follows this pattern:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function function-name(parameter1, parameter2: default-value) {
   /* Function body with calculations */
   result: /* return value */ ;
 }
 ```
+</CodeBlock>
 
 ### Parameters and Default Values
 
 Functions can accept multiple parameters with optional default values:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function spacing-scale(step, base: 1rem, ratio: 1.25) {
   result: calc(base * pow(ratio, step));
@@ -63,6 +72,7 @@ Functions can accept multiple parameters with optional default values:
   margin: spacing-scale(2, 0.5rem, 1.5);
 } /* 1.125rem */
 ```
+</CodeBlock>
 
 ## Practical Examples
 
@@ -70,6 +80,7 @@ Functions can accept multiple parameters with optional default values:
 
 Create responsive typography that scales smoothly between viewport sizes:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function fluid-type(min-size, max-size, min-width: 320px, max-width: 1200px) {
   slope: calc((max-size - min-size) / (max-width - min-width));
@@ -81,11 +92,13 @@ Create responsive typography that scales smoothly between viewport sizes:
   font-size: fluid-type(1.5rem, 3rem);
 }
 ```
+</CodeBlock>
 
 ### 2. Colour Manipulation Functions
 
 Generate colour variations programmatically:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function lighten-color(color, amount: 10%) {
   result: color-mix(in oklch, color, white amount);
@@ -101,11 +114,13 @@ Generate colour variations programmatically:
   --primary-dark: darken-color(var(--primary), 15%);
 }
 ```
+</CodeBlock>
 
 ### 3. Grid Layout Helper
 
 Simplify CSS Grid calculations:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function grid-span(columns, total-columns: 12, gap: 2rem) {
   column-width: calc((100% - (total-columns - 1) * gap) / total-columns);
@@ -120,6 +135,7 @@ Simplify CSS Grid calculations:
   width: grid-span(9); /* Spans 9 of 12 columns */
 }
 ```
+</CodeBlock>
 
 ## Understanding CSS @scope (Bonus Feature)
 
@@ -129,6 +145,7 @@ While we're discussing new CSS features, it's worth mentioning `@scope`, another
 
 The `@scope` rule allows you to limit CSS rules to specific DOM subtrees, providing better encapsulation and preventing style conflicts.
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @scope (.card) {
   h2 {
@@ -141,11 +158,13 @@ The `@scope` rule allows you to limit CSS rules to specific DOM subtrees, provid
   }
 }
 ```
+</CodeBlock>
 
 ### Combining @scope with @function
 
 You can use custom functions within scoped styles:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function card-spacing(multiplier: 1) {
   result: calc(1rem * multiplier);
@@ -165,11 +184,13 @@ You can use custom functions within scoped styles:
   }
 }
 ```
+</CodeBlock>
 
 ### Scope Boundaries
 
 You can also define lower boundaries to exclude certain elements:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @scope (.article) to (.code-block) {
   /* Styles apply to .article content but stop at .code-block */
@@ -178,6 +199,7 @@ You can also define lower boundaries to exclude certain elements:
   }
 }
 ```
+</CodeBlock>
 
 ## Benefits and Use Cases
 
@@ -185,6 +207,7 @@ You can also define lower boundaries to exclude certain elements:
 
 Custom functions eliminate repetitive calculations:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 /* Before */
 .card-sm {
@@ -212,11 +235,13 @@ Custom functions eliminate repetitive calculations:
   padding: size-scale(1.75);
 }
 ```
+</CodeBlock>
 
 ### 2. Maintainable Design Systems
 
 Create consistent spacing and sizing across components:
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function design-token(category, scale) {
   base-values: [
@@ -227,17 +252,20 @@ Create consistent spacing and sizing across components:
   result: calc(base-values[category] * scale);
 }
 ```
+</CodeBlock>
 
 ### 3. Complex Mathematical Operations
 
 Perform advanced calculations that would be difficult with basic calc():
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function golden-ratio(step: 1) {
   phi: 1.618033988749;
   result: calc(1rem * pow(phi, step));
 }
 ```
+</CodeBlock>
 
 ## Best Practices
 
@@ -247,6 +275,7 @@ Perform advanced calculations that would be difficult with basic calc():
 4. **Test Thoroughly**: Verify functions work across different contexts
 5. **Progressive Enhancement**: Provide fallbacks for unsupported browsers
 
+<CodeBlock lang="css" filename="example.css">
 ```css
 @function responsive-padding(size: medium) {
   /* Fallback for browsers without @function support */
@@ -259,6 +288,7 @@ Perform advanced calculations that would be difficult with basic calc():
   }
 }
 ```
+</CodeBlock>
 
 ## Looking Forward
 

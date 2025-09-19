@@ -7,8 +7,13 @@ readTime: 6
 tags: ["html", "css"]
 wip: false
 ---
-
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleForPost.astro";
+
+<LeadParagraph>
+  A bit of arsing about with CSS to make a button glow on hover using CSS custom properties and keyframes.
+</LeadParagraph>
 
 ## Working example
 
@@ -16,6 +21,7 @@ import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleFo
 
 ## HTML
 
+<CodeBlock lang="html" filename="example.html">
 ```html
 <main>
   <button class="btn">Button</button>
@@ -23,6 +29,7 @@ import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleFo
   <button class="btn">Button</button>
 </main>
 ```
+</CodeBlock>
 
 ## CSS breakdown
 
@@ -35,6 +42,7 @@ With `@property`, we can define the syntax (type checking and constraining), set
 
 #### `@property` definition:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 @property --property-name {
   syntax: "<type>";
@@ -42,6 +50,7 @@ With `@property`, we can define the syntax (type checking and constraining), set
   initial-value: <value>;
 }
 ```
+</CodeBlock>
 
 Syntax type can be any of the following:
 
@@ -56,13 +65,15 @@ Syntax type can be any of the following:
 
 #### `@property` usage example:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 @property --radial-bg-color {
-  syntax: "<>";>";
+  syntax: "<color>";
   inherits: true;
   initial-value: black;
 }
 ```
+</CodeBlock>
 
 So for an example in the CSS below, we have defined a set of custom properties using the `@property` rule.
 One of those is the `--radial-bg-color` custom property, which updates our radial gradient color.
@@ -76,6 +87,7 @@ If `--radial-bg-color` hadn't been defined in the first place as a custom proper
 
 ## The whole CSS
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 @layer properties {
   @property --bg-x {
@@ -240,3 +252,4 @@ If `--radial-bg-color` hadn't been defined in the first place as a custom proper
   }
 }
 ```
+</CodeBlock>

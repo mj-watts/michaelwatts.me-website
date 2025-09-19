@@ -1,6 +1,10 @@
----
-
----
+<div class="glowing-button">
+  <button class="btn">Button 1</button>
+  <button class="btn red">Button 2</button>
+  <button class="btn orange">Button 3</button>
+  <button class="btn lilac">Button 4</button>
+  <button class="btn green">Button 5</button>
+</div>
 
 <style>
   @layer properties {
@@ -56,34 +60,43 @@
     }
   }
 
+  @scope (.glowing-button) {
+    :scope {
+      --a11y: 0.5; /* 0 to 1 - controls the contrast of the outline */
+      --background-color: hsl(210deg 92% 20%);
+      --dark-color: hsl(210deg 92% 10%);
+      --dark-color-hover: hsl(210deg 92% 30%);
+      --light-color: hsl(210deg 92% 80%);
+      --accent-color-hue: 210;
+      --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+      --radial-bg-color: var(--light-color);
+      --bg-y: -50;
+      --bg-x: 200;
+      --glow-size: 2;
+      --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.2);
+      --flash-size: 0;
+      --text-flash-size: 0;
+      --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
+      /* Misc */
+      --outer-radius: 5px;
+      --inner-padding: 16px;
+      --outline-color: hsla(
+        calc(var(--accent-color-hue) * 1deg) 100% 70% / calc(var(--a11y) * 100%)
+      );
+    }
+  }
+
   .glowing-button {
     background-color: #121212;
+    position: relative;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .btn {
-    --background-color: hsl(210deg 92% 20%);
-    --dark-color: hsl(210deg 92% 10%);
-    --dark-color-hover: hsl(210deg 92% 30%);
-    --light-color: hsl(210deg 92% 80%);
-    --accent-color-hue: 210;
-    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
-    --radial-bg-color: var(--light-color);
-    --bg-y: -50;
-    --bg-x: 200;
-    --glow-size: 2;
-    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.2);
-    --flash-size: 0;
-    --text-flash-size: 0;
-    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
-    /* Misc */
-    --outer-radius: 5px;
-    --inner-padding: 16px;
-    --outline-color: hsla(
-      calc(var(--accent-color-hue) * 1deg) 100% 70% / calc(var(--a11y) * 100%)
-    );
-  }
-
-  .btn {
+    position: relative;
     background: var(--dark-color)
       radial-gradient(
         ellipse 70% 70% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
@@ -94,6 +107,55 @@
     z-index: 1;
     box-shadow: 0 0 calc(var(--flash-size) * 1px) var(--flash-color);
     text-shadow: 0 0 calc(var(--text-flash-size) * 1px) var(--text-flash-color);
+    padding: var(--inner-padding);
+    font-size: 1.25rem;
+    font-family: sans-serif;
+    color: var(--light-color);
+    border: 2px solid var(--outline-color);
+  }
+
+  .btn.red {
+    --accent-color-hue: 340;
+    --light-color: hsl(340deg 92% 80%);
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --dark-color: hsl(340deg 92% 10%);
+    --dark-color-hover: hsl(340deg 92% 30%);
+    --radial-bg-color: hsl(340deg 92% 80%);
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.5);
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
+  }
+
+  .btn.orange {
+    --accent-color-hue: 40;
+    --light-color: hsl(40deg 92% 80%);
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --dark-color: hsl(40deg 92% 10%);
+    --dark-color-hover: hsl(40deg 92% 30%);
+    --radial-bg-color: hsl(40deg 92% 80%);
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.5);
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
+  }
+
+  .btn.lilac {
+    --accent-color-hue: 290;
+    --light-color: hsl(290deg 92% 80%);
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --dark-color: hsl(290deg 92% 10%);
+    --dark-color-hover: hsl(290deg 92% 30%);
+    --radial-bg-color: hsl(290deg 92% 80%);
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.5);
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
+  }
+
+  .btn.green {
+    --accent-color-hue: 140;
+    --light-color: hsl(140deg 92% 80%);
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --dark-color: hsl(140deg 92% 10%);
+    --dark-color-hover: hsl(140deg 92% 30%);
+    --radial-bg-color: hsl(140deg 92% 80%);
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.5);
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
   }
 
   .btn:before {
@@ -164,9 +226,3 @@
     }
   }
 </style>
-
-<div class="glowing-button p-3 rounded-sm">
-  <button class="btn tracking-wide text-white border-none relative w-full p-5"
-    >Button 1</button
-  >
-</div>

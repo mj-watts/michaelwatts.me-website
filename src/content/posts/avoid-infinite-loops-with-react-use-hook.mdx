@@ -6,8 +6,12 @@ author: "Michael Watts"
 readTime: 7
 tags: ["react", "hooks", "use", "data-fetching"]
 ---
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
-React 19 introduces the new `use` hook, which is designed to work seamlessly with Suspense and ErrorBoundary. This addition to the React toolkit makes data fetching in components much more straightforward, but it does come with a few caveats that developers should be aware of.
+<LeadParagraph>
+  React 19 introduces the new **use** hook, which is designed to work seamlessly with Suspense and ErrorBoundary. This addition to the React toolkit makes data fetching in components much more straightforward, but it does come with a few caveats that developers should be aware of.
+</LeadParagraph>
 
 One common pitfall when using the `use` hook for data fetching is accidentally causing infinite render loops. This typically happens when a promise is created inside the component itself, rather than outside. Each render creates a new promise, which in turn triggers another render, and so on—leading to a never-ending cycle.
 
@@ -15,7 +19,8 @@ To avoid this, it’s best practice to assign your promise to a variable outside
 
 Let’s look at a simple example. Suppose you want to fetch a list of todos from an API and display them in your component. Here’s how you might do it using the `use` hook:
 
-```tsx title="App.tsx"
+<CodeBlock lang="tsx" filename="App.tsx">
+```tsx
 import { use } from 'react';
 
 async function fetchTodos(): Promise<TodosResponse> {
@@ -51,6 +56,7 @@ function App() {
   );
 }
 ```
+</CodeBlock>
 
 Notice how the `todosPromise` is declared outside the `Todos` component. This is the crucial step that prevents React from falling into an infinite loop. If you were to move the promise creation inside the component, React would keep trying to resolve a new promise on every render, which is exactly what we want to avoid.
 

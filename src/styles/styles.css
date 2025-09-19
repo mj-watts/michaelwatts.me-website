@@ -22,6 +22,8 @@
 
   --color-primary: #be5d8e;
   --color-secondary: #06061d;
+  --color-error: #e74c3c;
+  --color-success: #2ecc71;
 
   --color-background: hsl(from var(--color-primary) h s calc(l * 1.9));
   --color-border: hsl(from var(--color-primary) h s calc(l * 1.75));
@@ -68,160 +70,51 @@ a:focus {
   color: var(--color-link-hover);
 }
 
-/* CODE: Rehype Pretty Code */
-figure[data-rehype-pretty-code-figure] {
-  --font-size: 0.75rem;
-  --padding: 0.5rem;
-  --border-width: 1px;
-  --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
-  --side-margin: 0;
-
-  position: relative;
-  margin: 0;
+/* Content styles */
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  line-height: 1.2;
+  text-wrap: pretty;
+  margin-bottom: 0;
 }
 
-@media (min-width: 768px) {
-  figure[data-rehype-pretty-code-figure] {
-    --font-size: 1rem;
-    --padding: 1rem;
-    --border-width: 3px;
-    --side-margin: -1rem;
-  }
+.content h2 + p,
+.content h3 + p,
+.content h4 + p,
+.content h5 + p,
+.content h6 + p,
+.content h2 + ul,
+.content h3 + ul,
+.content h4 + ul,
+.content h5 + ul,
+.content h6 + ul,
+.content h2 + ol,
+.content h3 + ol,
+.content h4 + ol,
+.content h5 + ol,
+.content h6 + ol {
+  margin-top: var(--space-2);
 }
 
-@media (min-width: 939px) {
-  figure[data-rehype-pretty-code-figure] {
-    --side-margin: -2rem;
-  }
+.content p,
+.content ul,
+.content ol,
+.content blockquote,
+.content pre,
+.content table {
+  margin-bottom: 0;
+  margin-top: var(--space-6);
 }
 
-figure[data-rehype-pretty-code-figure] pre {
-  border: var(--border-width) solid var(--code-border);
-  padding: var(--padding);
-  border-radius: var(--padding);
-  overflow-x: auto;
-  margin: 1.5rem var(--side-margin);
+.content p + ul,
+.content p + ol {
+  margin-top: var(--space-2);
 }
 
-html.dark code[data-theme*=" "],
-html.dark code[data-theme*=" "] span {
-  background: transparent;
-  color: var(--shiki-dark);
-}
 
-code[data-theme*=" "],
-code[data-theme*=" "] span {
-  background: transparent;
-  color: var(--shiki-light);
-}
-
-code[data-language] {
-  font-size: var(--font-size);
-  position: relative;
-}
-
-/* CODE: Language Tag */
-figure[data-rehype-pretty-code-figure]:has(.language-tag) {
-  padding-top: 1.5rem;
-  transform: translateY(-20px);
-}
-
-.language-tag {
-  padding: var(--space-1) var(--space-4);
-  letter-spacing: 0.05em;
-  font-weight: 600;
-  text-align: end;
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-1);
-  text-transform: uppercase;
-  font-size: calc(var(--font-size) * 0.8);
-  background-color: var(--color-border);
-  border: var(--border-width) dashed var(--code-border);
-  border-radius: var(--space-1);
-  font-family: var(--font-mono);
-  transform: translateY(50%);
-}
-
-.language-tag.bash {
-  color: #22c55e;
-}
-
-.language-tag.typescript,
-.language-tag.ts,
-.language-tag.javascript,
-.language-tag.js,
-.language-tag.jsx,
-.language-tag.tsx {
-  color: #60a5fa;
-}
-
-.language-tag.gherkin {
-  color: #eab308;
-}
-
-.language-tag.css {
-  color: #ec4899;
-}
-
-.language-tag.html {
-  color: #f97316;
-}
-
-/* CODE: Filename */
-figure:has(figcaption[data-rehype-pretty-code-title]) {
-  padding-top: 1.5rem;
-}
-
-figcaption[data-rehype-pretty-code-title] {
-  padding: var(--space-1) var(--space-4);
-  position: absolute;
-  top: var(--space-5);
-  left: 0;
-  border-radius: var(--space-1);
-  border: var(--border-width) solid var(--code-border);
-  background-color: var(--code-border);
-  border-bottom: none;
-  font-family: var(--font-mono);
-  font-size: var(--font-size);
-}
-
-@media (min-width: 768px) {
-  figcaption[data-rehype-pretty-code-title] {
-  top: var(--space-3);
-  border-radius: var(--space-1) var(--space-1) 0 0;
-  }
-}
-
-/* CODE: Diff Highlighting */
-pre.has-diff code .diff {
-  position: relative;
-  transition: background-color 0.5s;
-  margin: 0 -24px;
-  padding: 0 24px;
-  width: calc(100% + 48px);
-  display: inline-block;
-}
-
-pre.has-diff code .diff.remove {
-  background-color: rgba(239, 68, 68, 0.2);
-}
-
-pre.has-diff code .diff.add {
-  background-color: rgba(34, 197, 94, 0.2);
-}
-
-pre.has-diff code .diff:before {
-  position: absolute;
-  left: 10px;
-}
-
-pre.has-diff code .diff.add:before {
-  content: "+";
-  color: #22c55e;
-}
-
-pre.has-diff code .diff.remove:before {
-  content: "-";
-  color: #ef4444;
+.content p + iframe {
+  margin-top: var(--space-4);
 }

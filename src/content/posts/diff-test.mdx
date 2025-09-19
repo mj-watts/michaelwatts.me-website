@@ -7,8 +7,12 @@ readTime: 2
 tags: ["shiki"]
 wip: false
 ---
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
-I've successfully implemented the Shiki diff notation transformer plugin, which provides a brilliant way to highlight code changes in your documentation or blog posts.
+<LeadParagraph>
+  I've implemented the Shiki diff notation transformer plugin, which provides a brilliant way to highlight code changes in your documentation or blog posts.
+</LeadParagraph>
 
 ## Basic Usage
 
@@ -16,24 +20,30 @@ The plugin works by adding special comments to your code blocks. These comments 
 
 For example, this basic demonstration...
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 console.log("hewwo"); // [!code --]
 console.log("hello"); // [!code ++]
 console.log("goodbye");
 ```
+</CodeBlock>
+
 
 ...will output the following with proper diff highlighting:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 console.log("hewwo"); // [!code --]
 console.log("hello"); // [!code ++]
 console.log("goodbye");
 ```
+</CodeBlock>
 
 ## More Complex Examples
 
 Let's look at some more practical examples. Here's a TypeScript interface modification:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 interface User {
   name: string;
@@ -42,29 +52,34 @@ interface User {
   email: string;
 }
 ```
+</CodeBlock>
 
 Or perhaps a React component update:
 
+<CodeBlock lang="tsx" filename="Welcome.tsx">
 ```tsx
 function Welcome() {
     return (
         <div className="old-class"> // [!code --]
-        <div className="new-class text-primary"> // [!code ++]
+        <div className="new-class"> // [!code ++]
             <h1>Welcome!</h1>
         </div>
     );
 }
 ```
+</CodeBlock>
 
 ## Without Diff Notation
 
 For comparison, here's how regular code blocks appear without any diff notation:
 
+<CodeBlock lang="ts" filename="example.ts">
 ```ts
 console.log("hewwo");
 console.log("hello");
 console.log("goodbye");
 ```
+</CodeBlock>
 
 ## Current Limitations
 

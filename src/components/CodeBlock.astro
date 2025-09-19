@@ -1,0 +1,194 @@
+---
+const { lang, filename } = Astro.props;
+---
+
+<div class="code-block">
+  <div
+    class:list={[
+      "code-meta",
+      filename && filename.toLowerCase() === "terminal" ? "terminal" : "",
+    ]}
+  >
+    {filename && <div class="filename">{filename}</div>}
+    {
+      lang && (
+        <div class="lang" data-lang={lang}>
+          {lang}
+        </div>
+      )
+    }
+  </div>
+  <div class="code-wrapper">
+    <slot />
+  </div>
+</div>
+
+<style>
+  @scope (.code-block) {
+    :scope {
+      --font-size: 0.75rem;
+      --padding: 0.5rem;
+      --border-width: 1px;
+      --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
+      --side-margin: 0;
+    }
+
+    @media (min-width: 768px) {
+      :scope {
+        --font-size: 1rem;
+        --padding: 1rem;
+        --side-margin: -1rem;
+      }
+    }
+
+    @media (min-width: 939px) {
+      :scope {
+        --side-margin: -2rem;
+      }
+    }
+  }
+
+  :global(html.dark code[data-theme*=" "]),
+  :global(html.dark code[data-theme*=" "] span) {
+    background: transparent;
+    color: var(--shiki-dark);
+  }
+
+  :global(code[data-theme*=" "]),
+  :global(code[data-theme*=" "] span) {
+    background: transparent;
+    color: var(--shiki-light);
+  }
+
+  .code-block {
+    position: relative;
+  }
+
+  .code-block :global(figure[data-rehype-pretty-code-figure]) {
+    margin: 0;
+  }
+
+  .code-block :global(figure[data-rehype-pretty-code-figure] pre) {
+    overflow-x: auto;
+  }
+
+  .code-block :global(code[data-language]) {
+    anchor-name: --code-block;
+    border: var(--border-width) solid var(--code-border);
+    padding: var(--space-12) var(--space-6) var(--space-6);
+    font-size: var(--font-size);
+  }
+
+  .code-meta {
+    position: absolute;
+    position-anchor: --code-block;
+    position-area: span-bottom span-right;
+    background-color: var(--color-secondary);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .code-meta.terminal:before,
+  .code-meta.terminal:after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: red;
+    opacity: 0.7;
+  }
+  .code-meta.terminal:after {
+    right: 30px;
+    background-color: greenyellow;
+  }
+
+  .filename {
+    padding: var(--space-1) var(--space-4);
+    padding: var(--space-1) var(--space-4);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    font-size: var(--font-size);
+    background-color: var(--color-secondary);
+    font-family: var(--font-mono);
+    color: var(--color-border);
+  }
+
+  .lang {
+    padding: var(--space-1) var(--space-4);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--font-size);
+    background-color: var(--color-secondary);
+    font-family: var(--font-mono);
+    color: var(--color-secondary);
+  }
+
+  .lang[data-lang="bash"] {
+    background-color: #22c55e;
+  }
+
+  .lang[data-lang="typescript"],
+  .lang[data-lang="ts"],
+  .lang[data-lang="javascript"],
+  .lang[data-lang="js"],
+  .lang[data-lang="jsx"],
+  .lang[data-lang="tsx"] {
+    background-color: #60a5fa;
+  }
+
+  .lang[data-lang="gherkin"] {
+    background-color: #eab308;
+  }
+
+  .lang[data-lang="css"] {
+    background-color: #ec4899;
+  }
+
+  .lang[data-lang="html"],
+  .lang[data-lang="xml"],
+  .lang[data-lang="json"],
+  .lang[data-lang="svg"] {
+    background-color: #f97316;
+  }
+
+  /* CODE: Diff Highlighting */
+  :global(.has-diff code .diff) {
+    --pad-left: 24px;
+    position: relative;
+    transition: background-color 0.5s;
+    margin-left: calc(-1 * var(--pad-left));
+    padding-left: var(--pad-left);
+    width: calc(100% + var(--pad-left));
+    display: inline-block;
+  }
+
+  :global(.has-diff code .diff.remove) {
+    background-color: oklab(from var(--color-error) L a calc(b * 0.9) / 0.2);
+  }
+
+  :global(.has-diff code .diff.add) {
+    background-color: oklab(from var(--color-success) L a calc(b * 0.9) / 0.2);
+  }
+
+  :global(.has-diff code .diff:before) {
+    position: absolute;
+    left: 10px;
+  }
+
+  :global(.has-diff code .diff.add:before) {
+    content: "+";
+    color: var(--color-success);
+    font-weight: 900;
+  }
+
+  :global(.has-diff code .diff.remove:before) {
+    content: "-";
+    color: var(--color-error);
+    font-weight: 900;
+  }
+</style>

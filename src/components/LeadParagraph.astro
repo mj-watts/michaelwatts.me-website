@@ -1,12 +1,17 @@
-<p>
+<div>
   <slot />
-</p>
+</div>
 
 <style>
-  p {
+  div {
+  }
+
+  div :global(p) {
     font-size: larger;
+    font-style: italic;
     line-height: 1.4;
-    margin-top: 0;
+    margin-top: var(--space-5);
     margin-bottom: var(--space-5);
+    text-wrap: pretty;
   }
 </style>

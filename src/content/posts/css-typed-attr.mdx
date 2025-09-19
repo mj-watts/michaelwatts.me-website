@@ -7,8 +7,12 @@ readTime: 5
 tags: ["CSS"]
 wip: false
 ---
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
-CSS has long had the `attr()` function, but it's been limited to returning string values. The new typed `attr()` function changes this by allowing us to extract HTML attribute values and use them as proper CSS data types like numbers, colours, and lengths.
+<LeadParagraph>
+  CSS has long had the `attr()` function, but it's been limited to returning string values. The new typed `attr()` function changes this by allowing us to extract HTML attribute values and use them as proper CSS data types like numbers, colours, and lengths.
+</LeadParagraph>
 
 ## Piano Chords with Sound
 
@@ -32,27 +36,33 @@ The syntax is straightforward: `attr(attribute-name type, fallback)`. The type p
 
 Instead of writing:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 .element {
   width: 100px;
   height: 100px;
 }
 ```
+</CodeBlock>
 
 You can now define dimensions directly in HTML:
 
+<CodeBlock lang="html" filename="index.html">
 ```html
 <div data-width="100" data-height="150"></div>
 ```
+</CodeBlock>
 
 And use them in CSS:
 
+<CodeBlock lang="css" filename="style.css">
 ```css
 .element {
   width: attr(data-width px, 100px);
   height: attr(data-height px, 100px);
 }
 ```
+</CodeBlock>
 
 This approach creates more dynamic, data-driven styling where HTML attributes control CSS properties. It's particularly useful for components that need varying dimensions or styling based on content.
 

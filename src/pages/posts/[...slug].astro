@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import LeadParagraph from "../../components/LeadParagraph.astro";
+import CodeBlock from "../../components/CodeBlock.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -14,10 +16,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const components = { LeadParagraph, CodeBlock };
 ---
 
 <MarkdownPostLayout frontmatter={entry.data}>
   <div class="content">
-    <Content />
+    <Content components={components} />
   </div>
 </MarkdownPostLayout>
