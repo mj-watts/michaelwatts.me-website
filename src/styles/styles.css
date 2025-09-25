@@ -1,8 +1,11 @@
 :root {
-  --font-display: 'study-variable', sans-serif;
-  --font-sans: 'proxima-nova', sans-serif;
-  --font-serif: 'study-variable', serif;
+  --font-display: 'headline-gothic-atf', sans-serif;
+  --font-sans: 'inter-variable', sans-serif;
+  --font-serif: 'proxima-nova', serif;
   --font-mono: 'source-code-pro', monospace;
+
+  --header-font: var(--font-display);
+  --body-font: var(--font-sans);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -16,22 +19,38 @@
   --space-10: 2.5rem;
   --space-11: 2.75rem;
   --space-12: 3rem;
+  --space-24: 6rem;
 
   --container-width: 100%;
   --font-size-base: 16px;
+  --font-size-md: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 64px;
+  --font-size-2xl: 96px;
+  --font-size-3xl: 128px;
+  --font-size-4xl: 156px;
 
-  --color-primary: #be5d8e;
-  --color-secondary: #06061d;
+  --border-radius-xs: 4px;
+  --border-radius-sm: 8px;
+  --border-radius: 16px;
+  --border-radius-lg: 32px;
+
+  --color-primary: #FFFFFF;
+  --color-onPrimary: #363636;
+  --color-secondary: #D2D2D2;
   --color-error: #e74c3c;
   --color-success: #2ecc71;
 
-  --color-background: hsl(from var(--color-primary) h s calc(l * 1.9));
-  --color-border: hsl(from var(--color-primary) h s calc(l * 1.75));
+  --color-background: var(--color-primary);
+  --color-border: oklab(from var(--color-primary) l a calc(b * .25));
   --color-skeleton: #eeeeee;
 
-  --color-text: hsl(from var(--color-primary) h s calc(l * 0.4));
-  --color-link: hsl(from var(--color-link) h s calc(l / 1.5));
-  --color-link-hover: hsl(from var(--color-link) h s calc(l / 1.9));
+  --color-text: var(--color-onPrimary);
+  --color-link: var(--color-text);
+  --color-link-hover: oklab(from var(--color-primary) l a calc(b * 1.25));
+
+  --ease-out-elastic: linear(0, .5737 7.6%, .8382 11.87%, .9463 14.19%, 1.0292 16.54%, 1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%, 1.1423 26.1%, 1.1366 27.86%, 1.1165 31.01%, 1.0507 38.62%, 1.0219 42.57%, .9995 46.99%, .9872 51.63%, .9842 58.77%, 1.0011 81.26%, 1);
+  --ease-in-cubic: cubic-bezier(.55, .055, .675, .19);
 }
 
 @media (min-width: 640px) {
@@ -44,18 +63,88 @@
 @media (min-width: 768px) {
   :root {
     --container-width: 840px;
-    --font-size-base: 23px;
     --nav-clearance: 5rem;
   }
 }
 
+@media (min-width: 1280px) {
+  :root {
+    --container-width: 1180px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --container-width: 1340px;
+  }
+}
+
+/* RESET */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
 body {
-  font-family: var(--font-serif);
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+/* CUSTOM STYLES */
+body {
+  font-family: var(--body-font);
+  font-variation-settings: "slnt" 0, "wght" 400;
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-background);
   margin: 0;
   padding: 0;
+  font-weight: 400;
   font-size: var(--font-size-base);
 }
 
@@ -68,6 +157,13 @@ a {
 a:hover,
 a:focus {
   color: var(--color-link-hover);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  color: var(--color-text);
+  line-height: 1.25;
+  font-weight: 400;
 }
 
 /* Content styles */

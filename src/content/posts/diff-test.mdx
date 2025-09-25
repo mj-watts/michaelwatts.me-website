@@ -20,7 +20,7 @@ The plugin works by adding special comments to your code blocks. These comments 
 
 For example, this basic demonstration...
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts
 console.log("hewwo"); // [!code --]
 console.log("hello"); // [!code ++]
@@ -31,7 +31,7 @@ console.log("goodbye");
 
 ...will output the following with proper diff highlighting:
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts
 console.log("hewwo"); // [!code --]
 console.log("hello"); // [!code ++]
@@ -43,7 +43,7 @@ console.log("goodbye");
 
 Let's look at some more practical examples. Here's a TypeScript interface modification:
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts
 interface User {
   name: string;
@@ -56,7 +56,7 @@ interface User {
 
 Or perhaps a React component update:
 
-<CodeBlock lang="tsx" filename="Welcome.tsx">
+<CodeBlock filename="Welcome.tsx">
 ```tsx
 function Welcome() {
     return (
@@ -73,7 +73,7 @@ function Welcome() {
 
 For comparison, here's how regular code blocks appear without any diff notation:
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts
 console.log("hewwo");
 console.log("hello");

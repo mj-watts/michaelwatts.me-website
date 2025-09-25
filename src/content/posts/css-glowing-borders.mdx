@@ -21,7 +21,7 @@ import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleFo
 
 ## HTML
 
-<CodeBlock lang="html" filename="example.html">
+<CodeBlock filename="example.html">
 ```html
 <main>
   <button class="btn">Button</button>
@@ -42,7 +42,7 @@ With `@property`, we can define the syntax (type checking and constraining), set
 
 #### `@property` definition:
 
-<CodeBlock lang="css" filename="style.css">
+<CodeBlock filename="style.css">
 ```css
 @property --property-name {
   syntax: "<type>";
@@ -65,7 +65,7 @@ Syntax type can be any of the following:
 
 #### `@property` usage example:
 
-<CodeBlock lang="css" filename="style.css">
+<CodeBlock filename="style.css">
 ```css
 @property --radial-bg-color {
   syntax: "<color>";
@@ -87,7 +87,7 @@ If `--radial-bg-color` hadn't been defined in the first place as a custom proper
 
 ## The whole CSS
 
-<CodeBlock lang="css" filename="style.css">
+<CodeBlock filename="style.css">
 ```css
 @layer properties {
   @property --bg-x {

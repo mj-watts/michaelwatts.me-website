@@ -26,7 +26,7 @@ const { lang, filename } = Astro.props;
 <style>
   @scope (.code-block) {
     :scope {
-      --font-size: 0.75rem;
+      --font-size: 0.65rem;
       --padding: 0.5rem;
       --border-width: 1px;
       --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
@@ -87,13 +87,13 @@ const { lang, filename } = Astro.props;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .code-meta.terminal:before,
   .code-meta.terminal:after {
     content: "";
     position: absolute;
-    top: 9px;
     right: 9px;
     width: 12px;
     height: 12px;

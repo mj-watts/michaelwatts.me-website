@@ -1,0 +1,156 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import swiftaidImage from "../../images/swiftaid.webp";
+import sppocImage from "../../images/sppoc.webp";
+import ioMusicImage from "../../images/iomusic.webp";
+import sfmImage from "../../images/sfm.webp";
+import toyotaF1Image from "../../images/toyotaf1.webp";
+import sitaImage from "../../images/sita.webp";
+---
+
+<script>
+  import { inView } from "motion";
+
+  inView(".work", (element) => {
+    element.setAttribute("inview", "");
+    return () => {
+      element.removeAttribute("inview");
+    };
+  });
+
+  const buttons = document.querySelectorAll("button.work");
+  buttons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      console.log("hello", button);
+      const response = await fetch(Astro.url);
+      const data = await response.json();
+      console.log(data);
+    });
+  });
+</script>
+
+<>
+  <div class="section-meta">
+    <h2>Featured Work</h2>
+    <p>A selection of latest or notable website and app work</p>
+  </div>
+  <div class="works">
+    <button class="work" style="--idx:0" data-entry-slug="swiftaid">
+      <Image
+        src={swiftaidImage}
+        width={600}
+        height={600}
+        alt="Swiftaid and JustGiving"
+      />
+    </button>
+    <button class="work" style="--idx:1">
+      <Image
+        src={sppocImage}
+        width={600}
+        height={600}
+        alt="POC Admin Portal for HMRC"
+      />
+    </button>
+    <button class="work" style="--idx:2">
+      <Image
+        src={ioMusicImage}
+        width={600}
+        height={600}
+        alt="io Music App for iOS and Android"
+      />
+    </button>
+    <button class="work" style="--idx:3">
+      <Image
+        src={sfmImage}
+        width={600}
+        height={600}
+        alt="Saudi Fashion Magazine Website"
+      />
+    </button>
+    <button class="work" style="--idx:4">
+      <Image
+        src={toyotaF1Image}
+        width={600}
+        height={600}
+        alt="Toyota Formula 1 Team"
+      />
+    </button>
+    <button class="work" style="--idx:5">
+      <Image
+        src={sitaImage}
+        width={600}
+        height={600}
+        alt="Sita Aero Logistics Calculator"
+      />
+    </button>
+  </div>
+</>
+
+<style>
+  @scope (.works) {
+    --grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 540px) {
+    @scope (.works) {
+      --grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 770px) {
+    @scope (.works) {
+      --grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .section-meta {
+    text-align: center;
+  }
+
+  .section-meta h2 {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(7vw + 1rem),
+      var(--font-size-xl)
+    );
+    color: var(--color-secondary);
+  }
+
+  .works {
+    margin-top: var(--space-8);
+    display: grid;
+    gap: var(--space-8);
+    grid-template-columns: var(--grid-template-columns);
+    place-items: center;
+  }
+
+  .work {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: clamp(240px, 100%, 600px);
+    aspect-ratio: 1;
+    border-radius: var(--border-radius-lg);
+    scale: 0.8;
+    box-shadow:
+      0px 9px 21px rgba(0, 0, 0, 0.05),
+      0px 38px 38px rgba(0, 0, 0, 0.045),
+      0px 85px 51px rgba(0, 0, 0, 0.025);
+    transition: 1s scale var(--ease-out-elastic);
+    overflow: hidden;
+  }
+
+  .work[inview] {
+    scale: 1;
+  }
+
+  .work:hover {
+    scale: 1.02;
+  }
+
+  .work img {
+    height: auto;
+    object-fit: cover;
+  }
+</style>

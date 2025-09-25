@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogListItem from "../components/BlogListItem.astro";
+import UnorderedList from "../components/UnorderedList.astro";
+
+const pageTitle = "About";
+const allPosts = await getCollection("posts");
+const allRecipes = await getCollection("recipes");
+
+const allPostsAndRecipes = [...allPosts, ...allRecipes].sort(
+  (a, b) =>
+    (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+);
+
+const publishedPostsAndRecipes = allPostsAndRecipes
+  .filter((post) => post.data.draft !== true)
+  .sort(
+    (a, b) =>
+      (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+  );
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <UnorderedList>
+    {
+      publishedPostsAndRecipes.map((post) => (
+        <BlogListItem
+          url={`/posts/${post.slug}/`}
+          title={post.data.title}
+          date={post.data.pubDate}
+          description={post.data.description}
+          readTime={post.data.readTime}
+          tags={post.data.tags}
+        />
+      ))
+    }
+  </UnorderedList>
+</BaseLayout>

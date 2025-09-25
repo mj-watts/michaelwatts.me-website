@@ -1,0 +1,115 @@
+<div class="skills-content">
+  <div class="skill-column" style="--idx:0">
+    <h2>Languages</h2>
+    <div class="skill" style="--idx:0">JavaScript</div>
+    <div class="skill" style="--idx:1">TypeScript</div>
+    <div class="skill" style="--idx:2">C#</div>
+    <div class="skill" style="--idx:3">Ruby</div>
+  </div>
+  <div class="skill-column" style="--idx:1">
+    <h2>Frontend</h2>
+    <div class="skill" style="--idx:0">React</div>
+    <div class="skill" style="--idx:1">Vue</div>
+    <div class="skill" style="--idx:2">Tailwind</div>
+    <div class="skill" style="--idx:3">Vite</div>
+  </div>
+  <div class="skill-column" style="--idx:2">
+    <h2>Backend</h2>
+    <div class="skill" style="--idx:0">Node</div>
+    <div class="skill" style="--idx:1">Deno</div>
+    <div class="skill" style="--idx:2">RoR</div>
+    <div class="skill" style="--idx:3">.NET</div>
+  </div>
+  <div class="skill-column" style="--idx:3">
+    <h2>Other</h2>
+    <div class="skill" style="--idx:0">AWS</div>
+    <div class="skill" style="--idx:1">Azure</div>
+    <div class="skill" style="--idx:2">GCP</div>
+    <div class="skill" style="--idx:3">NoSQL</div>
+  </div>
+</div>
+
+<script>
+  import { inView } from "motion";
+
+  inView(".skill-column", (element) => {
+    element.setAttribute("inview", "");
+    return () => {
+      element.removeAttribute("inview");
+    };
+  });
+</script>
+
+<style>
+  @scope (.skills-content) {
+    --grid-template-columns: 1fr;
+    --font-size-clamp-max: var(--font-size-xl);
+  }
+
+  @media screen and (min-width: 490px) {
+    @scope (.skills-content) {
+      --grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 770px) {
+    @scope (.skills-content) {
+      --grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    @scope (.skills-content) {
+      --grid-template-columns: repeat(4, 1fr);
+      --font-size-clamp-max: var(--font-size-2xl);
+    }
+  }
+
+  .skills-content {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    gap: var(--space-12);
+  }
+
+  .skills-content h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+    text-align: center;
+  }
+
+  .skill-column {
+    transition: all 1s var(--ease-out-elastic);
+    opacity: 0;
+    transform: translateY(50px);
+    scale: 0.6;
+    transition-delay: calc(var(--idx) * 100ms);
+  }
+
+  .skill-column[inview] {
+    opacity: 1;
+    transform: translateY(0);
+    scale: 1;
+  }
+
+  .skills-content .skill {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(3vw + 1rem),
+      calc(var(--font-size-clamp-max) / 2)
+    );
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+    color: var(--color-onPrimary);
+    text-align: center;
+    transition: all 1s var(--ease-out-elastic);
+    opacity: 0;
+    transform: translateX(50px);
+    transition-delay: calc(var(--idx) * 100ms);
+  }
+
+  .skill-column[inview] .skill {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

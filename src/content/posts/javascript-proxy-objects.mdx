@@ -16,7 +16,7 @@ wip: false
 
 A Proxy wraps an existing object and can intercept operations performed on it. Here's the basic syntax:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const target = {
   name: "John",
@@ -38,7 +38,7 @@ const proxy = new Proxy(target, handler);
 
 Here's a practical example of using a Proxy to validate property values:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const userHandler = {
   set: function (obj, prop, value) {
@@ -68,7 +68,7 @@ user.age = 25; // Works fine
 
 Proxies can provide default values for non-existent properties:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const handler = {
   get: function (target, prop) {
@@ -88,7 +88,7 @@ console.log(object.age); // Output: "Property not found"
 
 A practical use case for monitoring property access:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const handler = {
   get: function (target, prop) {

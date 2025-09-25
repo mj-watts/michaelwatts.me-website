@@ -22,7 +22,7 @@ Enter or paste characters into the cells above. Once it reaches the maximum numb
 
 Note the use of `autocorrect` and `spellcheck` to avoid red warning lines on the input.
 
-<CodeBlock lang="html" filename="index.html">
+<CodeBlock filename="index.html">
 ```html
 <div class="code-container">
   <input
@@ -53,7 +53,7 @@ Note the use of `autocorrect` and `spellcheck` to avoid red warning lines on the
 
 The CSS uses a fixed-width monotype font with the use of `ch` as a character measurement.
 
-<CodeBlock lang="css" filename="styles.css">
+<CodeBlock filename="styles.css">
 ```css
 .code-container {
   display: grid;
@@ -110,7 +110,7 @@ The CSS uses a fixed-width monotype font with the use of `ch` as a character mea
 
 Blurring the input box when the 6th character has been entered avoids breaking overflow.
 
-<CodeBlock lang="typescript" filename="script.ts">
+<CodeBlock filename="script.ts">
 ```ts
 const handleInput = (event: InputEvent) => {
   const codeInput = event.target as HTMLInputElement;
@@ -133,7 +133,7 @@ codeInput?.addEventListener("paste", () => {
 
 ## The full OTP input web component code:
 
-<CodeBlock lang="typescript" filename="code-input.ts">
+<CodeBlock filename="code-input.ts">
 ```ts
 class CodeInput extends HTMLElement {
   #shadow: ShadowRoot | null = null;

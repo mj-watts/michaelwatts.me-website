@@ -1,5 +1,6 @@
 ---
 import ListHeading from "./ListHeading.astro";
+import BlogListItemMeta from "./BlogListItemMeta";
 
 const { url, title, date, description, tags, readTime } = Astro.props;
 
@@ -17,7 +18,12 @@ const isRecipe = tags && tags.includes("recipes");
 {
   !isRecipe ? (
     <li>
-      <div>
+      <BlogListItemMeta
+        date={formattedDate}
+        readTime={readTime}
+        client:only="react"
+      />
+      {/* <div>
       {formattedDate ? (
         <time datetime={new Date(date).toISOString()}>{formattedDate}</time>
       ) : null}
@@ -26,7 +32,7 @@ const isRecipe = tags && tags.includes("recipes");
 
         <time datetime={`PT${readTime}M`}>{readTime} min read</time>
       ) : null}
-      </div>
+      </div> */}
       <ListHeading role="heading" aria-level="2" url={url} title={title} />
       <div>
         {description}{" "}
@@ -51,18 +57,6 @@ const isRecipe = tags && tags.includes("recipes");
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
-  }
-
-  div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    font-size: smaller;
-    opacity: 0.7;
-    gap: var(--space-3);
-  }
-
-  div:nth-child(1) > span {
-    opacity: 0.5;
   }
 
   div:nth-child(3) {

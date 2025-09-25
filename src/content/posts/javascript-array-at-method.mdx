@@ -18,7 +18,7 @@ wip: false
 
 ### Here's our array:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const arr = [1, 2, 3, 4, 5];
 ```
@@ -26,7 +26,7 @@ const arr = [1, 2, 3, 4, 5];
 
 ### New Array.prototype.at method:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 // Getting the last element
 arr.at(-1); // Output: 5
@@ -40,7 +40,7 @@ arr.at(2); // Output: 3
 
 Here's how the same operations would look using traditional array access:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 // Getting the last element
 arr[arr.length - 1]; // Output: 5
@@ -60,7 +60,7 @@ Browser support is good https://caniuse.com/mdn-javascript_builtins_array_at
 
 If an element is out of range it returns `undefined`
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const arr = [1, 2, 3, 4, 5];
 assert.strictEqual(arr.at(2), 3);
