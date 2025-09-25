@@ -239,7 +239,7 @@
   ::view-transition-new(cardmeta-1minus1),
   ::view-transition-new(cardmeta-smsw),
   ::view-transition-new(cardmeta-freelance) {
-    animation: 1s cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    animation: 200ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
     animation-delay: 0.2s;
   }
 
@@ -267,7 +267,7 @@
   ::view-transition-new(responsibilities-1minus1),
   ::view-transition-new(responsibilities-smsw),
   ::view-transition-new(responsibilities-freelance) {
-    animation: 1s cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
+    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
     animation-delay: 0.1s;
   }
 

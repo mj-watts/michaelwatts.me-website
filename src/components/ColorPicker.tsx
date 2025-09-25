@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
+import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
 
 const ColorPickerWrapper = styled.div`
   --toggle-size: 3;
@@ -148,11 +149,20 @@ export default function ColorPicker() {
   }, [])
 
   useEffect(() => {
+    console.log('hello')
+
+    if (localStorage.getItem("themeOnPrimary")) {
+
+    };
+
     const colors = colorMap.get(selectedColorMapId);
     if (colors) {
-      document.documentElement.style.setProperty('--color-primary', colors['--color-primary']);
-      document.documentElement.style.setProperty('--color-onPrimary', colors['--color-onPrimary']);
-      document.documentElement.style.setProperty('--color-secondary', colors['--color-secondary']);
+      themePrimary.set(colors['--color-primary']);
+      themeOnPrimary.set(colors['--color-onPrimary']);
+      themeSecondary.set(colors['--color-secondary']);
+      // document.documentElement.style.setProperty('--color-primary', colors['--color-primary']);
+      // document.documentElement.style.setProperty('--color-onPrimary', colors['--color-onPrimary']);
+      // document.documentElement.style.setProperty('--color-secondary', colors['--color-secondary']);
     }
   }, [selectedColorMapId]);
 
