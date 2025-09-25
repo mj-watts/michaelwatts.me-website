@@ -1,0 +1,21 @@
+---
+const { name } = Astro.props;
+---
+
+<div class="card">
+  <slot />
+</div>
+
+<style is:global>
+  @scope (.card) {
+    --padding: 64px;
+  }
+
+  .card {
+    font-size: var(--font-size-base);
+    background-color: var(--color-onPrimary);
+    color: var(--color-primary);
+    padding: var(--padding);
+    border-radius: var(--border-radius-lg);
+  }
+</style>

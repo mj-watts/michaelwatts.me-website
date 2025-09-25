@@ -1,403 +1,309 @@
-<>
-  <div class="section-meta">
-    <h2>Experience</h2>
-    <p>Take a scroll</p>
-  </div>
-  <div class="cards">
-    <div class="card" data-company="streeva" style="--idx:0">
-      <div class="card-meta"><span>Oct 2019 - Oct 2025</span></div>
-      <div class="card-content">
-        <div class="ball"></div>
-        <div class="join"></div>
-        <h3>
-          Senior Engineer
-          <span class="company-name">Streeva</span>
-        </h3>
-        <div class="company-sectors">
-          Fintech • Payment systems • Social Impact
-        </div>
-        <div class="description">
-          A company on a mission to make transactions smarter.
-        </div>
-        <div class="tags">
-          <div class="tag">Vue</div>
-          <div class="tag">Preact</div>
-          <div class="tag">TypeScript</div>
-          <div class="tag">C#</div>
-          <div class="tag">Tailwind CSS</div>
-          <div class="tag">Figma</div>
-          <div class="tag">Azure</div>
-          <div class="tag">Cloudflare</div>
-          <div class="tag">NodeJS</div>
-        </div>
-        <button class="details-btn">View details</button>
-      </div>
-    </div>
-    <div class="timeline top"></div>
-    <div></div>
+---
+import ExperienceCard from "./ExperienceCard.astro";
+---
 
-    <div></div>
-    <div class="timeline"></div>
-    <div class="card" data-company="1minus1" style="--idx:1">
-      <div class="card-meta"><span>Jan 2017 - Sep 2019</span></div>
-      <div class="card-content">
-        <div class="ball"></div>
-        <div class="join"></div>
-        <h3>
-          Senior Developer
-          <span class="company-name">1minus1</span>
-        </h3>
-        <div class="company-sectors">B2C • Music • Ecommerce</div>
-        <div class="description">
-          An award winning, creative marketing agency.
-        </div>
-        <div class="tags">
-          <div class="tag">React</div>
-          <div class="tag">React Native</div>
-          <div class="tag">iOS</div>
-          <div class="tag">Ruby on Rails</div>
-          <div class="tag">Laravel</div>
-          <div class="tag">NodeJS</div>
-        </div>
-        <button class="details-btn">View details</button>
-      </div>
-    </div>
+<div class="section-meta">
+  <h2>Experience</h2>
+  <p>Take a scroll</p>
+</div>
+<div class="cards">
+  <ExperienceCard
+    slug="streeva"
+    date="Oct 2019 - Oct 2025"
+    title="Senior Engineer"
+    companyName="Streeva"
+    description="A company on a mission to make transactions smarter."
+    sectors="Fintech • Payment systems • Social Impact"
+    tagsList="Vue,Preact,TypeScript,C#,Tailwind CSS,Figma,Azure,Cloudflare,NodeJS"
+  />
+  <div class="timeline top"></div>
+  <div></div>
 
-    <div class="card" data-company="smsw" style="--idx:2">
-      <div class="card-meta"><span>Oct 2012 - Feb 2017</span></div>
-      <div class="card-content">
-        <div class="ball"></div>
-        <div class="join"></div>
-        <h3>
-          Web Developer
-          <span class="company-name">SMSW Media</span>
-        </h3>
-        <div class="company-sectors">B2B • B2C • Retail • Fashion</div>
-        <div class="description">A B2B/B2C marketing agency.</div>
-        <div class="tags">
-          <div class="tag">Angular</div>
-          <div class="tag">React</div>
-          <div class="tag">JavaScript</div>
-          <div class="tag">Ruby on Rails</div>
-          <div class="tag">MongoDB</div>
-          <div class="tag">NodeJS</div>
-        </div>
-        <button class="details-btn">View details</button>
-      </div>
-    </div>
-    <div class="timeline"></div>
-    <div></div>
+  <div></div>
+  <div class="timeline"></div>
+  <ExperienceCard
+    slug="1minus1"
+    date="Jan 2017 - Sep 2019"
+    title="Senior Developer"
+    companyName="1minus1"
+    description="An award winning, creative marketing agency."
+    sectors="B2C • Music • Ecommerce"
+    tagsList="React,React Native,iOS,Ruby on Rails,Laravel,NodeJS"
+  />
 
-    <div></div>
-    <div class="timeline bottom"></div>
-    <div class="card" data-company="freelance" style="--idx:3">
-      <div class="card-meta"><span>Jul 2011 - Oct 2012</span></div>
-      <div class="card-content">
-        <div class="ball"></div>
-        <div class="join"></div>
-        <h3>
-          Web Developer & Graphic Designer
-          <span class="company-name">Freelance</span>
-        </h3>
-        <div class="company-sectors">Marketing • Apps • Portal • Websites</div>
-        <div class="description">A range of clients and experience.</div>
-        <div class="tags">
-          <div class="tag">JavaScript</div>
-          <div class="tag">PHP</div>
-          <div class="tag">Wireframing</div>
-          <div class="tag">Photoshop</div>
-        </div>
-        <button class="details-btn">View details</button>
-      </div>
-    </div>
-  </div>
+  <ExperienceCard
+    slug="smsw"
+    date="Oct 2012 - Feb 2017"
+    title="Web Developer"
+    companyName="SMSW"
+    description="A B2B/B2C marketing agency."
+    sectors="B2B • B2C • Retail • Fashion"
+    tagsList="Angular,React,JavaScript,Ruby on Rails,MongoDB,NodeJS"
+  />
+  <div class="timeline"></div>
+  <div></div>
 
-  <script>
-    import { inView, animate, scroll } from "motion";
+  <div></div>
+  <div class="timeline bottom"></div>
+  <ExperienceCard
+    slug="freelance"
+    date="Jul 2011 - Oct 2012"
+    title="Web Developer"
+    companyName="Freelance"
+    description="A range of clients and experience."
+    sectors="Marketing • Apps • Portals • Websites"
+    tagsList="JavaScript,PHP,Wireframing,Photoshop"
+  />
+</div>
 
-    // const animation = animate(
-    //   ".timeline .progressbar",
-    //   { transform: ["scaleY(-20)", "scaleY(150)"] },
-    //   { ease: "linear" }
-    // );
+<script>
+  import { inView } from "motion";
+  inView(
+    ".card",
+    (element) => {
+      element.setAttribute("inview", "");
+      return () => {
+        element.removeAttribute("inview");
+      };
+    },
+    {
+      amount: "all",
+    }
+  );
+</script>
 
-    // scroll(animation);
+<style is:global>
+  @scope (.cards) {
+    --line-width: 0px;
+    --ball-width: 0px;
+    --ball-distance: 0px;
+    --grid-template-columns: 1fr;
+    --column-gap: 0;
+    --card-content-border-width: 5px;
+    --card-margin: var(--space-12);
+    --card-padding: 20px;
+    --card-border-radius: var(--border-radius-sm);
+  }
 
-    inView(
-      ".card",
-      (element) => {
-        element.setAttribute("inview", "");
-        return () => {
-          element.removeAttribute("inview");
-        };
-      },
-      {
-        amount: "all",
-      }
-    );
-  </script>
-
-  <style>
+  @media screen and (min-width: 770px) {
     @scope (.cards) {
-      --line-width: 0px;
-      --ball-width: 0px;
-      --ball-distance: 0px;
-      --grid-template-columns: 1fr;
-      --column-gap: 0;
-      --card-content-border-width: 5px;
-      --card-margin: var(--space-12);
+      --line-width: 4px;
+      --ball-width: 20px;
+      --ball-distance: 35px;
+      --grid-template-columns: 1fr var(--line-width) 1fr;
+      --column-gap: var(--space-6);
+      --card-content-border-width: var(--line-width);
+      --card-margin: 0;
+      --card-padding: 32px;
+      --card-border-radius: var(--border-radius);
     }
+  }
 
-    @media screen and (min-width: 770px) {
-      @scope (.cards) {
-        --line-width: 4px;
-        --ball-width: 20px;
-        --ball-distance: 35px;
-        --grid-template-columns: 1fr var(--line-width) 1fr;
-        --column-gap: var(--space-6);
-        --card-content-border-width: var(--line-width);
-        --card-margin: 0;
-      }
+  @media screen and (min-width: 1280px) {
+    @scope (.cards) {
+      --line-width: 8px;
+      --ball-distance: 62px;
+      --column-gap: var(--space-12);
+      --card-padding: 64px;
+      --card-border-radius: var(--border-radius-lg);
     }
+  }
 
-    @media screen and (min-width: 1280px) {
-      @scope (.cards) {
-        --line-width: 8px;
-        --ball-distance: 62px;
-        --column-gap: var(--space-12);
-      }
-    }
+  .section-meta {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
 
-    .section-meta {
-      text-align: center;
-      margin-bottom: var(--space-6);
-    }
+  .section-meta h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+  }
 
-    .section-meta h2 {
-      font-size: var(--font-size-xl);
-      color: var(--color-secondary);
-    }
+  .cards {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    row-gap: 0;
+    column-gap: var(--column-gap);
+    position: relative;
+  }
 
-    .cards {
-      display: grid;
-      grid-template-columns: var(--grid-template-columns);
-      row-gap: 0;
-      column-gap: var(--column-gap);
-      position: relative;
-    }
+  .timeline {
+    background-color: var(--color-secondary);
+  }
 
-    .timeline {
-      background-color: var(--color-secondary);
-    }
+  .timeline.top {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background: linear-gradient(
+      0deg,
+      var(--color-secondary) 0%,
+      var(--color-primary) 100%
+    );
+  }
 
-    .timeline.top {
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
-      background: linear-gradient(
-        0deg,
-        var(--color-secondary) 0%,
-        var(--color-primary) 100%
-      );
-    }
+  .timeline.bottom {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background: linear-gradient(
+      0deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+  }
 
-    .timeline.bottom {
-      border-radius: 0 0 var(--border-radius) var(--border-radius);
-      background: linear-gradient(
-        0deg,
-        var(--color-primary) 0%,
-        var(--color-secondary) 100%
-      );
-    }
+  .card {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--card-margin);
+  }
 
-    .card {
-      font-size: var(--font-size-base);
-      margin-bottom: var(--card-margin);
-    }
+  .card-meta {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    transform: translateY(0);
+    transition: all 1s var(--ease-out-elastic);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
 
-    .card[data-company="streeva"] .card-content {
-      anchor-name: --anchor-streeva;
-    }
+  .card[inview] .card-meta {
+    transform: translateY(6px);
+  }
 
-    .card[data-company="streeva"]:before {
-      position-anchor: --anchor-streeva;
-    }
+  .card .card-meta span {
+    color: var(--color-secondary);
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--border-radius-sm);
+  }
 
-    .card[data-company="1minus1"] .card-content {
-      anchor-name: --anchor-1minus1;
-    }
+  .card[inview] .card-meta span {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    padding: var(--space-1) var(--space-3);
+  }
 
-    .card[data-company="1minus1"]:before {
-      position-anchor: --anchor-1minus1;
-    }
+  .card-content {
+    background-color: var(--color-onPrimary);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    color: var(--color-secondary);
+    position: relative;
+    transition: all 1s var(--ease-out-elastic);
+    box-shadow: 0 0 0 0 var(--color-onPrimary);
+  }
 
-    .card[data-company="smsw"] .card-content {
-      anchor-name: --anchor-smsw;
-    }
+  .card-content .ball {
+    width: var(--ball-width);
+    height: var(--ball-width);
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(var(--ball-distance)) scale(0);
+    transition: transform 1s var(--ease-out-elastic);
+    transition-delay: 0.1s;
+    border: 4px solid var(--color-onPrimary);
+  }
 
-    .card[data-company="smsw"]:before {
-      position-anchor: --anchor-smsw;
-    }
+  .card:nth-child(even) .card-content .ball {
+    left: 0;
+    transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
+      scale(0);
+  }
 
-    .card[data-company="freelance"] .card-content {
-      anchor-name: --anchor-freelance;
-    }
+  .card[inview] .card-content .ball {
+    transition-delay: 0;
+  }
 
-    .card[data-company="freelance"]:before {
-      position-anchor: --anchor-freelance;
-    }
+  .card[inview]:nth-child(odd) .card-content .ball {
+    transform: translateY(-50%) translateX(var(--ball-distance)) scale(1);
+  }
 
-    .card-meta {
-      color: var(--color-onPrimary);
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      transform: translateY(0);
-      transition: all 1s var(--ease-out-elastic);
-      font-variation-settings:
-        "slnt" 0,
-        "wght" 700;
-    }
+  .card[inview]:nth-child(even) .card-content .ball {
+    transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
+      scale(1);
+  }
 
-    .card[inview] .card-meta {
-      transform: translateY(6px);
-    }
+  .card-content .join {
+    width: var(--ball-distance);
+    height: var(--line-width);
+    background-color: var(--color-onPrimary);
+    position: absolute;
+    top: 50%;
+    right: calc((var(--ball-distance) - var(--line-width)) * -1);
+    transform: translateY(-50%) scaleX(0);
+    border-radius: var(--border-radius);
+    transition: transform 1s var(--ease-out-elastic);
+    transition-delay: 0.2s;
+    transform-origin: center left;
+    z-index: -1;
+  }
 
-    .card .card-meta span {
-      transition: all 0.2s ease-in-out;
-      opacity: 0.5;
-      border-radius: var(--border-radius-sm);
-    }
+  .card:nth-child(even) .card-content .join {
+    transform-origin: center right;
+    right: initial;
+    left: calc((var(--ball-distance) - var(--line-width)) * -1);
+  }
 
-    .card[inview] .card-meta span {
-      background-color: var(--color-secondary);
-      color: var(--color-onPrimary);
-      padding: var(--space-1) var(--space-3);
-      opacity: 1;
-    }
+  .card[inview] .card-content .join {
+    transform: translateY(-50%) scaleX(1);
+    transition-delay: 0;
+  }
 
-    .card-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      background-color: var(--color-onPrimary);
-      padding: 64px;
-      border-radius: var(--border-radius-lg);
-      color: var(--color-secondary);
-      position: relative;
-      transition: all 1s var(--ease-out-elastic);
-      box-shadow: 0 0 0 0 var(--color-onPrimary);
-    }
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
 
-    .card[inview] .card-content {
-      box-shadow: 0 0 0 var(--card-content-border-width) var(--color-onPrimary);
-    }
+  .card-content .experience-card-title {
+    font-size: var(--font-size-md);
+    font-family: var(--body-font);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+    color: var(--color-primary);
+  }
 
-    .card-content .ball {
-      width: var(--ball-width);
-      height: var(--ball-width);
-      border-radius: 50%;
-      background-color: var(--color-secondary);
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%) translateX(var(--ball-distance)) scale(0);
-      transition: transform 1s var(--ease-out-elastic);
-      transition-delay: 0.1s;
-      border: 4px solid var(--color-onPrimary);
-    }
+  .card-content .company-name {
+    color: var(--color-secondary);
+  }
 
-    .card:nth-child(even) .card-content .ball {
-      left: 0;
-      transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
-        scale(0);
-    }
+  .card-content .description {
+    color: var(--color-primary);
+    line-height: 1.2;
+  }
 
-    .card[inview] .card-content .ball {
-      transition-delay: 0;
-    }
+  .card-content .tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
 
-    .card[inview]:nth-child(odd) .card-content .ball {
-      transform: translateY(-50%) translateX(var(--ball-distance)) scale(1);
-    }
+  .card-content .tag {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    white-space: nowrap;
+    padding: 0 8px;
+    line-height: 1.4;
+    border-radius: var(--border-radius-xs);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 500;
+  }
 
-    .card[inview]:nth-child(even) .card-content .ball {
-      transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
-        scale(1);
-    }
-
-    .card-content .join {
-      width: var(--ball-distance);
-      height: var(--line-width);
-      background-color: var(--color-onPrimary);
-      position: absolute;
-      top: 50%;
-      right: calc((var(--ball-distance) - var(--line-width)) * -1);
-      transform: translateY(-50%) scaleX(0);
-      border-radius: var(--border-radius);
-      transition: transform 1s var(--ease-out-elastic);
-      transition-delay: 0.2s;
-      transform-origin: center left;
-      z-index: -1;
-    }
-
-    .card:nth-child(even) .card-content .join {
-      transform-origin: center right;
-      right: initial;
-      left: calc((var(--ball-distance) - var(--line-width)) * -1);
-    }
-
-    .card[inview] .card-content .join {
-      transform: translateY(-50%) scaleX(1);
-      transition-delay: 0;
-    }
-
-    .card-content h3 {
-      font-size: var(--font-size-md);
-      font-family: var(--body-font);
-      font-variation-settings:
-        "slnt" 0,
-        "wght" 700;
-      color: var(--color-primary);
-    }
-
-    .card-content .company-name {
-      display: block;
-      color: var(--color-secondary);
-    }
-
-    .card-content .description {
-      color: var(--color-primary);
-    }
-
-    .card-content .tags {
-      display: flex;
-      gap: var(--space-2);
-      flex-wrap: wrap;
-    }
-
-    .card-content .tag {
-      background-color: var(--color-secondary);
-      color: var(--color-onPrimary);
-      white-space: nowrap;
-      padding: 0 8px;
-      line-height: 1.4;
-      border-radius: var(--border-radius-xs);
-      font-variation-settings:
-        "slnt" 0,
-        "wght" 500;
-    }
-
-    .card-content .details-btn {
-      padding: 0;
-      margin: 0;
-      border: none;
-      padding-inline: 0;
-      padding-block: 0;
-      display: flex;
-      background-color: transparent;
-      color: var(--color-primary);
-      font-variation-settings:
-        "slnt" 0,
-        "wght" 700;
-    }
-  </style>
-</>
+  .card-content .details-btn {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
+    padding-inline: 0;
+    padding-block: 0;
+    display: flex;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
+</style>

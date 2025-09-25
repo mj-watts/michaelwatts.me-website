@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/Container.astro";
+import Card from "../../components/experience/Card.astro";
+import CardContent from "../../components/experience/CardContent.astro";
+
+const pageTitle = "Experience @ SMSW";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Container>
+    <Card name="swmsw">
+      <CardContent
+        slug="smsw"
+        date="Oct 2012 - Feb 2017"
+        title="Web Developer"
+        companyName="SMSW"
+        description="A B2B/B2C marketing agency."
+        sectors="B2B • B2C • Retail • Fashion"
+        tagsList="Angular,React,JavaScript,Ruby on Rails,MongoDB,NodeJS"
+      >
+        <p>
+          Designed and developed a dynamic news magazine website with
+          bi-directional HTML support for Arabic content.
+        </p>
+
+        <p>
+          Built a customisable CMS on ExpressionEngine for client Cenomi Retail,
+          a leading retail group in Saudi Arabia.
+        </p>
+
+        <p>
+          Travelled to Riyadh multiple times to provide training and
+          consultation to a content editorial team, ensuring effective platform
+          management.
+        </p>
+
+        <p>
+          Developed a complex aircraft shipping cost calculator for Sita using
+          AngularJS, meeting all client requirements through detailed progress
+          reports and demonstrations.
+        </p>
+
+        <p>
+          Created web applications and games for high street brands like GAP and
+          M&S, showcasing adaptability and quality delivery.
+        </p>
+
+        <p>
+          Mentored and managed a junior developer while collaborating with
+          design and marketing teams.
+        </p>
+      </CardContent>
+    </Card>
+  </Container>
+</BaseLayout>

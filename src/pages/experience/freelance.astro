@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/Container.astro";
+import Card from "../../components/experience/Card.astro";
+import CardContent from "../../components/experience/CardContent.astro";
+
+const pageTitle = "Experience freelancing";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Container>
+    <Card name="swmsw">
+      <CardContent
+        slug="freelance"
+        date="Jul 2011 - Oct 2012"
+        title="Web Developer"
+        companyName="Freelance"
+        description="A range of clients and experience."
+        sectors="Marketing • Apps • Portals • Websites"
+        tagsList="JavaScript,PHP,Wireframing,Photoshop"
+      >
+        <p>
+          Designed and developed a dynamic news magazine website with
+          bi-directional HTML support for Arabic content.
+        </p>
+
+        <p>
+          Built a customisable CMS on ExpressionEngine for client Cenomi Retail,
+          a leading retail group in Saudi Arabia.
+        </p>
+
+        <p>
+          Travelled to Riyadh multiple times to provide training and
+          consultation to a content editorial team, ensuring effective platform
+          management.
+        </p>
+
+        <p>
+          Developed a complex aircraft shipping cost calculator for Sita using
+          AngularJS, meeting all client requirements through detailed progress
+          reports and demonstrations.
+        </p>
+
+        <p>
+          Created web applications and games for high street brands like GAP and
+          M&S, showcasing adaptability and quality delivery.
+        </p>
+
+        <p>
+          Mentored and managed a junior developer while collaborating with
+          design and marketing teams.
+        </p>
+      </CardContent>
+    </Card>
+  </Container>
+</BaseLayout>

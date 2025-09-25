@@ -1,0 +1,39 @@
+---
+import ArrowRight from "../icons/ArrowRight.astro";
+
+const { slug, date, title, companyName, description, sectors, tagsList } =
+  Astro.props;
+
+const tagsArray = tagsList.split(",");
+---
+
+<div class="card">
+  <div class="card-meta" style={`view-transition-name:cardmeta-${slug}`}>
+    <span>{date}</span>
+  </div>
+  <div class="card-content">
+    <div class="ball"></div>
+    <div class="join"></div>
+    <div
+      class="data-container"
+      style={`view-transition-name:datacontainer-${slug}`}
+    >
+      <h3 class="experience-card-title">
+        {title}
+        <span class="company-name">{companyName}</span>
+      </h3>
+      <div class="description">
+        {description}
+      </div>
+      <div class="company-sectors">
+        {sectors}
+      </div>
+      <div class="tags">
+        {tagsArray.map((tag: string) => <div class="tag">{tag}</div>)}
+      </div>
+      <a class="details-btn" href={`/experience/${slug}`}
+        >View details <ArrowRight /></a
+      >
+    </div>
+  </div>
+</div>

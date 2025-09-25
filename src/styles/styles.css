@@ -1,216 +1,294 @@
-:root {
-  --font-display: 'headline-gothic-atf', sans-serif;
-  --font-sans: 'inter-variable', sans-serif;
-  --font-serif: 'proxima-nova', serif;
-  --font-mono: 'source-code-pro', monospace;
+@layer view-transitions, reset, variables, layout, overrides, content;
 
-  --header-font: var(--font-display);
-  --body-font: var(--font-sans);
-
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-7: 1.75rem;
-  --space-8: 2rem;
-  --space-9: 2.25rem;
-  --space-10: 2.5rem;
-  --space-11: 2.75rem;
-  --space-12: 3rem;
-  --space-24: 6rem;
-
-  --container-width: 100%;
-  --font-size-base: 16px;
-  --font-size-md: 20px;
-  --font-size-lg: 24px;
-  --font-size-xl: 64px;
-  --font-size-2xl: 96px;
-  --font-size-3xl: 128px;
-  --font-size-4xl: 156px;
-
-  --border-radius-xs: 4px;
-  --border-radius-sm: 8px;
-  --border-radius: 16px;
-  --border-radius-lg: 32px;
-
-  --color-primary: #FFFFFF;
-  --color-onPrimary: #363636;
-  --color-secondary: #D2D2D2;
-  --color-error: #e74c3c;
-  --color-success: #2ecc71;
-
-  --color-background: var(--color-primary);
-  --color-border: oklab(from var(--color-primary) l a calc(b * .25));
-  --color-skeleton: #eeeeee;
-
-  --color-text: var(--color-onPrimary);
-  --color-link: var(--color-text);
-  --color-link-hover: oklab(from var(--color-primary) l a calc(b * 1.25));
-
-  --ease-out-elastic: linear(0, .5737 7.6%, .8382 11.87%, .9463 14.19%, 1.0292 16.54%, 1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%, 1.1423 26.1%, 1.1366 27.86%, 1.1165 31.01%, 1.0507 38.62%, 1.0219 42.57%, .9995 46.99%, .9872 51.63%, .9842 58.77%, 1.0011 81.26%, 1);
-  --ease-in-cubic: cubic-bezier(.55, .055, .675, .19);
-}
-
-@media (min-width: 640px) {
-  :root {
-    --container-width: 640px;
-    --font-size-base: 18px;
+@layer reset {
+  /* 1. Use a more-intuitive box-sizing model */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+  
+  /* 3. Enable keyword animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+  
+  body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* 6. Improve media defaults */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 7. Inherit fonts for form controls */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 8. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+  
+  /*
+    10. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
   }
 }
 
-@media (min-width: 768px) {
+@layer variables {
   :root {
-    --container-width: 840px;
-    --nav-clearance: 5rem;
+    --font-display: 'headline-gothic-atf', sans-serif;
+    --font-sans: 'inter-variable', sans-serif;
+    --font-serif: 'proxima-nova', serif;
+    --font-mono: 'source-code-pro', monospace;
+  
+    --header-font: var(--font-display);
+    --body-font: var(--font-sans);
+  
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 1.75rem;
+    --space-8: 2rem;
+    --space-9: 2.25rem;
+    --space-10: 2.5rem;
+    --space-11: 2.75rem;
+    --space-12: 3rem;
+    --space-24: 6rem;
+  
+    --container-width: 100%;
+    --font-size-base: 16px;
+    --font-size-md: 20px;
+    --font-size-lg: 24px;
+    --font-size-xl: 64px;
+    --font-size-2xl: 96px;
+    --font-size-3xl: 128px;
+    --font-size-4xl: 156px;
+  
+    --border-radius-xs: 4px;
+    --border-radius-sm: 8px;
+    --border-radius: 16px;
+    --border-radius-lg: 32px;
+  
+    --color-primary: #FFFFFF;
+    --color-onPrimary: #363636;
+    --color-secondary: #D2D2D2;
+    --color-error: #e74c3c;
+    --color-success: #2ecc71;
+  
+    --color-background: var(--color-primary);
+    --color-border: oklab(from var(--color-primary) l a calc(b * .25));
+    --color-skeleton: #eeeeee;
+  
+    --color-text: var(--color-onPrimary);
+    --color-link: var(--color-text);
+    --color-link-hover: oklab(from var(--color-secondary) l a calc(b * 1.25));
+  
+    --ease-out-elastic: linear(0, .5737 7.6%, .8382 11.87%, .9463 14.19%, 1.0292 16.54%, 1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%, 1.1423 26.1%, 1.1366 27.86%, 1.1165 31.01%, 1.0507 38.62%, 1.0219 42.57%, .9995 46.99%, .9872 51.63%, .9842 58.77%, 1.0011 81.26%, 1);
+    --ease-in-cubic: cubic-bezier(.55, .055, .675, .19);
   }
 }
 
-@media (min-width: 1280px) {
-  :root {
-    --container-width: 1180px;
+@layer layout {
+  @media (min-width: 640px) {
+    :root {
+      --container-width: 640px;
+      --font-size-base: 18px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    :root {
+      --container-width: 840px;
+      --nav-clearance: 5rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :root {
+      --container-width: 1180px;
+    }
+  }
+  
+  @media (min-width: 1440px) {
+    :root {
+      --container-width: 1340px;
+    }
   }
 }
 
-@media (min-width: 1440px) {
-  :root {
-    --container-width: 1340px;
-  }
-}
-
-/* RESET */
-/* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* 2. Remove default margin */
-* {
-  margin: 0;
-}
-
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
+@layer overrides {
   html {
-    interpolate-size: allow-keywords;
+    scroll-padding-top: var(--space-24);
+  }
+  
+  body {
+    font-family: var(--body-font);
+    font-variation-settings: "slnt" 0, "wght" 400;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: var(--font-size-base);
+  }
+  
+  a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover,
+  a:focus {
+    color: var(--color-link-hover);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header-font);
+    color: var(--color-text);
+    line-height: 1.25;
+    font-weight: 400;
+  }
+} 
+
+@layer content {
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6 {
+    line-height: 1.2;
+    text-wrap: pretty;
+    margin-bottom: 0;
+  }
+  
+  .content h2 + p,
+  .content h3 + p,
+  .content h4 + p,
+  .content h5 + p,
+  .content h6 + p,
+  .content h2 + ul,
+  .content h3 + ul,
+  .content h4 + ul,
+  .content h5 + ul,
+  .content h6 + ul,
+  .content h2 + ol,
+  .content h3 + ol,
+  .content h4 + ol,
+  .content h5 + ol,
+  .content h6 + ol {
+    margin-top: var(--space-2);
+  }
+  
+  .content p,
+  .content ul,
+  .content ol,
+  .content blockquote,
+  .content pre,
+  .content table {
+    margin-bottom: 0;
+    margin-top: var(--space-6);
+  }
+  
+  .content p + ul,
+  .content p + ol {
+    margin-top: var(--space-2);
+  }
+  
+  .content p + iframe {
+    margin-top: var(--space-4);
   }
 }
 
-body {
-  /* 4. Add accessible line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
+
+@layer view-transitions {
+  @view-transition {
+    navigation: auto;
+  }
 }
 
-/* 6. Improve media defaults */
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
+@layer view-transitions-experience {
+  ::view-transition-new(cardmeta-streeva),
+  ::view-transition-new(cardmeta-1minus1),
+  ::view-transition-new(cardmeta-smsw),
+  ::view-transition-new(cardmeta-freelance) {
+    animation: 1s cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    animation-delay: 0.2s;
+  }
 
-/* 7. Inherit fonts for form controls */
-input, button, textarea, select {
-  font: inherit;
-}
+  ::view-transition-old(cardmeta-streeva),
+  ::view-transition-old(cardmeta-1minus1),
+  ::view-transition-old(cardmeta-smsw),
+  ::view-transition-old(cardmeta-freelance) {
+    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+  }
 
-/* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+  }
 
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1, h2, h3, h4, h5, h6 {
-  text-wrap: balance;
-}
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
 
-/*
-  10. Create a root stacking context
-*/
-#root, #__next {
-  isolation: isolate;
-}
+  ::view-transition-new(responsibilities-streeva),
+  ::view-transition-new(responsibilities-1minus1),
+  ::view-transition-new(responsibilities-smsw),
+  ::view-transition-new(responsibilities-freelance) {
+    animation: 1s cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
+    animation-delay: 0.1s;
+  }
 
-/* CUSTOM STYLES */
-body {
-  font-family: var(--body-font);
-  font-variation-settings: "slnt" 0, "wght" 400;
-  line-height: 1.6;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  font-size: var(--font-size-base);
-}
+  ::view-transition-old(responsibilities-streeva),
+  ::view-transition-old(responsibilities-1minus1),
+  ::view-transition-old(responsibilities-smsw),
+  ::view-transition-old(responsibilities-freelance) {
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out-body;
+    animation-delay: 0;
+  }
 
-a {
-  color: var(--color-link);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+  @keyframes fade-in-body {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
 
-a:hover,
-a:focus {
-  color: var(--color-link-hover);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--header-font);
-  color: var(--color-text);
-  line-height: 1.25;
-  font-weight: 400;
-}
-
-/* Content styles */
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
-  line-height: 1.2;
-  text-wrap: pretty;
-  margin-bottom: 0;
-}
-
-.content h2 + p,
-.content h3 + p,
-.content h4 + p,
-.content h5 + p,
-.content h6 + p,
-.content h2 + ul,
-.content h3 + ul,
-.content h4 + ul,
-.content h5 + ul,
-.content h6 + ul,
-.content h2 + ol,
-.content h3 + ol,
-.content h4 + ol,
-.content h5 + ol,
-.content h6 + ol {
-  margin-top: var(--space-2);
-}
-
-.content p,
-.content ul,
-.content ol,
-.content blockquote,
-.content pre,
-.content table {
-  margin-bottom: 0;
-  margin-top: var(--space-6);
-}
-
-.content p + ul,
-.content p + ol {
-  margin-top: var(--space-2);
-}
-
-
-.content p + iframe {
-  margin-top: var(--space-4);
+  @keyframes fade-out-body {
+    to {
+      opacity: 0;
+    }
+  }
 }

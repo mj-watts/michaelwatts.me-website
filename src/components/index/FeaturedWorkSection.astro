@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { getEntry } from "astro:content";
 import swiftaidImage from "../../images/swiftaid.webp";
 import sppocImage from "../../images/sppoc.webp";
 import ioMusicImage from "../../images/iomusic.webp";
@@ -8,27 +7,6 @@ import sfmImage from "../../images/sfm.webp";
 import toyotaF1Image from "../../images/toyotaf1.webp";
 import sitaImage from "../../images/sita.webp";
 ---
-
-<script>
-  import { inView } from "motion";
-
-  inView(".work", (element) => {
-    element.setAttribute("inview", "");
-    return () => {
-      element.removeAttribute("inview");
-    };
-  });
-
-  const buttons = document.querySelectorAll("button.work");
-  buttons.forEach((button) => {
-    button.addEventListener("click", async () => {
-      console.log("hello", button);
-      const response = await fetch(Astro.url);
-      const data = await response.json();
-      console.log(data);
-    });
-  });
-</script>
 
 <>
   <div class="section-meta">
@@ -87,6 +65,25 @@ import sitaImage from "../../images/sita.webp";
   </div>
 </>
 
+<script>
+  import { inView } from "motion";
+
+  inView(".work", (element) => {
+    element.setAttribute("inview", "");
+
+    return () => {
+      element.removeAttribute("inview");
+    };
+  });
+
+  const buttons = document.querySelectorAll("button.work");
+  buttons.forEach((button) => {
+    button.addEventListener("click", async () => {
+      console.log("hello", button);
+    });
+  });
+</script>
+
 <style>
   @scope (.works) {
     --grid-template-columns: 1fr;
@@ -137,16 +134,37 @@ import sitaImage from "../../images/sita.webp";
       0px 9px 21px rgba(0, 0, 0, 0.05),
       0px 38px 38px rgba(0, 0, 0, 0.045),
       0px 85px 51px rgba(0, 0, 0, 0.025);
-    transition: 1s scale var(--ease-out-elastic);
+    transition: 1s all var(--ease-out-elastic);
     overflow: hidden;
+    position: relative;
+  }
+
+  .work:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-primary);
+    opacity: 0.3;
+    transition: all 0.2s ease-in-out;
+    mix-blend-mode: color;
   }
 
   .work[inview] {
     scale: 1;
   }
 
-  .work:hover {
+  .work:hover,
+  .work:focus {
     scale: 1.02;
+    mix-blend-mode: initial;
+  }
+
+  .work:hover:after,
+  .work:focus:after {
+    opacity: 0;
   }
 
   .work img {

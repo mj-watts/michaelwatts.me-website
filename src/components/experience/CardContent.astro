@@ -1,0 +1,131 @@
+---
+import ArrowLeft from "../icons/ArrowLeft.astro";
+
+const { slug, date, title, companyName, description, sectors, tagsList } =
+  Astro.props;
+
+const tagsArray = tagsList.split(",");
+---
+
+<div class="card-content">
+  <div class="card-meta" style={`view-transition-name:cardmeta-${slug}`}>
+    <a class="details-btn" href="/#experience"><ArrowLeft /> Go back</a>
+    <span>{date}</span>
+  </div>
+  <div
+    class="data-container"
+    style={`view-transition-name:datacontainer-${slug}`}
+  >
+    <h3 class="experience-card-title">
+      {title}
+      <span class="company-name">{companyName}</span>
+    </h3>
+    <div class="description">
+      {description}
+    </div>
+    <div class="company-sectors">{sectors}</div>
+    <div class="tags">
+      {tagsArray.map((tag: string) => <div class="tag">{tag}</div>)}
+    </div>
+  </div>
+  <div
+    class="responsibilities"
+    style={`view-transition-name:responsibilities-${slug}`}
+  >
+    <slot />
+  </div>
+  <a class="details-btn" href="/#experience"><ArrowLeft /> Go back</a>
+</div>
+
+<script>
+  const backButton = document.querySelector(".details-btn");
+  backButton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    history.back();
+  });
+</script>
+
+<style>
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
+
+  .data-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .experience-card-title {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(10vw + 1rem),
+      var(--font-size-xl)
+    );
+    font-family: var(--body-font);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  .company-name {
+    color: var(--color-secondary);
+  }
+
+  .description {
+    color: var(--color-primary);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
+
+  .tags {
+    margin: var(--space-4) 0;
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    white-space: nowrap;
+    padding: 0 8px;
+    line-height: 1.4;
+    border-radius: var(--border-radius-xs);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 500;
+  }
+
+  .responsibilities {
+    width: clamp(200px, 700px, 100%);
+  }
+
+  .responsibilities p {
+    margin: 0 0 var(--space-4);
+    text-wrap: pretty;
+  }
+
+  .details-btn {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
+    padding-inline: 0;
+    padding-block: 0;
+    display: flex;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
+</style>
