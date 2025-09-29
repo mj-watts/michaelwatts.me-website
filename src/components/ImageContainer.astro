@@ -1,25 +1,26 @@
 ---
 const {
-  backgroundColor = "--color-primary",
+  backgroundColor = "transparent",
   height = 300,
   width = 840,
 } = Astro.props;
 ---
 
-<div>
+<div class="image-container">
   <slot />
 </div>
 
-<style define:vars={{ height, width, backgroundColor }}>
-  div {
+<style is:global define:vars={{ height, width, backgroundColor }}>
+  .image-container {
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     width: 100%;
-    border: 4px solid hsl(from var(--backgroundColor) h s calc(l * 1.75));
-    margin-left: -4px;
-    max-height: var(--height);
+    height: auto;
     background-color: var(--backgroundColor);
-    aspect-ratio: auto var(--width) / var(--height);
-    box-sizing: border-box;
+  }
+
+  .image-container > img {
+    width: clamp(200px, 100%, 2000px);
+    height: auto;
   }
 </style>

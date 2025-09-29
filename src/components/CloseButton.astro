@@ -1,0 +1,60 @@
+---
+const { href } = Astro.props;
+---
+
+<a href={href} class="modal-close-button">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-x"
+    viewBox="0 0 16 16"
+  >
+    <path
+      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"
+    ></path>
+  </svg>
+</a>
+
+<style>
+  @scope (a.modal-close-button) {
+    --size: 48px;
+    --posX: 48px;
+    --iconSize: 24px;
+    --color: var(--color-onPrimary);
+    --bgcolor: var(--color-primary);
+    --hovercolor: var(--color-secondary);
+  }
+
+  a.modal-close-button {
+    background-color: var(--bgcolor);
+    border-radius: calc(var(--size) / 2);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: background-color 200ms ease-in-out;
+    height: var(--size);
+    width: var(--size);
+  }
+
+  a.modal-close-button:hover,
+  a.modal-close-button:focus {
+    background-color: var(--color);
+    color: var(--bgcolor);
+  }
+
+  a.modal-close-button svg {
+    fill: var(--color);
+    stroke: var(--color);
+    height: var(--iconSize);
+    width: var(--iconSize);
+    stroke-width: 1px;
+  }
+
+  a.modal-close-button:hover svg,
+  a.modal-close-button:hover svg {
+    fill: var(--hovercolor);
+    stroke: var(--hovercolor);
+  }
+</style>

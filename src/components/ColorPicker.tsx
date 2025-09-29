@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+import { themePrimary, themeOnPrimary, themeSecondary, selectedColorMapId } from "../store";
 
 const ColorPickerWrapper = styled.div`
   --toggle-size: 3;
@@ -15,7 +15,7 @@ const ColorPickerWrapper = styled.div`
   position: fixed;
   bottom: var(--space-3);
   left: var(--space-3);
-  z-index: 1;
+  z-index: 99999;
   transition: all .5s var(--ease-out-elastic);
   
   &[data-open="true"] label {
@@ -127,52 +127,49 @@ const colorMap: ColorMap = new Map([
     "--color-secondary": "#002180"
   }],
   [5, {
-    "--color-primary": "#8CA1F4",
-    "--color-onPrimary": "#5345EF",
-    "--color-secondary": "#132890"
+    "--color-primary": "#061036",
+    "--color-onPrimary": "#675ce1",
+    "--color-secondary": "#352e86"
   }],
 ]);
 
 
 export default function ColorPicker() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedColorMapId, setSelectedColorMapId] = useState(1);
+  const [selectedColorMapIdState, setSelectedColorMapIdState] = useState(parseInt(selectedColorMapId.get()));
   const [availableColors, setAvailableColors] = useState([] as ColorSet[]);
 
   function pushColorMapValuesToArray(value: Colors, key: number, map: ColorMap) {
-    if (key === selectedColorMapId) return;
+    if (key === selectedColorMapIdState) return;
     setAvailableColors((availableColors) => [...availableColors, { id: key, colors: Object.values(value) }]);
   }
 
   useEffect(() => {
+    // Initialize from stored value
+    const storedId = parseInt(selectedColorMapId.get());
+    if (storedId && storedId !== selectedColorMapIdState) {
+      setSelectedColorMapIdState(storedId);
+    }
+
+    setAvailableColors([]); // Reset to rebuild correctly
     colorMap.forEach(pushColorMapValuesToArray);
   }, [])
 
   useEffect(() => {
-    console.log('hello')
-
-    if (localStorage.getItem("themeOnPrimary")) {
-
-    };
-
-    const colors = colorMap.get(selectedColorMapId);
+    const colors = colorMap.get(selectedColorMapIdState);
     if (colors) {
       themePrimary.set(colors['--color-primary']);
       themeOnPrimary.set(colors['--color-onPrimary']);
       themeSecondary.set(colors['--color-secondary']);
-      // document.documentElement.style.setProperty('--color-primary', colors['--color-primary']);
-      // document.documentElement.style.setProperty('--color-onPrimary', colors['--color-onPrimary']);
-      // document.documentElement.style.setProperty('--color-secondary', colors['--color-secondary']);
+      selectedColorMapId.set(selectedColorMapIdState.toString());
     }
-  }, [selectedColorMapId]);
-
-  const handlePaletteButtonClick = () => {
+  }, [selectedColorMapIdState]); const handlePaletteButtonClick = () => {
     setIsOpen(!isOpen);
   }
 
   const handleColorClick = (id: number) => {
-    const previousSelectedId = selectedColorMapId;
-    setSelectedColorMapId(id);
+    const previousSelectedId = selectedColorMapIdState;
+    setSelectedColorMapIdState(id);
     setIsOpen(false);
 
     // remove currently selected scheme from availableColors

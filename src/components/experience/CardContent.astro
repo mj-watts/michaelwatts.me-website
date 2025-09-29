@@ -1,5 +1,5 @@
 ---
-import ArrowLeft from "../icons/ArrowLeft.astro";
+import CloseButton from "../CloseButton.astro";
 
 const { slug, date, title, companyName, description, sectors, tagsList } =
   Astro.props;
@@ -7,34 +7,32 @@ const { slug, date, title, companyName, description, sectors, tagsList } =
 const tagsArray = tagsList.split(",");
 ---
 
-<div class="card-content">
-  <div class="card-meta" style={`view-transition-name:cardmeta-${slug}`}>
-    <a class="details-btn" href="/#experience"><ArrowLeft /> Go back</a>
+<div class="card-content-wrapper">
+  <div class="header" style={`view-transition-name:header-${slug}`}>
     <span>{date}</span>
+    <div class="close-button"><CloseButton href="/#experience" /></div>
   </div>
-  <div
-    class="data-container"
-    style={`view-transition-name:datacontainer-${slug}`}
-  >
-    <h3 class="experience-card-title">
-      {title}
-      <span class="company-name">{companyName}</span>
-    </h3>
-    <div class="description">
-      {description}
+  <div class="content">
+    <div class="meta" style={`view-transition-name:meta_${slug}`}>
+      <h3 class="experience-card-title">
+        {title}
+        <span class="company-name">{companyName}</span>
+      </h3>
+      <div class="description">
+        {description}
+      </div>
+      <div class="company-sectors">{sectors}</div>
+      <div class="tags">
+        {tagsArray.map((tag: string) => <div class="tag">{tag}</div>)}
+      </div>
     </div>
-    <div class="company-sectors">{sectors}</div>
-    <div class="tags">
-      {tagsArray.map((tag: string) => <div class="tag">{tag}</div>)}
+    <div
+      class="responsibilities"
+      style={`view-transition-name:responsibilities-${slug}`}
+    >
+      <slot />
     </div>
   </div>
-  <div
-    class="responsibilities"
-    style={`view-transition-name:responsibilities-${slug}`}
-  >
-    <slot />
-  </div>
-  <a class="details-btn" href="/#experience"><ArrowLeft /> Go back</a>
 </div>
 
 <script>
@@ -46,7 +44,26 @@ const tagsArray = tagsList.split(",");
 </script>
 
 <style is:global>
-  .card-meta {
+  @scope (.card-content-wrapper) {
+    --flex-direction: column;
+    --padding: var(--space-6);
+  }
+
+  @media screen and (min-width: 1280px) {
+    @scope (.card-content-wrapper) {
+      --flex-direction: row;
+      --padding: var(--space-12);
+    }
+  }
+
+  .card-content-wrapper {
+    position: relative;
+    display: flex;
+    gap: var(--space-8);
+    flex-direction: column;
+  }
+
+  .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -55,7 +72,13 @@ const tagsArray = tagsList.split(",");
       "wght" 700;
   }
 
-  .data-container {
+  .content {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    column-gap: var(--space-8);
+  }
+
+  .meta {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -64,7 +87,7 @@ const tagsArray = tagsList.split(",");
   .experience-card-title {
     font-size: clamp(
       var(--font-size-lg),
-      calc(10vw + 1rem),
+      calc(3vw + 1rem),
       var(--font-size-xl)
     );
     font-family: var(--body-font);
@@ -114,18 +137,11 @@ const tagsArray = tagsList.split(",");
     text-wrap: pretty;
   }
 
-  .details-btn {
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    border: none;
-    padding-inline: 0;
-    padding-block: 0;
-    display: flex;
-    background-color: transparent;
-    color: var(--color-primary);
-    font-variation-settings:
-      "slnt" 0,
-      "wght" 700;
+  .responsibilities p:last-child {
+    margin-bottom: 0;
+  }
+
+  .close-button {
+    transform: translate(var(--padding), calc(var(--padding) * -1));
   }
 </style>

@@ -89,6 +89,10 @@
     --font-size-2xl: 96px;
     --font-size-3xl: 128px;
     --font-size-4xl: 156px;
+
+    --font-regular: "slnt" 0, "wght" 400;
+    --font-semi-bold: "slnt" 0, "wght" 600;
+    --font-bold: "slnt" 0, "wght" 700;
   
     --border-radius-xs: 4px;
     --border-radius-sm: 8px;
@@ -176,9 +180,19 @@
     line-height: 1.25;
     font-weight: 400;
   }
+
+  strong {
+    font-variation-settings: "slnt" 0, "wght" 700;
+  }
 } 
 
 @layer content {
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
   .content h2,
   .content h3,
   .content h4,
@@ -213,8 +227,7 @@
   .content blockquote,
   .content pre,
   .content table {
-    margin-bottom: 0;
-    margin-top: var(--space-6);
+    margin: 0;
   }
   
   .content p + ul,
@@ -235,19 +248,22 @@
 }
 
 @layer view-transitions-experience {
-  ::view-transition-new(cardmeta-streeva),
-  ::view-transition-new(cardmeta-1minus1),
-  ::view-transition-new(cardmeta-smsw),
-  ::view-transition-new(cardmeta-freelance) {
-    animation: 200ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
-    animation-delay: 0.2s;
+  ::view-transition-new(header-streeva),
+  ::view-transition-new(header-1minus1),
+  ::view-transition-new(header-smsw),
+  ::view-transition-new(header-freelance) {
+    animation: 1s var(--ease-out-elastic) both fade-in;
+    animation-delay: 0.5s;
   }
 
-  ::view-transition-old(cardmeta-streeva),
-  ::view-transition-old(cardmeta-1minus1),
-  ::view-transition-old(cardmeta-smsw),
-  ::view-transition-old(cardmeta-freelance) {
+  ::view-transition-old(header-1minus1),
+  ::view-transition-old(header-smsw),
+  ::view-transition-old(header-freelance) {
     animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+  }
+
+  ::view-transition-old(header-streeva) {
+    opacity: 0;
   }
 
   @keyframes fade-in {
@@ -290,5 +306,25 @@
     to {
       opacity: 0;
     }
+  }
+
+  ::view-transition-new(work-main) {
+    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
+    animation-delay: 0.1s;
+  }
+
+  ::view-transition-old(work-main) {
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out-body;
+    animation-delay: 0;
+  }
+
+  ::view-transition-new(work-controls) {
+    animation: 1s var(--ease-out-elastic) both fade-in;
+    animation-delay: 0.2s;
+  }
+
+  ::view-transition-old(work-controls) {
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
+    animation-delay: 0;
   }
 }

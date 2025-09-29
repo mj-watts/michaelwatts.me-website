@@ -4,7 +4,6 @@ import { styled } from "styled-components";
 
 interface TagsProps {
   tags: string[];
-  color: string;
 }
 
 const TagsContainer = styled.div`
@@ -13,10 +12,9 @@ const TagsContainer = styled.div`
   gap: var(--space-1);
 `;
 
-const Tag = styled.span<{ color: string }>`
+const Tag = styled.span`
   --height: 30px;
   --border-radius: calc(var(--height) / 2);
-  --color: ${(props) => props.color};
 
   display: inline-flex;
   align-items: center;
@@ -28,35 +26,9 @@ const Tag = styled.span<{ color: string }>`
   margin: 0;
   height: var(--height);
   border-radius: var(--border-radius);
-  background-color: var(--color);
-  color: var(--color-background);
-`;
-
-const MoreTag = styled(Tag)`
-  cursor: pointer;
-  background-color: var(--color);
-  color: var(--color-background);
-  transition: background-color 0.1s, color 0.1s, transform 0.2s ease-in-out;
-  transform: translateX(-33px);
-
-  &:hover {
-    color: var(--color-border);
-    transform: translateX(-15px);
-  }
-`;
-
-const BlurredPartialTag = styled(Tag)`
-  width: 5px;
-  border-radius: var(--border-radius) 0 0 var(--border-radius);
-  background-image: linear-gradient(
-    to right,
-    var(--color),
-    var(--color-background)
-  );
-  border: none;
-  opacity: 0.6;
-  transform: scale(0.7);
-  box-shadow: 0 0 3px 6px var(--color) inset, 0 0 0 2px var(--color) inset;
+  background-color: var(--color-onPrimary);
+  color: var(--color-secondary);
+  font-variation-settings: var(--font-semi-bold);
 `;
 
 function TagsSkeletonComponent() {
@@ -83,20 +55,17 @@ function TagsSkeletonComponent() {
   );
 }
 
-export default function Tags({ tags, color }: TagsProps) {
+export default function Tags({ tags }: TagsProps) {
   const [sortedTags, setSortedTags] = useState(tags || []);
   const [numberOfTagsToShow, setNumberOfTagsToShow] = useState(5);
   const [mounted, setMounted] = useState(false);
-
-  const displayedTags = tags.slice(0, numberOfTagsToShow);
-  const remainingTagCount = tags.length - numberOfTagsToShow;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    setSortedTags(displayedTags);
+    setSortedTags(sortedTags);
   }, [numberOfTagsToShow]);
 
   const handleViewAllTags = () => {
@@ -108,18 +77,10 @@ export default function Tags({ tags, color }: TagsProps) {
   return (
     <TagsContainer>
       {sortedTags.map((tag) => (
-        <Tag key={tag} color={color}>
+        <Tag key={tag}>
           {tag}
         </Tag>
       ))}
-      {remainingTagCount > 0 && (
-        <>
-          <BlurredPartialTag color={color} />
-          <MoreTag color={color} onClick={handleViewAllTags}>
-            +{remainingTagCount} more...
-          </MoreTag>
-        </>
-      )}
     </TagsContainer>
   );
 }

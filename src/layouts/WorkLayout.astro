@@ -1,13 +1,61 @@
 ---
-import MainNav from "../components/MainNav.astro";
-import Main from "../components/Main.astro";
-import Container from "../components/Container.astro";
-import Footer from "../components/Footer.astro";
+import ColorPicker from "../components/ColorPicker.tsx";
+import CloseButton from "../components/CloseButton.astro";
+import PlayButton from "../components/PlayButton.astro";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle, pageDescription } = Astro.props;
+
+const nextItem = "/work/sspoc";
 ---
+
+<script>
+  import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+
+  document.documentElement.style.setProperty(
+    "--color-primary",
+    themePrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-onPrimary",
+    themeOnPrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-secondary",
+    themeSecondary.get()
+  );
+
+  themePrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-primary", color);
+  });
+
+  themeOnPrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-onPrimary", color);
+  });
+
+  themeSecondary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-secondary", color);
+  });
+
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    let observer = new IntersectionObserver((entries) => {
+      if (entries[0].boundingClientRect.y < 0) {
+        document.body.classList.add("header-not-at-top");
+      } else {
+        document.body.classList.remove("header-not-at-top");
+      }
+    });
+    const anchor = document.querySelector("#top-of-site-pixel-anchor");
+    if (anchor) {
+      observer.observe(anchor);
+    }
+  }
+</script>
 
 <html lang="en">
   <head>
@@ -16,18 +64,125 @@ const { pageTitle, pageDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{mainTitle} | {pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="preload" as="style" href="https://use.typekit.net/eaq6veo.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
   </head>
-  <body>
-    <MainNav />
+  <body class="work">
+    <div class="container">
+      <div class="controls" style="view-transition-name: work-controls;">
+        <a href="/#contact" class="contact-link">Contact</a>
+        <nav>
+          <PlayButton href="/work/split-payment-poc" />
+          <CloseButton href="/#work" />
+        </nav>
+      </div>
 
-    <Main>
-      <div id="top-of-site-pixel-anchor"></div>
-      <Container>
+      <span id="top-of-site-pixel-anchor"></span>
+      <div id="main" role="main" style="view-transition-name: work-main;">
         <slot />
-      </Container>
-    </Main>
+      </div>
+    </div>
 
-    <Footer />
+    <ColorPicker client:only="react" />
   </body>
 </html>
+
+<style is:global>
+  @scope (body.work) {
+    --body-margin: var(--space-2);
+    --content-padding: var(--space-6);
+    --controls-height: 52px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    @scope (body.work) {
+      --body-margin: var(--space-4);
+      --content-padding: var(--space-12);
+      --flex-direction: row;
+    }
+  }
+
+  body.work {
+    background-color: var(--color-primary);
+  }
+
+  .container {
+    display: grid;
+    gap: var(--space-4);
+    padding: var(--body-margin);
+  }
+
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius) var(--border-radius-lg)
+      var(--border-radius-lg) var(--border-radius);
+    color: var(--color-primary);
+    height: var(--controls-height);
+    padding: 2px;
+    z-index: 1;
+    position: fixed;
+    top: var(--body-margin);
+    left: var(--body-margin);
+    right: var(--body-margin);
+    transition:
+      background-color 200ms ease-in-out,
+      scale 1s var(--ease-out-elastic);
+  }
+
+  body.work.header-not-at-top .controls {
+    background-color: transparent;
+    backdrop-filter: blur(20px) hue-rotate(-15deg);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    left: calc(var(--body-margin) + var(--space-2));
+    right: calc(var(--body-margin) + var(--space-2));
+    scale: 0.95;
+  }
+
+  .controls .contact-link {
+    background-color: var(--color-onPrimary);
+    color: var(--color-secondary);
+    height: 100%;
+    place-content: center;
+    border-radius: 12px;
+    padding: 0 var(--space-4);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+  }
+
+  .controls .contact-link:hover {
+    background-color: var(--color-primary);
+    color: var(--color-onPrimary);
+  }
+
+  .controls nav {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  #main {
+    height: auto;
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    border-radius: var(--border-radius);
+    margin-top: var(--controls-height);
+    padding: var(--content-padding);
+  }
+
+  #main h1 {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(4vw + 1rem),
+      var(--font-size-xl)
+    );
+    font-family: var(--body-font);
+    font-variation-settings:
+      "slnt" 0,
+      "wght" 700;
+    line-height: 1;
+    color: var(--color-onPrimary);
+    margin-top: 0;
+  }
+</style>

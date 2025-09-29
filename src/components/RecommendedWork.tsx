@@ -12,7 +12,8 @@ interface Props {
 
 const Container = styled.div<{ image: string; bgcolor: string }>`
   --border-radius: 12px;
-  --bgcolor: ${(props) => props.bgcolor || "var(--color-primary)"};
+  --bgcolor: var(--color-onPrimary);
+  --textcolor: var(--color-secondary);
 
   position: relative;
   display: flex;
@@ -23,11 +24,11 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   justify-content: start;
   height: 300px;
   width: 300px;
-  background-color: var(--bgcolor);
   border-radius: var(--border-radius);
   color: var(--color-background);
   padding: var(--space-6);
   box-sizing: border-box;
+  background-color: var(--bgcolor);
   background-image: url(${(props) => props.image});
   background-size: contain;
   background-position: bottom center;
@@ -36,21 +37,25 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
 
 const Title = styled.h2`
   margin: 0;
-  font-size: 1.9rem;
+  font-size: var(--font-size-lg);
+  font-family: var(--body-font);
+  font-variation-settings: var(--font-semi-bold);
   line-height: 1.1;
+  color: var(--textcolor);
 `;
 
 const Description = styled.p`
   margin: 0;
-  font-size: 1.5rem;
   line-height: 1.2;
+  color: var(--textcolor);
 `;
 
 const Link = styled.a`
   margin-top: auto;
   font-size: smaller;
   font-weight: 600;
-  color: var(--color-background);
+  color: var(--textcolor);
+  font-variation-settings: var(--font-bold);
   background-color: rgba(from var(--bgcolor) r g b / 0.8);
   border-radius: 0 6px 6px 0;
   padding: 0 var(--space-4) 0 var(--space-6);

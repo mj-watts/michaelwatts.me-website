@@ -1,5 +1,5 @@
 ---
-title: "Split payment admin dashboard for HMRC"
+title: "Split payment dashboard for HMRC"
 sectors: ["Fintech", "Taxation", "Payment Systems"]
 pubDate: 2025-09-08
 summary: "Helped conceive and develop an advanced admin portal as a proof of concept (POC) for HMRC, capable of handling and querying database transactions using Elasticsearch and Kibana for querying the data backend. Presented to HMRC’s technical review team at regular Sprint Reviews."
@@ -17,42 +17,45 @@ tags:
     "Gherkin",
     "GraphQL",
   ]
-recommendationImage: '../../../images/chris-chorley.png'
-recommendationText: 'Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation.'
-recommendationFooter: 'Chris Chorley - Head of Engineering'
-recommendedWorks: [
-  {
-    image: '../sita-calculator/cover.png',
-    title: 'Sita Calculator',
-    description: 'A tool for calculating carbon footprints.',
-    bgcolor: '#4681cb',
-    link: '/works/sita-calculator',
-  },
-  {
-    image: '../ecomm-sites/cover.png',
-    title: 'E-commerce',
-    description: 'E-commerce websites and payment integrations.',
-    bgcolor: '#3c5f55',
-    link: '/works/ecomm-sites',
-  },
-  {
-    image: '../carbon-calculator/cover.png',
-    title: 'Carbon Footprint Calculator',
-    description: 'A tool for calculating carbon footprints.',
-    bgcolor: '#74c050',
-    link: '/works/carbon-calculator',
-  },
-]
+recommendationImage: "../../../images/chris-chorley.png"
+recommendationText: "Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation."
+recommendationFooter: "Chris Chorley - Head of Engineering, Streeva"
+recommendedWorks:
+  [
+    {
+      image: "../sita-calculator/cover.png",
+      title: "Sita Calculator",
+      description: "A tool for calculating carbon footprints.",
+      bgcolor: "#4681cb",
+      link: "/works/sita-calculator",
+    },
+    {
+      image: "../ecomm-sites/cover.png",
+      title: "E-commerce",
+      description: "E-commerce websites and payment integrations.",
+      bgcolor: "#3c5f55",
+      link: "/works/ecomm-sites",
+    },
+    {
+      image: "../carbon-calculator/cover.png",
+      title: "Carbon Footprint Calculator",
+      description: "A tool for calculating carbon footprints.",
+      bgcolor: "#74c050",
+      link: "/works/carbon-calculator",
+    },
+  ]
 ---
+
 import { Image } from "astro:assets";
 import ImageContainer from "../../../components/ImageContainer.astro";
-import ContentImage from "../../../components/ContentImage.astro";
-import coverImage from "./cover.png";
-import adminImage from "../swiftaid/admin.png"
-
-<ImageContainer height="410px">
-  <Image src={adminImage} alt="Collection of applications and websites." width={840} loading="lazy" />
-</ImageContainer>
+import ContentImage1Column from "../../../components/ContentImage1Column.astro";
+import ContentImage2Column from "../../../components/ContentImage2Column.astro";
+import image1 from "./image1.png";
+import image2 from "./image2.png";
+import image3 from "./image3.png";
+import image4 from "./image4.png";
+import image5 from "./image5.png";
+import image6 from "./image6.png";
 
 As part of Streeva’s collaboration with HMRC, I played a key role in conceiving and developing an advanced administrative portal as a proof of concept. The goal was to create a system capable of securely handling and querying large volumes of transactional data. To achieve this, I integrated Elasticsearch and Kibana, enabling powerful indexing, searching, and visualisation of the database backend.
 
@@ -60,7 +63,70 @@ A crucial aspect of this project was ensuring transparency and demonstrating pro
 
 We worked with Gherkin specifications to define behaviour-driven development (BDD) scenarios, which were then translated into unit tests using Vitest. This approach ensured that new features were delivered with consistency and reliability, reducing the risk of regressions and enhancing overall code quality.
 
-<ContentImage src={coverImage} alt="Collection of applications and websites." height={150} />
-
 The data is filtered using Elasticsearch, allowing for efficient querying and analysis.
 
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image1}
+      alt="SPPOC dashboard."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image2}
+      alt="SPPOC partial UI."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-primary)">
+    <Image
+      src={image3}
+      alt="SPPOC partial UI."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
+
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image4}
+      alt="SPPOC dashboard."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-primary)">
+    <Image
+      src={image5}
+      alt="HMRC and Streeva logos."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image6}
+      alt="Elasticsearch Grafana analytics dashboard."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
