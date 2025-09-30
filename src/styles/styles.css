@@ -312,21 +312,7 @@
     }
   }
 
-  /* ::view-transition-new(card-content-streeva),
-  ::view-transition-new(card-content-1minus1),
-  ::view-transition-new(card-content-smsw),
-  ::view-transition-new(card-content-freelance) {
-    animation: 100ms ease-in both fade-in-card-content;
-  }
-
-  ::view-transition-old(card-content-streeva),
-  ::view-transition-old(card-content-1minus1),
-  ::view-transition-old(card-content-smsw),
-  ::view-transition-old(card-content-freelance) {
-    animation: 100ms ease-out both fade-out-card-content;
-    animation-delay: 0;
-  } */
-
+  /* Experience section */
   ::view-transition-new(card-content-aside-streeva),
   ::view-transition-new(card-content-aside-1minus1),
   ::view-transition-new(card-content-aside-smsw),
@@ -345,14 +331,14 @@
   ::view-transition-new(card-meta-1minus1),
   ::view-transition-new(card-meta-smsw),
   ::view-transition-new(card-meta-freelance) {
-    animation: 2000ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+    animation: 2000ms var(--ease-out-cubic) both fade-in;
   }
 
   ::view-transition-old(card-meta-streeva),
   ::view-transition-old(card-meta-1minus1),
   ::view-transition-old(card-meta-smsw),
   ::view-transition-old(card-meta-freelance) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
+    animation: 100ms var(--ease-in-cubic) both fade-out;
   }
 
   ::view-transition-new(card-content-body-streeva),
@@ -367,17 +353,18 @@
   ::view-transition-old(card-content-body-1minus1),
   ::view-transition-old(card-content-body-smsw),
   ::view-transition-old(card-content-body-freelance) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
+    animation: 100ms var(--ease-in-cubic) both fade-out;
     animation-delay: 0;
   }
 
+  /* Work section */
   ::view-transition-new(work-main) {
-    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both slide-up;
+    animation: 500ms var(--ease-out-cubic) both slide-up;
     animation-delay: 100ms;
   }
 
   ::view-transition-old(work-main) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both slide-down;
+    animation: 100ms var(--ease-in-cubic) both slide-down;
     animation-delay: 0;
   }
 
@@ -387,7 +374,7 @@
   }
 
   ::view-transition-old(work-controls) {
-    animation: 0 cubic-bezier(0, 0, 0.2, 1) both slide-down;
+    animation: 0 var(--ease-in-cubic) both slide-down;
     animation-delay: 0;
   }
 }
