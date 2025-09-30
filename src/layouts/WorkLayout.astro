@@ -91,6 +91,9 @@ const nextItem = "/work/sspoc";
     --body-margin: var(--space-2);
     --content-padding: var(--space-6);
     --controls-height: 52px;
+    --bg-color: var(--color-primary);
+    --panel-color: var(--color-primary);
+    --text-color: var(--color-onPrimary);
   }
 
   @media screen and (min-width: 1280px) {
@@ -102,7 +105,7 @@ const nextItem = "/work/sspoc";
   }
 
   body.work {
-    background-color: var(--color-primary);
+    background-color: var(--bg-color);
   }
 
   .container {
@@ -115,10 +118,10 @@ const nextItem = "/work/sspoc";
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-secondary);
+    background-color: var(--panel-color);
     border-radius: var(--border-radius) var(--border-radius-lg)
       var(--border-radius-lg) var(--border-radius);
-    color: var(--color-primary);
+    color: var(--text-color);
     height: var(--controls-height);
     padding: 2px;
     z-index: 1;
@@ -133,16 +136,34 @@ const nextItem = "/work/sspoc";
 
   body.work.header-not-at-top .controls {
     background-color: transparent;
+    left: calc(var(--body-margin) + var(--space-1));
+    right: calc(var(--body-margin) + var(--space-1));
+    scale: 0.97;
     backdrop-filter: blur(20px) hue-rotate(-15deg);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-    left: calc(var(--body-margin) + var(--space-2));
-    right: calc(var(--body-margin) + var(--space-2));
-    scale: 0.95;
+  }
+
+  body.work.header-not-at-top .controls:before {
+    content: "";
+    position: absolute;
+    top: calc(var(--space-1) * -1);
+    left: calc(var(--space-1) * -1);
+    right: calc(var(--space-1) * -1);
+    bottom: calc(var(--space-1) * -1);
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: -1;
+    mask-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border: 2px outset rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius) var(--border-radius-lg)
+      var(--border-radius-lg) var(--border-radius);
   }
 
   .controls .contact-link {
-    background-color: var(--color-onPrimary);
-    color: var(--color-secondary);
+    background-color: var(--text-color);
+    background: linear-gradient(
+      var(--text-color),
+      rgb(from var(--text-color) r g b / 0.7)
+    );
+    color: var(--bg-color);
     height: 100%;
     place-content: center;
     border-radius: 12px;
@@ -153,8 +174,8 @@ const nextItem = "/work/sspoc";
   }
 
   .controls .contact-link:hover {
-    background-color: var(--color-primary);
-    color: var(--color-onPrimary);
+    background-color: var(--text-color);
+    color: var(--bg-color);
   }
 
   .controls nav {
@@ -164,8 +185,8 @@ const nextItem = "/work/sspoc";
 
   #main {
     height: auto;
-    background-color: var(--color-secondary);
-    color: var(--color-onPrimary);
+    background-color: var(--panel-color);
+    color: var(--text-color);
     border-radius: var(--border-radius);
     margin-top: var(--controls-height);
     padding: var(--content-padding);
@@ -182,7 +203,7 @@ const nextItem = "/work/sspoc";
       "slnt" 0,
       "wght" 700;
     line-height: 1;
-    color: var(--color-onPrimary);
+    color: var(--text-color);
     margin-top: 0;
   }
 </style>

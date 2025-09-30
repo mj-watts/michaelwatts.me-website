@@ -114,7 +114,8 @@
     --color-link-hover: oklab(from var(--color-secondary) l a calc(b * 1.25));
   
     --ease-out-elastic: linear(0, .5737 7.6%, .8382 11.87%, .9463 14.19%, 1.0292 16.54%, 1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%, 1.1423 26.1%, 1.1366 27.86%, 1.1165 31.01%, 1.0507 38.62%, 1.0219 42.57%, .9995 46.99%, .9872 51.63%, .9842 58.77%, 1.0011 81.26%, 1);
-    --ease-in-cubic: cubic-bezier(.55, .055, .675, .19);
+    --ease-in-cubic: cubic-bezier(.55, .05, .675, .19);
+    --ease-out-cubic: cubic-bezier(.19,.91,.47,.92);
   }
 }
 
@@ -248,28 +249,60 @@
 }
 
 @layer view-transitions-experience {
-  ::view-transition-new(header-streeva),
-  ::view-transition-new(header-1minus1),
-  ::view-transition-new(header-smsw),
-  ::view-transition-new(header-freelance) {
-    animation: 1s var(--ease-out-elastic) both fade-in;
-    animation-delay: 0.5s;
+  @keyframes fade-in-card-content {
+    from {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-out-card-content {
+    to {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes fade-in-card-content-aside {
+    from {
+      opacity: 0;
+    }
   }
 
-  ::view-transition-old(header-1minus1),
-  ::view-transition-old(header-smsw),
-  ::view-transition-old(header-freelance) {
-    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out;
+  @keyframes fade-out-card-content-aside {
+    to {
+      opacity: 0;
+    }
   }
 
-  ::view-transition-old(header-streeva) {
-    opacity: 0;
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  @keyframes slide-down {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+  }
+
+  @keyframes slide-out {
+    to {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
   }
 
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(-40px);
     }
   }
 
@@ -279,52 +312,82 @@
     }
   }
 
-  ::view-transition-new(responsibilities-streeva),
-  ::view-transition-new(responsibilities-1minus1),
-  ::view-transition-new(responsibilities-smsw),
-  ::view-transition-new(responsibilities-freelance) {
-    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
-    animation-delay: 0.1s;
+  /* ::view-transition-new(card-content-streeva),
+  ::view-transition-new(card-content-1minus1),
+  ::view-transition-new(card-content-smsw),
+  ::view-transition-new(card-content-freelance) {
+    animation: 100ms ease-in both fade-in-card-content;
   }
 
-  ::view-transition-old(responsibilities-streeva),
-  ::view-transition-old(responsibilities-1minus1),
-  ::view-transition-old(responsibilities-smsw),
-  ::view-transition-old(responsibilities-freelance) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out-body;
+  ::view-transition-old(card-content-streeva),
+  ::view-transition-old(card-content-1minus1),
+  ::view-transition-old(card-content-smsw),
+  ::view-transition-old(card-content-freelance) {
+    animation: 100ms ease-out both fade-out-card-content;
+    animation-delay: 0;
+  } */
+
+  ::view-transition-new(card-content-aside-streeva),
+  ::view-transition-new(card-content-aside-1minus1),
+  ::view-transition-new(card-content-aside-smsw),
+  ::view-transition-new(card-content-aside-freelance) {
+    animation: 200ms ease-in both fade-in-card-content-aside;
+  }
+
+  ::view-transition-old(card-content-aside-streeva),
+  ::view-transition-old(card-content-aside-1minus1),
+  ::view-transition-old(card-content-aside-smsw),
+  ::view-transition-old(card-content-aside-freelance) {
+    animation: 150ms ease-out both fade-out-card-content-aside;
+  }
+
+  ::view-transition-new(card-meta-streeva),
+  ::view-transition-new(card-meta-1minus1),
+  ::view-transition-new(card-meta-smsw),
+  ::view-transition-new(card-meta-freelance) {
+    animation: 2000ms cubic-bezier(0, 0, 0.2, 1) both fade-in;
+  }
+
+  ::view-transition-old(card-meta-streeva),
+  ::view-transition-old(card-meta-1minus1),
+  ::view-transition-old(card-meta-smsw),
+  ::view-transition-old(card-meta-freelance) {
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
+  }
+
+  ::view-transition-new(card-content-body-streeva),
+  ::view-transition-new(card-content-body-1minus1),
+  ::view-transition-new(card-content-body-smsw),
+  ::view-transition-new(card-content-body-freelance) {
+    animation: 200ms var(--ease-out-cubic) both slide-in;
+    animation-delay: 300ms;
+  }
+  
+  ::view-transition-old(card-content-body-streeva),
+  ::view-transition-old(card-content-body-1minus1),
+  ::view-transition-old(card-content-body-smsw),
+  ::view-transition-old(card-content-body-freelance) {
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
     animation-delay: 0;
   }
 
-  @keyframes fade-in-body {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-  }
-
-  @keyframes fade-out-body {
-    to {
-      opacity: 0;
-    }
-  }
-
   ::view-transition-new(work-main) {
-    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both fade-in-body;
-    animation-delay: 0.1s;
+    animation: 500ms cubic-bezier(0, 0, 0.2, 1) both slide-up;
+    animation-delay: 100ms;
   }
 
   ::view-transition-old(work-main) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out-body;
+    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both slide-down;
     animation-delay: 0;
   }
 
   ::view-transition-new(work-controls) {
-    animation: 1s var(--ease-out-elastic) both fade-in;
-    animation-delay: 0.2s;
+    animation: 1s var(--ease-out-elastic) both slide-up;
+    animation-delay: 200ms;
   }
 
   ::view-transition-old(work-controls) {
-    animation: 100ms cubic-bezier(0, 0, 0.2, 1) both fade-out;
+    animation: 0 cubic-bezier(0, 0, 0.2, 1) both slide-down;
     animation-delay: 0;
   }
 }

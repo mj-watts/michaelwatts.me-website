@@ -27,7 +27,7 @@ const Tag = styled.span`
   height: var(--height);
   border-radius: var(--border-radius);
   background-color: var(--color-onPrimary);
-  color: var(--color-secondary);
+  color: var(--color-primary);
   font-variation-settings: var(--font-semi-bold);
 `;
 

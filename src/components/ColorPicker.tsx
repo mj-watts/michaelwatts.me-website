@@ -106,7 +106,7 @@ type ColorSet = {
 type ColorMap = Map<number, Colors>
 
 const colorMap: ColorMap = new Map([
-  [1, {
+  [1, { // White
     "--color-primary": "#FFFFFF",
     "--color-onPrimary": "#363636",
     "--color-secondary": "#D2D2D2"
@@ -116,17 +116,17 @@ const colorMap: ColorMap = new Map([
     "--color-onPrimary": "#D3B1C0",
     "--color-secondary": "#E7437F"
   }],
-  [3, {
+  [3, { // Green
     "--color-primary": "#37AF5D",
-    "--color-onPrimary": "#C6FF00",
-    "--color-secondary": "#005319"
+    "--color-onPrimary": "#005319",
+    "--color-secondary": "#C6FF00"
   }],
-  [4, {
+  [4, { // Blue
     "--color-primary": "#0779FF",
-    "--color-onPrimary": "#4ACDFC",
-    "--color-secondary": "#002180"
+    "--color-onPrimary": "#002180",
+    "--color-secondary": "#4ACDFC"
   }],
-  [5, {
+  [5, { // Dark
     "--color-primary": "#061036",
     "--color-onPrimary": "#675ce1",
     "--color-secondary": "#352e86"

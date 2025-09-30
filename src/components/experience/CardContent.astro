@@ -1,5 +1,5 @@
 ---
-import CloseButton from "../CloseButton.astro";
+import SvgBackButton from "../SvgBackButton.astro";
 
 const { slug, date, title, companyName, description, sectors, tagsList } =
   Astro.props;
@@ -7,30 +7,46 @@ const { slug, date, title, companyName, description, sectors, tagsList } =
 const tagsArray = tagsList.split(",");
 ---
 
-<div class="card-content-wrapper">
-  <div class="header" style={`view-transition-name:header-${slug}`}>
-    <span>{date}</span>
-    <div class="close-button"><CloseButton href="/#experience" /></div>
-  </div>
-  <div class="content">
-    <div class="meta" style={`view-transition-name:meta_${slug}`}>
-      <h3 class="experience-card-title">
+<div class="card" style={`view-transition-name:card-${slug};`}>
+  <div class="card-content" style={`view-transition-name:card-content-${slug}`}>
+    <aside
+      class="card-content__aside"
+      style={`view-transition-name:card-content-aside-${slug}`}
+    >
+      <div class="card-content__back-button">
+        <a href="/#experience">
+          <SvgBackButton />
+        </a>
+      </div>
+      <div
+        class="card-content__date"
+        style={`view-transition-name:card-meta-${slug};`}
+      >
+        {date}
+      </div>
+      <h3 class="card-content__title">
         {title}
-        <span class="company-name">{companyName}</span>
+        <span class="card-content__company-name">{companyName}</span>
       </h3>
-      <div class="description">
+      <div class="card-content__description">
         {description}
       </div>
-      <div class="company-sectors">{sectors}</div>
-      <div class="tags">
-        {tagsArray.map((tag: string) => <div class="tag">{tag}</div>)}
+      <div>{sectors}</div>
+      <div class="card-content__tags">
+        {
+          tagsArray.map((tag: string) => (
+            <div class="card-content__tag">{tag}</div>
+          ))
+        }
       </div>
-    </div>
+    </aside>
     <div
-      class="responsibilities"
-      style={`view-transition-name:responsibilities-${slug}`}
+      class="card-content__body"
+      style={`view-transition-name:card-content-body-${slug}`}
     >
-      <slot />
+      <div class="card-content__responsibilities">
+        <slot />
+      </div>
     </div>
   </div>
 </div>
@@ -44,47 +60,62 @@ const tagsArray = tagsList.split(",");
 </script>
 
 <style is:global>
-  @scope (.card-content-wrapper) {
+  @scope (.card-content) {
     --flex-direction: column;
-    --padding: var(--space-6);
+    --padding: var(--space-12);
   }
 
   @media screen and (min-width: 1280px) {
-    @scope (.card-content-wrapper) {
+    @scope (.card-content) {
       --flex-direction: row;
-      --padding: var(--space-12);
+      --padding: var(--space-24);
     }
   }
 
-  .card-content-wrapper {
-    position: relative;
+  .card {
+    background-color: var(--color-primary);
+  }
+
+  .card-content {
     display: flex;
     gap: var(--space-8);
-    flex-direction: column;
+    flex-direction: var(--flex-direction);
+    height: 100%;
+    font-size: var(--font-size-base);
   }
 
-  .header {
+  .card-content__aside {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-variation-settings:
-      "slnt" 0,
-      "wght" 700;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--padding);
+    background-color: var(--color-onPrimary);
+    color: var(--color-primary);
+    border-radius: var(--border-radius);
+    margin: var(--space-4);
   }
 
-  .content {
+  .card-content__body {
     display: flex;
     flex-direction: var(--flex-direction);
     column-gap: var(--space-8);
+    padding: var(--padding);
+    color: var(--color-onPrimary);
   }
 
-  .meta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
+  .card-content__back-button {
+    width: 48px;
+    height: 48px;
+    display: block;
   }
 
-  .experience-card-title {
+  .card-content__back-button-icon {
+    width: 48px;
+    height: 48px;
+    fill: var(--color-secondary);
+  }
+
+  .card-content__title {
     font-size: clamp(
       var(--font-size-lg),
       calc(3vw + 1rem),
@@ -98,25 +129,25 @@ const tagsArray = tagsList.split(",");
     color: var(--color-primary);
   }
 
-  .company-name {
+  .card-content__company-name {
     color: var(--color-secondary);
   }
 
-  .description {
+  .card-content__description {
     color: var(--color-primary);
     font-variation-settings:
       "slnt" 0,
       "wght" 700;
   }
 
-  .tags {
+  .card-content__tags {
     margin: var(--space-4) 0;
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;
   }
 
-  .tag {
+  .card-content__tag {
     background-color: var(--color-secondary);
     color: var(--color-onPrimary);
     white-space: nowrap;
@@ -128,20 +159,16 @@ const tagsArray = tagsList.split(",");
       "wght" 500;
   }
 
-  .responsibilities {
+  .card-content__responsibilities {
     width: clamp(200px, 700px, 100%);
   }
 
-  .responsibilities p {
+  .card-content__body p {
     margin: 0 0 var(--space-4);
     text-wrap: pretty;
   }
 
-  .responsibilities p:last-child {
+  .card-content__body p:last-child {
     margin-bottom: 0;
-  }
-
-  .close-button {
-    transform: translate(var(--padding), calc(var(--padding) * -1));
   }
 </style>

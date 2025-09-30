@@ -1,0 +1,57 @@
+---
+import ColorPicker from "../components/ColorPicker.tsx";
+import "../styles/styles.css";
+
+const mainTitle = "Michael Watts, Software Engineer";
+const { pageTitle } = Astro.props;
+---
+
+<script>
+  import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+
+  document.documentElement.style.setProperty(
+    "--color-primary",
+    themePrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-onPrimary",
+    themeOnPrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-secondary",
+    themeSecondary.get()
+  );
+
+  themePrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-primary", color);
+  });
+
+  themeOnPrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-onPrimary", color);
+  });
+
+  themeSecondary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-secondary", color);
+  });
+</script>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{mainTitle} | {pageTitle}</title>
+    <meta
+      name="description"
+      content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
+  </head>
+  <body>
+    <main id="main">
+      <slot />
+    </main>
+
+    <ColorPicker client:only="react" />
+  </body>
+</html>

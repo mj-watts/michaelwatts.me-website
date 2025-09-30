@@ -14,13 +14,13 @@ const {
   .image-container {
     overflow: hidden;
     border-radius: var(--border-radius);
-    width: 100%;
+    width: clamp(200px, 100%, 2816px);
     height: auto;
     background-color: var(--backgroundColor);
   }
 
   .image-container > img {
-    width: clamp(200px, 100%, 2000px);
+    width: clamp(200px, 100%, 2816px);
     height: auto;
   }
 </style>

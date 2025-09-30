@@ -1,5 +1,5 @@
 ---
-title: "IO Music iOS & Android app"
+title: "IO Music App for iOS & Android"
 sectors: ["Music", "Social Media", "Communication Services"]
 pubDate: 2025-09-07
 summary: "An innovative music streaming app for iOS and Android using React and React Native."
@@ -7,28 +7,28 @@ image: "./cover.png"
 backgroundColor: "#54519d"
 type: "Mobile App"
 tags: ["React", "React Native", "Objective-C", "Firebase", "Reddis"]
-recommendationImage: '../../../images/anand-kuppa.png'
-recommendationText: 'Michael is an excellent web developer. His design skills and front end skills were excellent. I thoroughly enjoyed working with Mike and have been amazed at his work, his eye for design and his knowledge of the latest trends and technologies. I find Mike an excellent colleague to work with as he is personable, understanding and a good laugh. I would thoroughly recommend Mike as he would be an invaluable asset for your web needs.'
-recommendationFooter: 'Anand Kuppa - Founder, AK Consultancies'
+recommendationImage: "../../../images/anand-kuppa.png"
+recommendationText: "Michael is an excellent web developer. His design skills and front end skills were excellent. I thoroughly enjoyed working with Mike and have been amazed at his work, his eye for design and his knowledge of the latest trends and technologies. I find Mike an excellent colleague to work with as he is personable, understanding and a good laugh. I would thoroughly recommend Mike as he would be an invaluable asset for your web needs."
+recommendationFooter: "Anand Kuppa - Founder, AK Consultancies"
 ---
+
 import { Image } from "astro:assets";
 import ImageContainer from "../../../components/ImageContainer.astro";
-import coverImage from "./cover.png";
-import screensImage from "./screens.png";
+import ContentImage1Column from "../../../components/ContentImage1Column.astro";
+import ContentImage2Column from "../../../components/ContentImage2Column.astro";
+import image1 from "./image1.png";
+import image2 from "./image2.png";
+import image3 from "./image3.png";
+import image4 from "./image4.png";
+import image5 from "./image5.png";
+import image6 from "./image6.png";
+import image7 from "./image7.png";
 
-<ImageContainer height="410px">
-  <Image src={coverImage} alt="IO Music App" width={840} loading="lazy" />
-</ImageContainer>
+IO Music App was built using a combination of React Native for cross-platform mobile development, Objective-C for native iOS components, and Firebase for backend services including real-time database and authentication. Redis was used for caching to enhance performance and scalability.
 
-IO Music App was built using a combination of **React Native** for cross-platform mobile development, **Objective-C** for native iOS components, and **Firebase** for backend services including real-time database and authentication. **Redis** was used for caching to enhance performance and scalability.
-
-The app's standout feature was its **party mode**, which allowed users to create shared playlists and collaboratively control music playback in real-time. This feature was implemented using WebSockets to ensure low-latency communication between users.
+The app's standout feature was its party mode, which allowed users to create shared playlists and collaboratively control music playback in real-time. This feature was implemented using WebSockets to ensure low-latency communication between users.
 
 The app also included standard music streaming features such as personalized recommendations, offline listening, and social sharing. Users could follow friends, share playlists, and discover new music through curated content.
-
-<ImageContainer>
-  <Image src={screensImage} alt="IO Music App" width={840} loading="lazy" />
-</ImageContainer>
 
 Throughout the development process, I worked closely with designers and product managers to ensure a seamless user experience. This involved iterative testing and feedback sessions to refine the app's functionality and interface.
 
@@ -37,3 +37,81 @@ The app was successfully launched on both the Apple App Store and Google Play St
 The project also involved ongoing maintenance and updates to introduce new features, fix bugs, and improve performance based on user feedback. This ensured that the app remained competitive in the rapidly evolving music streaming market.
 
 Overall, the development of the IO Music app was a successful endeavor that showcased the potential of combining modern technologies to create a unique and engaging music streaming experience.
+
+<ContentImage1Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image2}
+      alt="iPhone App."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image3}
+      alt="iPhone App."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image4}
+      alt="iPhone App."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
+
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image1}
+      alt="iPhone App."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image6}
+      alt="iPhone App."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image7}
+      alt="iPhone App."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
+
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image5}
+      alt="iPhone App."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
