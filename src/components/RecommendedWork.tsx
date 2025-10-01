@@ -6,12 +6,11 @@ interface Props {
   image: string;
   title: string;
   description: string;
-  bgcolor: string;
   link: string;
 }
 
-const Container = styled.div<{ image: string; bgcolor: string }>`
-  --border-radius: 12px;
+const Container = styled.div<{ image: string; }>`
+  --rounded-border: var(--border-radius);
   --bgcolor: var(--color-onPrimary);
   --textcolor: var(--color-secondary);
 
@@ -24,7 +23,7 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   justify-content: start;
   height: 300px;
   width: 300px;
-  border-radius: var(--border-radius);
+  border-radius: var(--rounded-border);
   color: var(--color-background);
   padding: var(--space-6);
   box-sizing: border-box;
@@ -100,7 +99,6 @@ export default function RecommendedWork({
   image,
   title,
   description,
-  bgcolor,
   link,
 }: Props) {
   const [mounted, setMounted] = useState(false);
@@ -112,7 +110,7 @@ export default function RecommendedWork({
   if (!mounted) return <SkeletonComponent />;
 
   return (
-    <Container image={image} bgcolor={bgcolor}>
+    <Container image={image}>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <Link href={link}>View</Link>

@@ -65,7 +65,12 @@ const { pageTitle, pageDescription } = Astro.props;
   <body class="work">
     <div class="container">
       <span id="top-of-site-pixel-anchor"></span>
-      <div id="main" role="main" style="view-transition-name: work-main;">
+      <div
+        id="main"
+        role="main"
+        class="main"
+        style="view-transition-name: work-main;"
+      >
         <slot />
       </div>
     </div>
@@ -86,7 +91,7 @@ const { pageTitle, pageDescription } = Astro.props;
   @media screen and (min-width: 1280px) {
     body.work {
       --body-margin: var(--space-4);
-      --content-padding: var(--space-12);
+      --content-padding: var(--space-4);
       --flex-direction: row;
     }
   }
@@ -101,7 +106,7 @@ const { pageTitle, pageDescription } = Astro.props;
     padding: var(--body-margin);
   }
 
-  #main {
+  .main {
     height: auto;
     background-color: var(--panel-color);
     color: var(--text-color);
@@ -110,7 +115,7 @@ const { pageTitle, pageDescription } = Astro.props;
     padding: var(--content-padding);
   }
 
-  #main h1 {
+  .main h1 {
     font-size: clamp(
       var(--font-size-lg),
       calc(4vw + 1rem),
