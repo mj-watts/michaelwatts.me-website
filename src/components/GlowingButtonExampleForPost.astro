@@ -60,30 +60,28 @@
     }
   }
 
-  @scope (.glowing-button) {
-    :scope {
-      --a11y: 0.5; /* 0 to 1 - controls the contrast of the outline */
-      --background-color: hsl(210deg 92% 20%);
-      --dark-color: hsl(210deg 92% 10%);
-      --dark-color-hover: hsl(210deg 92% 30%);
-      --light-color: hsl(210deg 92% 80%);
-      --accent-color-hue: 210;
-      --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
-      --radial-bg-color: var(--light-color);
-      --bg-y: -50;
-      --bg-x: 200;
-      --glow-size: 2;
-      --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.2);
-      --flash-size: 0;
-      --text-flash-size: 0;
-      --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
-      /* Misc */
-      --outer-radius: 5px;
-      --inner-padding: 16px;
-      --outline-color: hsla(
-        calc(var(--accent-color-hue) * 1deg) 100% 70% / calc(var(--a11y) * 100%)
-      );
-    }
+  .glowing-button {
+    --a11y: 0.5; /* 0 to 1 - controls the contrast of the outline */
+    --background-color: hsl(210deg 92% 20%);
+    --dark-color: hsl(210deg 92% 10%);
+    --dark-color-hover: hsl(210deg 92% 30%);
+    --light-color: hsl(210deg 92% 80%);
+    --accent-color-hue: 210;
+    --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 70%);
+    --radial-bg-color: var(--light-color);
+    --bg-y: -50;
+    --bg-x: 200;
+    --glow-size: 2;
+    --flash-color: hsla(calc(var(--accent-color-hue) * 1deg), 92%, 70%, 0.2);
+    --flash-size: 0;
+    --text-flash-size: 0;
+    --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
+    /* Misc */
+    --outer-radius: 5px;
+    --inner-padding: 16px;
+    --outline-color: hsla(
+      calc(var(--accent-color-hue) * 1deg) 100% 70% / calc(var(--a11y) * 100%)
+    );
   }
 
   .glowing-button {

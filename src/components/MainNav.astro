@@ -88,7 +88,7 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
-  @scope (.mainnav) {
+  .mainnav {
     --height: 48px;
     --mainnav__items-ol-padding: 0;
     --mainnav__items-ol-li-display: none;
@@ -96,7 +96,7 @@ const currentPath = pathname.slice(1);
   }
 
   @media screen and (min-width: 490px) {
-    @scope (.mainnav) {
+    .mainnav {
       --mainnav__items-ol-padding: 10px 30px;
       --mainnav__items-ol-li-display: block;
       --mainnav__menu-button-display: none;

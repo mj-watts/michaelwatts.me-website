@@ -76,7 +76,7 @@ import ExperienceCard from "./ExperienceCard.astro";
 </script>
 
 <style is:global>
-  @scope (.experience__bd) {
+  .experience__bd {
     --line-width: 0px;
     --ball-width: 0px;
     --ball-distance: 0px;
@@ -88,7 +88,7 @@ import ExperienceCard from "./ExperienceCard.astro";
   }
 
   @media screen and (min-width: 770px) {
-    @scope (.experience__bd) {
+    .experience__bd {
       --line-width: 4px;
       --ball-width: 20px;
       --ball-distance: 35px;
@@ -102,7 +102,7 @@ import ExperienceCard from "./ExperienceCard.astro";
   }
 
   @media screen and (min-width: 1280px) {
-    @scope (.experience__bd) {
+    .experience__bd {
       --line-width: 8px;
       --ball-distance: 62px;
       --column-gap: var(--space-12);
