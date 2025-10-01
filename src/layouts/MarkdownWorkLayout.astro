@@ -31,11 +31,40 @@ const { description } = frontmatter;
           {frontmatter.type}
         </div>
 
-        <div class="work-item__aside-section--tags">
-          <strong>Tech used:</strong>
+        <div class="work-item__aside-section work-item__aside-section--tags">
+          <strong>Tags:</strong>
           <div>
             <Tags tags={frontmatter.tags} client:only="react" />
           </div>
+        </div>
+      </div>
+      <div class="work-item__aside-section work-item__aside-recommended-work">
+        <div class="work-item__aside-recommended-work-header">
+          <strong class="work-item__aside-recommended-work-title"
+            >Related work:</strong
+          >
+        </div>
+        <div class="work-item__aside-recommended-work-body">
+          <ul class="work-item__aside-recommended-work-items">
+            {
+              frontmatter.recommendedWorks.map(
+                (work: {
+                  image: { src: string };
+                  title: string;
+                  description: string;
+                  bgcolor: string;
+                  link: string;
+                }) => (
+                  <li class="work-item__aside-recommended-work-item">
+                    <a href={work.link}>
+                      <strong>{work.title}</strong>
+                      <p>{work.description}</p>
+                    </a>
+                  </li>
+                )
+              )
+            }
+          </ul>
         </div>
       </div>
 
@@ -62,9 +91,9 @@ const { description } = frontmatter;
 
       {
         frontmatter.recommendedWorks?.length && (
-          <div class="work-item__recommended-works-works">
-            <h2>Other work</h2>
-            <div>
+          <div class="work-item__recommended-work-works">
+            <h2 class="work-item__recommended-work-title">Other work</h2>
+            <div class="work-item__recommended-work-body">
               {frontmatter.recommendedWorks.map(
                 (work: {
                   image: { src: string };
@@ -77,7 +106,6 @@ const { description } = frontmatter;
                     image={work.image?.src}
                     title={work.title}
                     description={work.description}
-                    bgcolor={work.bgcolor}
                     link={work.link}
                     client:load
                   />
@@ -110,7 +138,7 @@ const { description } = frontmatter;
       --work-item__aside-top: var(--space-12);
       --work-item__aside-height: 50dvi;
       --strong-display: block;
-      --work-item__aside-bd-gap: var(--space-4);
+      --work-item__aside-bd-gap: var(--space-2);
     }
   }
 
@@ -137,6 +165,10 @@ const { description } = frontmatter;
     transition: all 1s var(--ease-out-elastic);
   }
 
+  .work-item__aside-section {
+    line-height: 1.4;
+  }
+
   .work-item__aside-section--tags {
     display: flex;
     align-items: center;
@@ -145,6 +177,19 @@ const { description } = frontmatter;
 
   .work-item__aside-section strong {
     display: var(--strong-display);
+  }
+
+  .work-item__aside-recommended-work-items {
+    list-style-image: url("../images/bullet-arrow-right.svg");
+    padding-left: 1rem;
+  }
+
+  .work-item__aside-recommended-work-item {
+    margin-bottom: var(--space-2);
+  }
+
+  .work-item__aside-recommended-work-item:last-child {
+    margin-bottom: 0;
   }
 
   .work-item__recommendations {
@@ -158,14 +203,14 @@ const { description } = frontmatter;
     max-width: 1920px;
   }
 
-  .work-item__recommended-works-works h2 {
+  .work-item__recommended-work-title {
     margin-bottom: var(--space-2);
     font-size: var(--font-size-xl);
     text-align: center;
-    color: var(--color-primary);
+    color: var(--color-onPrimary);
   }
 
-  .work-item__recommended-works-works > div {
+  .work-item__recommended-work-body {
     display: flex;
     gap: var(--space-4);
     flex-direction: row;
