@@ -75,7 +75,7 @@ const { pageTitle, pageDescription } = Astro.props;
 </html>
 
 <style is:global>
-  @scope (body.work) {
+  body.work {
     --body-margin: var(--space-2);
     --content-padding: var(--space-6);
     --bg-color: var(--color-primary);
@@ -84,7 +84,7 @@ const { pageTitle, pageDescription } = Astro.props;
   }
 
   @media screen and (min-width: 1280px) {
-    @scope (body.work) {
+    body.work {
       --body-margin: var(--space-4);
       --content-padding: var(--space-12);
       --flex-direction: row;

@@ -92,7 +92,7 @@ const { description } = frontmatter;
 </WorkLayout>
 
 <style>
-  @scope (.work-item) {
+  .work-item {
     --flex-direction: column;
     --gap: var(--space-6);
     --work-item__aside-position: relative;
@@ -103,7 +103,7 @@ const { description } = frontmatter;
   }
 
   @media screen and (min-width: 1000px) {
-    @scope (.work-item) {
+    .work-item {
       --flex-direction: row;
       --gap: var(--space-12);
       --work-item__aside-position: sticky;

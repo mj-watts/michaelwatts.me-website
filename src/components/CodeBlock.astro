@@ -24,25 +24,18 @@ const { lang, filename } = Astro.props;
 </div>
 
 <style>
-  @scope (.code-block) {
-    :scope {
-      --font-size: 0.65rem;
-      --padding: var(--space-4);
-      --border-width: 1px;
-      --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
-      --code-bg-color: black;
-    }
+  .code-block {
+    --font-size: 0.65rem;
+    --padding: var(--space-4);
+    --border-width: 1px;
+    --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
+    --code-bg-color: black;
+  }
 
-    @media (min-width: 768px) {
-      :scope {
-        --font-size: 1rem;
-        --padding: var(--space-8);
-      }
-    }
-
-    @media (min-width: 939px) {
-      :scope {
-      }
+  @media (min-width: 768px) {
+    .code-block {
+      --font-size: 1rem;
+      --padding: var(--space-8);
     }
   }
 

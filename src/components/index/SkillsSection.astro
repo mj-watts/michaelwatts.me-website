@@ -41,25 +41,25 @@
 </script>
 
 <style>
-  @scope (.skills) {
+  .skills {
     --grid-template-columns: 1fr;
     --font-size-clamp-max: var(--font-size-xl);
   }
 
   @media screen and (min-width: 490px) {
-    @scope (.skills) {
+    .skills {
       --grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media screen and (min-width: 770px) {
-    @scope (.skills) {
+    .skills {
       --grid-template-columns: repeat(4, 1fr);
     }
   }
 
   @media screen and (min-width: 1280px) {
-    @scope (.skills) {
+    .skills {
       --grid-template-columns: repeat(4, 1fr);
       --font-size-clamp-max: var(--font-size-2xl);
     }
