@@ -2,13 +2,13 @@
 const { href } = Astro.props;
 ---
 
-<a href={href} class="modal-close-button">
+<a href={href} class="close-button">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"
     fill="currentColor"
-    class="bi bi-x"
+    class="close-button__icon"
     viewBox="0 0 16 16"
   >
     <path
@@ -18,7 +18,7 @@ const { href } = Astro.props;
 </a>
 
 <style>
-  @scope (a.modal-close-button) {
+  @scope (.close-button) {
     --size: 48px;
     --posX: 48px;
     --iconSize: 24px;
@@ -27,7 +27,7 @@ const { href } = Astro.props;
     --hovercolor: var(--color-secondary);
   }
 
-  a.modal-close-button {
+  .close-button {
     background-color: var(--bgcolor);
     border-radius: calc(var(--size) / 2);
     justify-content: center;
@@ -38,13 +38,13 @@ const { href } = Astro.props;
     width: var(--size);
   }
 
-  a.modal-close-button:hover,
-  a.modal-close-button:focus {
+  .close-button:hover,
+  .close-button:focus {
     background-color: var(--color);
     color: var(--bgcolor);
   }
 
-  a.modal-close-button svg {
+  .close-button__icon {
     fill: var(--color);
     stroke: var(--color);
     height: var(--iconSize);
@@ -52,8 +52,7 @@ const { href } = Astro.props;
     stroke-width: 1px;
   }
 
-  a.modal-close-button:hover svg,
-  a.modal-close-button:hover svg {
+  .close-button:hover .close-button__icon {
     fill: var(--hovercolor);
     stroke: var(--hovercolor);
   }

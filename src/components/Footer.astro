@@ -6,10 +6,10 @@ const { classList } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer id="contact" class:list={["", classList]}>
-  <div class="title"><span>CONTACT</span></div>
+<footer id="contact" class:list={["footer", classList]}>
+  <div class="footer__title"><span>CONTACT</span></div>
   <Container>
-    <div class="email">
+    <div class="footer__email">
       <a href="mailto:hello@michaelwatts.me">HELLO@MICHAELWATTS.ME</a>
     </div>
     <div>
@@ -22,8 +22,10 @@ const currentYear = new Date().getFullYear();
   import { animate, scroll } from "motion";
 
   const animation = animate(
-    ".title > span",
-    { transform: ["scaleY(-6)", "scaleY(1)"], opacity: [0, 1] },
+    ".footer__title > span",
+    {
+      transform: ["translateY(-3000px)", "translateY(-50px)"],
+    },
     { ease: "linear" }
   );
 
@@ -34,17 +36,17 @@ const currentYear = new Date().getFullYear();
   footer {
     background-color: var(--color-secondary);
     margin-top: var(--space-10);
-    padding: var(--space-24) 0;
+    padding: 0 0 var(--space-24);
     text-align: center;
     container: footer / inline-size;
   }
 
-  .title {
+  .footer__title {
     overflow: hidden;
     width: 100%;
   }
 
-  .title span {
+  .footer__title span {
     display: block;
     line-height: 1;
     font: 43cqi / 0.8 var(--header-font);
@@ -52,27 +54,11 @@ const currentYear = new Date().getFullYear();
     margin-left: -0.05em;
     pointer-events: none;
     text-transform: uppercase;
-    transform-origin: top;
     user-select: none;
     color: var(--color-primary);
-    animation: slide-in linear;
-    animation-timeline: view();
-    animation-range-start: 100px;
-    animation-range-end: 200px;
   }
 
-  .email {
+  .footer__email {
     font-variation-settings: var(--font-bold);
-  }
-
-  @keyframes slide-in {
-    from {
-      transform: scaleY(0);
-      opacity: 0;
-    }
-    to {
-      transform: scaleY(1);
-      opacity: 1;
-    }
   }
 </style>
