@@ -7,6 +7,7 @@ const ColorPickerWrapper = styled.div`
   --gap: 1.5;
   --radius: calc(var(--toggle-size) * .5 + var(--gap));
   --spacing: .75;
+  --size: 48px;
 
   user-select: none;
   touch-action: none;
@@ -29,21 +30,19 @@ const ColorPickerWrapper = styled.div`
 
 const Button = styled.button`
   user-select: none;
-  box-shadow: 0 0 0 1px var(--color-onPrimary);
-  transition: all 0.2s ease-in-out;
-  transform: scale(1);
+  transition: background-color 0.2s ease-in-out;
   border: none;
   background: var(--color-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.05);
+    background: oklab(from var(--color-secondary) calc(l - 0.1) a b);
   }
 `;
 

@@ -1,6 +1,8 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
+import SvgBackButton from "../components/SvgBackButton.astro";
 import PageTitle from "../components/PageTitle.astro";
+import Button from "../components/Button.astro";
 import Tags from "../components/Tags.tsx";
 import Recommendation from "../components/Recommendation.tsx";
 import RecommendedWork from "../components/RecommendedWork.tsx";
@@ -10,36 +12,44 @@ const { description } = frontmatter;
 ---
 
 <WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
-  <div class="work-content-wrapper">
-    <div class="meta-wrapper">
-      <div class="meta-content">
+  <div class="work-item">
+    <div class="work-item__aside">
+      <a href="/#work">
+        <SvgBackButton />
+      </a>
+
+      <div class="work-item__aside-sections">
         <PageTitle>{frontmatter.title}</PageTitle>
 
-        <div class="sectors">
+        <div class="work-item__aside-section">
           <strong>Sectors:</strong>
           {frontmatter.sectors.join(" • ")}
         </div>
 
-        <div class="type">
+        <div class="work-item__aside-section">
           <strong>Type:</strong>
           {frontmatter.type}
         </div>
 
-        <div class="tags">
+        <div class="work-item__aside-section--tags">
           <strong>Tech used:</strong>
           <div>
             <Tags tags={frontmatter.tags} client:only="react" />
           </div>
         </div>
       </div>
+
+      <div>
+        <Button href="/#contact">Get in touch</Button>
+      </div>
     </div>
 
-    <div class="text">
+    <div class="work-item__main">
       <slot />
 
       {
         frontmatter.recommendedWorks && (
-          <div class="recommendations">
+          <div class="work-item__recommendations">
             <Recommendation
               image={frontmatter.recommendationImage?.src}
               text={frontmatter.recommendationText}
@@ -52,7 +62,7 @@ const { description } = frontmatter;
 
       {
         frontmatter.recommendedWorks?.length && (
-          <div class="recommended-works">
+          <div class="work-item__recommended-works-works">
             <h2>Other work</h2>
             <div>
               {frontmatter.recommendedWorks.map(
@@ -82,80 +92,80 @@ const { description } = frontmatter;
 </WorkLayout>
 
 <style>
-  @scope (.work-content-wrapper) {
+  @scope (.work-item) {
     --flex-direction: column;
     --gap: var(--space-6);
-    --meta-content-position: relative;
-    --meta-content-top: 0;
+    --work-item__aside-position: relative;
+    --work-item__aside-top: 0;
+    --work-item__aside-height: auto;
     --strong-display: inline;
-    --meta-content-gap: var(--space-2);
+    --work-item__aside-bd-gap: var(--space-2);
   }
 
   @media screen and (min-width: 1000px) {
-    @scope (.work-content-wrapper) {
+    @scope (.work-item) {
       --flex-direction: row;
       --gap: var(--space-12);
-      --meta-content-position: sticky;
-      --meta-content-top: calc(var(--controls-height) + var(--content-padding));
+      --work-item__aside-position: sticky;
+      --work-item__aside-top: var(--space-12);
+      --work-item__aside-height: 50dvi;
       --strong-display: block;
-      --meta-content-gap: var(--space-4);
+      --work-item__aside-bd-gap: var(--space-4);
     }
   }
 
-  .work-content-wrapper {
+  .work-item {
     display: flex;
     flex-direction: var(--flex-direction);
     gap: var(--gap);
   }
 
-  .meta-content {
+  .work-item__aside {
     display: flex;
     flex-direction: column;
-    gap: var(--meta-content-gap);
-    position: var(--meta-content-position);
-    top: var(--meta-content-top);
+    gap: var(--space-12);
+    position: var(--work-item__aside-position);
+    top: var(--work-item__aside-top);
     left: 0;
+    height: var(--work-item__aside-height);
+  }
+
+  .work-item__aside-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--work-item__aside-bd-gap);
     transition: all 1s var(--ease-out-elastic);
   }
 
-  .sectors,
-  .type {
-    margin-bottom: var(--space-1);
-  }
-
-  .tags {
+  .work-item__aside-section--tags {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: var(--space-12);
   }
 
-  .sectors strong,
-  .type strong,
-  .tags strong {
+  .work-item__aside-section strong {
     display: var(--strong-display);
   }
 
-  .tags strong {
-    white-space: nowrap;
-    margin-right: var(--space-1);
-  }
-
-  .recommendations {
+  .work-item__recommendations {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: var(--space-12);
   }
 
-  .recommended-works h2 {
+  .work-item__main {
+    max-width: 1920px;
+  }
+
+  .work-item__recommended-works-works h2 {
     margin-bottom: var(--space-2);
     font-size: var(--font-size-xl);
     text-align: center;
     color: var(--color-primary);
   }
 
-  .recommended-works > div {
+  .work-item__recommended-works-works > div {
     display: flex;
     gap: var(--space-4);
     flex-direction: row;

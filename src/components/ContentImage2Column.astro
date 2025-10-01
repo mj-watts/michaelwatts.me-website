@@ -1,5 +1,5 @@
 <div class="content-image-2-col">
-  <div class="bd">
+  <div class="content-image-2-col__bd">
     <slot />
   </div>
 </div>
@@ -9,16 +9,15 @@
     container-type: inline-size;
   }
 
-  .content-image-2-col .bd {
+  .content-image-2-col__bd {
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
   }
 
   @container (width > 966px) {
-    .content-image-2-col .bd {
+    .content-image-2-col__bd {
       flex-direction: row;
-      margin-top: var(--space-8);
     }
   }
 </style>

@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import swiftaidImage from "../../images/swiftaid.webp";
-import sppocImage from "../../images/sppoc.webp";
-import ioMusicImage from "../../images/iomusic.webp";
-import sfmImage from "../../images/sfm.webp";
-import toyotaF1Image from "../../images/toyotaf1.webp";
-import sitaImage from "../../images/sita.webp";
+import swiftaidImage from "../../images/swiftaid.png";
+import sppocImage from "../../images/sppoc.png";
+import ioMusicImage from "../../images/iomusic.png";
+import sfmImage from "../../images/sfm.png";
+import ecommImage from "../../images/ecomm.png";
+import webAppsImage from "../../images/webapps.png";
 ---
 
 <>
@@ -43,7 +43,7 @@ import sitaImage from "../../images/sita.webp";
         alt="io Music App for iOS and Android"
       />
     </a>
-    <a href="/work/portals-and-apps" class="work">
+    <a href="/work/saudi-fashion-retail" class="work">
       <Image
         src={sfmImage}
         width={600}
@@ -51,9 +51,9 @@ import sitaImage from "../../images/sita.webp";
         alt="Saudi Fashion Magazine Website"
       />
     </a>
-    <a href="/work/ecommerce" class="work">
+    <a href="/work/ecomm-sites" class="work">
       <Image
-        src={toyotaF1Image}
+        src={ecommImage}
         width={600}
         height={600}
         alt="Ecommerce websites and payment systems"
@@ -61,10 +61,10 @@ import sitaImage from "../../images/sita.webp";
     </a>
     <a href="/work/webapps" class="work">
       <Image
-        src={sitaImage}
+        src={webAppsImage}
         width={600}
         height={600}
-        alt="Sita Aero Logistics Calculator"
+        alt="Web applications"
       />
     </a>
   </div>
@@ -152,7 +152,6 @@ import sitaImage from "../../images/sita.webp";
     right: 0;
     bottom: 0;
     background-color: var(--color-primary);
-    opacity: 0.3;
     transition: all 0.2s ease-in-out;
     mix-blend-mode: color;
   }

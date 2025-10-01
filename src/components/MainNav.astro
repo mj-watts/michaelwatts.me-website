@@ -7,13 +7,14 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav>
+<nav class="mainnav">
+  <div class="blur-bg"></div>
   <Container>
-    <div class="main-nav-content">
+    <div class="mainnav__content">
       <Avatar />
-      <div class="main-nav-nav-items">
-        <ol>
-          <li class="menu-button">
+      <div class="mainnav__items">
+        <ol class="mainnav__pagelinks">
+          <li class="mainnav__menu-button">
             <button>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +45,7 @@ const currentPath = pathname.slice(1);
             >
           </li>
         </ol>
-        <ul class="social-icons">
+        <ul class="mainnav__social-icons">
           <li>
             <a href="https://github.com/mj-watts" aria-label="GitHub link">
               <svg
@@ -87,33 +88,32 @@ const currentPath = pathname.slice(1);
 </nav>
 
 <style>
-  @scope (nav) {
-    --height: 40px;
-    --main-nav-nav-items-ol-padding: 0;
-    --main-nav-nav-items-ol-li-display: none;
-    --menu-button-display: flex;
+  @scope (.mainnav) {
+    --height: 48px;
+    --mainnav__items-ol-padding: 0;
+    --mainnav__items-ol-li-display: none;
+    --mainnav__menu-button-display: flex;
   }
 
   @media screen and (min-width: 490px) {
-    @scope (nav) {
-      --main-nav-nav-items-ol-padding: 10px 30px;
-      --main-nav-nav-items-ol-li-display: block;
-      --menu-button-display: none;
+    @scope (.mainnav) {
+      --mainnav__items-ol-padding: 10px 30px;
+      --mainnav__items-ol-li-display: block;
+      --mainnav__menu-button-display: none;
     }
   }
 
-  nav {
+  .mainnav {
     margin-bottom: var(--space-10);
     padding: var(--space-2) 0;
     font-size: 20px;
     font-variation-settings:
       "slnt" 0,
       "wght" 700;
-    backdrop-filter: blur(4px);
   }
 
   @media screen and (min-width: 768px) {
-    nav {
+    .mainnav {
       position: fixed;
       width: 100%;
       top: 0;
@@ -121,18 +121,30 @@ const currentPath = pathname.slice(1);
       z-index: 100;
     }
 
-    body.header-not-at-top nav {
+    body.header-not-at-top .mainnav {
     }
   }
 
-  .main-nav-content {
+  .blur-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -30px;
+    background-color: rgb(from var(--color-primary) r g b / 0.2);
+    mask-image: linear-gradient(black 40%, transparent 100%);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+  }
+
+  .mainnav__content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     align-items: center;
   }
 
-  .main-nav-nav-items {
+  .mainnav__items {
     display: flex;
     align-items: center;
     justify-content: end;
@@ -140,25 +152,26 @@ const currentPath = pathname.slice(1);
     margin-left: var(--space-2);
   }
 
-  ol {
+  .mainnav__pagelinks {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: var(--space-12);
     margin: 0;
     background-color: var(--color-onPrimary);
     border-radius: var(--border-radius-sm);
     height: var(--height);
-    padding: var(--main-nav-nav-items-ol-padding);
+    padding: var(--mainnav__items-ol-padding);
   }
 
-  li {
+  .mainnav__items li {
     line-height: 1;
-    display: var(--main-nav-nav-items-ol-li-display);
+    display: var(--mainnav__items-ol-li-display);
     align-items: center;
     justify-content: center;
   }
 
-  .social-icons {
+  .mainnav__social-icons {
     list-style: none;
     display: flex;
     gap: var(--space-2);
@@ -166,7 +179,7 @@ const currentPath = pathname.slice(1);
     padding: 0;
   }
 
-  .social-icons li {
+  .mainnav__social-icons li {
     display: flex;
     background-color: var(--color-onPrimary);
     height: var(--height);
@@ -174,33 +187,33 @@ const currentPath = pathname.slice(1);
     border-radius: var(--border-radius-sm);
   }
 
-  .social-icons li svg {
+  .mainnav__social-icons li svg {
     color: var(--color-primary);
     height: 26px;
     width: 26px;
     transition: color 0.3s;
   }
 
-  .social-icons a:hover > svg {
+  .mainnav__social-icons a:hover > svg {
     color: var(--color-secondary);
   }
 
   /* RESPONSIVE */
-  .main-nav-nav-items ol li.menu-button {
-    display: var(--menu-button-display);
+  .mainnav__items ol li.mainnav__menu-button {
+    display: var(--mainnav__menu-button-display);
     align-items: center;
     justify-content: center;
     height: var(--height);
     width: var(--height);
   }
 
-  .main-nav-nav-items ol li.menu-button button {
+  .mainnav__items ol li.mainnav__menu-button button {
     border: none;
     background: transparent;
     padding: 0;
   }
 
-  .main-nav-nav-items ol li.menu-button svg {
+  .mainnav__items ol li.mainnav__menu-button svg {
     color: var(--color-primary);
     height: 26px;
     width: 26px;
