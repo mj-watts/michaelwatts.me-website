@@ -1,5 +1,6 @@
 ---
 import ListHeading from "./ListHeading.astro";
+import BlogListItemMeta from "./BlogListItemMeta";
 
 const { url, title, date, description, tags, readTime } = Astro.props;
 
@@ -16,8 +17,13 @@ const isRecipe = tags && tags.includes("recipes");
 
 {
   !isRecipe ? (
-    <li>
-      <div>
+    <li class="blog-item">
+      <BlogListItemMeta
+        date={formattedDate}
+        readTime={readTime}
+        client:only="react"
+      />
+      {/* <div>
       {formattedDate ? (
         <time datetime={new Date(date).toISOString()}>{formattedDate}</time>
       ) : null}
@@ -26,11 +32,15 @@ const isRecipe = tags && tags.includes("recipes");
 
         <time datetime={`PT${readTime}M`}>{readTime} min read</time>
       ) : null}
-      </div>
+      </div> */}
       <ListHeading role="heading" aria-level="2" url={url} title={title} />
-      <div>
+      <div class="blog-item__bd">
         {description}{" "}
-        <a href={url} aria-label={`Read more about ${title}`}>
+        <a
+          href={url}
+          aria-label={`Read more about ${title}`}
+          class="blog-item__readmore-link"
+        >
           Read more
         </a>
       </div>
@@ -39,38 +49,18 @@ const isRecipe = tags && tags.includes("recipes");
 }
 
 <style>
-  li {
+  .blog-item {
     list-style: none;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-12);
     position: relative;
-    border-bottom: 3px dashed var(--color-border);
-    padding-bottom: var(--space-5);
   }
 
-  li:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  div:nth-child(1) {
-    display: flex;
-    align-items: center;
-    font-size: smaller;
-    opacity: 0.7;
-    gap: var(--space-3);
-  }
-
-  div:nth-child(1) > span {
-    opacity: 0.5;
-  }
-
-  div:nth-child(3) {
+  .blog-item__bd {
     margin-bottom: var(--space-1);
     text-wrap: pretty;
   }
 
-  div:nth-child(3) a {
+  .blog-item__readmore-link {
     anchor-name: --read-more-anchor;
     font-weight: bold;
     white-space: nowrap;
@@ -79,49 +69,8 @@ const isRecipe = tags && tags.includes("recipes");
     transition: border-color 0.1s ease-in-out;
   }
 
-  div:nth-child(3) a:hover {
+  .blog-item__readmore-link:hover {
     border-color: var(--color-link-hover);
-  }
-
-  div:nth-child(3) a:after {
-    content: "↦";
-    position: absolute;
-    position-anchor: --read-more-anchor;
-    transform: translateX(0) translateY(2px);
-    opacity: 0;
-    transition:
-      opacity 0.2s ease-in-out,
-      transform 0.2s ease-in-out;
-  }
-
-  div:nth-child(3) a:hover:after {
-    opacity: 1;
-    transform: translateX(5px) translateY(2px);
-  }
-
-  div:nth-child(3) a:before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: 5px;
-    bottom: -5px;
-    border-radius: 2px;
-  }
-
-  div:nth-child(3) a:focus {
-    background: var(--color-link-hover);
-    color: var(--color-secondary);
-    outline: none;
-  }
-
-  div:nth-child(3) a:focus:before {
-    border: 1px solid var(--color-link-hover);
-    background-color: hsl(from var(--color-primary) h s l / 0.1);
-    color: var(--color-background);
-  }
-
-  div:nth-child(3) a:focus:after {
-    display: none;
+    color: oklab(from var(--color-onPrimary) calc(l - 0.1) a b);
   }
 </style>

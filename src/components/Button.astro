@@ -1,0 +1,26 @@
+---
+const { href } = Astro.props;
+---
+
+<a href={href} class="button"><slot /></a>
+
+<style>
+  .button {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    height: 48px;
+    place-content: center;
+    border-radius: 12px;
+    padding: 0 var(--space-4);
+    font-variation-settings: var(--font-bold);
+    display: inline-flex;
+    align-items: center;
+    transition: all 200ms ease-in-out;
+  }
+
+  .button:hover,
+  .button:focus,
+  .button:active {
+    background-color: oklab(from var(--color-secondary) calc(l - 0.1) a b);
+  }
+</style>

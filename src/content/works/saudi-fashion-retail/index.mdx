@@ -6,39 +6,134 @@ summary: "Designed and developed a dynamic news magazine website with bi-directi
 image: "./cover.png"
 backgroundColor: "#4e476f"
 type: "Web Applications, Facebook Games"
-tags: ["JavaScript", "PHP", "MySQL", "NoSQL", "ExpressionEngine", "Photoshop", "Illustrator", "SEO", "Social Media Games"]
+tags:
+  [
+    "JavaScript",
+    "PHP",
+    "MySQL",
+    "NoSQL",
+    "ExpressionEngine",
+    "Photoshop",
+    "Illustrator",
+    "SEO",
+    "Social Media Games",
+  ]
 recommendationImage: "../../../images/graham-beard.png"
 recommendationText: "Michael is a strong all round developer who is extremely professional within his approach and great to work with. He worked on a variety high-end websites producing work of the highest quality."
 recommendationFooter: "Graham Beard - Studio Head & Creative Lead"
 ---
+
 import { Image } from "astro:assets";
 import ImageContainer from "../../../components/ImageContainer.astro";
-import coverImage from "./cover.png";
+import ContentImage1Column from "../../../components/ContentImage1Column.astro";
+import ContentImage2Column from "../../../components/ContentImage2Column.astro";
+import image1 from "./image1.png";
+import image2 from "./image2.png";
+import image3 from "./image3.png";
+import image4 from "./image4.png";
+import image5 from "./image5.png";
+import image6 from "./image6.png";
+import image7 from "./image7.png";
 
-<ImageContainer height="410px">
-  <Image src={coverImage} alt="Saudi Fashion Retail" width={840} loading="lazy" />
-</ImageContainer>
+This project centred on building a dynamic content platform using
+ExpressionEngine, giving editors the flexibility to easily create and manage
+articles, images, and multimedia assets. The site was designed responsively to
+ensure a great experience across desktops, tablets, and mobiles, and was
+launched with full support for both left-to-right and right-to-left text,
+including an Arabic edition managed by local editors.
 
-The platform featured a custom content management system built on **ExpressionEngine**, which enabled editors to easily create and manage articles, images, and multimedia content.
+To enhance engagement, features such as social media sharing, advanced search,
+and user comments were developed through custom plugins and modules.
+Performance was optimised by applying efficient coding and database management
+techniques, while security and data protection were maintained through regular
+updates and monitoring. Close collaboration with designers and content teams
+helped deliver a visually consistent and user-friendly platform, supported by
+ongoing testing and feedback.
 
-Responsive design principles were applied to ensure optimal viewing across various devices, including desktops, tablets, and smartphones.
+Alongside this, I oversaw content teams both onsite and remotely in Saudi
+Arabia to ensure smooth delivery. The project was launched successfully, on
+time and to budget, with a positive reception from users. In parallel, I also
+helped develop a series of social media games for brands such as Gap Inc. and
+Marks & Spencer, designed to drive awareness and user interaction through
+platforms like Facebook.
 
-The website fully supported both left-to-right (LTR) and right-to-left (RTL) text directions, catering to Arabic-speaking audiences, and an Arabic version of the site was produced with local content and editors.
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image1}
+      alt="Saudi Fashion Retail."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
 
-Social media sharing features were integrated to enhance user engagement and content dissemination.
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image5}
+      alt="Saudi Fashion Retail."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image4}
+      alt="Saudi Fashion Retail."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
 
-Custom plugins and modules were developed to extend the functionality of the CMS, including advanced search capabilities and user comment systems.
+<ContentImage1Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image6}
+      alt="Saudi Fashion Retail."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
 
-Website performance was optimised through efficient coding practices and database management using **MySQL** and **NoSQL** databases.
+<ContentImage1Column>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image3}
+      alt="Saudi Fashion Retail."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
 
-Collaboration with a team of designers and content creators ensured a cohesive and visually appealing user experience.
+<ContentImage1Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image2}
+      alt="Saudi Fashion Retail."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
 
-User testing was conducted and feedback was implemented to continuously improve the website's usability and functionality.
-
-Website security and data protection were maintained through regular updates and monitoring.
-
-The project was completed on time and within budget, resulting in a successful launch and positive user reception.
-
-A team of content creators, editors, and developers in Saudi Arabia (onsite and remotely) was managed to ensure smooth project execution and delivery.
-
-Alongside the website, several social media games were developed for Gap Inc., Marks & Spencer, and other high street brands to increase user engagement and brand awareness, utilising platforms like Facebook to reach a wider audience.
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image7}
+      alt="Saudi Fashion Retail."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>

@@ -7,10 +7,19 @@ const { href, isActive } = Astro.props;
 </a>
 
 <style>
+  a {
+    color: var(--color-primary);
+    font-weight: 800;
+  }
+
   a.active {
     text-decoration: none;
     color: var(--color-secondary);
-    font-weight: 800;
-    border-bottom: 2px solid var(--color-secondary);
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    color: var(--color-secondary);
   }
 </style>

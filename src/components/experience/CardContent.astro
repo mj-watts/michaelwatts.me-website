@@ -1,0 +1,168 @@
+---
+import SvgBackButton from "../SvgBackButton.astro";
+
+const { slug, date, title, companyName, description, sectors, tagsList } =
+  Astro.props;
+
+const tagsArray = tagsList.split(",");
+---
+
+<div class="card" style={`view-transition-name:card-${slug};`}>
+  <div class="card-content" style={`view-transition-name:card-content-${slug}`}>
+    <aside
+      class="card-content__aside"
+      style={`view-transition-name:card-content-aside-${slug}`}
+    >
+      <div class="card-content__back-button">
+        <a href="/#experience">
+          <SvgBackButton />
+        </a>
+      </div>
+      <div
+        class="card-content__date"
+        style={`view-transition-name:card-meta-${slug};`}
+      >
+        {date}
+      </div>
+      <h3 class="card-content__title">
+        {title}
+        <span class="card-content__company-name">{companyName}</span>
+      </h3>
+      <div class="card-content__description">
+        {description}
+      </div>
+      <div>{sectors}</div>
+      <div class="card-content__tags">
+        {
+          tagsArray.map((tag: string) => (
+            <div class="card-content__tag">{tag}</div>
+          ))
+        }
+      </div>
+    </aside>
+    <div
+      class="card-content__body"
+      style={`view-transition-name:card-content-body-${slug}`}
+    >
+      <div class="card-content__responsibilities">
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const backButton = document.querySelector(".details-btn");
+  backButton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    history.back();
+  });
+</script>
+
+<style is:global>
+  @scope (.card-content) {
+    --flex-direction: column;
+    --padding: var(--space-12);
+  }
+
+  @media screen and (min-width: 1280px) {
+    @scope (.card-content) {
+      --flex-direction: row;
+      --padding: var(--space-24);
+    }
+  }
+
+  .card {
+    background-color: var(--color-primary);
+  }
+
+  .card-content {
+    display: flex;
+    gap: var(--space-8);
+    flex-direction: var(--flex-direction);
+    height: 100%;
+    font-size: var(--font-size-base);
+  }
+
+  .card-content__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--padding);
+    background-color: var(--color-onPrimary);
+    color: var(--color-primary);
+    border-radius: var(--border-radius);
+    margin: var(--space-4);
+  }
+
+  .card-content__body {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    column-gap: var(--space-8);
+    padding: var(--padding);
+    color: var(--color-onPrimary);
+  }
+
+  .card-content__back-button {
+    width: 48px;
+    height: 48px;
+    display: block;
+  }
+
+  .card-content__back-button-icon {
+    width: 48px;
+    height: 48px;
+    fill: var(--color-secondary);
+  }
+
+  .card-content__title {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(3vw + 1rem),
+      var(--font-size-xl)
+    );
+    font-family: var(--body-font);
+    font-variation-settings: var(--font-bold);
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  .card-content__company-name {
+    color: var(--color-secondary);
+  }
+
+  .card-content__description {
+    color: var(--color-primary);
+    font-variation-settings: var(--font-bold);
+  }
+
+  .card-content__tags {
+    margin: var(--space-4) 0;
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .card-content__tag {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    white-space: nowrap;
+    padding: 0 8px;
+    line-height: 1.4;
+    border-radius: var(--border-radius-xs);
+    font-variation-settings: var(--font-semi-bold);
+  }
+
+  .card-content__responsibilities {
+    width: clamp(200px, 700px, 100%);
+  }
+
+  .card-content__body p {
+    margin: 0 0 var(--space-4);
+    text-wrap: pretty;
+  }
+
+  .card-content__body p:last-child {
+    margin-bottom: 0;
+  }
+</style>

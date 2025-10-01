@@ -9,7 +9,7 @@ interface Props {
 }
 
 const RecommendationContainer = styled.div`
-  --color: hsl(from var(--color-primary) h s calc(l * 1.7));
+  --color: var(--color-onPrimary);
   --size: 100px;
 
   anchor-name: --container-anchor;
@@ -36,7 +36,7 @@ const ProfilePicture = styled.div`
   overflow: hidden;
   box-shadow: 0 0 0 6px var(--color);
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     top: 0;
@@ -44,8 +44,9 @@ const ProfilePicture = styled.div`
     right: 0;
     bottom: 0;
     border-radius: inherit;
-    background-color: hsl(from var(--color) h calc(s * 1.3) l);
-    mix-blend-mode: multiply;
+    background-color: var(--color);
+    mix-blend-mode: color;
+    opacity: 0.2;
   }
 `;
 
@@ -59,6 +60,7 @@ const Blockquote = styled.blockquote`
   margin: 0;
   font-style: italic;
   text-align: center;
+  color: var(--color-secondary);
 
   p {
     margin: 0 0 var(--space-3) 0;
@@ -67,7 +69,7 @@ const Blockquote = styled.blockquote`
 
   footer {
     font-size: smaller;
-    font-weight: 600;
+    font-variation-settings: var(--font-semi-bold);
     font-style: normal;
     margin-top: var(--space-6);
     color: var(--color-text-secondary);

@@ -23,7 +23,7 @@ npm install msw
 
 Add a **vitest.setup.ts** file to your project root, if not already present:
 
-<CodeBlock lang="typescript" filename="vitest.setup.ts">
+<CodeBlock filename="vitest.setup.ts">
 ```typescript
 import { beforeAll, afterEach, afterAll } from "vitest";
 import { server } from "./src/mocks/node";
@@ -48,7 +48,7 @@ Add a directory called **mocks** to your **src** directory.
 
 In the **mocks** directory create a file called **browser.ts** and add the following code:
 
-<CodeBlock lang="typescript" filename="mocks/browser.ts">
+<CodeBlock filename="mocks/browser.ts">
 ```typescript
 import { setupWorker } from "msw/browser";
 import { handlers } from "./handlers.ts";
@@ -60,7 +60,7 @@ export const worker = setupWorker(...handlers);
 
 In the **mocks** directory create a file called **node.ts**, add the following:
 
-<CodeBlock lang="typescript" filename="mocks/node.ts">
+<CodeBlock filename="mocks/node.ts">
 ```typescript
 import { setupServer } from "msw/node";
 import { handlers } from "./handlers.ts";
@@ -71,7 +71,7 @@ export const server = setupServer(...handlers);
 
 And in the **mocks** directory create a file called **handlers.ts** for your mock API handlers, for example I'm adding the following with a delay function to simulate network latency:
 
-<CodeBlock lang="typescript" filename="mocks/handlers.ts">
+<CodeBlock filename="mocks/handlers.ts">
 ```typescript
 import { http, delay, HttpResponse } from "msw";
 import { type PaymentsResponse } from "../types";
@@ -133,7 +133,7 @@ In your **main.tsx** file, import and start the service worker _only_ in develop
 
 See below:
 
-<CodeBlock lang="typescript" filename="main.tsx">
+<CodeBlock filename="main.tsx">
 ```typescript
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
@@ -176,7 +176,7 @@ Where `<PUBLIC_DIR>` is the path to your public directory.
 
 In **package.json** add the following configuration:
 
-<CodeBlock lang="json" filename="package.json">
+<CodeBlock filename="package.json">
 ```json title="package.json"
 //...existing
   "msw": {

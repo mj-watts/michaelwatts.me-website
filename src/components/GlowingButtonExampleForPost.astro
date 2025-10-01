@@ -158,7 +158,7 @@
     --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 90%);
   }
 
-  .btn:before {
+  .btn::before {
     --padding: calc(var(--glow-size) * 1px);
     content: "";
     display: block;
@@ -181,7 +181,7 @@
     cursor: pointer;
   }
 
-  .btn:hover:before {
+  .btn:hover::before {
     background: var(--dark-color-hover);
   }
 

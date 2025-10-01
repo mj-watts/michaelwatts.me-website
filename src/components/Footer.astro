@@ -6,19 +6,59 @@ const { classList } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class:list={["", classList]}>
+<footer id="contact" class:list={["footer", classList]}>
+  <div class="footer__title"><span>CONTACT</span></div>
   <Container>
+    <div class="footer__email">
+      <a href="mailto:hello@michaelwatts.me">HELLO@MICHAELWATTS.ME</a>
+    </div>
     <div>
       © Michael Watts, 2022 - {currentYear}
     </div>
   </Container>
 </footer>
 
+<script>
+  import { animate, scroll } from "motion";
+
+  const animation = animate(
+    ".footer__title > span",
+    {
+      transform: ["translateY(-3000px)", "translateY(-50px)"],
+    },
+    { ease: "linear" }
+  );
+
+  scroll(animation);
+</script>
+
 <style>
   footer {
-    background-color: var(--color-border);
+    background-color: var(--color-secondary);
     margin-top: var(--space-10);
-    padding: var(--space-4) 0 var(--space-2);
+    padding: 0 0 var(--space-24);
     text-align: center;
+    container: footer / inline-size;
+  }
+
+  .footer__title {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .footer__title span {
+    display: block;
+    line-height: 1;
+    font: 43cqi / 0.8 var(--header-font);
+    letter-spacing: -0.04em;
+    margin-left: -0.05em;
+    pointer-events: none;
+    text-transform: uppercase;
+    user-select: none;
+    color: var(--color-primary);
+  }
+
+  .footer__email {
+    font-variation-settings: var(--font-bold);
   }
 </style>

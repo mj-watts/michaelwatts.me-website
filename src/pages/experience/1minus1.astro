@@ -1,0 +1,57 @@
+---
+import BlankLayout from "../../layouts/BlankLayout.astro";
+import Card from "../../components/experience/Card.astro";
+import CardContent from "../../components/experience/CardContent.astro";
+
+const pageTitle = "Experience @ 1minus1";
+---
+
+<BlankLayout pageTitle={pageTitle}>
+  <Card name="1minus1">
+    <CardContent
+      slug="1minus1"
+      date="Jan 2017 - Sep 2019"
+      title="Senior Developer"
+      companyName="1minus1"
+      description="An award winning, creative marketing agency."
+      sectors="B2C • Music • Ecommerce"
+      tagsList="React,React Natvie,iOS,Ruby on Rails,Laravel,NodeJS"
+    >
+      <p>
+        Developed an innovative music streaming app for iOS and Android using
+        React and React Native, featuring advanced party mode and collaborative
+        functions. Launched successfully with over 100,000 downloads in its
+        first month, it reached the top 10 in the Apple charts.
+      </p>
+
+      <p>
+        Managed client relations and development of the World Wildlife Fund
+        (WWF) Carbon Footprint Calculator into a Laravel/PHP web application,
+        enhancing user experience and functionality.
+      </p>
+
+      <p>
+        Revitalised the Thatcham Research automotive website by creating a
+        custom car safety search app for Euro NCAP. Implemented a flexible
+        content management system to boost editorial efficiency.
+      </p>
+
+      <p>
+        Managed client relationships and development of a Ruby on Rails
+        e-commerce platform for Guitar Village. Optimized site performance and
+        introduced new features to support business growth.
+      </p>
+
+      <p>
+        Managed development of a Ruby on Rails/Spree e-comm platform,
+        integrating a bitcoin payment system alongside their existing payment
+        system.
+      </p>
+
+      <p>
+        Provided mentorship and leadership to junior developers, fostering their
+        technical expertise and professional growth.
+      </p>
+    </CardContent>
+  </Card>
+</BlankLayout>

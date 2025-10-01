@@ -5,19 +5,21 @@ description: "Making links more accessible for screen readers."
 author: "Michael Watts"
 readTime: 7
 tags: ["accessibility"]
+draft: true
 ---
 
 export const exampleCss = {
   ul: "list-none p-0 flex flex-col xl:flex-row gap-2 relative mt-0 mb-0 rounded-xs",
   li: "p-0 mt-0 mb-0 flex flex-col gap-1 w-full",
-  header: "text-base font-bold uppercase bg-amber-500 text-brand-950 p-8 rounded mt-0 mb-1",
+  header:
+    "text-base font-bold uppercase bg-amber-500 text-brand-950 p-8 rounded mt-0 mb-1",
   card: "border border-slate-200 border-0 bg-brand-950 rounded overflow-hidden shadow-xl flex flex-col",
-  innerUl: "mt-0 mb- 0 w-full list-none bg-brand-900 rounded font-mono p-0 text-black flex flex-col gap-1",
+  innerUl:
+    "mt-0 mb- 0 w-full list-none bg-brand-900 rounded font-mono p-0 text-black flex flex-col gap-1",
   innerLi: "p-8 mb-0 mt-0 font-bold bg-brand-500 rounded list-none w-full",
   innerLiLineThrough: " line-through opacity-25",
-  image: "object-cover aspect-auto w-full mt-0 mb-0 order-1"
-}
-
+  image: "object-cover aspect-auto w-full mt-0 mb-0 order-1",
+};
 
 > At least 1 in 5 people in the UK have a long term illness, impairment or disability. Many more have a temporary disability.
 >
@@ -48,25 +50,25 @@ Below is an example of a very simple web component that provides too much inform
 
 The below HTML represents a navigation list item with a link and an image. The link is wrapped around the image and the image has an alt tag. The link is also wrapped around a heading tag and a time tag.
 
-<CodeBlock lang="html" filename="example.html">
-```html {1,3-4} /War a real/#a /A man stands/#b /01/02/24/#c
-<li>
-  <a href="https://example.com">
-    <img
-      src="/posts/manonbeach.jpg"
-      alt="A man stands on the edge of a cliff looking out to a rough sea."
-    />
-  </a>
-  <div>
+<CodeBlock filename="example.html">
+  ```html {(1, 3 - 4)} /War a real/#a /A man stands/#b /01/02/24/#c
+  <li>
+    <a href="https://example.com">
+      <img
+        src="/posts/manonbeach.jpg"
+        alt="A man stands on the edge of a cliff looking out to a rough sea."
+      />
+    </a>
     <div>
-      <a href="https://example.com">
-        War a real threat and Europe not ready, warns Poland's PM
-      </a>
+      <div>
+        <a href="https://example.com">
+          War a real threat and Europe not ready, warns Poland's PM
+        </a>
+      </div>
+      <time>01/02/24</time>
     </div>
-    <time>01/02/24</time>
-  </div>
-</li>
-```
+  </li>
+  ```
 </CodeBlock>
 
 This is what NVDA will read out aloud from the component on the left:
@@ -84,7 +86,9 @@ This is what NVDA will read out aloud from the component on the left:
       </a>
       <div class="flex justify-between items-baseline p-8">
         <p class="mb-0 mt-0">
-          <a href="https://example.com" class="leading-3 text-base font-bold">War a real threat and Europe not ready, warns Poland's PM</a>
+          <a href="https://example.com" class="leading-3 text-base font-bold">
+            War a real threat and Europe not ready, warns Poland's PM
+          </a>
         </p>
         <time class="text-sm">01/02/24</time>
       </div>
@@ -94,8 +98,14 @@ This is what NVDA will read out aloud from the component on the left:
     <p class={exampleCss.header}>🤖 Screen reader:</p>
     <ul class={exampleCss.innerUl}>
       <li class={exampleCss.innerLi}>💬 link image to https://example.com</li>
-      <li class={exampleCss.innerLi}>💬 Image alt: "A man stands on the edge of a cliff looking out to a rough sea"</li>
-      <li class={exampleCss.innerLi}>💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns Poland's PM" to "https://example.com"</li>
+      <li class={exampleCss.innerLi}>
+        💬 Image alt: "A man stands on the edge of a cliff looking out to a
+        rough sea"
+      </li>
+      <li class={exampleCss.innerLi}>
+        💬 Heading tag H6 0. Link "War a real threat and Europe not ready, warns
+        Poland's PM" to "https://example.com"
+      </li>
       <li class={exampleCss.innerLi}>💬 01/02/24</li>
     </ul>
   </li>
@@ -110,9 +120,14 @@ Changing the previous block to the following and using a neat little trick I nic
 <ul class={exampleCss.ul}>
   <li class={exampleCss.li}>
     <p class={exampleCss.header}>News component:</p>
-    <div  class={exampleCss.card}>
+    <div class={exampleCss.card}>
       <p class="order-2 flex justify-between items-baseline p-8 mt-0 mb-0">
-        <a href="https://example.com" class="text-lg leading-relaxed font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99">War a real threat and Europe not ready, warns Poland's PM</a>
+        <a
+          href="https://example.com"
+          class="text-lg leading-relaxed font-bold after::content-[''] after:absolute after:top-0 after:left-0 after:right-0 after:bottom-0 after:z-99"
+        >
+          War a real threat and Europe not ready, warns Poland's PM
+        </a>
         <time class="text-sm">01/02/24</time>
       </p>
       <img
@@ -125,10 +140,18 @@ Changing the previous block to the following and using a neat little trick I nic
   <li class={exampleCss.li}>
     <p class={exampleCss.header}>🤖 Screen reader:</p>
     <ul class={exampleCss.innerUl}>
-      <li class={exampleCss.innerLi}>💬 "War a real threat and Europe not ready, warns Poland's PM"</li>
-      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Image alt: "A man stands on the edge of a cliff..."</li>
-      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 Heading tag H6 0. Link "War a real threat and Europe not..."</li>
-      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>💬 01/02/24</li>
+      <li class={exampleCss.innerLi}>
+        💬 "War a real threat and Europe not ready, warns Poland's PM"
+      </li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>
+        💬 Image alt: "A man stands on the edge of a cliff..."
+      </li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>
+        💬 Heading tag H6 0. Link "War a real threat and Europe not..."
+      </li>
+      <li class={exampleCss.innerLi + exampleCss.innerLiLineThrough}>
+        💬 01/02/24
+      </li>
     </ul>
   </li>
 </ul>
@@ -138,7 +161,7 @@ over the image which is the trick to prevent the screen reader from reading out 
 
 ##### HTML
 
-<CodeBlock lang="html" filename="example.html">
+<CodeBlock filename="example.html">
 ```html
 <ul>
   <li class="article-block">
@@ -161,7 +184,7 @@ over the image which is the trick to prevent the screen reader from reading out 
     position: relative;
   }
 
-  .article-block a:after {
+  .article-block a::after {
     content: "";
     position: absolute;
     top: 0;
@@ -171,9 +194,11 @@ over the image which is the trick to prevent the screen reader from reading out 
     z-index: 2;
   }
 </style>
+
 ```
 </CodeBlock>
 
 From the above HTML, now only a single line is read out to the listener, all other (perhaps/perhaps not irrelevant) information is no longer presented.
 It's up to you to decide if this is a good thing or not in terms of the content that you wish to present to your users, but it does illustrate the importance of
 considering the semantics of your HTML structure, but also considering when it does look correct that the screen reader might not interpret it in the same way which is a key takeaway for me.
+```

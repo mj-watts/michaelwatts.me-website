@@ -1,0 +1,77 @@
+---
+const { href, color, hovercolor, bgcolor, bghovercolor } = Astro.props;
+---
+
+<a href={href}>
+  <slot />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16px"
+    height="16px"
+    viewBox="0 0 16 16"
+    class="icon"
+  >
+    <circle fill="currentColor" class="icon__circle" cx="8" cy="8" r="8"
+    ></circle>
+    <g class="icon__arrow">
+      <line x1="6" x2="12" y1="8" y2="8"></line>
+      <g class="icon__arrowhead">
+        <line x1="14" x2="8" y1="8" y2="3"></line>
+        <line x1="14" x2="8" y1="8" y2="13"></line>
+      </g>
+    </g>
+  </svg>
+</a>
+
+<style define:vars={{ color, hovercolor, bgcolor, bghovercolor }}>
+  a {
+    color: var(--color);
+    display: inline-flex;
+    place-items: center;
+    transition: transform 500ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    font-variation-settings: var(--font-bold);
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    color: var(--hovercolor);
+  }
+
+  .icon {
+    height: 1lh;
+    margin-left: 4px;
+  }
+
+  .icon__arrow {
+    stroke: var(--bgcolor);
+    stroke-width: 3px;
+    stroke-linecap: round;
+    transform: translateX(-1px);
+    transform-origin: left center;
+    transition: transform 200ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  .icon__arrowhead {
+    transition: transform 200ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transform-origin: left center;
+  }
+
+  a:hover .icon,
+  a:focus .icon,
+  a:active .icon {
+    transform: scale(1.05);
+  }
+
+  a:hover .icon__arrow,
+  a:focus .icon__arrow,
+  a:active .icon__arrow {
+    transform: translateX(0px);
+  }
+
+  a:hover .icon__arrowhead,
+  a:focus .icon__arrowhead,
+  a:active .icon__arrowhead {
+    transform: translateX(1px) scaleY(0.8);
+  }
+</style>

@@ -36,7 +36,7 @@ The syntax is straightforward: `attr(attribute-name type, fallback)`. The type p
 
 Instead of writing:
 
-<CodeBlock lang="css" filename="style.css">
+<CodeBlock filename="style.css">
 ```css
 .element {
   width: 100px;
@@ -47,7 +47,7 @@ Instead of writing:
 
 You can now define dimensions directly in HTML:
 
-<CodeBlock lang="html" filename="index.html">
+<CodeBlock filename="index.html">
 ```html
 <div data-width="100" data-height="150"></div>
 ```
@@ -55,7 +55,7 @@ You can now define dimensions directly in HTML:
 
 And use them in CSS:
 
-<CodeBlock lang="css" filename="style.css">
+<CodeBlock filename="style.css">
 ```css
 .element {
   width: attr(data-width px, 100px);

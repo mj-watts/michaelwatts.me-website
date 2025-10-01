@@ -1,0 +1,153 @@
+---
+import ExperienceCard from "./ExperienceCard.astro";
+---
+
+<div class="experience">
+  <div class="experience__header">
+    <h2>Experience</h2>
+    <p>Take a scroll</p>
+  </div>
+  <div class="experience__bd">
+    <ExperienceCard
+      slug="streeva"
+      date="Oct 2019 - Oct 2025"
+      title="Senior Engineer"
+      companyName="Streeva"
+      description="A company on a mission to make transactions smarter."
+      sectors="Fintech • Payment systems • Social Impact"
+      tagsList="Vue,Preact,TypeScript,C#,Tailwind CSS,Figma,Azure,Cloudflare,NodeJS"
+    />
+    <div class="timeline timeline--top"></div>
+    <div></div>
+
+    <div></div>
+    <div class="timeline"></div>
+    <ExperienceCard
+      slug="1minus1"
+      date="Jan 2017 - Sep 2019"
+      title="Senior Developer"
+      companyName="1minus1"
+      description="An award winning, creative marketing agency."
+      sectors="B2C • Music • Ecommerce"
+      tagsList="React,React Native,iOS,Ruby on Rails,Laravel,NodeJS"
+    />
+
+    <ExperienceCard
+      slug="smsw"
+      date="Oct 2012 - Feb 2017"
+      title="Web Developer"
+      companyName="SMSW"
+      description="A B2B/B2C marketing agency."
+      sectors="B2B • B2C • Retail • Fashion"
+      tagsList="Angular,React,JavaScript,Ruby on Rails,MongoDB,NodeJS"
+    />
+    <div class="timeline"></div>
+    <div></div>
+
+    <div></div>
+    <div class="timeline timeline--bottom"></div>
+    <ExperienceCard
+      slug="freelance"
+      date="Jul 2011 - Oct 2012"
+      title="Web Developer"
+      companyName="Freelance"
+      description="A range of clients and experience."
+      sectors="Marketing • Apps • Portals • Websites"
+      tagsList="JavaScript,PHP,Wireframing,Photoshop"
+    />
+  </div>
+</div>
+
+<script>
+  import { inView } from "motion";
+
+  inView(
+    ".card",
+    (element) => {
+      element.setAttribute("inview", "");
+      return () => {
+        element.removeAttribute("inview");
+      };
+    },
+    {
+      amount: "all",
+    }
+  );
+</script>
+
+<style is:global>
+  @scope (.experience__bd) {
+    --line-width: 0px;
+    --ball-width: 0px;
+    --ball-distance: 0px;
+    --grid-template-columns: 1fr;
+    --column-gap: 0;
+    --card-margin: var(--space-12);
+    --card-padding: var(--space-6);
+    --card-border-radius: var(--border-radius-sm);
+  }
+
+  @media screen and (min-width: 770px) {
+    @scope (.experience__bd) {
+      --line-width: 4px;
+      --ball-width: 20px;
+      --ball-distance: 35px;
+      --grid-template-columns: 1fr var(--line-width) 1fr;
+      --column-gap: var(--space-6);
+      --card-content-border-width: var(--line-width);
+      --card-margin: 0;
+      --card-padding: var(--space-8);
+      --card-border-radius: var(--border-radius);
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    @scope (.experience__bd) {
+      --line-width: 8px;
+      --ball-distance: 62px;
+      --column-gap: var(--space-12);
+      --card-padding: var(--space-24);
+      --card-border-radius: var(--border-radius-lg);
+    }
+  }
+
+  .experience__header {
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .experience__header h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+  }
+
+  .experience__bd {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    row-gap: 0;
+    column-gap: var(--column-gap);
+    position: relative;
+  }
+
+  .timeline {
+    background-color: var(--color-secondary);
+  }
+
+  .timeline--top {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background: linear-gradient(
+      0deg,
+      var(--color-secondary) 0%,
+      var(--color-primary) 100%
+    );
+  }
+
+  .timeline--bottom {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    background: linear-gradient(
+      0deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+  }
+</style>

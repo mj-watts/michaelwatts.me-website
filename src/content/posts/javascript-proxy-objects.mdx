@@ -5,31 +5,34 @@ description: "Explore how JavaScript Proxy objects enable powerful patterns for 
 author: "Michael Watts"
 readTime: 5
 tags: ["javascript"]
-wip: false
+draft: true
 ---
 
 <LeadParagraph>
-  They've been around a while, proxy objects in JavaScript provide a way to intercept and customise operations performed on objects. They're particularly useful for validation, logging, formatting, notifications, and debugging.
+  They've been around a while, proxy objects in JavaScript provide a way to
+  intercept and customise operations performed on objects. They're particularly
+  useful for validation, logging, formatting, notifications, and debugging.
 </LeadParagraph>
 
 ### Basic Structure
 
 A Proxy wraps an existing object and can intercept operations performed on it. Here's the basic syntax:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const target = {
   name: "John",
 };
 
 const handler = {
-  get: function (target, prop) {
-    return target[prop];
-  },
+get: function (target, prop) {
+return target[prop];
+},
 };
 
 const proxy = new Proxy(target, handler);
-```
+
+````
 </CodeBlock>
 
 ### Practical Examples
@@ -38,7 +41,7 @@ const proxy = new Proxy(target, handler);
 
 Here's a practical example of using a Proxy to validate property values:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const userHandler = {
   set: function (obj, prop, value) {
@@ -61,14 +64,15 @@ const user = new Proxy({}, userHandler);
 user.age = 25; // Works fine
 // user.age = -5; // Throws RangeError
 // user.age = "25"; // Throws TypeError
-```
+````
+
 </CodeBlock>
 
 #### 2. Default Values
 
 Proxies can provide default values for non-existent properties:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const handler = {
   get: function (target, prop) {
@@ -81,14 +85,15 @@ object.name = "Test";
 
 console.log(object.name); // Output: "Test"
 console.log(object.age); // Output: "Property not found"
-```
+
+````
 </CodeBlock>
 
 #### 3. Logging
 
 A practical use case for monitoring property access:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const handler = {
   get: function (target, prop) {
@@ -105,7 +110,8 @@ const handler = {
 const user = new Proxy({}, handler);
 user.name = "John"; // Logs: "Setting property: name = John"
 console.log(user.name); // Logs: "Accessing property: name" then "John"
-```
+````
+
 </CodeBlock>
 
 ### When to Use Proxies

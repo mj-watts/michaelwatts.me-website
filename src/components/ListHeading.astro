@@ -2,33 +2,36 @@
 const { heading, ariaLevel, title, url } = Astro.props;
 ---
 
-<div role={heading} aria-level={ariaLevel}>
-  <a href={url} tabindex="-1">
+<div class="list-heading" role={heading} aria-level={ariaLevel}>
+  <a href={url} tabindex="-1" class="list-heading__link">
     {title}
   </a>
 </div>
 
 <style>
-  div {
-    --font-size: 20px;
+  .list-heading {
+    --font-size: var(--font-size-lg);
   }
 
   @media (min-width: 768px) {
-    div {
-      --font-size: 32px;
+    .list-heading {
+      --font-size: 2rem;
     }
   }
 
-  div {
+  .list-heading {
     font-size: var(--font-size);
-    font-weight: bold;
+    font-variation-settings: var(--font-bold);
     line-height: 1.4;
     margin: 0 0 var(--space-2);
     text-wrap: pretty;
   }
 
-  div a {
+  .list-heading__link {
     text-decoration: none;
-    color: var(--color-secondary);
+  }
+
+  .list-heading__link:hover {
+    color: oklab(from var(--color-onPrimary) calc(l - 0.1) a b);
   }
 </style>

@@ -1,39 +1,52 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogListItem from "../components/BlogListItem.astro";
-import UnorderedList from "../components/UnorderedList.astro";
+import Container from "../components/Container.astro";
+import HeroSection from "../components/index/HeroSection.astro";
+import SkillsSection from "../components/index/SkillsSection.astro";
+import ExperienceSection from "../components/index/ExperienceSection.astro";
+import FeaturedWorkSection from "../components/index/FeaturedWorkSection.astro";
 
-const pageTitle = "About";
-const allPosts = await getCollection("posts");
-const allRecipes = await getCollection("recipes");
-
-const allPostsAndRecipes = [...allPosts, ...allRecipes].sort(
-  (a, b) =>
-    (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
-);
-
-const publishedPostsAndRecipes = allPostsAndRecipes
-  .filter((post) => post.data.draft !== true)
-  .sort(
-    (a, b) =>
-      (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
-  );
+const pageTitle = "Home";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <UnorderedList>
-    {
-      publishedPostsAndRecipes.map((post) => (
-        <BlogListItem
-          url={`/posts/${post.slug}/`}
-          title={post.data.title}
-          date={post.data.pubDate}
-          description={post.data.description}
-          readTime={post.data.readTime}
-          tags={post.data.tags}
-        />
-      ))
-    }
-  </UnorderedList>
+  <section id="hero">
+    <Container>
+      <HeroSection />
+    </Container>
+  </section>
+
+  <section id="skills">
+    <Container>
+      <SkillsSection />
+    </Container>
+  </section>
+
+  <section id="experience">
+    <Container>
+      <ExperienceSection />
+    </Container>
+  </section>
+
+  <section id="work">
+    <Container>
+      <FeaturedWorkSection />
+    </Container>
+  </section>
 </BaseLayout>
+
+<style>
+  #hero,
+  #skills {
+    min-height: 60vh;
+    display: flex;
+    place-items: center;
+  }
+
+  #hero,
+  #skills,
+  #experience,
+  #work {
+    margin: var(--space-24) 0;
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import swiftaidImage from "../../images/swiftaid.png";
+import sppocImage from "../../images/sppoc.png";
+import ioMusicImage from "../../images/iomusic.png";
+import sfmImage from "../../images/sfm.png";
+import ecommImage from "../../images/ecomm.png";
+import webAppsImage from "../../images/webapps.png";
+---
+
+<div class="work">
+  <div class="work__header">
+    <h2>Featured Work</h2>
+    <p>A selection of latest or notable website and app work</p>
+  </div>
+  <div class="work__body">
+    <a
+      href="/work/swiftaid"
+      class="work__item"
+      style="--idx:0"
+      data-entry-slug="swiftaid"
+    >
+      <Image
+        src={swiftaidImage}
+        width={600}
+        height={600}
+        alt="Swiftaid and JustGiving"
+      />
+    </a>
+    <a href="/work/split-payment-poc" class="work__item">
+      <Image
+        src={sppocImage}
+        width={600}
+        height={600}
+        alt="POC Admin Portal for HMRC"
+      />
+    </a>
+    <a href="/work/io-music" class="work__item">
+      <Image
+        src={ioMusicImage}
+        width={600}
+        height={600}
+        alt="io Music App for iOS and Android"
+      />
+    </a>
+    <a href="/work/saudi-fashion-retail" class="work__item">
+      <Image
+        src={sfmImage}
+        width={600}
+        height={600}
+        alt="Saudi Fashion Magazine Website"
+      />
+    </a>
+    <a href="/work/ecomm-sites" class="work__item">
+      <Image
+        src={ecommImage}
+        width={600}
+        height={600}
+        alt="Ecommerce websites and payment systems"
+      />
+    </a>
+    <a href="/work/webapps" class="work__item">
+      <Image
+        src={webAppsImage}
+        width={600}
+        height={600}
+        alt="Web applications"
+      />
+    </a>
+  </div>
+</div>
+
+<script>
+  import { inView } from "motion";
+
+  inView(".work__item", (element) => {
+    element.setAttribute("inview", "");
+
+    return () => {
+      element.removeAttribute("inview");
+    };
+  });
+</script>
+
+<style>
+  @scope (.work__body) {
+    --grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 540px) {
+    @scope (.work__body) {
+      --grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 770px) {
+    @scope (.work__body) {
+      --grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .work__header {
+    text-align: center;
+  }
+
+  .work__header h2 {
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(7vw + 1rem),
+      var(--font-size-xl)
+    );
+    color: var(--color-secondary);
+  }
+
+  .work__body {
+    margin-top: var(--space-8);
+    display: grid;
+    gap: var(--space-8);
+    grid-template-columns: var(--grid-template-columns);
+    place-items: center;
+  }
+
+  .work__item {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: clamp(240px, 100%, 600px);
+    aspect-ratio: 1;
+    border-radius: var(--border-radius-lg);
+    scale: 0.8;
+    box-shadow:
+      0px 9px 21px rgba(0, 0, 0, 0.05),
+      0px 38px 38px rgba(0, 0, 0, 0.045),
+      0px 85px 51px rgba(0, 0, 0, 0.025);
+    transition: 1s all var(--ease-out-elastic);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .work__item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-primary);
+    transition: all 0.2s ease-in-out;
+    mix-blend-mode: color;
+  }
+
+  .work__item[inview] {
+    scale: 1;
+  }
+
+  .work__item:hover,
+  .work__item:focus {
+    scale: 1.02;
+    mix-blend-mode: initial;
+  }
+
+  .work__item:hover::after,
+  .work__item:focus::after {
+    opacity: 0;
+  }
+
+  .work__item img {
+    height: auto;
+    object-fit: cover;
+  }
+</style>

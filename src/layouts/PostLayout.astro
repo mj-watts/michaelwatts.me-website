@@ -2,12 +2,60 @@
 import MainNav from "../components/MainNav.astro";
 import Main from "../components/Main.astro";
 import Container from "../components/Container.astro";
-import Footer from "../components/Footer.astro";
+import MainFooter from "../components/Footer.astro";
+import ColorPicker from "../components/ColorPicker.tsx";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle, pageDescription } = Astro.props;
 ---
+
+<script>
+  import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+
+  document.documentElement.style.setProperty(
+    "--color-primary",
+    themePrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-onPrimary",
+    themeOnPrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-secondary",
+    themeSecondary.get()
+  );
+
+  themePrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-primary", color);
+  });
+
+  themeOnPrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-onPrimary", color);
+  });
+
+  themeSecondary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-secondary", color);
+  });
+
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    let observer = new IntersectionObserver((entries) => {
+      if (entries[0].boundingClientRect.y < 0) {
+        document.body.classList.add("header-not-at-top");
+      } else {
+        document.body.classList.remove("header-not-at-top");
+      }
+    });
+    const anchor = document.querySelector("#top-of-site-pixel-anchor");
+    if (anchor) {
+      observer.observe(anchor);
+    }
+  }
+</script>
 
 <html lang="en">
   <head>
@@ -16,7 +64,7 @@ const { pageTitle, pageDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{mainTitle} | {pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="preload" as="style" href="https://use.typekit.net/eaq6veo.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
   </head>
   <body>
     <MainNav />
@@ -28,6 +76,8 @@ const { pageTitle, pageDescription } = Astro.props;
       </Container>
     </Main>
 
-    <Footer />
+    <MainFooter />
+
+    <ColorPicker client:only="react" />
   </body>
 </html>

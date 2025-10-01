@@ -1,0 +1,58 @@
+---
+import BlankLayout from "../../layouts/BlankLayout.astro";
+import Card from "../../components/experience/Card.astro";
+import CardContent from "../../components/experience/CardContent.astro";
+
+const pageTitle = "Experience @ Streeva";
+---
+
+<BlankLayout pageTitle={pageTitle}>
+  <Card name="streeva">
+    <CardContent
+      slug="streeva"
+      date="Oct 2019 - Oct 2025"
+      title="Senior Engineer"
+      companyName="Streeva"
+      description="A company on a mission to make transactions smarter."
+      sectors="Fintech • Payment systems • Social Impact"
+      tagsList="Vue,Preact,TypeScript,C#,Tailwind CSS,Figma,Azure,Cloudflare,NodeJS"
+    >
+      <p>
+        Enhanced frontend development practices and code quality, transitioning
+        the codebase from JavaScript to TypeScript which helped align it with
+        types in the core C# codebase increasing reliability and maintainability
+        between frontend Vue.js sites and the backend .NET core
+      </p>
+
+      <p>
+        Conceived and developed an advanced admin portal as a POC for HMRC,
+        integrating Elasticsearch and Kibana for database transactions, ensuring
+        compliance with accessibility standards, and presenting updates to HMRC
+        at Sprint Reviews.
+      </p>
+
+      <p>
+        Built a secure admin portal using Vue and C# to streamline donor,
+        donation, and charity management on the Swiftaid platform, allowing
+        administrators full control to update, delete, adjust records, and
+        correct information as needed.
+      </p>
+
+      <p>
+        Implemented BDD practices by creating detailed Gherkin specs translated
+        into unit tests.
+      </p>
+
+      <p>
+        Prototyped applications and features using Figma, translating concepts
+        into finished products developed with Vue and Preact.
+      </p>
+
+      <p>
+        Designed and implemented API specifications, addressed security
+        vulnerabilities, automated deployment processes, created comprehensive
+        unit tests, and generated clear documentation for all sites.
+      </p>
+    </CardContent>
+  </Card>
+</BlankLayout>

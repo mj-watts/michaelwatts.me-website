@@ -24,48 +24,130 @@ recommendationImage: "../../../images/graham-beard.png"
 recommendationText: "Michael is a strong all round developer who is extremely professional within his approach and great to work with. He worked on a variety high-end websites producing work of the highest quality."
 recommendationFooter: "Graham Beard - Studio Head & Creative Lead"
 ---
+
 import { Image } from "astro:assets";
 import ImageContainer from "../../../components/ImageContainer.astro";
-import coverImage from "./cover.png";
+import ContentImage1Column from "../../../components/ContentImage1Column.astro";
+import ContentImage2Column from "../../../components/ContentImage2Column.astro";
+import image1 from "./image1.png";
+import image2 from "./image2.png";
+import image3 from "./image3.png";
+import image4 from "./image4.png";
+import image5 from "./image5.png";
+import image6 from "./image6.png";
 
-<ImageContainer height="410px">
-  <Image src={coverImage} alt="Ecommerce Sites" width={840} loading="lazy" />
-</ImageContainer>
-
-E-commerce platforms I have worked on include **Guitar Village** and **One Stop Grow Shop**. These projects involved managing client relationships, overseeing development, and ensuring the smooth operation of the e-commerce sites.
+E-commerce platforms I have worked on include Guitar Village and One Stop Grow
+Shop. These projects involved managing client relationships, overseeing
+development, and ensuring the smooth operation of the e-commerce sites.
 
 ## Guitar Village
 
-Managed client relationship and e-commerce platform at Guitar Village using **Ruby on Rails**.
+Managed client relationship and e-commerce platform at Guitar Village using Ruby on Rails.
 
-Integrated various payment gateways including **Stripe** and **Sage Pay** to provide a seamless checkout experience for customers.
+Integrated various payment gateways including Stripe and Sage Pay to provide a
+seamless checkout experience for customers.
 
-Provided ongoing maintenance and updates to the platform, ensuring it remained secure, up-to-date, and optimized for performance.
-Provided technical support and training to the client's team, enabling them to manage the platform effectively.
+Provided ongoing maintenance and updates to the platform, ensuring it remained
+secure, up-to-date, and optimized for performance. Provided technical support
+and training to the client's team, enabling them to manage the platform
+effectively.
 
 [Link to guitarvillage.co.uk](https://guitarvillage.co.uk/)
 
-
 ## One Stop Grow Shop
 
-Managed client relationship and e-commerce platform at One Stop Grow Shop using **Spree Commerce** (Ruby on Rails).
+Managed client relationship and e-commerce platform at One Stop Grow Shop
+using Spree Commerce (Ruby on Rails).
 
-Integrated various payment gateways including **Stripe**, **Checkout.com**, and **crypto payment options** to provide a seamless checkout experience for customers.
+Integrated various payment gateways including Stripe, Checkout.com, and crypto
+payment options to provide a seamless checkout experience for customers.
 
-Provided ongoing maintenance and updates to the platform, ensuring it remained secure, up-to-date, and optimized for performance.
+Provided ongoing maintenance and updates to the platform, ensuring it remained
+secure, up-to-date, and optimized for performance.
 
-Provided technical support and training to the client's team, enabling them to manage the platform effectively.
+Provided technical support and training to the client's team, enabling them to
+manage the platform effectively.
 
 [Link to onestopgrowshop.co.uk](https://www.onestopgrowshop.co.uk)
 
 ## Other Platforms
 
-I have also worked on e-commerce platforms using **Shopify** and **WooCommerce**, providing similar services including client management, platform development, payment gateway integration, and ongoing support.
+I have also worked on e-commerce platforms using Shopify and WooCommerce,
+providing similar services including client management, platform development,
+payment gateway integration, and ongoing support.
 
 ## Payment Gateway Integrations
 
-I have experience integrating a variety of payment gateways into e-commerce platforms, including:
-- **Stripe**
-- **Checkout.com**
-- **Sage Pay**
-- **Crypto Payment Options**
+I have experience integrating a variety of payment gateways into e-commerce
+platforms, including:
+
+- Stripe
+- Checkout.com
+- Sage Pay
+- Crypto Payment Options
+
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image1}
+      alt="Ecommerce."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image3}
+      alt="Ecommerce."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image4}
+      alt="Ecommerce."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>
+
+<ContentImage1Column>
+  <ImageContainer>
+    <Image
+      src={image2}
+      alt="Ecommerce."
+      width={2816}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage1Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <Image
+      src={image5}
+      alt="Ecommerce."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <Image
+      src={image6}
+      alt="Ecommerce."
+      width={1400}
+      loading="lazy"
+      quality={100}
+    />
+  </ImageContainer>
+</ContentImage2Column>

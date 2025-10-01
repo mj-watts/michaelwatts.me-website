@@ -1,0 +1,23 @@
+<div class="content-image-2-col">
+  <div class="content-image-2-col__bd">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .content-image-2-col {
+    container-type: inline-size;
+  }
+
+  .content-image-2-col__bd {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  @container (width > 966px) {
+    .content-image-2-col__bd {
+      flex-direction: row;
+    }
+  }
+</style>

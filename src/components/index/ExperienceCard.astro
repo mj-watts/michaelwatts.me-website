@@ -1,0 +1,218 @@
+---
+import LinkArrowRight from "../LinkArrowRight.astro";
+
+const { slug, date, title, companyName, description, sectors, tagsList } =
+  Astro.props;
+
+const tagsArray = tagsList.split(",");
+---
+
+<div class="card" style={`view-transition-name:card-${slug};`}>
+  <div class="card__meta" style={`view-transition-name:card-meta-${slug};`}>
+    <span>{date}</span>
+  </div>
+  <div
+    class="card-content"
+    style={`view-transition-name:card-content-${slug};`}
+  >
+    <div class="card-content__ball"></div>
+    <div class="card-content__join"></div>
+    <div
+      class="card-content__aside"
+      style={`view-transition-name:card-content-aside-${slug}`}
+    >
+      <h3 class="card-content__title">
+        {title}
+        <span class="card-content__company-name">{companyName}</span>
+      </h3>
+      <div class="card-content__description">
+        {description}
+      </div>
+      <div class="card-content__company-sectors">
+        {sectors}
+      </div>
+      <div class="card-content__tags">
+        {
+          tagsArray.map((tag: string) => (
+            <div class="card-content__tag">{tag}</div>
+          ))
+        }
+      </div>
+      <div>
+        <LinkArrowRight
+          href={`/experience/${slug}`}
+          color="var(--color-primary)"
+          hovercolor="var(--color-secondary)"
+          bgcolor="var(--color-onPrimary)"
+          hoverbgcolor="var(--color-onPrimarys)"
+        >
+          View details
+        </LinkArrowRight>
+      </div>
+    </div>
+    <div
+      class="card-content__body"
+      style={`view-transition-name:card-content-body-${slug}`}
+    >
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--card-margin);
+  }
+
+  .card__meta {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transform: translateY(40px);
+    transition: all 1s var(--ease-out-elastic);
+    font-variation-settings: var(--font-bold);
+  }
+
+  .card[inview] .card__meta {
+    transform: translateY(-10px);
+  }
+
+  .card .card__meta span {
+    color: var(--color-onPrimary);
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--border-radius-sm);
+  }
+
+  .card[inview] .card__meta span {
+    background-color: var(--color-onPrimary);
+    color: var(--color-primary);
+    padding: var(--space-1) var(--space-3);
+  }
+
+  .card-content {
+    position: relative;
+  }
+
+  .card-content__ball {
+    width: var(--ball-width);
+    height: var(--ball-width);
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(var(--ball-distance)) scale(0);
+    transition: transform 1s var(--ease-out-elastic);
+    transition-delay: 0.1s;
+    border: 4px solid var(--color-onPrimary);
+  }
+
+  .card:nth-child(even) .card-content__ball {
+    left: 0;
+    transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
+      scale(0);
+  }
+
+  .card[inview] .card-content__ball {
+    transition-delay: 0;
+  }
+
+  .card[inview]:nth-child(odd) .card-content__ball {
+    transform: translateY(-50%) translateX(var(--ball-distance)) scale(1);
+  }
+
+  .card[inview]:nth-child(even) .card-content__ball {
+    transform: translateY(-50%) translateX(calc(var(--ball-distance) * -1))
+      scale(1);
+  }
+
+  .card-content__join {
+    width: var(--ball-distance);
+    height: var(--line-width);
+    background-color: var(--color-onPrimary);
+    position: absolute;
+    top: 50%;
+    right: calc((var(--ball-distance) - var(--line-width)) * -1);
+    transform: translateY(-50%) scaleX(0);
+    border-radius: var(--border-radius);
+    transition: transform 1s var(--ease-out-elastic);
+    transition-delay: 0.2s;
+    transform-origin: center left;
+    z-index: -1;
+  }
+
+  .card:nth-child(even) .card-content__join {
+    transform-origin: center right;
+    right: initial;
+    left: calc((var(--ball-distance) - var(--line-width)) * -1);
+  }
+
+  .card[inview] .card-content__join {
+    transform: translateY(-50%) scaleX(1);
+    transition-delay: 0;
+  }
+
+  .card-content__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--card-padding);
+    background-color: var(--color-onPrimary);
+    border-radius: var(--border-radius);
+    color: var(--color-secondary);
+  }
+
+  .card-content__title {
+    font-size: var(--font-size-lg);
+    font-family: var(--body-font);
+    font-variation-settings: var(--font-bold);
+    color: var(--color-primary);
+  }
+
+  .card-content__company-name {
+    color: var(--color-secondary);
+  }
+
+  .card-content__description {
+    line-height: 1.2;
+    color: var(--color-primary);
+    font-variation-settings: var(--font-bold);
+  }
+
+  .card-content__tags {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+
+  .card-content__tag {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    white-space: nowrap;
+    padding: 0 8px;
+    line-height: 1.4;
+    border-radius: var(--border-radius-xs);
+    font-variation-settings: var(--font-semi-bold);
+  }
+
+  .card-content__details-btn {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: none;
+    padding-inline: 0;
+    padding-block: 0;
+    display: flex;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-variation-settings: var(--font-bold);
+  }
+
+  .card-content__details-btn:hover {
+    color: var(--color-secondary);
+  }
+
+  .card-content__details-btn:hover svg circle {
+    fill: red;
+  }
+</style>

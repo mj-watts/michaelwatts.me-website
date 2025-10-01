@@ -1,6 +1,5 @@
 User-agent: *
-Disallow: /works
-Disallow: /works/
+Disallow: /
 
 User-agent: Googlebot-Image
-Disallow: /_image/*
+Disallow: /

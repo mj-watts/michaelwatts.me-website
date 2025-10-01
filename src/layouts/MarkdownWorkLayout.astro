@@ -1,6 +1,8 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
+import SvgBackButton from "../components/SvgBackButton.astro";
 import PageTitle from "../components/PageTitle.astro";
+import Button from "../components/Button.astro";
 import Tags from "../components/Tags.tsx";
 import Recommendation from "../components/Recommendation.tsx";
 import RecommendedWork from "../components/RecommendedWork.tsx";
@@ -10,125 +12,164 @@ const { description } = frontmatter;
 ---
 
 <WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
-  <div>
-    <div class="back-link-container">
-      <a href="/works">↤ Back to all works</a>
-    </div>
+  <div class="work-item">
+    <div class="work-item__aside">
+      <a href="/#work">
+        <SvgBackButton />
+      </a>
 
-    <PageTitle>{frontmatter.title}</PageTitle>
+      <div class="work-item__aside-sections">
+        <PageTitle>{frontmatter.title}</PageTitle>
 
-    <div class="sectors">
-      <strong>Sectors:</strong>
-      {frontmatter.sectors.join(" • ")}
-    </div>
+        <div class="work-item__aside-section">
+          <strong>Sectors:</strong>
+          {frontmatter.sectors.join(" • ")}
+        </div>
 
-    <div class="type">
-      <strong>Type:</strong>
-      {frontmatter.type}
-    </div>
+        <div class="work-item__aside-section">
+          <strong>Type:</strong>
+          {frontmatter.type}
+        </div>
 
-    <div class="tags">
-      <strong>Tech used:</strong>
+        <div class="work-item__aside-section--tags">
+          <strong>Tech used:</strong>
+          <div>
+            <Tags tags={frontmatter.tags} client:only="react" />
+          </div>
+        </div>
+      </div>
+
       <div>
-        <Tags
-          tags={frontmatter.tags}
-          color={frontmatter.backgroundColor}
-          client:load
-        />
+        <Button href="/#contact">Get in touch</Button>
       </div>
     </div>
 
-    <slot />
+    <div class="work-item__main">
+      <slot />
 
-    {
-      frontmatter.recommendedWorks && (
-        <div class="recommendations">
-          <Recommendation
-            image={frontmatter.recommendationImage?.src}
-            text={frontmatter.recommendationText}
-            footer={frontmatter.recommendationFooter}
-            client:load
-          />
-        </div>
-      )
-    }
+      {
+        frontmatter.recommendedWorks && (
+          <div class="work-item__recommendations">
+            <Recommendation
+              image={frontmatter.recommendationImage?.src}
+              text={frontmatter.recommendationText}
+              footer={frontmatter.recommendationFooter}
+              client:load
+            />
+          </div>
+        )
+      }
+
+      {
+        frontmatter.recommendedWorks?.length && (
+          <div class="work-item__recommended-works-works">
+            <h2>Other work</h2>
+            <div>
+              {frontmatter.recommendedWorks.map(
+                (work: {
+                  image: { src: string };
+                  title: string;
+                  description: string;
+                  bgcolor: string;
+                  link: string;
+                }) => (
+                  <RecommendedWork
+                    image={work.image?.src}
+                    title={work.title}
+                    description={work.description}
+                    bgcolor={work.bgcolor}
+                    link={work.link}
+                    client:load
+                  />
+                )
+              )}
+            </div>
+          </div>
+        )
+      }
+    </div>
   </div>
-
-  {
-    frontmatter.recommendedWorks?.length && (
-      <div class="recommended-works">
-        <h2>Selected works</h2>
-        <div>
-          {frontmatter.recommendedWorks.map(
-            (work: {
-              image: { src: string };
-              title: string;
-              description: string;
-              bgcolor: string;
-              link: string;
-            }) => (
-              <RecommendedWork
-                image={work.image?.src}
-                title={work.title}
-                description={work.description}
-                bgcolor={work.bgcolor}
-                link={work.link}
-                client:load
-              />
-            )
-          )}
-        </div>
-      </div>
-    )
-  }
 </WorkLayout>
 
 <style>
-  .back-link-container {
-    margin-bottom: var(--space-6);
+  @scope (.work-item) {
+    --flex-direction: column;
+    --gap: var(--space-6);
+    --work-item__aside-position: relative;
+    --work-item__aside-top: 0;
+    --work-item__aside-height: auto;
+    --strong-display: inline;
+    --work-item__aside-bd-gap: var(--space-2);
   }
 
-  .back-link-container a {
-    opacity: 0.7;
+  @media screen and (min-width: 1000px) {
+    @scope (.work-item) {
+      --flex-direction: row;
+      --gap: var(--space-12);
+      --work-item__aside-position: sticky;
+      --work-item__aside-top: var(--space-12);
+      --work-item__aside-height: 50dvi;
+      --strong-display: block;
+      --work-item__aside-bd-gap: var(--space-4);
+    }
   }
 
-  .back-link-container a:hover {
-    opacity: 1;
-  }
-
-  .sectors,
-  .type {
-    margin-bottom: var(--space-1);
-  }
-
-  .tags {
+  .work-item {
     display: flex;
-    align-items: start;
-    margin-bottom: var(--space-12);
+    flex-direction: var(--flex-direction);
+    gap: var(--gap);
   }
 
-  .tags strong {
-    white-space: nowrap;
+  .work-item__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+    position: var(--work-item__aside-position);
+    top: var(--work-item__aside-top);
+    left: 0;
+    height: var(--work-item__aside-height);
   }
 
-  .tags div {
-    margin-left: var(--space-2);
-    margin-top: var(--space-1);
+  .work-item__aside-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--work-item__aside-bd-gap);
+    transition: all 1s var(--ease-out-elastic);
   }
 
-  .recommendations {
+  .work-item__aside-section--tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .work-item__aside-section strong {
+    display: var(--strong-display);
+  }
+
+  .work-item__recommendations {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: var(--space-12);
   }
 
-  .recommended-works h2 {
+  .work-item__main {
+    max-width: 1920px;
+  }
+
+  .work-item__recommended-works-works h2 {
     margin-bottom: var(--space-2);
+    font-size: var(--font-size-xl);
+    text-align: center;
+    color: var(--color-primary);
   }
 
-  .recommended-works > div {
+  .work-item__recommended-works-works > div {
     display: flex;
     gap: var(--space-4);
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 </style>

@@ -40,7 +40,7 @@ https://myapp.io
 
 So in this instance in JavaScript querying **addressline1** would return a `string`, while querying **addressline2** would return `null`
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -55,7 +55,7 @@ urlParams.get("addressline2");
 
 If **addressline2** existed but was empty i.e. `&addressline2=` or just `&addressline2` the result would be an empty string:
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 urlParams.get("addressline2");
 ```
@@ -66,7 +66,7 @@ If the string is un-convertible i.e. `&age=gibberish` I need to also check for t
 
 Which could amount to quite a bit of checking, to-ing and fro-ing, etc. The more params then the more the problems grow.
 
-<CodeBlock lang="js" filename="example.js">
+<CodeBlock filename="example.js">
 ```js
 const obj = {};
 
@@ -90,7 +90,7 @@ So instead of all that we can write a schema, parse it and catch and deal with a
 
 It's very simple to write a Zod schema, here's an example showing some of the methods that can be used, there's a whole list on [their website](https://zod.dev/?id=basic-usage):
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts /urlParamsSchema/
 import { z } from "zod";
 
@@ -110,7 +110,7 @@ export type UrlParams = z.infer<typeof urlParamsSchema>;
 
 Based on our schema we can run the following to parse an object against the schema to see if there are any validation errors.
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts {13}
 let errorMode = false;
 
@@ -136,7 +136,7 @@ That's a helluva lot more easier to read and maintain.
 
 But also, _very importantly_, when future you or another developer comes by your code and needs to know what properties are required or are optional for `UserParams{:ts}`, you or they have an easy way to see by using this line...
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts showLineNumbers{11}
 export type UrlParams = z.infer<typeof urlParamsSchema>;
 ```
@@ -144,7 +144,7 @@ export type UrlParams = z.infer<typeof urlParamsSchema>;
 
 ...your IDE can then infer the TypeScript type from the Zod schema, giving you a nice output of the data structure:
 
-<CodeBlock lang="ts" filename="example.ts">
+<CodeBlock filename="example.ts">
 ```ts
 type UrlParams = {
   firstname: string;

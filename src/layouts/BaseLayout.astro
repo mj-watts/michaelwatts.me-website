@@ -2,12 +2,41 @@
 import MainNav from "../components/MainNav.astro";
 import Main from "../components/Main.astro";
 import MainFooter from "../components/Footer.astro";
-import Container from "../components/Container.astro";
+import ColorPicker from "../components/ColorPicker.tsx";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle } = Astro.props;
 ---
+
+<script>
+  import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+
+  document.documentElement.style.setProperty(
+    "--color-primary",
+    themePrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-onPrimary",
+    themeOnPrimary.get()
+  );
+  document.documentElement.style.setProperty(
+    "--color-secondary",
+    themeSecondary.get()
+  );
+
+  themePrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-primary", color);
+  });
+
+  themeOnPrimary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-onPrimary", color);
+  });
+
+  themeSecondary.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-secondary", color);
+  });
+</script>
 
 <html lang="en">
   <head>
@@ -19,18 +48,17 @@ const { pageTitle } = Astro.props;
       name="description"
       content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
     />
-    <link rel="preload" as="style" href="https://use.typekit.net/eaq6veo.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
   </head>
   <body>
     <MainNav />
 
     <Main>
       <div id="top-of-site-pixel-anchor"></div>
-      <Container>
-        <slot />
-      </Container>
+      <slot />
     </Main>
 
     <MainFooter />
+    <ColorPicker client:only="react" />
   </body>
 </html>
