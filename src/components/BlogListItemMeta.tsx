@@ -11,7 +11,6 @@ const Meta = styled.div`
   display: flex;
   align-items: center;
   justify-content: between;
-  margin-bottom: var(--space-3);
 `;
 
 const Time = styled.time`

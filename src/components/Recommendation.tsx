@@ -36,7 +36,7 @@ const ProfilePicture = styled.div`
   overflow: hidden;
   box-shadow: 0 0 0 6px var(--color);
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     top: 0;

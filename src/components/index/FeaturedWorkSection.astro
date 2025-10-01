@@ -144,7 +144,7 @@ import webAppsImage from "../../images/webapps.png";
     position: relative;
   }
 
-  .work:after {
+  .work::after {
     content: "";
     position: absolute;
     top: 0;
@@ -166,8 +166,8 @@ import webAppsImage from "../../images/webapps.png";
     mix-blend-mode: initial;
   }
 
-  .work:hover:after,
-  .work:focus:after {
+  .work:hover::after,
+  .work:focus::after {
     opacity: 0;
   }
 

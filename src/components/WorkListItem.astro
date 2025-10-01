@@ -49,7 +49,7 @@ const { url, title, sectors, summary, type, image, tags, backgroundColor } =
     border-top-color: transparent;
   }
 
-  li:before {
+  li::before {
     content: "";
     position: absolute;
     top: 0;
@@ -59,7 +59,7 @@ const { url, title, sectors, summary, type, image, tags, backgroundColor } =
     z-index: -1;
   }
 
-  li:hover:before {
+  li:hover::before {
     top: calc(var(--space-1) * -1);
     left: calc(var(--space-3) * -1);
     right: calc(var(--space-3) * -1);
@@ -101,7 +101,7 @@ const { url, title, sectors, summary, type, image, tags, backgroundColor } =
     transition: border-color 0.1s ease-in-out;
   }
 
-  .summary a:before {
+  .summary a::before {
     content: "";
     position: absolute;
     top: 0;

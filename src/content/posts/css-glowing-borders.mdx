@@ -5,14 +5,16 @@ description: "A bit of arsing about with CSS to make a button glow on hover usin
 author: "Michael Watts"
 readTime: 6
 tags: ["html", "css"]
-wip: false
+draft: true
 ---
+
 import LeadParagraph from "../../components/LeadParagraph.astro";
 import CodeBlock from "../../components/CodeBlock.astro";
 import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleForPost.astro";
 
 <LeadParagraph>
-  A bit of arsing about with CSS to make a button glow on hover using CSS custom properties and keyframes.
+  A bit of arsing about with CSS to make a button glow on hover using CSS custom
+  properties and keyframes.
 </LeadParagraph>
 
 ## Working example
@@ -22,13 +24,13 @@ import GlowingButtonExampleForPost from "../../components/GlowingButtonExampleFo
 ## HTML
 
 <CodeBlock filename="example.html">
-```html
-<main>
-  <button class="btn">Button</button>
-  <button class="btn">Button</button>
-  <button class="btn">Button</button>
-</main>
-```
+  ```html
+  <main>
+    <button class="btn">Button</button>
+    <button class="btn">Button</button>
+    <button class="btn">Button</button>
+  </main>
+  ```
 </CodeBlock>
 
 ## CSS breakdown
@@ -143,113 +145,115 @@ If `--radial-bg-color` hadn't been defined in the first place as a custom proper
 }
 
 .btn {
-  --background-color: hsl(270deg 92% 5%);
-  --dark-color: hsl(270deg 92% 2%);
-  --dark-color-hover: hsl(270deg 92% 12%);
-  --light-color: hsl(211deg 23% 51%);
-  --accent-color-hue: 260;
-  --accent-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 20%);
-  --radial-bg-color: var(--dark-color);
-  --bg-y: -50;
-  --bg-x: 200;
-  --glow-size: 2;
-  --flash-color: var(--accent-color);
-  --flash-size: 0;
-  --text-flash-size: 0;
-  --text-flash-color: hsl(calc(var(--accent-color-hue) * 1deg) 92% 80%);
+--background-color: hsl(270deg 92% 5%);
+--dark-color: hsl(270deg 92% 2%);
+--dark-color-hover: hsl(270deg 92% 12%);
+--light-color: hsl(211deg 23% 51%);
+--accent-color-hue: 260;
+--accent-color: hsl(calc(var(--accent-color-hue) _ 1deg) 92% 20%);
+--radial-bg-color: var(--dark-color);
+--bg-y: -50;
+--bg-x: 200;
+--glow-size: 2;
+--flash-color: var(--accent-color);
+--flash-size: 0;
+--text-flash-size: 0;
+--text-flash-color: hsl(calc(var(--accent-color-hue) _ 1deg) 92% 80%);
 
-  /* Misc */
-  --outer-radius: 5px;
-  --inner-padding: 16px;
-  --outline-color: hsla(
-    calc(var(--accent-color-hue) * 1deg) 100% 58% / calc(var(--a11y) * 100%)
-  );
+/_ Misc _/
+--outer-radius: 5px;
+--inner-padding: 16px;
+--outline-color: hsla(
+calc(var(--accent-color-hue) _ 1deg) 100% 58% / calc(var(--a11y) _ 100%)
+);
 }
 
 .btn {
-  font-family: "Mona sans", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: white;
-  border: none;
-  background: var(--dark-color) radial-gradient(
-      ellipse 70% 70% at calc(var(--bg-x) * 1%) calc(var(--bg-y) * 1%),
-      var(--radial-bg-color) 0%,
-      var(--dark-color) 100%
-    );
-  padding: var(--inner-padding);
-  border-radius: var(--outer-radius);
-  position: relative;
-  width: 200px;
-  z-index: 1;
-  box-shadow: 0 0 calc(var(--flash-size) * 1px) var(--flash-color);
-  text-shadow: 0 0 calc(var(--text-flash-size) * 1px) var(--text-flash-color);
+font-family: "Mona sans", sans-serif;
+font-size: 1.1rem;
+font-weight: 500;
+letter-spacing: 1px;
+color: white;
+border: none;
+background: var(--dark-color) radial-gradient(
+ellipse 70% 70% at calc(var(--bg-x) _ 1%) calc(var(--bg-y) _ 1%),
+var(--radial-bg-color) 0%,
+var(--dark-color) 100%
+);
+padding: var(--inner-padding);
+border-radius: var(--outer-radius);
+position: relative;
+width: 200px;
+z-index: 1;
+box-shadow: 0 0 calc(var(--flash-size) _ 1px) var(--flash-color);
+text-shadow: 0 0 calc(var(--text-flash-size) _ 1px) var(--text-flash-color);
 }
 
-.btn:before {
-  --padding: calc(var(--glow-size) * 1px);
-  content: "";
-  display: block;
-  position: absolute;
-  width: calc(100% - var(--padding));
-  height: calc(100% - var(--padding));
-  top: calc(var(--padding) / 2);
-  left: calc(var(--padding) / 2);
-  background: var(--dark-color);
-  border-radius: var(--outer-radius);
-  transition: background-color 0.8s ease;
-  z-index: -1;
+.btn::before {
+--padding: calc(var(--glow-size) \* 1px);
+content: "";
+display: block;
+position: absolute;
+width: calc(100% - var(--padding));
+height: calc(100% - var(--padding));
+top: calc(var(--padding) / 2);
+left: calc(var(--padding) / 2);
+background: var(--dark-color);
+border-radius: var(--outer-radius);
+transition: background-color 0.8s ease;
+z-index: -1;
 }
 
 .btn:hover {
-  animation: glow 0.8s ease-in-out, flash 0.3s ease-out, text-flash 0.2 ease-out;
-  cursor: pointer;
+animation: glow 0.8s ease-in-out, flash 0.3s ease-out, text-flash 0.2 ease-out;
+cursor: pointer;
 }
 
-.btn:hover:before {
-  background: var(--dark-color-hover);
+.btn:hover::before {
+background: var(--dark-color-hover);
 }
 
 @keyframes glow {
-  from {
-    --radial-bg-color: hsl(290deg 100% 100%);
-    --bg-x: 100;
-    --bg-y: 0;
-  }
-  50% {
-    --radial-bg-color: var(--accent-color);
-    --bg-x: 60;
-    --bg-y: 120;
-  }
-  to {
-    --radial-bg-color: var(--dark-color);
-    --bg-x: 60;
-    --bg-y: 120;
-  }
+from {
+--radial-bg-color: hsl(290deg 100% 100%);
+--bg-x: 100;
+--bg-y: 0;
+}
+50% {
+--radial-bg-color: var(--accent-color);
+--bg-x: 60;
+--bg-y: 120;
+}
+to {
+--radial-bg-color: var(--dark-color);
+--bg-x: 60;
+--bg-y: 120;
+}
 }
 
 @keyframes flash {
-  from {
-    --flash-color: var(--accent-color);
-    --flash-size: 0;
-    --text-flash-size: 0;
-  }
-  10% {
-    --flash-color: var(--accent-color);
-    --flash-size: 5;
-    --text-flash-size: 2;
-  }
-  90% {
-    --flash-color: var(--accent-color);
-    --flash-size: 150;
-    --text-flash-size: 150;
-  }
-  to {
-    --flash-color: var(--accent-color);
-    --flash-size: 0;
-    --text-flash-size: 0;
-  }
+from {
+--flash-color: var(--accent-color);
+--flash-size: 0;
+--text-flash-size: 0;
 }
+10% {
+--flash-color: var(--accent-color);
+--flash-size: 5;
+--text-flash-size: 2;
+}
+90% {
+--flash-color: var(--accent-color);
+--flash-size: 150;
+--text-flash-size: 150;
+}
+to {
+--flash-color: var(--accent-color);
+--flash-size: 0;
+--text-flash-size: 0;
+}
+}
+
 ```
 </CodeBlock>
+```

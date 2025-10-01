@@ -5,11 +5,13 @@ description: "Explore how JavaScript Proxy objects enable powerful patterns for 
 author: "Michael Watts"
 readTime: 5
 tags: ["javascript"]
-wip: false
+draft: true
 ---
 
 <LeadParagraph>
-  They've been around a while, proxy objects in JavaScript provide a way to intercept and customise operations performed on objects. They're particularly useful for validation, logging, formatting, notifications, and debugging.
+  They've been around a while, proxy objects in JavaScript provide a way to
+  intercept and customise operations performed on objects. They're particularly
+  useful for validation, logging, formatting, notifications, and debugging.
 </LeadParagraph>
 
 ### Basic Structure
@@ -23,13 +25,14 @@ const target = {
 };
 
 const handler = {
-  get: function (target, prop) {
-    return target[prop];
-  },
+get: function (target, prop) {
+return target[prop];
+},
 };
 
 const proxy = new Proxy(target, handler);
-```
+
+````
 </CodeBlock>
 
 ### Practical Examples
@@ -61,7 +64,8 @@ const user = new Proxy({}, userHandler);
 user.age = 25; // Works fine
 // user.age = -5; // Throws RangeError
 // user.age = "25"; // Throws TypeError
-```
+````
+
 </CodeBlock>
 
 #### 2. Default Values
@@ -81,7 +85,8 @@ object.name = "Test";
 
 console.log(object.name); // Output: "Test"
 console.log(object.age); // Output: "Property not found"
-```
+
+````
 </CodeBlock>
 
 #### 3. Logging
@@ -105,7 +110,8 @@ const handler = {
 const user = new Proxy({}, handler);
 user.name = "John"; // Logs: "Setting property: name = John"
 console.log(user.name); // Logs: "Accessing property: name" then "John"
-```
+````
+
 </CodeBlock>
 
 ### When to Use Proxies

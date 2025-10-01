@@ -5,7 +5,7 @@ description: "A deep dive into Tone.js synthesisers, envelopes, and effects - cr
 author: "Michael Watts"
 readTime: 5
 tags: ["javascript", "music"]
-wip: false
+draft: true
 ---
 
 Web audio has come a long way since the early days of simple beeps and clicks. With Tone.js, we can now create sophisticated synthesised sounds, complex effect chains, and interactive musical experiences right in the browser. Let's explore what makes this library so powerful, particularly when it comes to synthesisers, envelopes, and effects.

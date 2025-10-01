@@ -66,7 +66,7 @@ const Link = styled.a`
     background-color: rgba(from var(--bgcolor) r g b / 1);
   }
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -79,7 +79,7 @@ const Link = styled.a`
     transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
 
-  &:hover:before {
+  &:hover::before {
     box-shadow: 0 0 0 5px var(--bgcolor);
     opacity: 0.5;
   }

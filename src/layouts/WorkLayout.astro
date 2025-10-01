@@ -1,7 +1,5 @@
 ---
 import ColorPicker from "../components/ColorPicker.tsx";
-import CloseButton from "../components/CloseButton.astro";
-import PlayButton from "../components/PlayButton.astro";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
@@ -119,9 +117,7 @@ const { pageTitle, pageDescription } = Astro.props;
       var(--font-size-xl)
     );
     font-family: var(--body-font);
-    font-variation-settings:
-      "slnt" 0,
-      "wght" 700;
+    font-variation-settings: var(--font-bold);
     line-height: 1;
     color: var(--text-color);
     margin-top: 0;

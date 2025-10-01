@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
 import BlogListItem from "../components/BlogListItem.astro";
 import UnorderedList from "../components/UnorderedList.astro";
 
@@ -22,18 +23,20 @@ const publishedPostsAndRecipes = allPostsAndRecipes
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <UnorderedList>
-    {
-      publishedPostsAndRecipes.map((post) => (
-        <BlogListItem
-          url={`/posts/${post.slug}/`}
-          title={post.data.title}
-          date={post.data.pubDate}
-          description={post.data.description}
-          readTime={post.data.readTime}
-          tags={post.data.tags}
-        />
-      ))
-    }
-  </UnorderedList>
+  <Container>
+    <UnorderedList>
+      {
+        publishedPostsAndRecipes.map((post) => (
+          <BlogListItem
+            url={`/posts/${post.slug}/`}
+            title={post.data.title}
+            date={post.data.pubDate}
+            description={post.data.description}
+            readTime={post.data.readTime}
+            tags={post.data.tags}
+          />
+        ))
+      }
+    </UnorderedList>
+  </Container>
 </BaseLayout>

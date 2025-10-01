@@ -154,7 +154,7 @@
   
   body {
     font-family: var(--body-font);
-    font-variation-settings: "slnt" 0, "wght" 400;
+    font-variation-settings:  var(--font-regular);;
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-background);
@@ -183,7 +183,7 @@
   }
 
   strong {
-    font-variation-settings: "slnt" 0, "wght" 700;
+    font-variation-settings:  var(--font-bold);
   }
 } 
 
@@ -203,59 +203,7 @@
     text-wrap: pretty;
     margin-bottom: 0;
     font-family: var(--body-font);
-    font-variation-settings: "slnt" 0, "wght" 700;
-  }
-
-  h2 {
-    font-size: clamp(
-      var(--font-size-lg),
-      calc(1.5vw + 1rem),
-      var(--font-size-xl)
-    );
-  }
-
-  h3 {
-    font-size: clamp(
-      var(--font-size-lg),
-      calc(1vw + 1rem),
-      var(--font-size-xl)
-    );
-  }
-  
-  .content h2 + p,
-  .content h3 + p,
-  .content h4 + p,
-  .content h5 + p,
-  .content h6 + p,
-  .content h2 + ul,
-  .content h3 + ul,
-  .content h4 + ul,
-  .content h5 + ul,
-  .content h6 + ul,
-  .content h2 + ol,
-  .content h3 + ol,
-  .content h4 + ol,
-  .content h5 + ol,
-  .content h6 + ol {
-    margin-top: var(--space-2);
-  }
-  
-  .content p,
-  .content ul,
-  .content ol,
-  .content blockquote,
-  .content pre,
-  .content table {
-    margin: 0;
-  }
-  
-  .content p + ul,
-  .content p + ol {
-    margin-top: var(--space-2);
-  }
-  
-  .content p + iframe {
-    margin-top: var(--space-4);
+    font-variation-settings: var(--font-bold);
   }
 }
 

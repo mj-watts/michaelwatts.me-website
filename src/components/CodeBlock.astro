@@ -5,20 +5,20 @@ const { lang, filename } = Astro.props;
 <div class="code-block">
   <div
     class:list={[
-      "code-meta",
+      "code-block__meta",
       filename && filename.toLowerCase() === "terminal" ? "terminal" : "",
     ]}
   >
-    {filename && <div class="filename">{filename}</div>}
+    {filename && <div class="code-block__filename">{filename}</div>}
     {
       lang && (
-        <div class="lang" data-lang={lang}>
+        <div class="code-block__lang" data-lang={lang}>
           {lang}
         </div>
       )
     }
   </div>
-  <div class="code-wrapper">
+  <div class="code-block__wrapper">
     <slot />
   </div>
 </div>
@@ -27,41 +27,35 @@ const { lang, filename } = Astro.props;
   @scope (.code-block) {
     :scope {
       --font-size: 0.65rem;
-      --padding: 0.5rem;
+      --padding: var(--space-4);
       --border-width: 1px;
       --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
-      --side-margin: 0;
+      --code-bg-color: black;
     }
 
     @media (min-width: 768px) {
       :scope {
         --font-size: 1rem;
-        --padding: 1rem;
-        --side-margin: -1rem;
+        --padding: var(--space-8);
       }
     }
 
     @media (min-width: 939px) {
       :scope {
-        --side-margin: -2rem;
       }
     }
   }
 
-  :global(html.dark code[data-theme*=" "]),
-  :global(html.dark code[data-theme*=" "] span) {
-    background: transparent;
-    color: var(--shiki-dark);
-  }
-
   :global(code[data-theme*=" "]),
   :global(code[data-theme*=" "] span) {
-    background: transparent;
-    color: var(--shiki-light);
+    color: var(--shiki-dark);
   }
 
   .code-block {
     position: relative;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    background-color: var(--code-bg-color);
   }
 
   .code-block :global(figure[data-rehype-pretty-code-figure]) {
@@ -74,24 +68,21 @@ const { lang, filename } = Astro.props;
 
   .code-block :global(code[data-language]) {
     anchor-name: --code-block;
-    border: var(--border-width) solid var(--code-border);
-    padding: var(--space-12) var(--space-6) var(--space-6);
+    padding: var(--padding);
     font-size: var(--font-size);
   }
 
-  .code-meta {
-    position: absolute;
+  .code-block__meta {
     position-anchor: --code-block;
     position-area: span-bottom span-right;
-    background-color: var(--color-secondary);
-    width: 100%;
+    background-color: var(--color-onPrimary);
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .code-meta.terminal:before,
-  .code-meta.terminal:after {
+  .code-block__meta.terminal::before,
+  .code-block__meta.terminal::after {
     content: "";
     position: absolute;
     right: 9px;
@@ -101,58 +92,55 @@ const { lang, filename } = Astro.props;
     background-color: red;
     opacity: 0.7;
   }
-  .code-meta.terminal:after {
+  .code-block__meta.terminal::after {
     right: 30px;
     background-color: greenyellow;
   }
 
-  .filename {
-    padding: var(--space-1) var(--space-4);
-    padding: var(--space-1) var(--space-4);
+  .code-block__filename {
+    padding: var(--space-2) var(--space-4) var(--space-1);
     letter-spacing: 0.05em;
     font-weight: 600;
     font-size: var(--font-size);
-    background-color: var(--color-secondary);
     font-family: var(--font-mono);
     color: var(--color-border);
   }
 
-  .lang {
+  .code-block__lang {
     padding: var(--space-1) var(--space-4);
     letter-spacing: 0.05em;
     font-weight: 600;
     text-transform: uppercase;
     font-size: var(--font-size);
-    background-color: var(--color-secondary);
     font-family: var(--font-mono);
     color: var(--color-secondary);
   }
 
-  .lang[data-lang="bash"] {
+  .code-block__lang[data-lang="bash"] {
     background-color: #22c55e;
   }
 
-  .lang[data-lang="typescript"],
-  .lang[data-lang="ts"],
-  .lang[data-lang="javascript"],
-  .lang[data-lang="js"],
-  .lang[data-lang="jsx"],
-  .lang[data-lang="tsx"] {
+  .code-block__lang[data-lang="typescript"],
+  .code-block__lang[data-lang="ts"],
+  .code-block__lang[data-lang="javascript"],
+  .code-block__lang[data-lang="js"],
+  .code-block__lang[data-lang="jsx"],
+  .code-block__lang[data-lang="tsx"] {
     background-color: #60a5fa;
   }
 
-  .lang[data-lang="gherkin"] {
+  .code-block__lang[data-lang="gherkin"] {
     background-color: #eab308;
   }
 
-  .lang[data-lang="css"] {
+  .code-block__lang[data-lang="css"] {
     background-color: #ec4899;
   }
 
-  .lang[data-lang="html"],
-  .lang[data-lang="xml"],
-  .lang[data-lang="json"],
-  .lang[data-lang="svg"] {
+  .code-block__lang[data-lang="html"],
+  .code-block__lang[data-lang="xml"],
+  .code-block__lang[data-lang="json"],
+  .code-block__lang[data-lang="svg"] {
     background-color: #f97316;
   }
 
@@ -175,18 +163,18 @@ const { lang, filename } = Astro.props;
     background-color: oklab(from var(--color-success) L a calc(b * 0.9) / 0.2);
   }
 
-  :global(.has-diff code .diff:before) {
+  :global(.has-diff code .diff::before) {
     position: absolute;
     left: 10px;
   }
 
-  :global(.has-diff code .diff.add:before) {
+  :global(.has-diff code .diff.add::before) {
     content: "+";
     color: var(--color-success);
     font-weight: 900;
   }
 
-  :global(.has-diff code .diff.remove:before) {
+  :global(.has-diff code .diff.remove::before) {
     content: "-";
     color: var(--color-error);
     font-weight: 900;

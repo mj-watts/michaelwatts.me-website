@@ -1,12 +1,13 @@
-<h1>
+<h1 class="page-title">
   <slot />
 </h1>
 
 <style>
-  h1 {
-    color: var(--color-secondary);
-    margin: var(--space-4) 0 var(--space-2);
+  .page-title {
+    margin: var(--space-8) 0;
     line-height: 1.2;
+    font-family: var(--body-font);
+    font-variation-settings: var(--font-bold);
     font-weight: 700;
     text-wrap: pretty;
   }

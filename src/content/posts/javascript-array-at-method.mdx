@@ -5,11 +5,12 @@ description: "A relatively unknown method to access JavaScript Array elements, t
 author: "Michael Watts"
 readTime: 4
 tags: ["javascript"]
-wip: false
+draft: true
 ---
 
 <LeadParagraph>
-  A relatively unknown method to access JavaScript Array elements, the at() method.
+  A relatively unknown method to access JavaScript Array elements, the at()
+  method.
 </LeadParagraph>
 
 ## JavaScript Array at() method
@@ -19,9 +20,7 @@ wip: false
 ### Here's our array:
 
 <CodeBlock filename="example.js">
-```js
-const arr = [1, 2, 3, 4, 5];
-```
+  ```js const arr = [1, 2, 3, 4, 5]; ```
 </CodeBlock>
 
 ### New Array.prototype.at method:
@@ -33,7 +32,8 @@ arr.at(-1); // Output: 5
 
 // Getting element at index 2
 arr.at(2); // Output: 3
-```
+
+````
 </CodeBlock>
 
 ### Comparison with traditional array access:
@@ -47,7 +47,8 @@ arr[arr.length - 1]; // Output: 5
 
 // Getting element at index 2
 arr[2]; // Output: 3
-```
+````
+
 </CodeBlock>
 
 The `at()` method provides a more elegant way to access elements, especially with the last element silliness that used to happen.
@@ -61,10 +62,6 @@ Browser support is good https://caniuse.com/mdn-javascript_builtins_array_at
 If an element is out of range it returns `undefined`
 
 <CodeBlock filename="example.js">
-```js
-const arr = [1, 2, 3, 4, 5];
-assert.strictEqual(arr.at(2), 3);
-assert.strictEqual(arr.at(21), undefined);
-```
+  ```js const arr = [1, 2, 3, 4, 5]; assert.strictEqual(arr.at(2), 3);
+  assert.strictEqual(arr.at(21), undefined); ```
 </CodeBlock>
-

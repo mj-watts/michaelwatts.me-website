@@ -5,6 +5,7 @@ description: "From Google's multi-tab searches to conversational AI assistants l
 author: "Michael Watts"
 readTime: 6
 tags: ["ai", "cursor", "internet"]
+draft: true
 ---
 
 Remember when searching the internet meant crafting the perfect Google query, opening multiple tabs, and scanning through pages of content to find what you were looking for? It feels almost prehistoric now. The way we interact with information has fundamentally changed with the rise of AI assistants.
