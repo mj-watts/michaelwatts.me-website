@@ -63,12 +63,18 @@ const tagsArray = tagsList.split(",");
   .card-content {
     --flex-direction: column;
     --padding: var(--space-12);
+    --aside-pos: relative;
+    --aside-height: auto;
+    --aside-top: initial;
   }
 
   @media screen and (min-width: 1280px) {
     .card-content {
       --flex-direction: row;
       --padding: var(--space-24);
+      --aside-pos: sticky;
+      --aside-height: calc(100dvh - (var(--space-4) * 2));
+      --aside-top: var(--space-4);
     }
   }
 
@@ -80,7 +86,6 @@ const tagsArray = tagsList.split(",");
     display: flex;
     gap: var(--space-8);
     flex-direction: var(--flex-direction);
-    height: 100%;
     font-size: var(--font-size-base);
   }
 
@@ -93,6 +98,9 @@ const tagsArray = tagsList.split(",");
     color: var(--color-primary);
     border-radius: var(--border-radius);
     margin: var(--space-4);
+    position: var(--aside-pos);
+    height: var(--aside-height);
+    top: var(--aside-top);
   }
 
   .card-content__body {

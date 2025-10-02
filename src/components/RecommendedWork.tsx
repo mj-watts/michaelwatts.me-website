@@ -7,12 +7,13 @@ interface Props {
   title: string;
   description: string;
   link: string;
+  bgcolor: string;
 }
 
-const Container = styled.div<{ image: string; }>`
+const Container = styled.div<{ image: string; bgcolor: string }>`
   --rounded-border: var(--border-radius);
-  --bgcolor: var(--color-onPrimary);
-  --textcolor: var(--color-secondary);
+  --bgcolor: ${(props) => props.bgcolor};
+  --textcolor: var(--color-primary);
 
   position: relative;
   display: flex;
@@ -28,7 +29,9 @@ const Container = styled.div<{ image: string; }>`
   padding: var(--space-6);
   box-sizing: border-box;
   background-color: var(--bgcolor);
-  background-image: url(${(props) => props.image});
+  background-image: 
+    linear-gradient(var(--bgcolor), transparent),
+    url(${(props) => props.image});
   background-size: contain;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -36,33 +39,35 @@ const Container = styled.div<{ image: string; }>`
 
 const Title = styled.h2`
   margin: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-family: var(--body-font);
   font-variation-settings: var(--font-semi-bold);
-  line-height: 1.1;
-  color: var(--textcolor);
+  line-height: 1.2;
+  color: var(--bgcolor);
+  filter: invert(1);
 `;
 
 const Description = styled.p`
+  font-size: var(--font-size-sm);
   margin: 0;
-  line-height: 1.2;
-  color: var(--textcolor);
+  line-height: 1.3;
+  color: var(--bgcolor);
+  filter: invert(1);
 `;
 
 const Link = styled.a`
   margin-top: auto;
   font-size: smaller;
   font-weight: 600;
-  color: var(--textcolor);
+  color: var(--color-onPrimary);
   font-variation-settings: var(--font-bold);
-  background-color: rgba(from var(--bgcolor) r g b / 0.8);
-  border-radius: 0 6px 6px 0;
-  padding: 0 var(--space-4) 0 var(--space-6);
-  margin-left: calc(-1 * var(--space-6));
+  background-color: var(--color-secondary);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-2) var(--space-4);
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: rgba(from var(--bgcolor) r g b / 1);
+  background-color: oklab(from var(--color-secondary) calc(l - 0.1) a b);
   }
 
   &::before {
@@ -100,6 +105,7 @@ export default function RecommendedWork({
   title,
   description,
   link,
+  bgcolor,
 }: Props) {
   const [mounted, setMounted] = useState(false);
 
@@ -110,7 +116,7 @@ export default function RecommendedWork({
   if (!mounted) return <SkeletonComponent />;
 
   return (
-    <Container image={image}>
+    <Container image={image} bgcolor={bgcolor}>
       <Title>{title}</Title>
       <Description>{description}</Description>
       <Link href={link}>View</Link>
