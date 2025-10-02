@@ -84,7 +84,7 @@ import webAppsImage from "../../images/webapps.png";
   const movingImageAnimation = animate(
     ".work__item > img",
     {
-      transform: ["translateY(-100px) scale(1.2)", "translateY(20px) scale(1)"],
+      transform: ["translate(-50px, -100px)", "translate(30px, 40px)"],
     },
     { ease: "linear" }
   );
@@ -138,7 +138,7 @@ import webAppsImage from "../../images/webapps.png";
     aspect-ratio: 1;
     border-radius: var(--border-radius-lg);
     scale: 0.8;
-    transition: 1s all var(--ease-out-elastic);
+    transition: all 800ms var(--ease-out-elastic);
     overflow: hidden;
     position: relative;
   }
@@ -163,6 +163,10 @@ import webAppsImage from "../../images/webapps.png";
   .work__item:focus {
     scale: 1.02;
     mix-blend-mode: initial;
+  }
+
+  .work__item:active {
+    scale: 0.95;
   }
 
   .work__item:hover::after,
