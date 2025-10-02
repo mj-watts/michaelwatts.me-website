@@ -71,10 +71,12 @@ const tagsArray = tagsList.split(",");
     transform: translateY(40px);
     transition: all 1s var(--ease-out-elastic);
     font-variation-settings: var(--font-bold);
+    opacity: 0;
   }
 
   .card[inview] .card__meta {
     transform: translateY(-10px);
+    opacity: 1;
   }
 
   .card .card__meta span {
