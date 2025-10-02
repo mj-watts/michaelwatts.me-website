@@ -50,6 +50,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
           </div>
         </div>
       </div>
+
       <div class="work-item__aside-section work-item__aside-recommended-work">
         <div class="work-item__aside-recommended-work-header">
           <strong class="work-item__aside-recommended-work-title">
@@ -82,7 +83,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
         </div>
       </div>
 
-      <div>
+      <div class="work-item__aside-section work-item__aside-section--contact">
         <Button href="/#contact">Get in touch</Button>
       </div>
     </div>
@@ -143,6 +144,8 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     --work-item__aside-height: auto;
     --strong-display: inline;
     --work-item__aside-bd-gap: var(--space-2);
+    --aside-recommended-work-display: none;
+    --aside-contact-button-display: none;
   }
 
   @media screen and (min-width: 1000px) {
@@ -154,6 +157,13 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
       --work-item__aside-height: 50dvi;
       --strong-display: block;
       --work-item__aside-bd-gap: var(--space-2);
+      --aside-contact-button-display: block;
+    }
+  }
+
+  @media screen and (min-width: 1550px) and (min-height: 1200px) {
+    .work-item {
+      --aside-recommended-work-display: flex;
     }
   }
 
@@ -194,7 +204,10 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     display: var(--strong-display);
   }
 
-  .work-item__aside-recommended-work,
+  .work-item__aside-recommended-work {
+    display: var(--aside-recommended-work-display);
+  }
+
   .work-item__aside-recommended-work-items {
     display: flex;
     flex-direction: column;
@@ -204,6 +217,10 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   .work-item__aside-recommended-work-items {
     list-style: none;
     padding-left: var(--space-4);
+  }
+
+  .work-item__aside-section--contact {
+    display: var(--aside-contact-button-display);
   }
 
   .work-item__recommendations {
