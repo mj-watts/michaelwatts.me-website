@@ -26,15 +26,8 @@ const worksCollection = defineCollection({
       recommendationImage: image().optional(),
       recommendationText: z.string().optional(),
       recommendationFooter: z.string().optional(),
-      recommendedWorks: z
-        .array(
-          z.object({
-            image: image(),
-            title: z.string(),
-            description: z.string(),
-            link: z.string(),
-          })
-        )
+      recommendedWork: z
+        .array(z.enum(["iomusic", "webapps", "ecomm", "sfm", "sa", "sppoc"]))
         .optional(),
     }),
 });

@@ -21,27 +21,7 @@ tags:
 recommendationImage: "../../../images/chris-chorley.png"
 recommendationText: "Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation."
 recommendationFooter: "Chris Chorley - Head of Engineering, Streeva"
-recommendedWorks:
-  [
-    {
-      image: "../swiftaid/cover.png",
-      title: "Swiftaid",
-      description: "A tool for automating Gift Aid.",
-      link: "/works/swiftaid",
-    },
-    {
-      image: "../ecomm-sites/cover.png",
-      title: "E-commerce",
-      description: "E-commerce websites and payment integrations.",
-      link: "/works/ecomm-sites",
-    },
-    {
-      image: "../webapps/cover.png",
-      title: "Web Applications",
-      description: "Various web applications built.",
-      link: "/works/webapps",
-    },
-  ]
+recommendedWork: ["iomusic", "webapps", "ecomm", "sfm", "sa"]
 ---
 
 import { Image } from "astro:assets";
@@ -55,29 +35,15 @@ import image4 from "./image4.png";
 import image5 from "./image5.png";
 import image6 from "./image6.png";
 
-As part of Streeva's collaboration with HMRC, I played a key role in
-conceiving and developing an advanced administrative portal as a proof of
-concept. The goal was to create a system capable of securely handling and
-querying large volumes of transactional data. To achieve this, I integrated
-Elasticsearch and Kibana, enabling powerful indexing, searching, and
-visualisation of the database backend.
+## Developed secure proof-of-concept administrative portal for HMRC
 
-A crucial aspect of this project was ensuring transparency and demonstrating
-progress in line with HMRC's technical requirements. I regularly presented the
-portal to HMRC's technical review team during Sprint Reviews, showcasing new
-functionality, gathering feedback, and refining the system to meet their
-needs. This close collaboration ensured the solution not only addressed
-complex data challenges but also aligned with HMRC's expectations for
-compliance and performance.
+I helped design and deliver an HMRC proof-of-concept portal that securely
+handled large-scale transactional data, using Elasticsearch and Kibana for
+advanced search and visualisation.
 
-We worked with Gherkin specifications to define behaviour-driven development
-(BDD) scenarios, which were then translated into unit tests using Vitest. This
-approach ensured that new features were delivered with consistency and
-reliability, reducing the risk of regressions and enhancing overall code
-quality.
-
-The data is filtered using Elasticsearch, allowing for efficient querying and
-analysis.
+Working with BDD through Gherkin and Vitest, I ensured reliable feature
+delivery, while regular sprint reviews with HMRC shaped the system to their
+compliance and performance needs.
 
 <ContentImage1Column>
   <ImageContainer>

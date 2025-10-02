@@ -3,12 +3,24 @@ import WorkLayout from "../layouts/WorkLayout.astro";
 import SvgBackButton from "../components/SvgBackButton.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Button from "../components/Button.astro";
+import ArrowRight from "../components/icons/ArrowRight.astro";
 import Tags from "../components/Tags.tsx";
 import Recommendation from "../components/Recommendation.tsx";
 import RecommendedWork from "../components/RecommendedWork.tsx";
+import { recommendedWork } from "../store";
 
 const { frontmatter } = Astro.props;
 const { description } = frontmatter;
+
+const rw = recommendedWork.get();
+
+const workList = frontmatter.recommendedWork.map((key: string) => ({
+  bgcolor: rw[key].bgcolor,
+  image: rw[key].image,
+  title: rw[key].title,
+  description: rw[key].description,
+  link: rw[key].link,
+}));
 ---
 
 <WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
@@ -40,29 +52,31 @@ const { description } = frontmatter;
       </div>
       <div class="work-item__aside-section work-item__aside-recommended-work">
         <div class="work-item__aside-recommended-work-header">
-          <strong class="work-item__aside-recommended-work-title"
-            >Related work:</strong
-          >
+          <strong class="work-item__aside-recommended-work-title">
+            Other work:
+          </strong>
         </div>
         <div class="work-item__aside-recommended-work-body">
           <ul class="work-item__aside-recommended-work-items">
             {
-              frontmatter.recommendedWorks.map(
-                (work: {
-                  image: { src: string };
-                  title: string;
-                  description: string;
-                  bgcolor: string;
-                  link: string;
-                }) => (
-                  <li class="work-item__aside-recommended-work-item">
-                    <a href={work.link}>
-                      <strong>{work.title}</strong>
-                      <p>{work.description}</p>
-                    </a>
-                  </li>
+              workList
+                .map(
+                  (work: {
+                    title: string;
+                    description: string;
+                    link: string;
+                  }) => (
+                    <li class="work-item__aside-recommended-work-item">
+                      <a href={work.link}>
+                        <strong class="work-item__aside-recommended-work-item-title">
+                          <ArrowRight /> {work.title}
+                        </strong>
+                        <p>{work.description}</p>
+                      </a>
+                    </li>
+                  )
                 )
-              )
+                .slice(0, 3)
             }
           </ul>
         </div>
@@ -77,7 +91,7 @@ const { description } = frontmatter;
       <slot />
 
       {
-        frontmatter.recommendedWorks && (
+        frontmatter.recommendationText && (
           <div class="work-item__recommendations">
             <Recommendation
               image={frontmatter.recommendationImage?.src}
@@ -90,11 +104,11 @@ const { description } = frontmatter;
       }
 
       {
-        frontmatter.recommendedWorks?.length && (
+        frontmatter.recommendedWork?.length && (
           <div class="work-item__recommended-work-works">
             <h2 class="work-item__recommended-work-title">Other work</h2>
             <div class="work-item__recommended-work-body">
-              {frontmatter.recommendedWorks.map(
+              {workList.map(
                 (work: {
                   image: { src: string };
                   title: string;
@@ -107,6 +121,7 @@ const { description } = frontmatter;
                     title={work.title}
                     description={work.description}
                     link={work.link}
+                    bgcolor={work.bgcolor}
                     client:load
                   />
                 )
@@ -179,17 +194,16 @@ const { description } = frontmatter;
     display: var(--strong-display);
   }
 
+  .work-item__aside-recommended-work,
   .work-item__aside-recommended-work-items {
-    list-style-image: url("../images/bullet-arrow-right.svg");
-    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
-  .work-item__aside-recommended-work-item {
-    margin-bottom: var(--space-2);
-  }
-
-  .work-item__aside-recommended-work-item:last-child {
-    margin-bottom: 0;
+  .work-item__aside-recommended-work-items {
+    list-style: none;
+    padding-left: var(--space-4);
   }
 
   .work-item__recommendations {
@@ -216,5 +230,9 @@ const { description } = frontmatter;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  .work-item__aside-recommended-work-item-title {
+    text-wrap: pretty;
   }
 </style>

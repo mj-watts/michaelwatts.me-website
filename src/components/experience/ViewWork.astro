@@ -1,0 +1,60 @@
+---
+import ArrowRight from "../icons/ArrowRight.astro";
+import { recommendedWork } from "../../store";
+
+const rw = recommendedWork.get();
+const recommendedWorkKeyList = ["iomusic", "webapps", "ecomm", "sfm", "sppoc"];
+const workList = recommendedWorkKeyList.map((key: string) => ({
+  bgcolor: rw[key].bgcolor,
+  image: rw[key].image,
+  title: rw[key].title,
+  description: rw[key].description,
+  link: rw[key].link,
+}));
+---
+
+<div class="other-work">
+  <div class="other-work__header">
+    <strong> See work: </strong>
+  </div>
+  <div class="other-work__body">
+    <ul class="other-work__items">
+      {
+        workList.map(
+          (work: { title: string; description: string; link: string }) => (
+            <li class="other-work__item">
+              <a href={work.link}>
+                <strong class="other-work__item-title">
+                  <ArrowRight /> {work.title}
+                </strong>
+                <p>{work.description}</p>
+              </a>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  .other-work {
+    border-top: 5px solid var(--color-secondary);
+    padding-top: var(--space-12);
+    margin-top: var(--space-12);
+  }
+
+  .other-work__items {
+    list-style: none;
+    padding-left: var(--space-4);
+  }
+
+  .other-work__header,
+  .other-work__item {
+    margin-bottom: var(--space-4);
+  }
+
+  .other-work__item-title {
+    text-wrap: pretty;
+  }
+</style>
