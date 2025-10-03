@@ -138,7 +138,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 <style>
   .work-item {
     --flex-direction: column;
-    --gap: var(--space-6);
+    --gap: var(--space-12);
     --work-item__aside-position: relative;
     --work-item__aside-top: 0;
     --work-item__aside-height: auto;
@@ -151,7 +151,6 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   @media screen and (min-width: 1000px) {
     .work-item {
       --flex-direction: row;
-      --gap: var(--space-12);
       --work-item__aside-position: sticky;
       --work-item__aside-top: var(--space-12);
       --work-item__aside-height: 50dvi;
@@ -198,6 +197,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    gap: var(--space-2);
   }
 
   .work-item__aside-section strong {

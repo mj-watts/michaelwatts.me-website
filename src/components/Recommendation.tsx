@@ -29,6 +29,7 @@ const ProfilePicture = styled.div`
   position: absolute;
   position-anchor: --container-anchor;
   position-area: start center;
+  top: 0;
   transform: translateY(calc(var(--size) / 2.5));
   width: var(--size);
   height: var(--size);
