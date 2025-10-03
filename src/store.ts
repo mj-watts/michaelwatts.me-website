@@ -53,7 +53,7 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   ecomm: {
     image: ecommCoverImage,
-    title: "E-commerce platforms",
+    title: "Ecommerce platforms",
     description:
       "With improved checkout conversion and multi-gateway payments.",
     link: "/work/ecomm-sites",
