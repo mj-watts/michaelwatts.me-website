@@ -23,6 +23,7 @@ const RecommendationContainer = styled.div`
   border-radius: 12px;
   max-width: 500px;
   box-sizing: border-box;
+  position: relative;
 `;
 
 const ProfilePicture = styled.div`
