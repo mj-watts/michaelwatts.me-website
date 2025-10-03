@@ -12,7 +12,6 @@ const RecommendationContainer = styled.div`
   --color: var(--color-onPrimary);
   --size: 100px;
 
-  anchor-name: --container-anchor;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +22,13 @@ const RecommendationContainer = styled.div`
   border-radius: 12px;
   max-width: 500px;
   box-sizing: border-box;
+  position: relative;
 `;
 
 const ProfilePicture = styled.div`
   position: absolute;
-  position-anchor: --container-anchor;
-  position-area: start center;
-  transform: translateY(calc(var(--size) / 2.5));
+  top: 0;
+  transform: translateY(calc(var(--size) * -1 / 1.5));
   width: var(--size);
   height: var(--size);
   border-radius: 50%;

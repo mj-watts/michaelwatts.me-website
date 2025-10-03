@@ -29,6 +29,7 @@ const Tag = styled.span`
   background-color: var(--color-onPrimary);
   color: var(--color-primary);
   font-variation-settings: var(--font-semi-bold);
+  line-height: 1px;
 `;
 
 function TagsSkeletonComponent() {
