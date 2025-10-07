@@ -1,6 +1,4 @@
 ---
-import LinkArrowRight from "../LinkArrowRight.astro";
-
 const { slug, date, title, companyName, description, sectors, tagsList } =
   Astro.props;
 
@@ -39,15 +37,7 @@ const tagsArray = tagsList.split(",");
         }
       </div>
       <div>
-        <LinkArrowRight
-          href={`/experience/${slug}`}
-          color="var(--color-primary)"
-          hovercolor="var(--color-secondary)"
-          bgcolor="var(--color-onPrimary)"
-          hoverbgcolor="var(--color-onPrimarys)"
-        >
-          View details
-        </LinkArrowRight>
+        <a href={`/experience/${slug}`} class="card-content__link">View details</a>
       </div>
     </div>
     <div
@@ -162,6 +152,11 @@ const tagsArray = tagsList.split(",");
     background-color: var(--color-onPrimary);
     border-radius: var(--border-radius);
     color: var(--color-secondary);
+    transition: box-shadow 200ms ease-in-out;
+  }
+
+  .card-content__aside:hover {
+    box-shadow: 0 0 0 5px oklab(from var(--color-onPrimary) l a b / 0.5);
   }
 
   .card-content__title {
@@ -197,7 +192,7 @@ const tagsArray = tagsList.split(",");
     font-variation-settings: var(--font-semi-bold);
   }
 
-  .card-content__details-btn {
+  .card-content__link {
     cursor: pointer;
     padding: 0;
     margin: 0;
@@ -210,11 +205,17 @@ const tagsArray = tagsList.split(",");
     font-variation-settings: var(--font-bold);
   }
 
-  .card-content__details-btn:hover {
-    color: var(--color-secondary);
-  }
+  .card-content__link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
 
-  .card-content__details-btn:hover svg circle {
-    fill: red;
+  .card-content__link:hover {
+    color: var(--color-secondary);
   }
 </style>

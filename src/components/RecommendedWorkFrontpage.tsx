@@ -37,6 +37,11 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   background-repeat: no-repeat;
   container-type: inline-size;
   overflow: hidden;
+  transition: box-shadow 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 0 5px oklab(from var(--bgcolor) l a b / 0.5);
+  }
 `;
 
 const TextWrap = styled.div`
@@ -56,7 +61,7 @@ const Title = styled.h2`
   font-family: var(--body-font);
   font-variation-settings: var(--font-semi-bold);
   line-height: 1.2;
-  color: var(--text-color);
+  color: var(--textcolor);
 `;
 
 const Description = styled.p`
@@ -98,11 +103,6 @@ const Link = styled.a`
     border-radius: var(--border-radius);
     opacity: 0;
     transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
-  }
-
-  &:hover::before {
-    box-shadow: 0 0 0 5px var(--bgcolor);
-    opacity: 0.5;
   }
 `;
 
