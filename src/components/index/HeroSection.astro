@@ -6,17 +6,19 @@
 <script>
   import { animate, scroll } from "motion";
 
-  const animation = animate(
-    ".title",
-    {
-      transform: ["translateY(0) scale(1)", "translateY(4000px) scale(0.9)"],
-      opacity: [1, 0, 0, 0],
-      filter: ["blur(0)", "blur(50px)"],
-    },
-    { ease: "linear" }
-  );
-
-  scroll(animation, { offset: ["start end", "end end"]});
+  if (window.innerWidth > 1000) {
+    const animation = animate(
+      ".title",
+      {
+        transform: ["translateY(0px) scale(1)", "translateY(200dvh) scale(0.9)"],
+        opacity: [1, 0, 0, 0],
+        filter: ["blur(0)", "blur(50px)"],
+      },
+      { ease: "linear" }
+    );
+  
+    scroll(animation, { offset: ["start end", "end end"]});
+  }
 </script>
 
 <style>
