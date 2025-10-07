@@ -13,7 +13,7 @@ interface Props {
 const Container = styled.div<{ image: string; bgcolor: string }>`
   --rounded-border: var(--border-radius);
   --bgcolor: ${(props) => props.bgcolor};
-  --textcolor: var(--color-primary);
+  --textcolor: oklab(from var(--color-onPrimary) calc(l * 3) a b);
 
   position: relative;
   display: flex;
@@ -23,9 +23,9 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   align-items: start;
   justify-content: start;
   aspect-ratio: 1;
-  width: 300px;
+  width: clamp(250px, 100%, 440px);
   border-radius: var(--rounded-border);
-  color: var(--color-background);
+  color: var(--textcolor);
   padding: var(--space-6);
   box-sizing: border-box;
   background-color: var(--bgcolor);
@@ -35,39 +35,55 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   background-size: contain;
   background-position: bottom center;
   background-repeat: no-repeat;
+  container-type: inline-size;
+  overflow: hidden;
+`;
+
+const TextWrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: oklab(from var(--color-secondary) l a b / 0.2);
+  padding: var(--space-6);
+  border-bottom: 2px solid oklab(from var(--color-primary) l a b / 0.15);
 `;
 
 const Title = styled.h2`
   margin: 0;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-family: var(--body-font);
   font-variation-settings: var(--font-semi-bold);
   line-height: 1.2;
-  color: var(--bgcolor);
-  filter: invert(1);
+  color: var(--text-color);
 `;
 
 const Description = styled.p`
-  font-size: var(--font-size-sm);
   margin: 0;
   line-height: 1.3;
-  color: var(--bgcolor);
-  filter: invert(1);
+  display: none;
+  position: relative;
+
+  @container(width > 300px) {
+    display: block;
+    margin-top: var(--space-4);
+  }
 `;
 
 const Link = styled.a`
   margin-top: auto;
   font-size: smaller;
   font-weight: 600;
-  color: var(--color-onPrimary);
+  color: var(--color-primary);
   font-variation-settings: var(--font-bold);
-  background-color: var(--color-secondary);
+  background-color: var(--color-onPrimary);
   border-radius: var(--border-radius-sm);
   padding: var(--space-2) var(--space-4);
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-  background-color: oklab(from var(--color-secondary) calc(l - 0.1) a b);
+    background-color: oklab(from var(--color-onPrimary) calc(l - 0.1) a b);
+  color: var(--color-secondary);
   }
 
   &::before {
@@ -91,8 +107,8 @@ const Link = styled.a`
 
 function SkeletonComponent() {
   const containerStyle = {
-    height: "300px",
-    width: "300px",
+    aspectRation: "1",
+    width: "clamp(300px, 100%, 440px)",
     backgroundColor: "var(--color-skeleton)",
     borderRadius: "12px",
   };
@@ -117,8 +133,10 @@ export default function RecommendedWork({
 
   return (
     <Container image={image} bgcolor={bgcolor}>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+      <TextWrap>
+        <Title>{title}</Title>
+        <Description>{description}</Description>
+      </TextWrap>
       <Link href={link}>View</Link>
     </Container>
   );

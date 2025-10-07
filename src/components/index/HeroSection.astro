@@ -3,6 +3,22 @@
   <span class="title__partial">Software Engineer</span>
 </h1>
 
+<script>
+  import { animate, scroll } from "motion";
+
+  const animation = animate(
+    ".title",
+    {
+      transform: ["translateY(0) scale(1)", "translateY(200dvi) scale(0.9)"],
+      opacity: [1, 0, 0, 0],
+      filter: ["blur(0)", "blur(50px)"],
+    },
+    { ease: "linear" }
+  );
+
+  scroll(animation, { offset: ["start end", "end end"]});
+</script>
+
 <style>
   .title {
     font-size: clamp(

@@ -41,7 +41,7 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
     description:
       "A cross-platform app built with React Native, native iOS components, and Firebase backend services.",
     link: "/work/io-music",
-    bgcolor: "#2b343d",
+    bgcolor: "#292c33",
   },
   webapps: {
     image: webappsCoverImage,
