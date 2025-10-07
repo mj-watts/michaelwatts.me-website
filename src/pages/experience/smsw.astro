@@ -3,6 +3,7 @@ import BlankLayout from "../../layouts/BlankLayout.astro";
 import Card from "../../components/experience/Card.astro";
 import CardContent from "../../components/experience/CardContent.astro";
 import ViewWork from "../../components/experience/ViewWork.astro";
+import TextLink from "../../components/TextLink.astro";
 
 const pageTitle = "Experience @ SMSW";
 ---
@@ -16,11 +17,13 @@ const pageTitle = "Experience @ SMSW";
       companyName="SMSW"
       description="A B2B/B2C marketing agency."
       sectors="B2B • B2C • Retail • Fashion"
-      tagsList="Angular,React,JavaScript,Ruby on Rails,MongoDB,NodeJS"
+      tagsList="Angular,React,Firebase,JavaScript,Ruby on Rails,MongoDB,NodeJS"
     >
       <p>
-        Designed and developed a dynamic news magazine website with
-        bi-directional HTML support for Arabic content.
+        Designed and developed a <TextLink
+          href="https://michaelwatts.me/work/saudi-fashion-retail"
+          >dynamic news magazine website</TextLink
+        > with bi-directional HTML support for Arabic content.
       </p>
 
       <p>
@@ -40,8 +43,11 @@ const pageTitle = "Experience @ SMSW";
       </p>
 
       <p>
-        Created web applications and games for high street brands like GAP and
-        M&S, showcasing adaptability and quality delivery.
+        Created <TextLink
+          href="https://michaelwatts.me/work/saudi-fashion-retail"
+          >web applications and games</TextLink
+        > for high street brands like GAP and M&S, showcasing adaptability and quality
+        delivery.
       </p>
 
       <p>

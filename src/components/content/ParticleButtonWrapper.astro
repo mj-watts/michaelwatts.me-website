@@ -1,0 +1,96 @@
+---
+import { ParticleButton } from "./ParticleButton.tsx";
+---
+
+<div class="particle-button-container">
+  <ParticleButton client:only="react" />
+</div>
+
+<style is:global>
+  .particle-button-container {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 200px;
+    border-radius: var(--border-radius-sm);
+  }
+
+  .particle-button {
+    --hex-red: #e07d7d;
+    --hex-blue: #7c7ce2;
+    --hex-green: #97e797;
+    --hex-yellow: #ffeda3;
+    --hex-purple: #e5b0ff;
+    --hex-orange: #ffbb8e;
+    --color: var(--hex-red);
+
+    z-index: 1;
+    width: 50px;
+    border: none;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: oklab(from var(--color) calc(l / 2) a b / 0.2);
+      border-radius: 100vh;
+      opacity: 0;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+
+    &:hover svg {
+      fill: oklab(from var(--color) calc(l / 1.2) a b);
+    }
+  }
+
+  .button-icon {
+    fill: var(--color);
+    transition: all 200ms ease-in-out;
+    width: 50px;
+    height: 50px;
+    scale: 1;
+    isolation: isolate;
+  }
+
+  .particles-container {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .particle {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border-radius: 100vh;
+    background: var(--color);
+    transition: all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .bubble {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    border-radius: 100vh;
+    box-sizing: border-box;
+    border: 0px solid #d88adcff;
+    isolation: isolate;
+  }
+</style>

@@ -3,6 +3,7 @@ import BlankLayout from "../../layouts/BlankLayout.astro";
 import Card from "../../components/experience/Card.astro";
 import CardContent from "../../components/experience/CardContent.astro";
 import ViewWork from "../../components/experience/ViewWork.astro";
+import TextLink from "../../components/TextLink.astro";
 
 const pageTitle = "Experience @ Streeva";
 ---
@@ -19,17 +20,23 @@ const pageTitle = "Experience @ Streeva";
       tagsList="Vue,Preact,TypeScript,C#,Tailwind CSS,Figma,Azure,Cloudflare,NodeJS"
     >
       <p>
-        Enhanced frontend development practices and code quality, transitioning
-        the codebase from JavaScript to TypeScript which helped align it with
-        types in the core C# codebase increasing reliability and maintainability
+        Enhanced frontend development practices and code quality of all
+        <TextLink href="https://michaelwatts.me/work/swiftaid">
+          Swiftaid
+        </TextLink>
+        sites, transitioning the codebase from JavaScript to TypeScript which helped
+        align it with types in the core C# codebase increasing reliability and maintainability
         between frontend Vue.js sites and the backend .NET core
       </p>
 
       <p>
-        Conceived and developed an advanced admin portal as a POC for HMRC,
-        integrating Elasticsearch and Kibana for database transactions, ensuring
-        compliance with accessibility standards, and presenting updates to HMRC
-        at Sprint Reviews.
+        Conceived and developed an <TextLink
+          href="https://michaelwatts.me/work/split-payment-poc"
+        >
+          advanced admin portal
+        </TextLink> as a POC for HMRC, integrating Elasticsearch and Kibana for database
+        transactions, ensuring compliance with accessibility standards, and presenting
+        updates to HMRC at Sprint Reviews.
       </p>
 
       <p>
