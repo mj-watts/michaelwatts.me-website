@@ -1,0 +1,115 @@
+---
+title: "Particle animation with Anime.JS"
+pubDate: 2025-10-07
+description: "Animate a button with particles and sound effects"
+author: "Michael Watts"
+readTime: 3
+tags: ["animejs", "react", "animation"]
+---
+
+import ParticleButtonWrapper from "../../components/content/ParticleButtonWrapper.astro";
+
+<LeadParagraph>Animate a button with particles and sound effects</LeadParagraph>
+
+The following will build this result:
+<ParticleButtonWrapper />
+
+## HTML 
+Here is the code for the component html, it could be just plain html and JavaScript there's nothing 'Reacty' going on here, if you want then just extract all the html in the return.
+
+<CodeBlock filename="ParticleButton.tsx">
+```tsx 
+export const ParticleButton = () => {
+  const handleClick = () => {
+    if (document.querySelectorAll('.particle').length) return
+    createParticles()
+    animateParticles()
+  }
+
+  return (
+    <button className="particle-button" onClick={handleClick}>
+      <div className="particles-container"></div>
+      <span className="bubble"></span>
+      <svg className="button-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+        <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+      </svg>
+    </button>
+  )
+}
+```
+</CodeBlock>
+
+## JavaScript
+
+Firstly we want to add the particles, we could do this by manually adding elements but it'd be easier to configure later by creating the elements with JS and appending them to our button component.
+
+This `createParticles` function's sole purpose is to create the number of particles required and append them as children of the particle container component.
+<CodeBlock filename="ParticleButton.tsx">
+```tsx
+const createParticles = () => {
+  // Set number of particles
+  const particleAmount = 54
+
+  const particleContainer = document.querySelector('.particles-container')
+  const particles = document.querySelectorAll('.particle')
+
+  // Check container OR see if there are already particles
+  if (!particleContainer || particles.length) return
+
+  // Create and add span elements to the container 
+  for (let i = 0; i < particleAmount; i++) {
+    const particleElement = document.createElement('span')
+    particleElement.className = 'particle'
+    particleContainer.appendChild(particleElement)
+  }
+}
+```
+</CodeBlock>
+
+Then we add the animation function:
+
+<CodeBlock filename="ParticleButton.tsx">
+```tsx
+const animateParticles = () => {
+  let particlesTimeline
+
+  utils.$('.particle').forEach(($particle, idx) => {
+    const angle = ((idx * utils.random(1, 1.1, 2) * 2 * Math.PI) / 12)
+    const distance = utils.random(30, 40)
+
+    const x = Math.cos(angle) * distance
+    const y = Math.sin(angle) * distance
+
+    utils.set($particle, {
+      backgroundColor: () => `var(--hex-${utils.randomPick(['red', 'orange', 'yellow', 'blue', 'purple', 'green'])})`,
+      scale: utils.random(1, 2, 2),
+    })
+
+    particlesTimeline = createTimeline({ defaults: { ease: easings.cubicBezier(0, 0.7, 0, 1) }, onComplete: () => $particle.remove() })
+      .label('start')
+      .add($particle, { x: x.toPrecision(2), y: y.toPrecision(2), duration: 2000, delay: utils.randomPick([0, 10, 20, 30, 40, 100]) }, 'start')
+      .label('sparkle')
+      .add($particle, { opacity: { to: utils.random(0, 1, 2) }, duration: utils.randomPick([100, 200, 300]), loop: utils.random(1, 5) }, 'start')
+      .label('fade-out')
+      .add($particle, { opacity: { to: 0 }, delay: utils.randomPick([0, 100, 200]), duration: 400, ease: 'outExpo' }, '<')
+  })
+
+  const heartTimeline = createTimeline({ defaults: { ease: easings.cubicBezier(0, 0.7, 0, 1) }, onBegin: () => new Audio(sharppopSoundFx).play() })
+    .label('start')
+    .add('.button-icon', { scale: 0, opacity: 0.5, duration: 0 })
+    .add('.button-icon', { scale: 1.2, opacity: 0.7, duration: 100, delay: 400 })
+    .add('.button-icon', { scale: 1, opacity: 1, duration: 400, delay: 400 })
+
+  const bubbleTimeline = createTimeline({ defaults: { ease: easings.cubicBezier(0, 0.7, 0, 1) } })
+    .label('start')
+    .add('.bubble', { opacity: 1, scale: 0.8, borderWidth: 0, backgroundColor: '#d88adcee', duration: 100, delay: 50, onComplete: () => new Audio(popSoundFx).play() })
+    .add('.bubble', { opacity: 0, scale: 1.5, borderWidth: 5, backgroundColor: '#d88adc00', delay: 250, duration: 1000 })
+
+  createTimeline({ onBegin: () => new Audio(dingSoundFx).play() })
+    .label('start')
+    .sync(heartTimeline, 'start')
+    .sync(bubbleTimeline, 'start')
+    .sync(particlesTimeline, 'start')
+}
+```
+</CodeBlock>

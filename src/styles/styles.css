@@ -2,71 +2,92 @@
 
 @layer reset {
   /* 1. Use a more-intuitive box-sizing model */
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
-  
+
   /* 2. Remove default margin */
   * {
     margin: 0;
   }
-  
+
   /* 3. Enable keyword animations */
   @media (prefers-reduced-motion: no-preference) {
     html {
       interpolate-size: allow-keywords;
     }
   }
-  
+
   body {
     /* 4. Add accessible line-height */
     line-height: 1.5;
     /* 5. Improve text rendering */
     -webkit-font-smoothing: antialiased;
   }
-  
+
   /* 6. Improve media defaults */
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
   }
-  
+
   /* 7. Inherit fonts for form controls */
-  input, button, textarea, select {
+  input,
+  button,
+  textarea,
+  select {
     font: inherit;
   }
-  
+
   /* 8. Avoid text overflows */
-  p, h1, h2, h3, h4, h5, h6 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     overflow-wrap: break-word;
   }
-  
+
   /* 9. Improve line wrapping */
   p {
     text-wrap: pretty;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-wrap: balance;
   }
-  
+
   /*
     10. Create a root stacking context
   */
-  #root, #__next {
+  #root,
+  #__next {
     isolation: isolate;
   }
 }
 
 @layer variables {
   :root {
-    --font-display: 'headline-gothic-atf', sans-serif;
-    --font-sans: 'inter-variable', sans-serif;
-    --font-serif: 'proxima-nova', serif;
-    --font-mono: 'source-code-pro', monospace;
-  
+    --font-display: "headline-gothic-atf", sans-serif;
+    --font-sans: "inter-variable", sans-serif;
+    --font-serif: "proxima-nova", serif;
+    --font-mono: "source-code-pro", monospace;
+
     --header-font: var(--font-display);
     --body-font: var(--font-sans);
-  
+
     --space-1: 0.25rem;
     --space-2: 0.5rem;
     --space-3: 0.75rem;
@@ -80,7 +101,7 @@
     --space-11: 2.75rem;
     --space-12: 3rem;
     --space-24: 6rem;
-  
+
     --container-width: 100%;
     --font-size-base: 16px;
     --font-size-xs: 0.85rem;
@@ -95,29 +116,49 @@
     --font-regular: "slnt" 0, "wght" 400;
     --font-semi-bold: "slnt" 0, "wght" 600;
     --font-bold: "slnt" 0, "wght" 700;
-  
+
     --border-radius-xs: 4px;
     --border-radius-sm: 8px;
     --border-radius: 16px;
     --border-radius-lg: 32px;
-  
-    --color-primary: #FFFFFF;
+
+    --color-primary: #ffffff;
     --color-onPrimary: #363636;
-    --color-secondary: #D2D2D2;
+    --color-secondary: #d2d2d2;
     --color-error: #e74c3c;
     --color-success: #2ecc71;
-  
+
     --color-background: var(--color-primary);
-    --color-border: oklab(from var(--color-primary) l a calc(b * .25));
+    --color-border: oklab(from var(--color-primary) l a calc(b * 0.25));
     --color-skeleton: #eeeeee;
-  
+
     --color-text: var(--color-onPrimary);
     --color-link: var(--color-text);
     --color-link-hover: oklab(from var(--color-text) calc(l - 0.15) a b);
-  
-    --ease-out-elastic: linear(0, .5737 7.6%, .8382 11.87%, .9463 14.19%, 1.0292 16.54%, 1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%, 1.1423 26.1%, 1.1366 27.86%, 1.1165 31.01%, 1.0507 38.62%, 1.0219 42.57%, .9995 46.99%, .9872 51.63%, .9842 58.77%, 1.0011 81.26%, 1);
-    --ease-in-cubic: cubic-bezier(.55, .05, .675, .19);
-    --ease-out-cubic: cubic-bezier(.19,.91,.47,.92);
+
+    --ease-out-elastic: linear(
+      0,
+      0.5737 7.6%,
+      0.8382 11.87%,
+      0.9463 14.19%,
+      1.0292 16.54%,
+      1.0886 18.97%,
+      1.1258 21.53%,
+      1.137 22.97%,
+      1.1424 24.48%,
+      1.1423 26.1%,
+      1.1366 27.86%,
+      1.1165 31.01%,
+      1.0507 38.62%,
+      1.0219 42.57%,
+      0.9995 46.99%,
+      0.9872 51.63%,
+      0.9842 58.77%,
+      1.0011 81.26%,
+      1
+    );
+    --ease-in-cubic: cubic-bezier(0.55, 0.05, 0.675, 0.19);
+    --ease-out-cubic: cubic-bezier(0.19, 0.91, 0.47, 0.92);
   }
 }
 
@@ -128,20 +169,20 @@
       --font-size-base: 20px;
     }
   }
-  
+
   @media (min-width: 768px) {
     :root {
       --container-width: 840px;
       --nav-clearance: 5rem;
     }
   }
-  
+
   @media (min-width: 1280px) {
     :root {
       --container-width: 1180px;
     }
   }
-  
+
   @media (min-width: 1440px) {
     :root {
       --container-width: 1340px;
@@ -153,10 +194,10 @@
   html {
     scroll-padding-top: var(--space-24);
   }
-  
+
   body {
     font-family: var(--body-font);
-    font-variation-settings:  var(--font-regular);;
+    font-variation-settings: var(--font-regular);
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-background);
@@ -165,19 +206,24 @@
     font-weight: 400;
     font-size: var(--font-size-base);
   }
-  
+
   a {
     color: var(--color-link);
     text-decoration: none;
     transition: color 0.3s;
   }
-  
+
   a:hover,
   a:focus {
     color: var(--color-link-hover);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--header-font);
     color: var(--color-text);
     line-height: 1.25;
@@ -185,9 +231,9 @@
   }
 
   strong {
-    font-variation-settings:  var(--font-bold);
+    font-variation-settings: var(--font-bold);
   }
-} 
+}
 
 @layer content {
   .content {
@@ -209,7 +255,6 @@
   }
 }
 
-
 @layer view-transitions {
   @view-transition {
     navigation: auto;
@@ -222,13 +267,13 @@
       opacity: 0;
     }
   }
-  
+
   @keyframes fade-out-card-content {
     to {
       opacity: 0;
     }
   }
-  
+
   @keyframes fade-in-card-content-aside {
     from {
       opacity: 0;
@@ -316,7 +361,7 @@
     animation: 200ms var(--ease-out-cubic) both slide-in;
     animation-delay: 300ms;
   }
-  
+
   ::view-transition-old(card-content-body-streeva),
   ::view-transition-old(card-content-body-1minus1),
   ::view-transition-old(card-content-body-smsw),

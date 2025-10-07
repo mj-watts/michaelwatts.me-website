@@ -30,14 +30,24 @@
 </div>
 
 <script>
-  import { inView } from "motion";
+  const section = document.querySelector(".skills");
 
-  inView(".skills__column", (element) => {
-    element.setAttribute("inview", "");
-    return () => {
-      element.removeAttribute("inview");
-    };
-  });
+  if (section) {
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("inview", "");
+          } else {
+            entry.target.removeAttribute("inview");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+  }
 </script>
 
 <style>
@@ -85,7 +95,7 @@
     transition-delay: calc(var(--idx) * 100ms);
   }
 
-  .skills__column[inview] {
+  .skills[inview] .skills__column {
     opacity: 1;
     transform: translateY(0);
     scale: 1;
@@ -106,7 +116,7 @@
     transition-delay: calc(var(--idx) * 100ms);
   }
 
-  .skills__column[inview] .skills__skill {
+  .skills[inview] .skills__column .skills__skill {
     opacity: 1;
     transform: translateX(0);
   }

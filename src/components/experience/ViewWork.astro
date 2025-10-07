@@ -3,7 +3,14 @@ import ArrowRight from "../icons/ArrowRight.astro";
 import { recommendedWork } from "../../store";
 
 const rw = recommendedWork.get();
-const recommendedWorkKeyList = ["iomusic", "webapps", "ecomm", "sfm", "sppoc"];
+const recommendedWorkKeyList = [
+  "sa",
+  "sppoc",
+  "iomusic",
+  "webapps",
+  "ecomm",
+  "sfm",
+];
 const workList = recommendedWorkKeyList.map((key: string) => ({
   bgcolor: rw[key].bgcolor,
   image: rw[key].image,
