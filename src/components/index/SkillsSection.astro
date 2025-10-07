@@ -32,21 +32,27 @@
 <script>
   const section = document.querySelector(".skills");
 
-  if (section) {
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.setAttribute("inview", "");
-          } else {
-            entry.target.removeAttribute("inview");
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    if (section) {
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.setAttribute("inview", "");
+            } else {
+              entry.target.removeAttribute("inview");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
 
-    observer.observe(section);
+      observer.observe(section);
+    }
   }
 </script>
 
