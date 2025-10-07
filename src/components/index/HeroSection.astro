@@ -4,20 +4,48 @@
 </h1>
 
 <script>
-  import { animate, scroll } from "motion";
+  import { animate, easings, splitText, stagger } from "animejs";
 
-  if (window.innerWidth > 1000) {
-    const animation = animate(
-      ".title",
-      {
-        transform: ["translateY(0px) scale(1)", "translateY(200dvh) scale(0.9)"],
-        opacity: [1, 0, 0, 0],
-        filter: ["blur(0)", "blur(50px)"],
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    const section = document.querySelector(".title");
+    const { chars } = splitText(".title", {
+      chars: { wrap: "clip" },
+    });
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = 500;
+      const opacity = Math.max(0, 1 - scrollY / maxScroll);
+      const translateY = Math.max(0, scrollY * 1.2);
+
+      if (section) {
+        animate(chars, {
+          opacity,
+          delay: stagger(50),
+        });
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            window.addEventListener("scroll", handleScroll);
+          } else {
+            window.removeEventListener("scroll", handleScroll, false);
+          }
+        });
       },
-      { ease: "linear" }
+      { threshold: 0.2 }
     );
-  
-    scroll(animation, { offset: ["start end", "end end"]});
+
+    if (section) {
+      observer.observe(section);
+    }
   }
 </script>
 

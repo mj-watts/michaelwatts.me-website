@@ -9,7 +9,7 @@ const currentPath = pathname.slice(1);
 
 <nav class="mainnav">
   <div class="blur-bg"></div>
-  <Container>
+  <div class="container">
     <div class="mainnav__content">
       <Avatar />
       <div class="mainnav__items">
@@ -84,10 +84,23 @@ const currentPath = pathname.slice(1);
         </ul>
       </div>
     </div>
-  </Container>
+  </div>
 </nav>
 
-<style>
+<style is:global>
+  .container {
+    max-width: var(--container-width);
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 200ms ease-in-out;
+  }
+
+  .header-not-at-top .container {
+    max-width: 100%;
+  }
+
   .mainnav {
     --height: 48px;
     --mainnav__items-ol-padding: 0;
