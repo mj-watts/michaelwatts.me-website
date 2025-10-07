@@ -1,20 +1,51 @@
 ---
-import { Image } from "astro:assets";
 import swiftaidImage from "../../images/swiftaid.png";
 import sppocImage from "../../images/sppoc.png";
 import ioMusicImage from "../../images/iomusic.png";
 import sfmImage from "../../images/sfm.png";
 import ecommImage from "../../images/ecomm.png";
 import webAppsImage from "../../images/webapps.png";
+
+
+import RecommendedWork from "../../components/RecommendedWorkFrontpage.tsx";
+import { recommendedWork } from "../../store";
+
+const rw = recommendedWork.get();
+
+const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map((key: string) => ({
+  bgcolor: rw[key].bgcolor,
+  image: rw[key].image,
+  title: rw[key].title,
+  description: rw[key].description,
+  link: rw[key].link,
+}));
 ---
 
 <div class="work">
   <div class="work__header">
     <h2>Featured Work</h2>
-    <p>A selection of latest or notable website and app work</p>
+    <p>A selection of website and app work</p>
   </div>
   <div class="work__body">
-    <a
+    {workList.map(
+      (work: {
+        image: { src: string };
+        title: string;
+        description: string;
+        bgcolor: string;
+        link: string;
+      }) => (
+        <RecommendedWork
+          image={work.image?.src}
+          title={work.title}
+          description={work.description}
+          link={work.link}
+          bgcolor={work.bgcolor}
+          client:load
+        />
+      )
+    )}
+    <!-- <a
       href="/work/swiftaid"
       class="work__item"
       style=`background-image: linear-gradient(transparent 20%, var(--color-primary) 120%), url(${swiftaidImage.src});`
@@ -56,7 +87,7 @@ import webAppsImage from "../../images/webapps.png";
       style=`background-image: linear-gradient(transparent 20%, var(--color-primary) 120%), url(${webAppsImage.src});`
     >
       <span>Web applications</span>
-    </a>
+    </a> -->
   </div>
 </div>
 
