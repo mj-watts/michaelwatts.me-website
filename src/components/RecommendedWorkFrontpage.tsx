@@ -47,6 +47,7 @@ const TextWrap = styled.div`
   background-color: oklab(from var(--color-secondary) l a b / 0.2);
   padding: var(--space-6);
   border-bottom: 2px solid oklab(from var(--color-primary) l a b / 0.15);
+  box-shadow: 0 0 30px rgba(0,0,0,0.2), 0 0 4px rgba(0,0,0,0.15);
 `;
 
 const Title = styled.h2`
