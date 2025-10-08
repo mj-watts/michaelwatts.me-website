@@ -1,53 +1,10 @@
 <h1 class="title">
-  Michael Watts
-  <span class="title__partial">Software Engineer</span>
+  <span
+    class="title__partial title__partial--name"
+    style="view-transition-name:my-name">Michael Watts</span
+  >
+  <span class="title__partial title__partial--title">Software Engineer</span>
 </h1>
-
-<script>
-  import { animate, easings, splitText, stagger } from "animejs";
-
-  if (
-    "IntersectionObserver" in window &&
-    "IntersectionObserverEntry" in window &&
-    "intersectionRatio" in window.IntersectionObserverEntry.prototype
-  ) {
-    const section = document.querySelector(".title");
-    const { chars } = splitText(".title", {
-      chars: { wrap: "clip" },
-    });
-
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 500;
-      const opacity = Math.max(0, 1 - scrollY / maxScroll);
-      const translateY = Math.max(0, scrollY * 1.2);
-
-      if (section) {
-        animate(chars, {
-          opacity,
-          delay: stagger(50),
-        });
-      }
-    };
-
-    const observer = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            window.addEventListener("scroll", handleScroll);
-          } else {
-            window.removeEventListener("scroll", handleScroll, false);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (section) {
-      observer.observe(section);
-    }
-  }
-</script>
 
 <style>
   .title {
@@ -63,6 +20,19 @@
 
   .title__partial {
     display: block;
+  }
+
+  .title__partial--name {
     color: var(--color-onPrimary);
+  }
+
+  .title__partial--name.at-top {
+    font-size: var(--font-size-lg);
+  }
+</style>
+
+<style is:global>
+  body.header-not-at-top .title__partial--name {
+    /* font-size: var(--font-size-lg); */
   }
 </style>
