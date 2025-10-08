@@ -29,36 +29,76 @@
     </svg>
   </span>
   <span role="heading" aria-level="1" class="avatar__heading">
-    Michael Watts
+    <span class="avatar__heading--name">Michael Watts</span>
+    <span class="avatar__heading--title">Software Engineer</span>
   </span>
 </a>
 
 <script>
-  import { inView } from "motion";
+  import { animate, stagger } from "animejs";
 
-  inView(
-    "#work",
-    (element) => {
-      document.querySelector(".avatar")?.setAttribute("inview-work", "");
-      return () => {
-        document.querySelector(".avatar")?.removeAttribute("inview-work");
-      };
-    },
-    {
-      amount: "all",
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    const section = document.querySelector("#hero");
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animate(".avatar__heading--name", {
+              translateX: -200,
+              delay: 200,
+              duration: 1000,
+              ease: "outQuart",
+            });
+            animate(".avatar__heading--title", {
+              translateX: -400,
+              duration: 1000,
+              ease: "outQuart",
+            });
+          } else {
+            animate(".avatar__heading--name", {
+              translateX: 0,
+              duration: 1000,
+              ease: "outQuart",
+            });
+            animate(".avatar__heading--title", {
+              translateX: 0,
+              delay: 200,
+              duration: 1000,
+              ease: "outQuart",
+            });
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (section) {
+      observer.observe(section);
     }
-  );
+  }
 </script>
 
 <style>
   .avatar {
     --heading-display: none;
+    --title-display: none;
     --size: 48px;
   }
 
   @media (min-width: 768px) {
     .avatar {
-      --heading-display: inline;
+      --heading-display: flex;
+    }
+  }
+
+  @media (min-width: 950px) {
+    .avatar {
+      --title-display: block;
     }
   }
 
@@ -68,7 +108,6 @@
     align-items: center;
     justify-content: start;
     margin: 0;
-    position: relative;
     line-height: normal;
   }
 
@@ -92,26 +131,37 @@
   .avatar__heading {
     color: var(--color-onPrimary);
     display: var(--heading-display);
+    gap: var(--space-2);
+    font-family: var(--header-font);
+    font-size: var(--font-size-lg);
+    transform: scale(1.5);
+    transform-origin: left center;
+    overflow: hidden;
+  }
+
+  .avatar__heading--name,
+  .avatar__heading--title {
+    display: block;
+    transform-origin: left center;
+    transform: translateY(-100px);
+    isolation: isolate;
+    z-index: 2;
+  }
+
+  .avatar__heading--title {
+    display: var(--title-display);
+    color: var(--color-secondary);
+    isolation: isolate;
+    z-index: 1;
   }
 
   .avatar__icon-expression--none,
   .avatar__icon-expression--love {
-    transition: all 200ms ease-in-out;
-    transform-origin: center;
-  }
-
-  .avatar__icon-expression--love {
-    transform: rotateX(180);
-  }
-
-  .avatar:hover .avatar__icon-expression--love,
-  .avatar[inview-work] .avatar__icon-expression--love {
-    transform: rotateX(0);
+    transition: opacity 200ms ease-in-out;
   }
 
   .avatar:hover .avatar__icon-expression--none,
   .avatar[inview-work] .avatar__icon-expression--none {
-    transform: rotateX(180);
     opacity: 0;
   }
 
