@@ -10,7 +10,7 @@ const {
   <slot />
 </div>
 
-<style is:global define:vars={{ height, width, backgroundColor }}>
+<style is:global define:vars={{ backgroundColor, height, width }}>
   .image-container {
     overflow: hidden;
     border-radius: var(--border-radius);
@@ -22,5 +22,6 @@ const {
   .image-container > img {
     width: clamp(200px, 100%, 2816px);
     height: auto;
+    border-radius: var(--border-radius-sm);
   }
 </style>

@@ -9,9 +9,12 @@ tags: ["animejs", "react", "animation"]
 
 import ParticleButtonWrapper from "../../components/content/ParticleButtonWrapper.astro";
 
-<LeadParagraph>Animate a button with particles and sound effects</LeadParagraph>
+<LeadParagraph>
+  Animate a button with particles and sound effects
+</LeadParagraph>
 
-The following will build this result:
+The following will build this result (I've added sound FX so it will make a sound when clicking):
+
 <ParticleButtonWrapper />
 
 ## HTML 
@@ -111,5 +114,15 @@ const animateParticles = () => {
     .sync(bubbleTimeline, 'start')
     .sync(particlesTimeline, 'start')
 }
+```
+</CodeBlock>
+
+I've added some sound FX for fun:
+
+<CodeBlock filename="ParticleButton.tsx">
+```tsx
+// etc...
+onBegin: () => new Audio(dingSoundFx).play()
+//...etc
 ```
 </CodeBlock>
