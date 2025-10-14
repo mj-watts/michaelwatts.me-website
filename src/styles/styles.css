@@ -163,7 +163,7 @@
 }
 
 @layer layout {
-  @media screen (min-width: 640px) {
+  @media screen and (min-width: 640px) {
     :root {
       --container-width: 640px;
       --font-size-base: 20px;
