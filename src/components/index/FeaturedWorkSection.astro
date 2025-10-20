@@ -6,19 +6,20 @@ import sfmImage from "../../images/sfm.png";
 import ecommImage from "../../images/ecomm.png";
 import webAppsImage from "../../images/webapps.png";
 
-
 import RecommendedWork from "../../components/RecommendedWorkFrontpage.tsx";
 import { recommendedWork } from "../../store";
 
 const rw = recommendedWork.get();
 
-const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map((key: string) => ({
-  bgcolor: rw[key].bgcolor,
-  image: rw[key].image,
-  title: rw[key].title,
-  description: rw[key].description,
-  link: rw[key].link,
-}));
+const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
+  (key: string) => ({
+    bgcolor: rw[key].bgcolor,
+    image: rw[key].image,
+    title: rw[key].title,
+    description: rw[key].description,
+    link: rw[key].link,
+  })
+);
 ---
 
 <div class="work">
@@ -27,24 +28,26 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map((key:
     <p>A selection of website and app work</p>
   </div>
   <div class="work__body">
-    {workList.map(
-      (work: {
-        image: { src: string };
-        title: string;
-        description: string;
-        bgcolor: string;
-        link: string;
-      }) => (
-        <RecommendedWork
-          image={work.image?.src}
-          title={work.title}
-          description={work.description}
-          link={work.link}
-          bgcolor={work.bgcolor}
-          client:load
-        />
+    {
+      workList.map(
+        (work: {
+          image: { src: string };
+          title: string;
+          description: string;
+          bgcolor: string;
+          link: string;
+        }) => (
+          <RecommendedWork
+            image={work.image?.src}
+            title={work.title}
+            description={work.description}
+            link={work.link}
+            bgcolor={work.bgcolor}
+            client:load
+          />
+        )
       )
-    )}
+    }
   </div>
 </div>
 
@@ -71,7 +74,7 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map((key:
     }
   }
 
-  @media screen and (min-width: 770px) {
+  @media screen and (min-width: 768px) {
     .work__body {
       --grid-template-columns: repeat(3, 1fr);
     }
