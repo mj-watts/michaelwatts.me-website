@@ -1,0 +1,143 @@
+---
+const { href, text, theme } = Astro.props;
+
+let buttonColor = "var(--color-primary)";
+let buttonColorInvert = "var(--color-onPrimary)";
+
+if (theme === "dark") {
+  buttonColor = "var(--color-onPrimary)";
+  buttonColorInvert = "var(--color-primary)";
+}
+---
+
+<a class="animated-button" href={href}>
+  <span class="circle"></span>
+  <span class="text">{text}</span>
+  <span class="icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="3"
+      stroke="currentColor"
+    >
+      <path
+        class="arrow-main"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 12 H21"></path>
+      <path
+        class="arrow-top"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 12 L12 4"></path>
+      <path
+        class="arrow-bottom"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 12 L12 20"></path>
+    </svg>
+  </span>
+</a>
+
+<script>
+  const buttons = document.querySelectorAll(".animated-button");
+
+  buttons.forEach((button) => {
+    button?.addEventListener("mouseover", writeCssVars);
+    button?.addEventListener("mouseout", writeCssVars);
+  });
+
+  function writeCssVars(mouseEvent: any) {
+    const { target, clientX, clientY } = mouseEvent;
+    const rect = target.getBoundingClientRect();
+    target.style.setProperty("--width", target.offsetWidth + "px");
+    target.style.setProperty(
+      "--x",
+      Math.round(clientX - rect.left - target.offsetWidth / 2) + "px"
+    );
+    target.style.setProperty(
+      "--y",
+      Math.round(clientY - rect.top - target.offsetWidth / 2) + "px"
+    );
+  }
+</script>
+
+<style define:vars={{ buttonColor, buttonColorInvert }}>
+  a {
+    --button-height: 60px;
+    --button-color: var(--buttonColor);
+    --button-color-invert: var(--buttonColorInvert);
+
+    align-items: center;
+    background-color: transparent;
+    border: 3px solid var(--button-color);
+    border-radius: 100dvh;
+    box-sizing: border-box;
+    color: var(--button-color);
+    cursor: pointer;
+    display: inline-flex;
+    font-variation-settings: var(--font-bold);
+    font-weight: 600;
+    gap: 1rem;
+    height: var(--button-height);
+    justify-content: center;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: 0 var(--space-12);
+    position: relative;
+    transition: color 200ms ease-out;
+    transition-delay: 100ms;
+    user-select: none;
+  }
+
+  a:hover {
+    color: var(--button-color-invert);
+    transition-delay: 200ms;
+  }
+
+  .circle {
+    --size: var(--width, 0);
+
+    background: var(--button-color);
+    border-radius: 100dvh;
+    content: "";
+    height: var(--size);
+    left: var(--x, 0);
+    position: absolute;
+    top: var(--y, 0);
+    transform: scale(0);
+    width: var(--size);
+    will-change: transform;
+    z-index: -1;
+    transform-origin: center;
+    transition: transform 400ms ease-in-out;
+  }
+
+  a:hover .circle {
+    background: var(--button-color);
+    transform: scale(2);
+  }
+
+  .icon {
+    position: absolute;
+    left: 15px;
+    top: 1px;
+    transform: translateY(calc(var(--button-height) / 4.4));
+    transition: left 200ms ease-in-out;
+  }
+
+  .icon svg {
+    height: calc(var(--button-height) / 2.5);
+    width: calc(var(--button-height) / 2.5);
+    transform: rotate(180deg);
+  }
+
+  a:hover .icon {
+    left: 10px;
+  }
+
+  .text {
+    transform: translateX(6px);
+  }
+</style>

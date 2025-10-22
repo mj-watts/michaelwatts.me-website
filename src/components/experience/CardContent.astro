@@ -1,5 +1,6 @@
 ---
 import SvgBackButton from "../SvgBackButton.astro";
+import AnimatedButton from "../AnimatedButton.astro";
 
 const { slug, date, title, companyName, description, sectors, tagsList } =
   Astro.props;
@@ -14,9 +15,7 @@ const tagsArray = tagsList.split(",");
       style={`view-transition-name:card-content-aside-${slug}`}
     >
       <div class="card-content__back-button">
-        <a href="/#experience">
-          <SvgBackButton />
-        </a>
+        <AnimatedButton href="/#experience" text="BACK" />
       </div>
       <div
         class="card-content__date"
@@ -112,15 +111,7 @@ const tagsArray = tagsList.split(",");
   }
 
   .card-content__back-button {
-    width: 48px;
-    height: 48px;
     display: block;
-  }
-
-  .card-content__back-button-icon {
-    width: 48px;
-    height: 48px;
-    fill: var(--color-secondary);
   }
 
   .card-content__title {

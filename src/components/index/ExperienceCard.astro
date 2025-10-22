@@ -37,7 +37,9 @@ const tagsArray = tagsList.split(",");
         }
       </div>
       <div>
-        <a href={`/experience/${slug}`} class="card-content__link">View details</a>
+        <a href={`/experience/${slug}`} class="card-content__link"
+          >View details</a
+        >
       </div>
     </div>
     <div
@@ -206,14 +208,14 @@ const tagsArray = tagsList.split(",");
   }
 
   .card-content__link::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      z-index: 1;
-    }
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
 
   .card-content__link:hover {
     color: var(--color-secondary);
