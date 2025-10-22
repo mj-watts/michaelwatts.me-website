@@ -7,6 +7,7 @@ import ArrowRight from "../components/icons/ArrowRight.astro";
 import Tags from "../components/Tags.tsx";
 import Recommendation from "../components/Recommendation.tsx";
 import RecommendedWork from "../components/RecommendedWorkFrontpage.tsx";
+import AnimatedButton from "../components/AnimatedButton.astro";
 import { recommendedWork } from "../store";
 
 const { frontmatter } = Astro.props;
@@ -26,9 +27,9 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 <WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
   <div class="work-item">
     <div class="work-item__aside">
-      <a href="/#work">
-        <SvgBackButton />
-      </a>
+      <div>
+        <AnimatedButton href="/#work" text="BACK" theme="dark" />
+      </div>
 
       <div class="work-item__aside-sections">
         <PageTitle>{frontmatter.title}</PageTitle>

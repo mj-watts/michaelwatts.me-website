@@ -13,7 +13,7 @@ interface Props {
 const Container = styled.div<{ image: string; bgcolor: string }>`
   --rounded-border: var(--border-radius);
   --bgcolor: ${(props) => props.bgcolor};
-  --textcolor: oklab(from var(--color-onPrimary) calc(l * 3) a b);
+  --textcolor: var(--color-onPrimary);
 
   position: relative;
   display: flex;
@@ -29,8 +29,7 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   padding: var(--space-6);
   box-sizing: border-box;
   background-color: var(--bgcolor);
-  background-image: 
-    linear-gradient(var(--bgcolor), transparent),
+  background-image: linear-gradient(var(--bgcolor), transparent),
     url(${(props) => props.image});
   background-size: contain;
   background-position: bottom center;
@@ -49,10 +48,11 @@ const TextWrap = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  background-color: oklab(from var(--color-secondary) l a b / 0.2);
+  background-color: oklab(from var(--color-primary) l a b / 0.9);
   padding: var(--space-6);
-  border-bottom: 2px solid oklab(from var(--color-primary) l a b / 0.15);
-  box-shadow: 0 0 30px rgba(0,0,0,0.2), 0 0 4px rgba(0,0,0,0.15);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.15);
+  margin: 3px;
+  border-radius: 12px 12px 0 0;
 `;
 
 const Title = styled.h2`
@@ -70,7 +70,7 @@ const Description = styled.p`
   display: none;
   position: relative;
 
-  @container(width > 300px) {
+  @container (width > 300px) {
     display: block;
     margin-top: var(--space-4);
   }
@@ -80,16 +80,27 @@ const Link = styled.a`
   margin-top: auto;
   font-size: smaller;
   font-weight: 600;
-  color: var(--color-primary);
+  color: var(--color-onPrimary);
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-onPrimary);
   font-variation-settings: var(--font-bold);
-  background-color: var(--color-onPrimary);
-  border-radius: var(--border-radius-sm);
+  border-radius: 100dvh;
   padding: var(--space-2) var(--space-4);
   transition: background-color 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  letter-spacing: 1px;
 
   &:hover {
     background-color: oklab(from var(--color-onPrimary) calc(l - 0.1) a b);
-  color: var(--color-secondary);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
   }
 
   &::before {
@@ -104,6 +115,13 @@ const Link = styled.a`
     opacity: 0;
     transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
+`;
+
+const Svg = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke-width: 4px;
+  transition: transform 200ms ease-in-out;
 `;
 
 function SkeletonComponent() {
@@ -138,7 +156,35 @@ export default function RecommendedWork({
         <Title>{title}</Title>
         <Description>{description}</Description>
       </TextWrap>
-      <Link href={link}>View</Link>
+      <Link href={link}>
+        VIEW
+        <Svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="3"
+          stroke="currentColor"
+        >
+          <path
+            className="arrow-main"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 12 H21"
+          ></path>
+          <path
+            className="arrow-top"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12 L12 4"
+          ></path>
+          <path
+            className="arrow-bottom"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12 L12 20"
+          ></path>
+        </Svg>
+      </Link>
     </Container>
   );
 }
