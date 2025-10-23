@@ -37,7 +37,7 @@ export interface RecommendedWorkCollection {
 export const recommendedWork = atom<RecommendedWorkCollection>({
   iomusic: {
     image: iomusicCoverImage,
-    title: "iOS & Android music streaming app",
+    title: "iOS and Android music streaming app",
     description:
       "Cross-platform music streaming app with collaborative party mode",
     link: "/work/io-music",
@@ -46,28 +46,28 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   webapps: {
     image: webappsCoverImage,
     title: "WWF Carbon Footprint Calculator",
-    description: "Animated WWF Carbon Footprint Calculator",
+    description: "An animated questionnaire application used by millions",
     link: "/work/webapps",
     bgcolor: "#06274a",
   },
   ecomm: {
     image: ecommCoverImage,
-    title: "Ecommerce sites and social media",
-    description: "Ecommerce platforms, integrating multiple payment gateways",
+    title: "Ecommerce sites and social media applications",
+    description: "Payment gateway integration and ecomm platform development",
     link: "/work/ecomm-sites",
     bgcolor: "#85af89",
   },
   sfm: {
     image: sfmCoverImage,
-    title: "Multilingual content platform & brand engagement tools",
+    title: "CMS development and brand engagement tools",
     description:
-      "Multilingual content platform and social media brand campaigns",
+      "Multilingual retail platform and social media campaigns for GAP",
     link: "/work/saudi-fashion-retail",
     bgcolor: "#eb8b61",
   },
   sa: {
     image: saCoverImage,
-    title: "Swiftaid automated Gift Aid processor",
+    title: "Financial SaaS Gift Aid platform",
     description:
       "Used by millions of donors and making Gift Aid processing smarter",
     link: "/work/swiftaid",
@@ -75,9 +75,8 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sppoc: {
     image: sppocCoverImage,
-    title: "Proof-of-concept administrative portal for HMRC",
-    description:
-      "Developed secure proof-of-concept administrative portal for HMRC",
+    title: "UK Gov split VAT payment platform",
+    description: "Secure and accessible administrative portal built for HMRC",
     link: "/work/split-payment-poc",
     bgcolor: "#563d7c",
   },
