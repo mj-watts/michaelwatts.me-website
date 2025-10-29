@@ -35,7 +35,10 @@ import image6 from "./image6.png";
 import image7 from "./image7.png";
 import image8 from "./image8.png";
 import image9 from "./image9.png";
-import video from "./cfc-video.mp4";
+import mainVideo from "./wwf-cfc-main.mp4";
+import questionsVideo from "./wwf-cfc-questions.mp4";
+import stepsVideo from "./wwf-cfc-steps.mp4";
+import titleVideo from "./wwf-cfc-title.mp4";
 
 ## Rebuilt WWF Carbon Footprint Calculator with Vue, Anime.js and Laravel
 
@@ -64,7 +67,7 @@ import video from "./cfc-video.mp4";
 <ContentImage1Column>
   <ImageContainer>
     <video autoplay="true" playslinline loop>
-      <source type="video/mp4" src={video} />
+      <source type="video/mp4" src={mainVideo} />
     </video>
   </ImageContainer>
 </ContentImage1Column>
@@ -87,6 +90,19 @@ import video from "./cfc-video.mp4";
       loading="lazy"
       quality={100}
     />
+  </ImageContainer>
+</ContentImage2Column>
+
+<ContentImage2Column>
+  <ImageContainer backgroundColor="var(--color-secondary)">
+    <video autoplay="true" playslinline loop>
+      <source type="video/mp4" src={questionsVideo} />
+    </video>
+  </ImageContainer>
+  <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <video autoplay="true" playslinline loop>
+      <source type="video/mp4" src={stepsVideo} />
+    </video>
   </ImageContainer>
 </ContentImage2Column>
 

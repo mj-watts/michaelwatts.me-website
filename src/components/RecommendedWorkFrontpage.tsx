@@ -162,25 +162,25 @@ export default function RecommendedWork({
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="3"
+          strokeWidth="3"
           stroke="currentColor"
         >
           <path
             className="arrow-main"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M6 12 H21"
           ></path>
           <path
             className="arrow-top"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M21 12 L12 4"
           ></path>
           <path
             className="arrow-bottom"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M21 12 L12 20"
           ></path>
         </Svg>

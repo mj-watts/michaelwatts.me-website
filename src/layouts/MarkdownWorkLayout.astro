@@ -1,6 +1,5 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
-import SvgBackButton from "../components/SvgBackButton.astro";
 import PageTitle from "../components/PageTitle.astro";
 import Button from "../components/Button.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
@@ -120,7 +119,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
                     title={work.title}
                     description={work.description}
                     link={work.link}
-                    bgcolor={work.bgcolor}
+                    bgcolor={work.bgcolor || ""}
                     client:load
                   />
                 )
