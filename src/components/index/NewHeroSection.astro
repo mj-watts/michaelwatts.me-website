@@ -31,11 +31,25 @@ import heroImage from "../../images/hero-illustration.png";
 
 <style>
   .hero-container {
-    background-color: var(--color-primary);
     height: 90dvh;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-container::before {
+    content: "";
+    background-color: oklab(from var(--color-primary) calc(l - 0.05) a b);
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    top: 50%;
+    right: -50%;
+    height: 100%;
+    z-index: -1;
+    transform: rotateZ(-15deg);
   }
 
   .hero-content-wrapper {
