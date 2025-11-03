@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import Container from "../../components/Container.astro";
+import heroImage from "../../images/hero-illustration.png";
+---
+
+<div class="hero-container">
+  <Container>
+    <div class="hero-content-wrapper">
+      <div class="title">
+        <span class="title__partial title__partial--first">
+          Making things look good on line.
+        </span>
+        <span class="title__partial title__partial--second">
+          I'm a Software Engineer with 20 years' experience crafting
+          high-quality applications and websites.
+        </span>
+      </div>
+      <div>
+        <Image
+          src={heroImage}
+          alt="Illustration of developer."
+          quality={100}
+          loading="eager"
+          class="hero-image"
+        />
+      </div>
+    </div>
+  </Container>
+</div>
+
+<style>
+  .hero-container {
+    background-color: var(--color-primary);
+    height: 90dvh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-content-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-image {
+    min-width: 600px;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    font-size: 48px;
+    font-variation-settings: var(--font-semi-bold);
+    color: var(--color-secondary);
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .title__partial {
+    display: block;
+  }
+
+  .title__partial--first {
+    color: var(--color-onPrimary);
+    text-wrap: balance;
+  }
+
+  .title__partial--second {
+    color: var(--color-onPrimary);
+    font-size: 24px;
+    line-height: 1.6;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .hero-content-wrapper {
+      flex-direction: row;
+    }
+
+    .title {
+      text-align: left;
+    }
+  }
+</style>

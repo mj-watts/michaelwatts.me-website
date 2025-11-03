@@ -5,7 +5,7 @@ import Button from "../components/Button.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
 import Tags from "../components/Tags.tsx";
 import Recommendation from "../components/Recommendation.tsx";
-import RecommendedWork from "../components/RecommendedWorkFrontpage.tsx";
+import RecommendedWork from "../components/RecommendedWork.astro";
 import AnimatedButton from "../components/AnimatedButton.astro";
 import { recommendedWork } from "../store";
 
@@ -115,7 +115,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
                   link: string;
                 }) => (
                   <RecommendedWork
-                    image={work.image?.src}
+                    image={work.image}
                     title={work.title}
                     description={work.description}
                     link={work.link}

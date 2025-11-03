@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+
+const { image, title, description, link } = Astro.props;
+---
+
+<a class="preview" href={link}>
+  <div class="preview__image-container">
+    <div class="preview__image-wrapper">
+      <Image
+        src={image}
+        alt="Preview of work image."
+        quality={100}
+        loading="eager"
+        class="preview__image"
+      />
+    </div>
+  </div>
+  <div class="preview__body">
+    <div class="preview__title">{title}</div>
+    <div>{description}</div>
+  </div>
+</a>
+
+<style>
+  .preview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    border: 1px solid oklab(from var(--color-onPrimary) l a b / 0.2);
+    border-radius: var(--border-radius);
+    padding: var(--space-4);
+    background-color: var(--color-primary);
+    height: 100%;
+    width: clamp(250px, 100%, 440px);
+  }
+
+  .preview__image-container {
+    background-color: oklab(from var(--color-onPrimary) l a b / 0.2);
+    border-radius: var(--border-radius-sm);
+    position: relative;
+    height: 190px;
+  }
+
+  .preview__image-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .preview__image {
+    height: auto;
+    transition: all 200ms ease-in-out;
+    transform-origin: bottom left;
+    aspect-ratio: 1;
+    max-height: 250px;
+  }
+
+  .preview__body {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    flex-direction: column;
+    font-size: var(--font-size-sm);
+  }
+
+  .preview__title {
+    font-variation-settings: var(--font-bold);
+  }
+
+  .preview:hover .preview__image {
+    transform: rotateZ(2deg) scale(1.05) translateX(-5px);
+  }
+</style>

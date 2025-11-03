@@ -34,13 +34,13 @@ const currentPath = pathname.slice(1);
             <NavItem href="/" isActive={currentPath === ""}>Home</NavItem>
           </li>
           <li>
-            <NavItem href="/blog" isActive={currentPath === "blog"}
-              >Blog</NavItem
+            <NavItem href="/#work" isActive={currentPath === "works"}
+              >Work</NavItem
             >
           </li>
           <li>
-            <NavItem href="/#work" isActive={currentPath === "works"}
-              >Work</NavItem
+            <NavItem href="/#contact" isActive={currentPath === "contact"}
+              >Contact</NavItem
             >
           </li>
         </ol>
@@ -92,20 +92,8 @@ const currentPath = pathname.slice(1);
     "IntersectionObserverEntry" in window &&
     "intersectionRatio" in window.IntersectionObserverEntry.prototype
   ) {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 500;
-
-      if (scrollY > maxScroll) {
-        document.body.classList.add("header-not-at-top");
-      } else {
-        document.body.classList.remove("header-not-at-top");
-      }
-    };
-
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].boundingClientRect.y < 0) {
-        // window.addEventListener("scroll", handleScroll);
         document.body.classList.add("header-not-at-top");
       } else {
         document.body.classList.remove("header-not-at-top");
@@ -200,8 +188,6 @@ const currentPath = pathname.slice(1);
     align-items: center;
     gap: var(--space-12);
     margin: 0;
-    background-color: var(--color-onPrimary);
-    border-radius: var(--border-radius-sm);
     height: var(--height);
     padding: var(--mainnav__items-ol-padding);
   }
