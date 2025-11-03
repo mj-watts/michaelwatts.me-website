@@ -1,11 +1,11 @@
 import { atom } from "nanostores";
 import { persistentAtom } from "@nanostores/persistent";
-import iomusicCoverImage from "../src/content/works/io-music/recommended-cover-image.png";
-import webappsCoverImage from "../src/content/works/webapps/recommended-cover-image.png";
-import ecommCoverImage from "../src/content/works/ecomm-sites/recommended-cover-image.png";
-import sfmCoverImage from "../src/content/works/saudi-fashion-retail/recommended-cover-image.png";
-import saCoverImage from "../src/content/works/swiftaid/recommended-cover-image.png";
-import sppocCoverImage from "../src/content/works/split-payment-poc/recommended-cover-image.png";
+import iomusicCoverImage from "../src/content/works/io-music/preview.png";
+import webappsCoverImage from "../src/content/works/webapps/preview.png";
+import ecommCoverImage from "../src/content/works/ecomm-sites/preview.png";
+import sfmCoverImage from "../src/content/works/saudi-fashion-retail/preview.png";
+import saCoverImage from "../src/content/works/swiftaid/preview.png";
+import sppocCoverImage from "../src/content/works/split-payment-poc/preview.png";
 
 export const themePrimary = persistentAtom<string>("themePrimary", "#FFFFFF");
 

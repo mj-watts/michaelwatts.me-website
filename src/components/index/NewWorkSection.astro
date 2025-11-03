@@ -1,0 +1,185 @@
+<div class="stacked-card-container-section">
+  <div class="stacked-card-container">
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link" href="#">
+          <span>Text here 1</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link">
+          <span>Text here 2</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link">
+          <span>Text here 3</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link">
+          <span>Text here 4</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link">
+          <span>Text here 5</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="stacked-card">
+      <div class="stacked-card-inner">
+        <a class="link">
+          <span>Text here 6</span>
+          <span
+            >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+            accumsan tellus vitae nulla blandit eleifend.
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .stacked-card-container-section {
+    --card-height: 80dvh;
+    --card-margin: 20px;
+    --offset: 200px;
+
+    width: 100%;
+  }
+
+  .stacked-card-container {
+    height: calc((var(--card-height) * 6) + (var(--card-margin) * 5));
+    position: relative;
+    width: 100%;
+    display: flex;
+    grid-column-end: span 12;
+  }
+
+  .stacked-card {
+    height: var(--card-height);
+    position: absolute;
+    width: 100%;
+  }
+
+  .stacked-card-inner {
+    position: sticky;
+  }
+
+  .link {
+    background-color: var(--color-secondary);
+    color: var(--color-onPrimary);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: end;
+    align-items: start;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    height: var(--card-height);
+    padding: 64px;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: all 200ms linear;
+  }
+
+  .link:hover {
+    background-color: oklab(from var(--color-secondary) calc(l - 0.05) a b);
+  }
+
+  .link span:nth-of-type(1) {
+    color: var(--color, inherit);
+    font-size: 32px;
+  }
+
+  .stacked-card:nth-of-type(1) {
+    height: var(--card-height);
+    z-index: 9;
+  }
+  .stacked-card:nth-of-type(2) {
+    height: calc(var(--card-height) * 2 + var(--card-margin));
+    z-index: 8;
+  }
+  .stacked-card:nth-of-type(3) {
+    height: calc((var(--card-height) * 3) + (var(--card-margin) * 2));
+    z-index: 7;
+  }
+  .stacked-card:nth-of-type(4) {
+    height: calc((var(--card-height) * 4) + (var(--card-margin) * 3));
+    z-index: 6;
+  }
+  .stacked-card:nth-of-type(5) {
+    height: calc((var(--card-height) * 5) + (var(--card-margin) * 4));
+    z-index: 5;
+  }
+  .stacked-card:nth-of-type(6) {
+    height: calc((var(--card-height) * 6) + (var(--card-margin) * 5));
+    z-index: 4;
+  }
+
+  .stacked-card:nth-of-type(1) .stacked-card-inner {
+    top: 0;
+  }
+
+  .stacked-card:nth-of-type(2) .stacked-card-inner {
+    top: var(--offset);
+  }
+
+  .stacked-card:nth-of-type(3) .stacked-card-inner {
+    top: calc(var(--offset) + var(--card-margin));
+  }
+
+  .stacked-card:nth-of-type(4) .stacked-card-inner {
+    top: calc(var(--offset) + (var(--card-margin) * 2));
+  }
+
+  .stacked-card:nth-of-type(5) .stacked-card-inner {
+    top: calc(var(--offset) + (var(--card-margin) * 3));
+  }
+
+  .stacked-card:nth-of-type(6) .stacked-card-inner {
+    top: calc(var(--offset) + (var(--card-margin) * 4));
+  }
+
+  .stacked-card:last-child .link {
+    box-shadow: none;
+  }
+</style>
