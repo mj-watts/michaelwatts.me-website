@@ -44,18 +44,6 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
   </div>
 </div>
 
-<script>
-  import { inView } from "motion";
-
-  inView(".work__item", (element) => {
-    element.setAttribute("inview", "");
-
-    return () => {
-      element.removeAttribute("inview");
-    };
-  });
-</script>
-
 <style>
   .work__body {
     --grid-template-columns: 1fr;

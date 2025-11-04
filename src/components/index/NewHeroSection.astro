@@ -2,15 +2,16 @@
 import { Image } from "astro:assets";
 import Container from "../../components/Container.astro";
 import heroImage from "../../images/hero-illustration.png";
+// import ChangingWord from "../../components/ChangingWord";
 ---
 
 <div class="hero-container">
   <Container>
     <div class="hero-content-wrapper">
       <div class="title">
-        <span class="title__partial title__partial--first">
-          Making things look good on line.
-        </span>
+        <h2 class="title__partial title__partial--first">
+          Making things look great on line.
+        </h2>
         <span class="title__partial title__partial--second">
           I'm a Software Engineer with 20 years' experience crafting
           high-quality applications and websites.
@@ -39,19 +40,6 @@ import heroImage from "../../images/hero-illustration.png";
     overflow: hidden;
   }
 
-  .hero-container::before {
-    content: "";
-    background-color: oklab(from var(--color-primary) calc(l - 0.05) a b);
-    position: absolute;
-    bottom: 0;
-    left: -50%;
-    top: 50%;
-    right: -50%;
-    height: 100%;
-    z-index: -1;
-    transform: rotateZ(-15deg);
-  }
-
   .hero-content-wrapper {
     display: flex;
     flex-direction: column-reverse;
@@ -60,7 +48,6 @@ import heroImage from "../../images/hero-illustration.png";
   }
 
   .hero-image {
-    min-width: 600px;
     width: 100%;
     max-width: 600px;
     height: auto;
@@ -84,6 +71,7 @@ import heroImage from "../../images/hero-illustration.png";
   .title__partial--first {
     color: var(--color-onPrimary);
     text-wrap: balance;
+    line-height: 0.9;
   }
 
   .title__partial--second {
@@ -99,6 +87,16 @@ import heroImage from "../../images/hero-illustration.png";
 
     .title {
       text-align: left;
+    }
+
+    .hero-image {
+      min-width: 400px;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .hero-image {
+      min-width: 600px;
     }
   }
 </style>

@@ -18,20 +18,6 @@ const currentYear = new Date().getFullYear();
   </Container>
 </footer>
 
-<script>
-  import { animate, scroll } from "motion";
-
-  const animation = animate(
-    ".footer__title > span",
-    {
-      transform: ["translateY(-3000px)", "translateY(-50px)"],
-    },
-    { ease: "linear" }
-  );
-
-  scroll(animation);
-</script>
-
 <style>
   footer {
     background-color: var(--color-secondary);
@@ -43,6 +29,7 @@ const currentYear = new Date().getFullYear();
   .footer__title {
     overflow: hidden;
     width: 100%;
+    position: relative;
   }
 
   .footer__title span {
@@ -54,7 +41,8 @@ const currentYear = new Date().getFullYear();
     pointer-events: none;
     text-transform: uppercase;
     user-select: none;
-    color: var(--color-primary);
+    color: oklab(from var(--color-primary) calc(l - 0.05) a b);
+    transform: translateY(-20px);
   }
 
   .footer__email {
