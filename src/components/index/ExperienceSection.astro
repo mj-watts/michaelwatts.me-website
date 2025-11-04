@@ -58,23 +58,6 @@ import ExperienceCard from "./ExperienceCard.astro";
   </div>
 </div>
 
-<script>
-  import { inView } from "motion";
-
-  inView(
-    ".card",
-    (element) => {
-      element.setAttribute("inview", "");
-      return () => {
-        element.removeAttribute("inview");
-      };
-    },
-    {
-      amount: "all",
-    }
-  );
-</script>
-
 <style is:global>
   .experience__bd {
     --line-width: 0px;

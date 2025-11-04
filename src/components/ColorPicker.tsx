@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { themePrimary, themeOnPrimary, themeSecondary, selectedColorMapId } from "../store";
+import {
+  themePrimary,
+  themeOnPrimary,
+  themeSecondary,
+  selectedColorMapId,
+} from "../store";
 
 const ColorPickerWrapper = styled.div`
   --toggle-size: 3;
   --gap: 1.5;
-  --radius: calc(var(--toggle-size) * .5 + var(--gap));
-  --spacing: .75;
+  --radius: calc(var(--toggle-size) * 0.5 + var(--gap));
+  --spacing: 0.75;
   --size: 48px;
 
   user-select: none;
@@ -17,16 +22,16 @@ const ColorPickerWrapper = styled.div`
   bottom: var(--space-3);
   left: var(--space-3);
   z-index: 99999;
-  transition: all .5s var(--ease-out-elastic);
-  
+  transition: all 0.5s var(--ease-out-elastic);
+
   &[data-open="true"] label {
     scale: 1;
-    transition-delay: calc(var(--idx) * .05s);
-    transition-duration: .5s;
+    transition-delay: calc(var(--idx) * 0.05s);
+    transition-duration: 0.5s;
     transition-timing-function: var(--ease-out-elastic);
     translate: var(--translateX) var(--translateY);
-    }
-    `;
+  }
+`;
 
 const Button = styled.button`
   user-select: none;
@@ -54,24 +59,28 @@ const PaletteIcon = styled.svg`
 `;
 
 const Label = styled.label`
-    cursor: pointer;
-    grid-area: 1 / 1;
-    height: 2rem;
-    position: absolute;
-    z-index: -1;
-    width: 2rem;
-    --translateY: calc(cos(var(--idx) * var(--spacing) + 1.25) * var(--radius) * 1rem);
-    --translateX: calc(sin(var(--idx) * var(--spacing) + 1.25) * var(--radius) * 1rem);
-    scale: .5;
-    transition-duration: .15s;
-    transition-property: translate, scale;
-    transition-timing-function: var(--ease-in-cubic);
+  cursor: pointer;
+  grid-area: 1 / 1;
+  height: 2rem;
+  position: absolute;
+  z-index: -1;
+  width: 2rem;
+  --translateY: calc(
+    cos(var(--idx) * var(--spacing) + 1.25) * var(--radius) * 1rem
+  );
+  --translateX: calc(
+    sin(var(--idx) * var(--spacing) + 1.25) * var(--radius) * 1rem
+  );
+  scale: 0.5;
+  transition-duration: 0.15s;
+  transition-property: translate, scale;
+  transition-timing-function: var(--ease-in-cubic);
 `;
 
 const Input = styled.input`
   appearance: none;
   background-color: var(--color-primary);
-  border: 1px solid rgba(0, 0, 0, .1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
   height: inherit;
@@ -95,52 +104,79 @@ type Colors = {
   "--color-primary": string;
   "--color-onPrimary": string;
   "--color-secondary": string;
-}
+};
 
 type ColorSet = {
-  id: number
-  colors: string[]
-}
+  id: number;
+  colors: string[];
+};
 
-type ColorMap = Map<number, Colors>
+type ColorMap = Map<number, Colors>;
 
 const colorMap: ColorMap = new Map([
-  [1, { // White
-    "--color-primary": "#FFFFFF",
-    "--color-onPrimary": "#363636",
-    "--color-secondary": "#D2D2D2"
-  }],
-  [2, {
-    "--color-primary": "#3C0350",
-    "--color-onPrimary": "#D3B1C0",
-    "--color-secondary": "#E7437F"
-  }],
-  [3, { // Green
-    "--color-primary": "#37AF5D",
-    "--color-onPrimary": "#005319",
-    "--color-secondary": "#C6FF00"
-  }],
-  [4, { // Blue
-    "--color-primary": "#0779FF",
-    "--color-onPrimary": "#002180",
-    "--color-secondary": "#4ACDFC"
-  }],
-  [5, { // Dark
-    "--color-primary": "#061036",
-    "--color-onPrimary": "#675ce1",
-    "--color-secondary": "#352e86"
-  }],
+  [
+    1,
+    {
+      // White
+      "--color-primary": "#FFFFFF",
+      "--color-onPrimary": "#363636",
+      "--color-secondary": "#D2D2D2",
+    },
+  ],
+  [
+    2,
+    {
+      "--color-primary": "#3C0350",
+      "--color-onPrimary": "#D3B1C0",
+      "--color-secondary": "#E7437F",
+    },
+  ],
+  [
+    3,
+    {
+      // Green
+      "--color-primary": "#37AF5D",
+      "--color-onPrimary": "#005319",
+      "--color-secondary": "#C6FF00",
+    },
+  ],
+  [
+    4,
+    {
+      // Blue
+      "--color-primary": "#0779FF",
+      "--color-onPrimary": "#002180",
+      "--color-secondary": "#4ACDFC",
+    },
+  ],
+  [
+    5,
+    {
+      // Dark
+      "--color-primary": "#061036",
+      "--color-onPrimary": "#675ce1",
+      "--color-secondary": "#352e86",
+    },
+  ],
 ]);
-
 
 export default function ColorPicker() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedColorMapIdState, setSelectedColorMapIdState] = useState(parseInt(selectedColorMapId.get()));
+  const [selectedColorMapIdState, setSelectedColorMapIdState] = useState(
+    parseInt(selectedColorMapId.get())
+  );
   const [availableColors, setAvailableColors] = useState([] as ColorSet[]);
 
-  function pushColorMapValuesToArray(value: Colors, key: number, map: ColorMap) {
+  function pushColorMapValuesToArray(
+    value: Colors,
+    key: number,
+    map: ColorMap
+  ) {
     if (key === selectedColorMapIdState) return;
-    setAvailableColors((availableColors) => [...availableColors, { id: key, colors: Object.values(value) }]);
+    setAvailableColors((availableColors) => [
+      ...availableColors,
+      { id: key, colors: Object.values(value) },
+    ]);
   }
 
   useEffect(() => {
@@ -152,19 +188,20 @@ export default function ColorPicker() {
 
     setAvailableColors([]); // Reset to rebuild correctly
     colorMap.forEach(pushColorMapValuesToArray);
-  }, [])
+  }, []);
 
   useEffect(() => {
     const colors = colorMap.get(selectedColorMapIdState);
     if (colors) {
-      themePrimary.set(colors['--color-primary']);
-      themeOnPrimary.set(colors['--color-onPrimary']);
-      themeSecondary.set(colors['--color-secondary']);
+      themePrimary.set(colors["--color-primary"]);
+      themeOnPrimary.set(colors["--color-onPrimary"]);
+      themeSecondary.set(colors["--color-secondary"]);
       selectedColorMapId.set(selectedColorMapIdState.toString());
     }
-  }, [selectedColorMapIdState]); const handlePaletteButtonClick = () => {
+  }, [selectedColorMapIdState]);
+  const handlePaletteButtonClick = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
   const handleColorClick = (id: number) => {
     const previousSelectedId = selectedColorMapIdState;
@@ -178,27 +215,49 @@ export default function ColorPicker() {
     // add previously selected scheme to availableColors
     const colorValues: Colors | undefined = colorMap.get(previousSelectedId);
     if (colorValues) {
-      filteredArray.push({ id: previousSelectedId, colors: Object.values(colorValues) })
+      filteredArray.push({
+        id: previousSelectedId,
+        colors: Object.values(colorValues),
+      });
     }
     setAvailableColors(filteredArray);
-  }
+  };
 
   return (
     <ColorPickerWrapper data-open={isOpen}>
       <Button onClick={handlePaletteButtonClick} title="Pick color">
-        <PaletteIcon xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <PaletteIcon
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
           <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07M8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3M5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3" />
         </PaletteIcon>
       </Button>
 
       {availableColors.map((colorSet, idx) => {
         return (
-          <Label key={colorSet.id} htmlFor={colorSet.id.toString()} style={{ "--idx": idx } as React.CSSProperties} onClick={() => handleColorClick(colorSet.id)}>
-            <Input type="radio" value={colorSet.id.toString()} id={colorSet.id.toString()} name={colorSet.id.toString()} style={{ "--color-primary": colorSet.colors[0] } as React.CSSProperties} />
+          <Label
+            key={colorSet.id}
+            htmlFor={colorSet.id.toString()}
+            style={{ "--idx": idx } as React.CSSProperties}
+            onClick={() => handleColorClick(colorSet.id)}
+          >
+            <Input
+              type="radio"
+              value={colorSet.id.toString()}
+              id={colorSet.id.toString()}
+              name={colorSet.id.toString()}
+              style={
+                { "--color-primary": colorSet.colors[0] } as React.CSSProperties
+              }
+            />
             <A11yText>Color {colorSet.colors[0]}</A11yText>
           </Label>
-        )
+        );
       })}
-    </ColorPickerWrapper >
-  )
+    </ColorPickerWrapper>
+  );
 }
