@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Container from "../../components/Container.astro";
 import heroImage from "../../images/hero-illustration.png";
+import animatedHeroImage from "../../images/hero-illustration.gif";
 // import ChangingWord from "../../components/ChangingWord";
 ---
 
@@ -19,7 +20,7 @@ import heroImage from "../../images/hero-illustration.png";
       </div>
       <div>
         <Image
-          src={heroImage}
+          src={animatedHeroImage}
           alt="Illustration of developer."
           quality={100}
           loading="eager"
@@ -51,6 +52,7 @@ import heroImage from "../../images/hero-illustration.png";
     width: 100%;
     max-width: 600px;
     height: auto;
+    mix-blend-mode: multiply;
   }
 
   .title {
