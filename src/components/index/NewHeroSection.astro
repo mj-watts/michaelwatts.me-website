@@ -34,12 +34,12 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
 
 <style>
   .hero-container {
-    height: 90dvh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding-bottom: var(--space-24);
   }
 
   .hero-content-wrapper {
@@ -60,7 +60,6 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
-    font-size: 48px;
     color: var(--color-secondary);
     line-height: 1.1;
     text-align: center;
@@ -75,15 +74,18 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     text-wrap: balance;
     line-height: 1;
     font-weight: 700;
-    font-size: 65px;
+    font-size: clamp(
+      var(--font-size-lg),
+      calc(7vw + 1rem),
+      var(--font-size-xl)
+    );
   }
 
   .title__partial--second {
     color: var(--color-onPrimary);
-    font-size: 24px;
+    font-size: clamp(20px, 2.5dvw, 24px);
     line-height: 1.6;
     text-wrap: balance;
-    margin-left: var(--space-24);
   }
 
   @media screen and (min-width: 1440px) {
@@ -97,6 +99,11 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
   }
 
   @media screen and (min-width: 1440px) {
+    .hero-container {
+      height: 90dvh;
+      padding-bottom: 0;
+    }
+
     .title {
       text-align: left;
     }
@@ -107,6 +114,10 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
 
     .title__partial--first span:nth-of-type(2) {
       margin-left: var(--space-8);
+    }
+
+    .title__partial--second {
+      margin-left: var(--space-24);
     }
 
     .hero-image {
