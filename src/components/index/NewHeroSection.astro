@@ -11,11 +11,12 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     <div class="hero-content-wrapper">
       <div class="title">
         <h2 class="title__partial title__partial--first">
-          Guided by Curiosity & Inspired by Discovery...
+          <span>Guided by Curiosity &</span>
+          <span>Inspired by Discovery...</span>
         </h2>
         <span class="title__partial title__partial--second">
-          I’m a creative software engineer who thrives on delivering outstanding
-          digital solutions.
+          I am a creative software engineer who thrives on delivering
+          outstanding digital solutions.
         </span>
       </div>
       <div>
@@ -82,15 +83,12 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     font-size: 24px;
     line-height: 1.6;
     text-wrap: balance;
+    margin-left: var(--space-24);
   }
 
-  @media screen and (min-width: 1000px) {
+  @media screen and (min-width: 1440px) {
     .hero-content-wrapper {
       flex-direction: row;
-    }
-
-    .title {
-      text-align: left;
     }
 
     .hero-image {
@@ -98,9 +96,21 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1440px) {
+    .title {
+      text-align: left;
+    }
+
+    .title__partial--first span {
+      white-space: nowrap;
+    }
+
+    .title__partial--first span:nth-of-type(2) {
+      margin-left: var(--space-8);
+    }
+
     .hero-image {
-      min-width: 600px;
+      min-width: 580px;
     }
   }
 </style>
