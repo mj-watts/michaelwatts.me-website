@@ -80,7 +80,7 @@
 
 @layer variables {
   :root {
-    --font-display: "headline-gothic-atf", sans-serif;
+    --font-display: "argent-cf", serif;
     --font-sans: "inter-variable", sans-serif;
     --font-serif: "proxima-nova", serif;
     --font-mono: "source-code-pro", monospace;
@@ -227,7 +227,7 @@
     font-family: var(--header-font);
     color: var(--color-text);
     line-height: 1.25;
-    font-weight: 400;
+    font-weight: 700;
   }
 
   strong {
@@ -240,18 +240,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
-  }
-
-  .content h2,
-  .content h3,
-  .content h4,
-  .content h5,
-  .content h6 {
-    line-height: 1.2;
-    text-wrap: pretty;
-    margin-bottom: 0;
-    font-family: var(--body-font);
-    font-variation-settings: var(--font-bold);
   }
 }
 

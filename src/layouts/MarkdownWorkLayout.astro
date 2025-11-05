@@ -68,9 +68,9 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
                 }) => (
                   <li class="work-item__aside-recommended-work-item">
                     <a href={work.link}>
-                      <strong class="work-item__aside-recommended-work-item-title">
+                      <div class="work-item__aside-recommended-work-item-title">
                         <ArrowRight /> {work.title}
-                      </strong>
+                      </div>
                     </a>
                   </li>
                 )
@@ -205,6 +205,8 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 
   .work-item__aside-section strong {
     display: var(--strong-display);
+    font-family: var(--font-display);
+    font-weight: bold;
   }
 
   .work-item__aside-recommended-work {

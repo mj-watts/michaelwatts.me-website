@@ -10,7 +10,7 @@ import heroImage from "../../images/hero-illustration.png";
     <div class="hero-content-wrapper">
       <div class="title">
         <h2 class="title__partial title__partial--first">
-          Guided by Curiosity, Inspired by Discovery...
+          Guided by Curiosity & Inspired by Discovery...
         </h2>
         <span class="title__partial title__partial--second">
           I’m a creative software engineer who thrives on delivering outstanding
@@ -56,9 +56,8 @@ import heroImage from "../../images/hero-illustration.png";
   .title {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-6);
     font-size: 48px;
-    font-variation-settings: var(--font-semi-bold);
     color: var(--color-secondary);
     line-height: 1.1;
     text-align: center;
@@ -71,7 +70,9 @@ import heroImage from "../../images/hero-illustration.png";
   .title__partial--first {
     color: var(--color-onPrimary);
     text-wrap: balance;
-    line-height: 0.9;
+    line-height: 1;
+    font-weight: 700;
+    font-size: 65px;
   }
 
   .title__partial--second {
