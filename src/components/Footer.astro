@@ -7,7 +7,6 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer id="contact" class:list={["footer", classList]}>
-  <div class="footer__title"><span>CONTACT</span></div>
   <Container>
     <div class="footer__email">
       <a href="mailto:hello@michaelwatts.me">HELLO@MICHAELWATTS.ME</a>
@@ -21,28 +20,9 @@ const currentYear = new Date().getFullYear();
 <style>
   footer {
     background-color: var(--color-secondary);
-    padding: 0 0 var(--space-24);
+    padding: var(--space-24) 0;
     text-align: center;
     container: footer / inline-size;
-  }
-
-  .footer__title {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-  }
-
-  .footer__title span {
-    display: block;
-    line-height: 1;
-    font: 43cqi / 0.8 var(--header-font);
-    letter-spacing: -0.04em;
-    margin-left: -0.05em;
-    pointer-events: none;
-    text-transform: uppercase;
-    user-select: none;
-    color: oklab(from var(--color-primary) calc(l - 0.05) a b);
-    transform: translateY(-20px);
   }
 
   .footer__email {
