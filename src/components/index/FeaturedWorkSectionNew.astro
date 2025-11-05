@@ -48,7 +48,6 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
 
 <style>
   .work-container {
-    min-height: 85dvh;
     align-content: center;
     background-color: oklab(from var(--color-primary) calc(l - 0.05) a b);
     padding: var(--space-10) 0;
@@ -65,6 +64,10 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
   }
 
   @media screen and (min-width: 1280px) {
+    .work-container {
+      min-height: 100dvh;
+    }
+
     .work__body {
       --grid-template-columns: repeat(3, 1fr);
     }

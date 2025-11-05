@@ -191,10 +191,6 @@
 }
 
 @layer overrides {
-  html {
-    scroll-padding-top: var(--space-24);
-  }
-
   body {
     font-family: var(--body-font);
     font-variation-settings: var(--font-regular);
