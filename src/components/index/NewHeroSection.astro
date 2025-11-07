@@ -1,9 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Container from "../../components/Container.astro";
-import heroImage from "../../images/hero-illustration.png";
 import animatedHeroImage from "../../images/hero-illustration.gif";
-// import ChangingWord from "../../components/ChangingWord";
 ---
 
 <div class="hero-container">
@@ -53,6 +51,7 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     width: 100%;
     max-width: 600px;
     height: auto;
+    backdrop-filter: invert(0%); /* iOS Safari hack for mix-blend-mode */
     mix-blend-mode: multiply;
   }
 
