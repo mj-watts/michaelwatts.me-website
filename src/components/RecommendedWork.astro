@@ -1,11 +1,20 @@
 ---
 import { Image } from "astro:assets";
 
-const { image, title, description, link } = Astro.props;
+const { image, outlineImage, title, description, link } = Astro.props;
 ---
 
 <a class="preview" href={link}>
   <div class="preview__image-container">
+    <div class="preview__image-wrapper preview__image-wrapper--outline">
+      <Image
+        src={outlineImage}
+        alt="Preview of work image."
+        quality={100}
+        loading="eager"
+        class="preview__image"
+      />
+    </div>
     <div class="preview__image-wrapper">
       <Image
         src={image}
@@ -27,12 +36,38 @@ const { image, title, description, link } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--space-8);
-    border: 1px solid oklab(from var(--color-onPrimary) l a b / 0.2);
-    border-radius: var(--border-radius);
     padding: var(--space-4);
     background-color: var(--color-primary);
     height: 100%;
     width: clamp(250px, 100%, 440px);
+    position: relative;
+
+    border-top-left-radius: 225px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+    border: solid 3px var(--color-onPrimary);
+
+    box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.2);
+
+    transition: all 200ms ease-in-out;
+  }
+
+  .preview::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition: all 200ms ease-in-out;
+
+    border-top-left-radius: 15px 225px;
+    border-top-right-radius: 225px 15px;
+    border-bottom-right-radius: 15 225px;
+    border-bottom-left-radius: 225px 15px;
+    border: outset 3px oklab(from var(--color-onPrimary) l a b / 0.2);
   }
 
   .preview__image-container {
@@ -40,6 +75,12 @@ const { image, title, description, link } = Astro.props;
     border-radius: var(--border-radius-sm);
     position: relative;
     height: 190px;
+
+    border-top-left-radius: 225px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+    border: solid 3px var(--color-onPrimary);
   }
 
   .preview__image-wrapper {
@@ -47,6 +88,12 @@ const { image, title, description, link } = Astro.props;
     bottom: 0;
     left: 0;
     overflow: hidden;
+    z-index: 1;
+    transition: all 200ms ease-in-out;
+  }
+
+  .preview__image-wrapper--outline {
+    z-index: 2;
   }
 
   .preview__image {
@@ -68,7 +115,23 @@ const { image, title, description, link } = Astro.props;
     font-size: var(--font-size-lg);
   }
 
+  .preview:hover {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+    transform: rotateZ(-1deg);
+  }
+
+  .preview:hover::before {
+    border-top-left-radius: 5px 225px;
+    border-top-right-radius: 225px 5px;
+    border-bottom-right-radius: 5px 225px;
+    border-bottom-left-radius: 225px 5px;
+  }
+
   .preview:hover .preview__image {
     transform: rotateZ(2deg) scale(1.05) translateX(-5px);
+  }
+
+  .preview:hover .preview__image-wrapper--outline {
+    opacity: 0;
   }
 </style>

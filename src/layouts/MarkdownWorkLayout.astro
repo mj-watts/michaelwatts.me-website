@@ -17,6 +17,7 @@ const rw = recommendedWork.get();
 const workList = frontmatter.recommendedWork.map((key: string) => ({
   bgcolor: rw[key].bgcolor,
   image: rw[key].image,
+  outlineImage: rw[key].outlineImage,
   title: rw[key].title,
   description: rw[key].description,
   link: rw[key].link,
@@ -109,6 +110,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
               {workList.map(
                 (work: {
                   image: { src: string };
+                  outlineImage: { src: string };
                   title: string;
                   description: string;
                   bgcolor: string;
@@ -116,6 +118,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
                 }) => (
                   <RecommendedWork
                     image={work.image}
+                    outlineImage={work.outlineImage}
                     title={work.title}
                     description={work.description}
                     link={work.link}
