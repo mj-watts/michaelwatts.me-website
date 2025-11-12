@@ -65,9 +65,9 @@ const { image, outlineImage, title, description, link } = Astro.props;
 
     border-top-left-radius: 15px 225px;
     border-top-right-radius: 225px 15px;
-    border-bottom-right-radius: 15 225px;
+    border-bottom-right-radius: 15px 225px;
     border-bottom-left-radius: 225px 15px;
-    border: outset 3px oklab(from var(--color-onPrimary) l a b / 0.2);
+    border: outset 3px oklab(from var(--color-emphasis) l a b / 0.4);
   }
 
   .preview__image-container {
@@ -125,6 +125,7 @@ const { image, outlineImage, title, description, link } = Astro.props;
     border-top-right-radius: 225px 5px;
     border-bottom-right-radius: 5px 225px;
     border-bottom-left-radius: 225px 5px;
+    border: outset 3px oklab(from var(--color-emphasis) l a b / 1);
   }
 
   .preview:hover .preview__image {

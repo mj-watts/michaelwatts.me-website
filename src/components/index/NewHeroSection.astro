@@ -9,14 +9,16 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     <div class="hero-content-wrapper">
       <div class="title">
         <h2 class="title__partial title__partial--first">
-          <span>Clarity <span style="color:#e00101">&</span> Curiosity,</span>
+          <span
+            >Clarity <span style="color:var(--color-emphasis)">&</span> Curiosity,</span
+          >
           <span>Step by Step...</span>
         </h2>
         <span class="title__partial title__partial--second">
           Building software solutions with craft, care and imagination.
         </span>
       </div>
-      <div>
+      <div class="hero-image-container">
         <Image
           src={animatedHeroImage}
           alt="Illustration of developer."
@@ -44,6 +46,10 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .hero-image-container {
+    position: relative;
   }
 
   .hero-image {
