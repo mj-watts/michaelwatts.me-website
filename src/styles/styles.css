@@ -236,7 +236,15 @@
   .content {
     display: flex;
     flex-direction: column;
-    gap: var(--space-8);
+    gap: var(--space-10);
+  }
+
+  .content h2 {
+    font-size: clamp(32px, 2.5dvw, 42px);
+  }
+
+  .content h3 {
+    font-size: clamp(28px, 2.2dvw, 32px);
   }
 }
 

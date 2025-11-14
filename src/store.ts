@@ -51,51 +51,54 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   iomusic: {
     image: iomusicCoverImage,
     outlineImage: iomusicCoverImageOutline,
-    title: "iOS and Android music streaming app",
+    title: "iOS app development",
     description:
-      "Cross-platform music streaming app with collaborative party mode",
+      "Native iOS and Android music video application. Launced successfully on Apple Store",
     link: "/work/io-music",
     bgcolor: "#292c33",
   },
   webapps: {
     image: webappsCoverImage,
     outlineImage: webappsCoverImageOutline,
-    title: "WWF Carbon Footprint Calculator",
-    description: "An animated questionnaire application used by millions",
+    title: "Web applications",
+    description:
+      "Development of popular Carbon Footprint Calculator for World Wildlife Fund and internal applications for airline logistics brand",
     link: "/work/webapps",
     bgcolor: "#06274a",
   },
   ecomm: {
     image: ecommCoverImage,
     outlineImage: ecommCoverImageOutline,
-    title: "Ecommerce sites and social media applications",
-    description: "Payment gateway integration and ecomm platform development",
+    title: "Ecommerce development",
+    description:
+      "Ecommerce website development for a number of successful brands and payment gateway integration",
     link: "/work/ecomm-sites",
     bgcolor: "#85af89",
   },
   sfm: {
     image: sfmCoverImage,
     outlineImage: sfmCoverImageOutline,
-    title: "CMS development and brand engagement tools",
+    title: "CMS development & support",
     description:
-      "Multilingual retail platform and social media campaigns for GAP",
+      "Multilingual platform for large Saudi retail brand and social media campaigns for GAP and M&S",
     link: "/work/saudi-fashion-retail",
     bgcolor: "#eb8b61",
   },
   sa: {
     image: saCoverImage,
     outlineImage: saCoverImageOutline,
-    title: "Financial SaaS Gift Aid platform",
+    title: "Complete SaaS platform suite",
     description:
-      "Used by millions of donors and making Gift Aid processing smarter",
+      "Public and internal web applications used by millions of donors and household charities such as Comic Relief",
     link: "/work/swiftaid",
     bgcolor: "#187195",
   },
   sppoc: {
     image: sppocCoverImage,
     outlineImage: sppocCoverImageOutline,
-    title: "UK Gov split VAT payment platform",
-    description: "Secure and accessible administrative portal built for HMRC",
+    title: "Secure dashboard & portals",
+    description:
+      "Secure administrative portal built for HM Revenue & Customs to display transactional data",
     link: "/work/split-payment-poc",
     bgcolor: "#563d7c",
   },

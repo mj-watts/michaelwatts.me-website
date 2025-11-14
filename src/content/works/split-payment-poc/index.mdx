@@ -19,97 +19,114 @@ tags:
 # recommendationImage: "../../../images/chris-chorley.png"
 # recommendationText: "Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation."
 # recommendationFooter: "Chris Chorley - Head of Engineering, Streeva"
-recommendedWork: ["iomusic", "webapps", "ecomm", "sfm"]
+recommendedWork: ["sa", "iomusic", "webapps", "ecomm", "sfm"]
 ---
 
 import { Image } from "astro:assets";
+import ContentSection from "../../../components/ContentSection.astro";
 import ImageContainer from "../../../components/ImageContainer.astro";
+import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import image1 from "./image1.png";
-import image2 from "./image2.png";
-import image3 from "./image3.png";
+import img1 from "./1.png";
+import img2 from "./2.png";
+import img3 from "./3.png";
+import img4 from "./4.png";
 import image4 from "./image4.png";
-import image5 from "./image5.png";
-import image6 from "./image6.png";
 
-## Secure and accessible administrative portal built for HMRC
+## Innovation proof of concept for HM Revenue & Customs
 
-<div>
-  I was part of team that designed, developed and delivered an HMRC
-  proof-of-concept application that securely handled large-scale transactional
-  data, using Elasticsearch and Kibana for advanced search and visualisation.
-</div>
+<ContentSection>
+  ### An introduction to the Streeva Split Payment portal
 
-<div>
+  This was one of several innovation projects delivered by the engineering team at Streeva, 
+  and the most notable to date, a £1.75M proof of concept for HM Revenue & Customs. 
+  The project demonstrated the ability to process and enrich transaction data in real time, and tested to 
+  handle millions of records with low latency and a scalable infrastructure that was designed to meet processing
+  requirements set by HMRC's technical team.
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#573d7c">
+      <Image
+        src={img1}
+        alt="SPPOC dashboard."
+        width={2816}
+        quality={100}
+        fit="cover"
+        loading="eager"
+      />
+      <ImageCaption color="var(--color-secondary)">
+        Transaction data in detail
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#573d7c">
+      <Image
+        src={img2}
+        alt="SPPOC dashboard."
+        width={2816}
+        quality={100}
+        fit="cover"
+        loading="eager"
+      />
+      <ImageCaption color="var(--color-secondary)">
+        Displaying JSON, XML and list data in depth
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+
+
+<ContentSection>
+  ### Prototyping in Figma, building with TypeScript
+
+  Designed and prototyped in Figma, built using Vue, TypeScript, Elasticsearch, Kibana and Node.
+  
+  Also developed mock merchant stores and integrated test payment solutions such as Stripe and Checkout.com with Streeva's data overlay network to demonstrate
+  the transaction processing element.
+
+  Regular presentations in sprint reviews to HMRC were well received, with our work recognised for its transparency and innovation.
+
   Working with BDD through Gherkin and Vitest, I helped ensure reliable feature
   delivery, while regular sprint reviews with HMRC shaped the system to their
   strict accessibility and performance needs.
-</div>
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image1}
-      alt="SPPOC dashboard."
-      width={2816}
-      quality={100}
-      fit="cover"
-      loading="eager"
-    />
-  </ImageContainer>
-</ContentImage1Column>
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="#573d7c">
+      <Image
+        src={img3}
+        alt="SPPOC partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="#573d7c">
+      <Image
+        src={img4}
+        alt="SPPOC partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
 
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image2}
-      alt="SPPOC partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image3}
-      alt="SPPOC partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#573d7c">
+      <Image
+        src={image4}
+        alt="SPPOC dashboard."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-secondary)">
+        Accessibility standards WCAG 2.2 are a must for any government website, even POCs
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image4}
-      alt="SPPOC dashboard."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image5}
-      alt="HMRC and Streeva logos."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image6}
-      alt="Elasticsearch Grafana analytics dashboard."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>

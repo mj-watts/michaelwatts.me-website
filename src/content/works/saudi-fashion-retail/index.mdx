@@ -21,121 +21,155 @@ recommendedWork: ["iomusic", "webapps", "ecomm", "sa"]
 ---
 
 import { Image } from "astro:assets";
+import ContentSection from "../../../components/ContentSection.astro";
 import ImageContainer from "../../../components/ImageContainer.astro";
+import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import image1 from "./image1.png";
-import image2 from "./image2.png";
+import img1 from "./1.png";
+import img2 from "./2.png";
+import img3 from "./3.png";
 import image3 from "./image3.png";
 import image4 from "./image4.png";
 import image5 from "./image5.png";
-import image6 from "./image6.png";
 import image7 from "./image7.png";
 
-## Delivered multilingual content platform with custom features and social media brand campaigns
+## A multilingual & multidirectional content platform custom built especially for this project
 
-<div>
-  This project focused on developing a flexible content platform with
-  ExpressionEngine, enabling editors to easily manage articles, images, and
-  multimedia. The site was fully responsive across devices and supported both
+<ContentSection>
+  ### Introduction to Saudi Fashion magazine
+
+  Saudi fashion and retail is HUGE. Malls out there are something else... they are not only places to shop but families and friends can meet, dine, have fun and of course do some shopping.
+  
+  I was hired to build a website and CMS to promote fashion and retail for one of the largest retail companies in Saudi.
+  Alongside supporting the brands that they serve this was an especially lucrative and interesting bit of work.
+
+  The project would focus on providing multilingual/multidirectional content, flexible bespoke templates, competitions, videos, articles and all the other things that are on most other fashion websites. 
+  
+  I developed a bespoke, platform built with ExpressionEngine that enabled non-technical editors to easily manage articles, images and video.
+  
+  The site was fully responsive across devices and supported both
   left-to-right and right-to-left text, including an Arabic edition written by
   content creators and editors based in Saudi.
-</div>
 
-<div>
+  <ContentImage1Column>
+    <ImageContainer>
+      <Image
+        src={img3}
+        alt="Saudi Fashion Retail."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage1Column>
+
   To improve engagement, I created custom plugins for social sharing, advanced
   search, and user comments, while also optimising performance with efficient
   coding and database management. Security and data protection were priorities,
-  kept up to date through regular monitoring. Working closely with designers and
-  content teams, the platform achieved a consistent, user-friendly experience,
-  refined further through testing and feedback.
-</div>
+  kept up to date through regular monitoring. 
 
-<div>
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={img1}
+        alt="Saudi Fashion Retail."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        The cover page for the Saudi fashion website 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+  
+  Working closely with designers and a content team, the platform achieved a consistent, user-friendly experience,
+  refined further through testing and feedback along with meticolous attention to detail for the language switch.
+  Some interesting things occur when you copy/paste arabic so we had some curveballs thrown at us on occasion.
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={img2}
+        alt="Saudi Fashion Retail."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Mult-directional/multilingual - no easy feat! 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+
+<ContentSection>
+  ### Social media games and applications driving brand engagement
+
+  On the back of working with one of the largest retail companies out there I was lucky enough to develop social media games for major retail brands such as Gap Inc. and Marks & Spencer.
+  They were designed to increase brand awareness and page interaction on platforms like Facebook.
+
+  We came up with some creative ideas: card matching games, upload fashion image competitions and 
+  a casting call competition for Gap was run for a number of years.
+
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="var(--color-onPrimary)">
+      <Image
+        src={image5}
+        alt="Saudi Fashion Retail."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={image4}
+        alt="Saudi Fashion Retail."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
+
+  Below was a competition we built and ran to find matching pairs: an app that ran in the browser on Facebook. A timing mechanism was implemented, 
+  that counted down and if you did it within the time limit your time would be added to the scoreboard. The fastest top 3 would win then prize.
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={image3}
+        alt="Saudi Fashion Retail."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        A competition to match pairs of cards with the brand's items on them 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+
+
+<ContentSection>
+  ### Content team management and support
+
   I also managed a content team in Saudi Arabia to ensure smooth delivery of
   articles and imagery. The site launched successfully, on schedule and to
-  budget, receiving positive user feedback. Alongside this, I developed social
-  media games for major retail brands such as Gap Inc. and Marks & Spencer,
-  designed to increase awareness and interaction on platforms like Facebook.
-</div>
+  budget, receiving positive user feedback.
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image1}
-      alt="Saudi Fashion Retail."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image5}
-      alt="Saudi Fashion Retail."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image4}
-      alt="Saudi Fashion Retail."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
-
-<ContentImage1Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image6}
-      alt="Saudi Fashion Retail."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage1Column>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image3}
-      alt="Saudi Fashion Retail."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage1Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image2}
-      alt="Saudi Fashion Retail."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image7}
-      alt="Saudi Fashion Retail."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
+  <ContentImage1Column>
+    <ImageContainer>
+      <Image
+        src={image7}
+        alt="Saudi Fashion Retail."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>

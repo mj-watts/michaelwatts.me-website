@@ -1,5 +1,5 @@
 ---
-title: "Financial SaaS Gift Aid platform"
+title: "Gift Aid SaaS platform"
 sectors: ["Fintech", "Charity", "Social Impact"]
 pubDate: 2025-09-09
 summary: "Used by JustGiving, Shelter and Comic Relief, amongst others, Swiftaid automates Gift Aid helping charities raise millions in additional funds to support their vital work."
@@ -18,114 +18,197 @@ tags:
 # recommendationImage: "../../../images/chris-chorley.png"
 # recommendationText: "Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation."
 # recommendationFooter: "Chris Chorley - Head of Engineering, Streeva"
-recommendedWork: ["iomusic", "webapps", "ecomm", "sfm"]
+recommendedWork: ["sppoc", "iomusic", "webapps", "ecomm", "sfm"]
 ---
 
 import { Image } from "astro:assets";
+import ContentSection from "../../../components/ContentSection.astro";
 import ImageContainer from "../../../components/ImageContainer.astro";
+import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import image1 from "./image1.png";
-import image2 from "./image2.png";
-import image3 from "./image3.png";
-import image4 from "./image4.png";
+import img1 from "./1.png";
+import img2 from "./2.png";
+import img3 from "./3.png";
+import img4 from "./4.png";
+import img5 from "./5.png";
+import img6 from "./6.png";
+import img7 from "./7.png";
+import img8 from "./8.png";
 import image5 from "./image5.png";
-import image6 from "./image6.png";
-import image7 from "./image7.png";
 
-## Innovative fintech focused on making everyday transactions smarter
+## Swiftaid - an innovative SaaS product suite for charities and donors
 
-<div>
-  At Streeva, I worked as part of a team on a financial SaaS Gift Aid platform
-  called Swiftaid—that has grown to over 8 million users and used by thousands
-  of charities and platforms including JustGiving, Shelter and Comic Relief—by
-  moving the codebase to TypeScript, aligning Vue apps with C# services, and
-  introducing BDD to boost reliability and facilitate scalability.
-</div>
+<ContentSection>
+  ### Introducing Swiftaid for charities and donors
 
-<div>
-  With millions of donors on the platform scalability was important to get
-  right. We also built a secure admin portal using Vue and C# to streamline
-  donor, donation, and charity management on the Swiftaid platform, allowing
-  administrators full control to update, delete, adjust records, and correct
-  information as needed. while improving APIs, security, and deployment to
-  support charities in raising more through Gift Aid.
-</div>
+Swiftaid is a successful SaaS product recognised as a partner by HMRC and has secured over £564 million in lost Gift Aid to date. Created by fintech startup Streeva,
+Swiftaid was designed to simplify the complex Gift Aid process for charities and donors.
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image1}
-      alt="Swiftaid charity dashboard."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
+Starting from scratch, the engineering team helped grow the platform to support over eight million donors and more than a
+thousand charities and donation platforms, including household names such as JustGiving, Shelter
+and Comic Relief.
 
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image2}
-      alt="Swiftaid partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image3}
-      alt="Swiftaid partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
+Since launch, Swiftaid has processed over £250 million in eligible donations,
+automated Gift Aid claims worth an estimated £60 million in reclaimed tax for charities, and achieved
+a 97% user satisfaction rating across its partner platforms.
 
-<ContentImage1Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image4}
-      alt="Swiftaid admin dashboard."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
+Swiftaid's success is also demonstrated through its recognition by HMRC as the first solution to automate Gift Aid on contactless donations,
+its ability to help charities unlock millions in unclaimed Gift Aid, and its partnerships with major organisations
+like the Royal British Legion, Dogs Trust, and Crowdfunder.
 
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image6}
-      alt="Swiftaid partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image7}
-      alt="Swiftaid partial UI."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#f3f3f3">
+      <Image
+        src={img1}
+        alt="Swiftaid charity dashboard."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Dashboard allowing charities to manage donations, funding sources and team members
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image5}
-      alt="Swiftaid blog."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
+<ContentSection>
+  ### Providing account management tools for donors
+
+Throughout the life of the product the primary job of the engineering team was
+to design and develop new features. Features such as additional email, card
+and phone accounts meant that the product could support a more reliable method
+of matching donors to donations.
+
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="#f5f5f5">
+      <Image
+        src={img3}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Add email and cards
+      </ImageCaption>
+    </ImageContainer>
+    <ImageContainer backgroundColor="#f5f5f5">
+      <Image
+        src={img4}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Persuading donors not to leave
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage2Column>
+
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="#f5f5f5">
+      <Image
+        src={img7}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Spreadsheet upload processing
+      </ImageCaption>
+    </ImageContainer>
+    <ImageContainer backgroundColor="#f5f5f5">
+      <Image
+        src={img8}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-onPrimary)">
+        Team member management
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage2Column>
+</ContentSection>
+
+<ContentSection>
+  ### Providing management tools for administrators
+
+  A secure administration portal was developed to streamline donor, donation,
+  and charity management on the Swiftaid platform, allowing administrators full
+  control to update, delete, adjust records, and correct information as needed.
+  While improving APIs, security, and deployment to support the small
+  development team.
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#0d47a1">
+      <Image
+        src={img2}
+        alt="Swiftaid admin dashboard."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-secondary)">
+        Portal for administrators to manage donors, donations and charities
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+
+<ContentSection>
+  ### Building brand trust, blogs and SEO
+
+  One of the top-scoring search terms we saw for a while was "Is Swiftaid
+  legit", which was a genuine and understandable concern given that the brand
+  was relatively unknown. So building brand trust was a top priority.
+
+  Consistent communication via email, social media, and blog articles helped
+  improve Swiftaid's SEO rankings and strengthened users' confidence in the brand.
+  Which was evidenced through search terms related to genuine questions around Gift Aid and charitable taxation and 
+  customer outreach through our web sites.
+
+  Presenting accurate content with clean design, a sprinkling of animation and a
+  reliable and well-considered user experience helped reassure users that
+  Swiftaid was a trustworthy company and that they were committed to best practices in handling
+  and protecting personal data.
+
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="#7904dd">
+      <Image
+        src={img5}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="#32485c">
+      <Image
+        src={img6}
+        alt="Swiftaid partial UI."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
+  
+  <ContentImage1Column>
+    <ImageContainer>
+      <Image
+        src={image5}
+        alt="Swiftaid blog."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+

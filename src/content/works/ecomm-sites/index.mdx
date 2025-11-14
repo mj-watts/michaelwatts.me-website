@@ -22,105 +22,120 @@ recommendedWork: ["iomusic", "webapps", "sfm", "sa"]
 ---
 
 import { Image } from "astro:assets";
+import ContentSection from "../../../components/ContentSection.astro";
 import ImageContainer from "../../../components/ImageContainer.astro";
+import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import image1 from "./image1.png";
-import image2 from "./image2.png";
+import img1 from "./1.png";
+import img2 from "./2.png";
 import image3 from "./image3.png";
 import image4 from "./image4.png";
 import image5 from "./image5.png";
 import image6 from "./image6.png";
 
-## Delivered and optimised ecommerce platforms with improved checkout conversion and integrating multiple payment gateways.
+## Various tales from my ecommerce adventures.
 
-<div>
-  I have supported the growth of several ecommerce platforms by combining
-  reliable technical delivery with close client collaboration. My work focused
-  on improving checkout experiences, ensuring platform stability, and enabling
-  teams to manage their own sites with confidence.
-</div>
+I have supported the growth of several ecommerce platforms by combining
+reliable technical delivery with close client collaboration. My work focused
+on improving checkout experiences, ensuring platform stability, and enabling
+teams to manage their own sites with confidence.
 
-<div>
+<ContentSection>
+  ### Guitar Village ecommerce website
+
   At Guitar Village, I enhanced the Ruby on Rails platform by integrating new
   features. Regular maintenance and performance improvements ensured the site
   stayed responsive and secure, while training sessions gave the client's team
   the ability to manage content and updates directly.
-</div>
 
-<div>
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#4b6a61">
+      <Image
+        src={img1}
+        alt="Ecommerce."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-secondary)">
+        Guitar Village is an institution with past customers including Slash, Brian May and Rick Astley 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="var(--color-onPrimary)">
+      <Image
+        src={image3}
+        alt="Ecommerce."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={image4}
+        alt="Ecommerce."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#4b6a62">
+      <Image
+        src={img2}
+        alt="Ecommerce."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="var(--color-secondary)">
+        A high integrity brand requires good design, flawless usability and accurate SEO 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
+
+<ContentSection>
+  ### One Stop Grow Shop Ruby on Rails & Spree website
+
   For One Stop Grow Shop, I managed and developed the Spree Commerce site,
   adding crypto payment processing alongside their existing payment processor.
   These improvements expanded flexibility for customers.
-</div>
 
-<div>
-  I have also worked with Shopify and WooCommerce as well as integrating Adyen,
+  I also managed a remote team that handled some of the development of the site
+  and met with and handled the client several times to bash out ideas, answer questions, support problems, etc.
+</ContentSection>
+
+<ContentSection>
+  ### Shopify, WooCommerce and Stripe
+
+  I have worked with Shopify and custom template system (Liquid) and WooCommerce as well as implementing payment integrations with
   Stripe, PayPal, GoCardless and checkout.com into a number of projects.
-</div>
 
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image1}
-      alt="Ecommerce."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image3}
-      alt="Ecommerce."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image4}
-      alt="Ecommerce."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
-
-<ContentImage1Column>
-  <ImageContainer>
-    <Image
-      src={image2}
-      alt="Ecommerce."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage2Column>
-  <ImageContainer backgroundColor="var(--color-secondary)">
-    <Image
-      src={image5}
-      alt="Ecommerce."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image6}
-      alt="Ecommerce."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="var(--color-secondary)">
+      <Image
+        src={image5}
+        alt="Ecommerce."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="var(--color-onPrimary)">
+      <Image
+        src={image6}
+        alt="Ecommerce."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
+</ContentSection>

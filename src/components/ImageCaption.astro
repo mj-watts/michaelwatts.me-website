@@ -1,0 +1,18 @@
+---
+const { color = "var(--color-onPrimary)" } = Astro.props;
+---
+
+<div class="image-caption">
+  <slot />
+</div>
+
+<style is:global define:vars={{ color }}>
+  .image-caption {
+    font-size: var(--font-size-sm);
+    font-variation-settings: var(--font-semi-bold);
+    color: var(--color);
+    background-color: oklab(from var(--color) calc(l + 0.1) a b / 0.2);
+    text-align: center;
+    padding: var(--space-4);
+  }
+</style>

@@ -1,12 +1,12 @@
 <a href="/" class="avatar">
   <span role="heading" aria-level="1" class="avatar__heading">
     <span class="avatar__heading--name">Michael Watts</span>
-    <span class="avatar__heading--title">Software Engineer</span>
+    <div class="avatar__heading--title">Software Engineer</div>
   </span>
 </a>
 
 <script>
-  import { animate } from "animejs";
+  import { animate, stagger, utils, splitText } from "animejs";
 
   if (
     "IntersectionObserver" in window &&
@@ -14,20 +14,24 @@
     "intersectionRatio" in window.IntersectionObserverEntry.prototype
   ) {
     const section = document.querySelector("#hero");
+    const { chars } = splitText(".avatar__heading--title", {
+      chars: { wrap: "clip" },
+    });
 
     const observer = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animate(".avatar__heading--title", {
-              translateY: -100,
-              duration: 1000,
+            animate(chars, {
+              opacity: 0,
+              duration: 500,
+              delay: stagger(-10),
               ease: "outQuart",
             });
           } else {
-            animate(".avatar__heading--title", {
-              translateY: 0,
-              delay: 200,
+            animate(chars, {
+              opacity: 1,
+              delay: stagger(10),
               duration: 1000,
               ease: "outQuart",
             });
@@ -50,13 +54,13 @@
     --size: 48px;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 800px) {
     .avatar {
       --heading-display: flex;
     }
   }
 
-  @media screen and (min-width: 950px) {
+  @media screen and (min-width: 1290px) {
     .avatar {
       --title-display: block;
     }
@@ -110,10 +114,9 @@
   .avatar__heading--title {
     display: var(--title-display);
     color: var(--color-emphasis);
-    transform: translateY(-100px);
-    transform-origin: left center;
     isolation: isolate;
     z-index: 1;
+    overflow: hidden;
   }
 
   .avatar__icon-expression--none,
