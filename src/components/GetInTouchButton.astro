@@ -1,13 +1,8 @@
 ---
 const { href, text, theme } = Astro.props;
 
-let buttonColor = "var(--color-primary)";
-let buttonColorInvert = "var(--color-onPrimary)";
-
-if (theme === "dark") {
-  buttonColor = "var(--color-onPrimary)";
-  buttonColorInvert = "var(--color-primary)";
-}
+let buttonColor = "var(--color-emphasis)";
+let buttonColorInvert = "var(--color-primary)";
 ---
 
 <a class="animated-button" href={href}>
@@ -45,9 +40,9 @@ if (theme === "dark") {
     --button-color-invert: var(--buttonColorInvert);
 
     align-items: center;
-    background-color: transparent;
+    background-color: var(--button-color);
     box-sizing: border-box;
-    color: var(--button-color);
+    color: var(--button-color-invert);
     cursor: pointer;
     display: inline-flex;
     font-variation-settings: var(--font-bold);
@@ -87,11 +82,11 @@ if (theme === "dark") {
     border-top-right-radius: 225px 15px;
     border-bottom-right-radius: 15px 225px;
     border-bottom-left-radius: 225px 15px;
-    border: outset 3px oklab(from var(--color-emphasis) l a b / 0.4);
+    border: solid 1px oklab(from var(--button-color) calc(l - 0.2) a b);
   }
 
   a:hover {
-    color: var(--button-color-invert);
+    color: var(--button-color);
     transition-delay: 200ms;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
     transform: rotateZ(-1deg);
@@ -102,13 +97,13 @@ if (theme === "dark") {
     border-top-right-radius: 225px 5px;
     border-bottom-right-radius: 5px 225px;
     border-bottom-left-radius: 225px 5px;
-    border: outset 3px oklab(from var(--color-emphasis) l a b / 1);
+    border: outset 1px oklab(from var(--button-color) l a b / 1);
   }
 
   .circle {
     --size: var(--width, 0);
 
-    background: var(--color-emphasis);
+    background: var(--button-color-invert);
     border-radius: 100dvh;
     content: "";
     height: var(--size);
@@ -124,7 +119,7 @@ if (theme === "dark") {
   }
 
   a:hover .circle {
-    background: var(--color-emphasis);
+    background: var(--button-color-invert);
     transform: scale(2);
   }
 </style>

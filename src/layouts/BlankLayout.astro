@@ -7,7 +7,12 @@ const { pageTitle } = Astro.props;
 ---
 
 <script>
-  import { themePrimary, themeOnPrimary, themeSecondary } from "../store";
+  import {
+    themePrimary,
+    themeOnPrimary,
+    themeSecondary,
+    themeEmphasis,
+  } from "../store";
 
   document.documentElement.style.setProperty(
     "--color-primary",
@@ -21,6 +26,10 @@ const { pageTitle } = Astro.props;
     "--color-secondary",
     themeSecondary.get()
   );
+  document.documentElement.style.setProperty(
+    "--color-emphasis",
+    themeEmphasis.get()
+  );
 
   themePrimary.subscribe((color) => {
     document.documentElement.style.setProperty("--color-primary", color);
@@ -32,6 +41,10 @@ const { pageTitle } = Astro.props;
 
   themeSecondary.subscribe((color) => {
     document.documentElement.style.setProperty("--color-secondary", color);
+  });
+
+  themeEmphasis.subscribe((color) => {
+    document.documentElement.style.setProperty("--color-emphasis", color);
   });
 </script>
 

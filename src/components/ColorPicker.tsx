@@ -4,6 +4,7 @@ import {
   themePrimary,
   themeOnPrimary,
   themeSecondary,
+  themeEmphasis,
   selectedColorMapId,
 } from "../store";
 
@@ -37,7 +38,7 @@ const Button = styled.button`
   user-select: none;
   transition: background-color 0.2s ease-in-out;
   border: none;
-  background: var(--color-secondary);
+  background: var(--color-emphasis);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,14 +48,14 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: oklab(from var(--color-secondary) calc(l - 0.1) a b);
+    background: oklab(from var(--color-emphasis) calc(l - 0.1) a b);
   }
 `;
 
 const PaletteIcon = styled.svg`
   width: 24px;
   height: 24px;
-  fill: var(--color-onPrimary);
+  fill: var(--color-primary);
   transform: rotate(90deg);
 `;
 
@@ -104,6 +105,7 @@ type Colors = {
   "--color-primary": string;
   "--color-onPrimary": string;
   "--color-secondary": string;
+  "--color-emphasis": string;
 };
 
 type ColorSet = {
@@ -121,14 +123,17 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#FFFFFF",
       "--color-onPrimary": "#363636",
       "--color-secondary": "#D2D2D2",
+      "--color-emphasis": "#e00101",
     },
   ],
   [
     2,
     {
+      // Pink
       "--color-primary": "#3C0350",
       "--color-onPrimary": "#D3B1C0",
-      "--color-secondary": "#E7437F",
+      "--color-secondary": "#5a1153",
+      "--color-emphasis": "#e00175",
     },
   ],
   [
@@ -138,6 +143,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#37AF5D",
       "--color-onPrimary": "#005319",
       "--color-secondary": "#C6FF00",
+      "--color-emphasis": "#6d130f",
     },
   ],
   [
@@ -147,6 +153,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#0779FF",
       "--color-onPrimary": "#002180",
       "--color-secondary": "#4ACDFC",
+      "--color-emphasis": "#ffd009",
     },
   ],
   [
@@ -156,6 +163,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#061036",
       "--color-onPrimary": "#675ce1",
       "--color-secondary": "#352e86",
+      "--color-emphasis": "#732c1d",
     },
   ],
 ]);
@@ -196,6 +204,7 @@ export default function ColorPicker() {
       themePrimary.set(colors["--color-primary"]);
       themeOnPrimary.set(colors["--color-onPrimary"]);
       themeSecondary.set(colors["--color-secondary"]);
+      themeEmphasis.set(colors["--color-emphasis"]);
       selectedColorMapId.set(selectedColorMapIdState.toString());
     }
   }, [selectedColorMapIdState]);
