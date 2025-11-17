@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Container from "../../components/Container.astro";
+import Button from "../../components/GetInTouchButton.astro";
 import animatedHeroImage from "../../images/hero-illustration.gif";
 ---
 
@@ -9,14 +10,27 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     <div class="hero-content-wrapper">
       <div class="title">
         <h2 class="title__partial title__partial--first">
-          <span
-            >Clarity <span style="color:var(--color-emphasis)">&</span> Curiosity,</span
-          >
-          <span>Step by Step...</span>
+          <span>
+            I develop
+            {" "}
+            <span style="color:var(--color-emphasis)">&</span>
+            {" "}
+            deliver
+          </span>
+          <span>software solutions...</span>
         </h2>
         <span class="title__partial title__partial--second">
-          Building software solutions with craft, care and imagination.
+          I'm an accomplished digital expert and I'll work hard to help you
+          achieve your objectives.
         </span>
+        <div class="title__partial title__partial--second">
+          <Button
+            href="#contact"
+            text="Get in touch"
+            theme="dark"
+            icon="false"
+          />
+        </div>
       </div>
       <div class="hero-image-container">
         <Image
