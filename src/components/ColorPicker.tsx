@@ -142,7 +142,7 @@ const colorMap: ColorMap = new Map([
       // Green
       "--color-primary": "#37AF5D",
       "--color-onPrimary": "#005319",
-      "--color-secondary": "#C6FF00",
+      "--color-secondary": "#42da66",
       "--color-emphasis": "#6d130f",
     },
   ],
