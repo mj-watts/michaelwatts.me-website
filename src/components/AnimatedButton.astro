@@ -71,8 +71,6 @@ if (theme === "dark") {
 
     align-items: center;
     background-color: transparent;
-    border: 3px solid var(--button-color);
-    border-radius: 100dvh;
     box-sizing: border-box;
     color: var(--button-color);
     cursor: pointer;
@@ -86,14 +84,50 @@ if (theme === "dark") {
     overflow: hidden;
     padding: 0 var(--space-12);
     position: relative;
-    transition: color 200ms ease-out;
-    transition-delay: 100ms;
     user-select: none;
+
+    border-top-left-radius: 225px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+    border: solid 3px var(--button-color);
+
+    box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.2);
+
+    transition: all 200ms ease-in-out;
+    transition-delay: 100ms;
+  }
+
+  a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition: all 200ms ease-in-out;
+
+    border-top-left-radius: 15px 225px;
+    border-top-right-radius: 225px 15px;
+    border-bottom-right-radius: 15px 225px;
+    border-bottom-left-radius: 225px 15px;
+    border: outset 3px oklab(from var(--color-emphasis) l a b / 0.4);
   }
 
   a:hover {
     color: var(--button-color-invert);
     transition-delay: 200ms;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
+    transform: rotateZ(-1deg);
+  }
+
+  a:hover::before {
+    border-top-left-radius: 5px 225px;
+    border-top-right-radius: 225px 5px;
+    border-bottom-right-radius: 5px 225px;
+    border-bottom-left-radius: 225px 5px;
+    border: outset 3px oklab(from var(--button-color) l a b / 1);
   }
 
   .circle {

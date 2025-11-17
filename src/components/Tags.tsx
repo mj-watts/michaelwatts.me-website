@@ -25,11 +25,24 @@ const Tag = styled.span`
   white-space: nowrap;
   margin: 0;
   height: var(--height);
-  border-radius: var(--border-radius);
   background-color: var(--color-onPrimary);
   color: var(--color-primary);
   font-variation-settings: var(--font-semi-bold);
   line-height: 1px;
+
+  border-top-left-radius: 225px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+  border: solid 3px var(--button-color);
+
+  box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.2);
+
+  transition: box-shadow 200ms ease-in-out;
+
+  &:hover {
+    box-shadow: 0px 0px 0 0 rgba(0, 0, 0, 0.2);
+  }
 `;
 
 function TagsSkeletonComponent() {
@@ -78,9 +91,7 @@ export default function Tags({ tags }: TagsProps) {
   return (
     <TagsContainer>
       {sortedTags.map((tag) => (
-        <Tag key={tag}>
-          {tag}
-        </Tag>
+        <Tag key={tag}>{tag}</Tag>
       ))}
     </TagsContainer>
   );
