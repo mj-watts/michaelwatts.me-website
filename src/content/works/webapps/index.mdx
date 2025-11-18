@@ -36,10 +36,21 @@ import img6 from "./6.png";
 import img7 from "./7.png";
 import img8 from "./8.png";
 import img9 from "./9.png";
+
 import mainVideo from "./wwf-cfc-main.mp4";
+import mainVideoWebm from "./wwf-cfc-main.webm";
+
 import questionsVideo from "./wwf-cfc-questions.mp4";
+import questionsVideoWebm from "./wwf-cfc-questions.webm";
+import questionsVideoPoster from "./wwf-cfc-questions-poster.png";
+
 import stepsVideo from "./wwf-cfc-steps.mp4";
+import stepsVideoWebm from "./wwf-cfc-steps.webm";
+import stepsVideoPoster from "./wwf-cfc-steps-poster.png";
+
 import titleVideo from "./wwf-cfc-title.mp4";
+import titleVideoWebm from "./wwf-cfc-title.webm";
+import titleVideoPoster from "./wwf-cfc-title-poster.png";
 
 ## Web applications built with different technology stacks
 
@@ -78,24 +89,43 @@ import titleVideo from "./wwf-cfc-title.mp4";
   
   <ContentImage2Column>
     <ImageContainer backgroundColor="var(--color-secondary)">
-      <video autoplay="true" playslinline loop>
+      <video poster={questionsVideoPoster.src} autoplay="true" playslinline loop>
         <source type="video/mp4" src={questionsVideo} />
+        <source type="video/webm" src={questionsVideoWebm} />
+        <p>Download and watch <a href={questionsVideo}>video</a></p>
       </video>
     </ImageContainer>
     <ImageContainer backgroundColor="var(--color-onPrimary)">
-      <video autoplay="true" playslinline loop>
+      <video poster={stepsVideoPoster.src} autoplay="true" playslinline loop>
         <source type="video/mp4" src={stepsVideo} />
+        <source type="video/webm" src={stepsVideoWebm} />
+        <p>Download and watch <a href={stepsVideo}>video</a></p>
       </video>
     </ImageContainer>
   </ContentImage2Column>
 
   <ContentImage1Column>
     <ImageContainer backgroundColor="#000">
-      <video autoplay="true" playslinline loop>
+      <video poster={img1.src} autoplay="true" playslinline loop>
         <source type="video/mp4" src={mainVideo} />
+        <source type="video/webm" src={mainVideoWebm} />
+        <p>Download and watch <a href={mainVideo}>video</a></p>
       </video>
       <ImageCaption color="var(--color-secondary)">
         A video showing the introduction page animation and the starting question 
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#000">
+      <video poster={titleVideoPoster.src} autoplay="true" playslinline loop>
+        <source type="video/mp4" src={titleVideo} />
+        <source type="video/webm" src={titleVideoWebm} />
+        <p>Download and watch <a href={titleVideo}>video</a></p>
+      </video>
+      <ImageCaption color="var(--color-secondary)">
+        Different states of title content when starting or continuing the questionnaire 
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
