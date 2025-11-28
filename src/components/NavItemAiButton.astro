@@ -1,0 +1,217 @@
+<div class="button-wrapper">
+  <button>
+    <slot />
+  </button>
+  <div class="button-bg"></div>
+</div>
+
+<div class="chat-screen">
+  <button class="chat-screen-close-button">Close</button>
+  <iframe src="https://chat.michaelwatts.me"></iframe>
+</div>
+
+<div class="chat-screen-overlay"></div>
+
+<script>
+  import {
+    themePrimary,
+    themeOnPrimary,
+    themeSecondary,
+    themeEmphasis,
+  } from "../store";
+
+  const chatButton = document.querySelector(".button-wrapper");
+  const chatScreenOverlay = document.querySelector(".chat-screen-overlay");
+  const chatScreen = document.querySelector(".chat-screen");
+  const chatScreenCloseButton = document.querySelector(
+    ".chat-screen-close-button"
+  );
+  const iframe = chatScreen?.querySelector("iframe");
+
+  chatButton?.addEventListener("click", () => {
+    chatScreen?.classList.add("show");
+    chatScreenOverlay?.classList.add("show");
+    document.documentElement.style.setProperty("--document-width", "50dvw");
+  });
+
+  chatScreenCloseButton?.addEventListener("click", () => {
+    chatScreen?.classList.remove("show");
+    chatScreenOverlay?.classList.remove("show");
+    document.documentElement.style.removeProperty("--document-width");
+  });
+
+  themePrimary.subscribe((color) => {
+    iframe?.contentWindow?.postMessage(`--color-primary:${color}`, "*");
+  });
+
+  themeOnPrimary.subscribe((color) => {
+    iframe?.contentWindow?.postMessage(`--color-onPrimary:${color}`, "*");
+  });
+
+  themeSecondary.subscribe((color) => {
+    iframe?.contentWindow?.postMessage(`--color-secondary:${color}`, "*");
+  });
+
+  themeEmphasis.subscribe((color) => {
+    iframe?.contentWindow?.postMessage(`--color-emphasis:${color}`, "*");
+  });
+</script>
+
+<style>
+  .button-wrapper {
+    --button-color: var(--color-onPrimary);
+
+    position: relative;
+  }
+
+  .button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: linear-gradient(
+      90deg,
+      #ff8038 0%,
+      #ff0099 30.43%,
+      #00ebeb 68.23%,
+      #db00ff 100%
+    );
+    background-size: 600% 600%;
+    animation: AnimateBorder 4s ease infinite;
+    z-index: -1;
+    transform: translate(-4px, -4px);
+    transition: filter 1s ease-in;
+
+    border-top-left-radius: 225px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+  }
+
+  .button-wrapper:hover .button-bg {
+    filter: blur(10px);
+    transition: filter 0.4s ease-in;
+  }
+
+  button {
+    color: var(--color-primary);
+    font-weight: 800;
+    display: block;
+    padding: 16px 32px;
+    background-color: var(--color-onPrimary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 1s ease;
+
+    border: 0px;
+    border-top-left-radius: 225px 15px;
+    border-top-right-radius: 15px 225px;
+    border-bottom-right-radius: 225px 15px;
+    border-bottom-left-radius: 15px 255px;
+  }
+
+  button:hover,
+  button:focus,
+  button:active {
+    animation: animatedTextColor 4s ease infinite;
+    background-color: oklab(from var(--color-onPrimary) calc(l - 0.5) a b);
+  }
+
+  @keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes animatedTextColor {
+    0% {
+      color: #ff8038;
+    }
+    33% {
+      color: #ff0099;
+    }
+    66% {
+      color: #00ebeb;
+    }
+    100% {
+      color: #db00ff;
+    }
+  }
+
+  .chat-screen-overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99998;
+    background-color: oklab(from var(--color-primary) calc(l - 0.05) a b / 0.5);
+    backdrop-filter: blur(4px);
+  }
+
+  .chat-screen-overlay.show {
+    display: block;
+  }
+
+  .chat-screen {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    z-index: 99999;
+    height: 100dvh;
+    width: var(--chat-screen-width, 100dvw);
+    padding: var(--space-8);
+    background-color: oklab(
+      from var(--color-primary) calc(l - 0.05) a b / 0.95
+    );
+    box-shadow:
+      -20px 20px 0 rgb(0, 0, 0, 0.2),
+      0 0 30px rgb(0, 0, 0, 0.5);
+    align-items: end;
+    justify-content: start;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  @media screen and (min-width: 860px) {
+    .chat-screen {
+      --chat-screen-width: 50dvw;
+    }
+  }
+
+  @media screen and (min-width: 1060px) {
+    .chat-screen {
+      --chat-screen-width: 600px;
+    }
+  }
+
+  .chat-screen.show {
+    display: flex;
+  }
+
+  .chat-screen iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .chat-screen-close-button {
+    color: var(--color-primary);
+    background-color: var(--color-emphasis);
+    font-size: var(--font-size-xs);
+  }
+
+  .chat-screen-close-button:hover {
+    background-color: oklab(from var(--color-emphasis) calc(l - 0.1) a b);
+    animation: none;
+  }
+</style>
