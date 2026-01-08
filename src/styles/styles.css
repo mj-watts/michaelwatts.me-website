@@ -80,7 +80,7 @@
 
 @layer variables {
   :root {
-    --font-display: "argent-cf", serif;
+    --font-display: "sofia-pro", sans-serif;
     --font-sans: "inter-variable", sans-serif;
     --font-serif: "proxima-nova", serif;
     --font-mono: "source-code-pro", monospace;

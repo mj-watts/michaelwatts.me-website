@@ -2,22 +2,11 @@ import { atom } from "nanostores";
 import { persistentAtom } from "@nanostores/persistent";
 
 import iomusicCoverImage from "../src/content/works/io-music/preview.png";
-import iomusicCoverImageOutline from "../src/content/works/io-music/preview-outline.png";
-
 import webappsCoverImage from "../src/content/works/webapps/preview.png";
-import webappsCoverImageOutline from "../src/content/works/webapps/preview-outline.png";
-
 import ecommCoverImage from "../src/content/works/ecomm-sites/preview.png";
-import ecommCoverImageOutline from "../src/content/works/ecomm-sites/preview-outline.png";
-
 import sfmCoverImage from "../src/content/works/saudi-fashion-retail/preview.png";
-import sfmCoverImageOutline from "../src/content/works/saudi-fashion-retail/preview-outline.png";
-
 import saCoverImage from "../src/content/works/swiftaid/preview.png";
-import saCoverImageOutline from "../src/content/works/swiftaid/preview-outline.png";
-
 import sppocCoverImage from "../src/content/works/split-payment-poc/preview.png";
-import sppocCoverImageOutline from "../src/content/works/split-payment-poc/preview-outline.png";
 
 export const themePrimary = persistentAtom<string>("themePrimary", "#FFFFFF");
 
@@ -41,7 +30,6 @@ export const selectedColorMapId = persistentAtom<string>(
 export interface RecommendedWorkCollection {
   [key: string]: {
     image: { src: string };
-    outlineImage: { src: string };
     title: string;
     description: string;
     link: string;
@@ -52,7 +40,6 @@ export interface RecommendedWorkCollection {
 export const recommendedWork = atom<RecommendedWorkCollection>({
   iomusic: {
     image: iomusicCoverImage,
-    outlineImage: iomusicCoverImageOutline,
     title: "iOS app development",
     description:
       "Native iOS and Android music video application. Launced successfully on Apple Store",
@@ -61,7 +48,6 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   webapps: {
     image: webappsCoverImage,
-    outlineImage: webappsCoverImageOutline,
     title: "Web applications",
     description:
       "Development of popular Carbon Footprint Calculator for World Wildlife Fund and internal applications for airline logistics brand",
@@ -70,7 +56,6 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   ecomm: {
     image: ecommCoverImage,
-    outlineImage: ecommCoverImageOutline,
     title: "Ecommerce development",
     description:
       "Ecommerce website development for a number of successful brands and payment gateway integration",
@@ -79,7 +64,6 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sfm: {
     image: sfmCoverImage,
-    outlineImage: sfmCoverImageOutline,
     title: "CMS development & support",
     description:
       "Multilingual platform for large Saudi retail brand and social media campaigns for GAP and M&S",
@@ -88,7 +72,6 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sa: {
     image: saCoverImage,
-    outlineImage: saCoverImageOutline,
     title: "Complete SaaS platform suite",
     description:
       "Public and internal web applications used by millions of donors and household charities such as Comic Relief",
@@ -97,7 +80,6 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sppoc: {
     image: sppocCoverImage,
-    outlineImage: sppocCoverImageOutline,
     title: "Secure dashboard & portals",
     description:
       "Secure administrative portal built for HM Revenue & Customs to display transactional data",

@@ -17,7 +17,6 @@ const rw = recommendedWork.get();
 const workList = frontmatter.recommendedWork.map((key: string) => ({
   bgcolor: rw[key].bgcolor,
   image: rw[key].image,
-  outlineImage: rw[key].outlineImage,
   title: rw[key].title,
   description: rw[key].description,
   link: rw[key].link,
@@ -110,7 +109,6 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
               {workList.map(
                 (work: {
                   image: { src: string };
-                  outlineImage: { src: string };
                   title: string;
                   description: string;
                   bgcolor: string;
@@ -118,7 +116,6 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
                 }) => (
                   <RecommendedWork
                     image={work.image}
-                    outlineImage={work.outlineImage}
                     title={work.title}
                     description={work.description}
                     link={work.link}
@@ -136,6 +133,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 
 <style>
   .work-item {
+    --grid-template-columns: 1fr;
     --flex-direction: column;
     --gap: var(--space-12);
     --work-item__aside-position: relative;
@@ -151,6 +149,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 
   @media screen and (min-width: 1000px) {
     .work-item {
+      --grid-template-columns: repeat(2, 1fr);
       --flex-direction: row;
       --work-item__aside-position: sticky;
       --work-item__aside-top: var(--space-12);
@@ -164,6 +163,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 
   @media screen and (min-width: 1550px) and (min-height: 1200px) {
     .work-item {
+      --grid-template-columns: repeat(3, 1fr);
       --work-item__aside-width: 500px;
       --work-item__main_max-width: 1740px;
       --aside-recommended-work-display: flex;

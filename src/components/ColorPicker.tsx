@@ -123,7 +123,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#FFFFFF",
       "--color-onPrimary": "#363636",
       "--color-secondary": "#D2D2D2",
-      "--color-emphasis": "#e00101",
+      "--color-emphasis": "#0d9667",
     },
   ],
   [
@@ -143,7 +143,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#37AF5D",
       "--color-onPrimary": "#005319",
       "--color-secondary": "#42da66",
-      "--color-emphasis": "#6d130f",
+      "--color-emphasis": "#822665",
     },
   ],
   [
@@ -153,7 +153,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#0779FF",
       "--color-onPrimary": "#002180",
       "--color-secondary": "#4ACDFC",
-      "--color-emphasis": "#ffd009",
+      "--color-emphasis": "#FF0779",
     },
   ],
   [
@@ -163,7 +163,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#061036",
       "--color-onPrimary": "#675ce1",
       "--color-secondary": "#352e86",
-      "--color-emphasis": "#732c1d",
+      "--color-emphasis": "#681829",
     },
   ],
 ]);

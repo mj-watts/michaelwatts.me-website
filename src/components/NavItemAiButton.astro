@@ -34,11 +34,14 @@
     document.documentElement.style.setProperty("--document-width", "50dvw");
   });
 
-  chatScreenCloseButton?.addEventListener("click", () => {
+  function closeChatScreen() {
     chatScreen?.classList.remove("show");
     chatScreenOverlay?.classList.remove("show");
     document.documentElement.style.removeProperty("--document-width");
-  });
+  }
+
+  chatScreenCloseButton?.addEventListener("click", closeChatScreen);
+  chatScreenOverlay?.addEventListener("click", closeChatScreen);
 
   themePrimary.subscribe((color) => {
     iframe?.contentWindow?.postMessage(`--color-primary:${color}`, "*");
@@ -68,8 +71,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: calc(100% + 8px);
-    height: calc(100% + 8px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
     background: linear-gradient(
       90deg,
       #ff8038 0%,
@@ -80,13 +83,9 @@
     background-size: 600% 600%;
     animation: AnimateBorder 4s ease infinite;
     z-index: -1;
-    transform: translate(-4px, -4px);
+    transform: translate(-2px, -2px);
     transition: filter 1s ease-in;
-
-    border-top-left-radius: 225px 15px;
-    border-top-right-radius: 15px 225px;
-    border-bottom-right-radius: 225px 15px;
-    border-bottom-left-radius: 15px 255px;
+    border-radius: 6px;
   }
 
   .button-wrapper:hover .button-bg {
@@ -99,23 +98,19 @@
     font-weight: 800;
     display: block;
     padding: 16px 32px;
-    background-color: var(--color-onPrimary);
+    background-color: var(--color-emphasis);
     cursor: pointer;
     white-space: nowrap;
     transition: color 1s ease;
-
-    border: 0px;
-    border-top-left-radius: 225px 15px;
-    border-top-right-radius: 15px 225px;
-    border-bottom-right-radius: 225px 15px;
-    border-bottom-left-radius: 15px 255px;
+    border: 0;
+    border-radius: 5px;
   }
 
   button:hover,
   button:focus,
   button:active {
     animation: animatedTextColor 4s ease infinite;
-    background-color: oklab(from var(--color-onPrimary) calc(l - 0.5) a b);
+    background-color: oklab(from var(--color-emphasis) calc(l - 0.1) a b / 0.8);
   }
 
   @keyframes AnimateBorder {
