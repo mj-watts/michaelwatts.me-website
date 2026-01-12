@@ -25,17 +25,10 @@ const Tag = styled.span`
   white-space: nowrap;
   margin: 0;
   height: var(--height);
-  background-color: oklab(from var(--color-emphasis) l a b / 0.2);
+  background-color: oklab(from var(--color-onPrimary) l a b / 0.2);
   color: var(--color-onPrimary);
   font-variation-settings: var(--font-semi-bold);
   line-height: 1px;
-
-  border-radius: 3px;
-  border: solid 3px var(--button-color);
-
-  box-shadow: 6px 6px 0 0 oklab(from var(--color-emphasis) l a b / 0.08);
-
-  transition: box-shadow 200ms ease-in-out;
 `;
 
 function TagsSkeletonComponent() {

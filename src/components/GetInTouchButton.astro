@@ -61,10 +61,10 @@ let buttonColorInvert = "var(--color-primary)";
     user-select: none;
     opacity: 0;
 
-    border-radius: 5px;
+    border-radius: 0;
     border: solid 3px var(--button-color);
 
-    box-shadow: 10px 10px 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0 var(--button-color);
 
     transition: all 200ms ease-in-out;
     transition-delay: 100ms;
@@ -83,8 +83,13 @@ let buttonColorInvert = "var(--color-primary)";
 
   a:hover {
     color: var(--button-color);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.5);
-    transform: rotateZ(-1deg);
+    box-shadow: -10px 10px 0 0 var(--button-color);
+    transform: translateX(10px) translateY(-10px);
+  }
+
+  a:active {
+    box-shadow: 0 0 0 0 var(--button-color);
+    transform: translateX(0) translateY(0);
   }
 
   .circle {
