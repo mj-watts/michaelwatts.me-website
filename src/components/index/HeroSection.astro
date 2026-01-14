@@ -1,8 +1,7 @@
 ---
-import { Image } from "astro:assets";
 import Container from "../../components/Container.astro";
 import Button from "../../components/GetInTouchButton.astro";
-import animatedHeroImage from "../../images/hero-illustration.gif";
+import BrushEnd from "../BrushEnd.astro";
 ---
 
 <div class="hero-container">
@@ -49,6 +48,7 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
     </div>
   </Container>
 </div>
+<BrushEnd color="oklab(from var(--color-primary) calc(l - 0.05) a b)" />
 
 <style>
   .hero-container {
@@ -131,6 +131,7 @@ import animatedHeroImage from "../../images/hero-illustration.gif";
       stroke-dashoffset: 0;
     }
   }
+
   .title__partial-work-link > a:hover .link-streak {
     animation: swipe 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) 0.1s forwards;
     animation-direction: normal;
