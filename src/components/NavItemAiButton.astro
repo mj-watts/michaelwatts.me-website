@@ -1,3 +1,7 @@
+---
+import Button from "./AnimatedButton.astro";
+---
+
 <div class="button-wrapper">
   <button>
     <slot />
@@ -6,7 +10,9 @@
 </div>
 
 <div class="chat-screen">
-  <button class="chat-screen-close-button">Close</button>
+  <div class="chat-screen-actions">
+    <Button href="#close" text="Close" />
+  </div>
   <iframe src="https://chat.michaelwatts.me"></iframe>
 </div>
 
@@ -23,9 +29,7 @@
   const chatButton = document.querySelector(".button-wrapper");
   const chatScreenOverlay = document.querySelector(".chat-screen-overlay");
   const chatScreen = document.querySelector(".chat-screen");
-  const chatScreenCloseButton = document.querySelector(
-    ".chat-screen-close-button"
-  );
+  const chatScreenCloseButton = document.querySelector('[href="#close"]');
   const iframe = chatScreen?.querySelector("iframe");
 
   chatButton?.addEventListener("click", () => {
@@ -34,7 +38,8 @@
     document.documentElement.style.setProperty("--document-width", "50dvw");
   });
 
-  function closeChatScreen() {
+  function closeChatScreen(e: Event) {
+    e.preventDefault();
     chatScreen?.classList.remove("show");
     chatScreenOverlay?.classList.remove("show");
     document.documentElement.style.removeProperty("--document-width");
@@ -170,8 +175,8 @@
       from var(--color-primary) calc(l - 0.05) a b / 0.95
     );
     box-shadow:
-      -20px 20px 0 rgb(0, 0, 0, 0.2),
-      0 0 30px rgb(0, 0, 0, 0.5);
+      -1px 0 oklab(from var(--color-onPrimary) l a b / 0.1),
+      0 0 130px oklab(from var(--color-onPrimary) l a b / 0.4);
     align-items: end;
     justify-content: start;
     flex-direction: column;
@@ -192,6 +197,13 @@
 
   .chat-screen.show {
     display: flex;
+  }
+
+  .chat-screen-actions {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
   }
 
   .chat-screen iframe {
