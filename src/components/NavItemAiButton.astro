@@ -170,7 +170,6 @@ import Button from "./AnimatedButton.astro";
     z-index: 99999;
     height: 100dvh;
     width: var(--chat-screen-width, 100dvw);
-    padding: var(--space-8);
     background-color: oklab(
       from var(--color-primary) calc(l - 0.05) a b / 0.95
     );
@@ -180,7 +179,6 @@ import Button from "./AnimatedButton.astro";
     align-items: end;
     justify-content: start;
     flex-direction: column;
-    gap: var(--space-8);
   }
 
   @media screen and (min-width: 860px) {
@@ -204,6 +202,7 @@ import Button from "./AnimatedButton.astro";
     align-items: center;
     justify-content: start;
     width: 100%;
+    padding: var(--space-4);
   }
 
   .chat-screen iframe {
