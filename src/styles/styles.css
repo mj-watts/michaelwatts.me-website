@@ -125,7 +125,7 @@
     --color-primary: #ffffff;
     --color-onPrimary: #363636;
     --color-secondary: #d2d2d2;
-    --color-emphasis: #e00101;
+    --color-emphasis: #0d9667;
     --color-error: #e74c3c;
     --color-success: #2ecc71;
 
@@ -134,8 +134,8 @@
     --color-skeleton: #eeeeee;
 
     --color-text: var(--color-onPrimary);
-    --color-link: var(--color-text);
-    --color-link-hover: oklab(from var(--color-text) calc(l - 0.15) a b);
+    --color-link: var(--color-emphasis);
+    --color-link-hover: oklab(from var(--color-emphasis) calc(l - 0.15) a b);
 
     --ease-out-elastic: linear(
       0,
