@@ -129,41 +129,41 @@ const colorMap: ColorMap = new Map([
   [
     2,
     {
-      // Pink
-      "--color-primary": "#3C0350",
-      "--color-onPrimary": "#D3B1C0",
+      // Brown
+      "--color-primary": "#583433",
+      "--color-onPrimary": "#cab37d",
       "--color-secondary": "#5a1153",
-      "--color-emphasis": "#950bcd",
+      "--color-emphasis": "#a56e4a",
     },
   ],
   [
     3,
     {
       // Green
-      "--color-primary": "#37AF5D",
-      "--color-onPrimary": "#005319",
-      "--color-secondary": "#42da66",
-      "--color-emphasis": "#89ff00",
+      "--color-primary": "#ede5d3",
+      "--color-onPrimary": "#6f8d6a",
+      "--color-secondary": "#2f5283",
+      "--color-emphasis": "#496c45",
     },
   ],
   [
     4,
     {
       // Blue
-      "--color-primary": "#0779FF",
-      "--color-onPrimary": "#002180",
-      "--color-secondary": "#4ACDFC",
-      "--color-emphasis": "#531770",
+      "--color-primary": "#2f5283",
+      "--color-onPrimary": "#ede5d3",
+      "--color-secondary": "#2f5283",
+      "--color-emphasis": "#cab37d",
     },
   ],
   [
     5,
     {
       // Dark
-      "--color-primary": "#061036",
-      "--color-onPrimary": "#675ce1",
-      "--color-secondary": "#352e86",
-      "--color-emphasis": "#7b1c6b",
+      "--color-primary": "#343049",
+      "--color-onPrimary": "#98dcde",
+      "--color-secondary": "#2f5283",
+      "--color-emphasis": "#B9FAEA",
     },
   ],
 ]);
