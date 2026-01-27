@@ -64,7 +64,9 @@ const currentPath = pathname.slice(1);
 
     // Close chat screen and overlay if open
     const openChatScreen = document.querySelector(".chat-screen.show");
-    const openChatScreenOverlay = document.querySelector(".chat-screen.show");
+    const openChatScreenOverlay = document.querySelector(
+      ".chat-screen-overlay.show"
+    );
     if (openChatScreen && openChatScreenOverlay) {
       openChatScreen.classList.remove("show");
       openChatScreenOverlay.classList.remove("show");
