@@ -13,24 +13,10 @@ const currentPath = pathname.slice(1);
     <div class="mainnav__content">
       <Avatar />
       <div class="mainnav__items">
+        <div class="mainnav__menu-button-container">
+          <button class="mainnav__menu-button">Menu</button>
+        </div>
         <ol class="mainnav__pagelinks">
-          <li class="mainnav__menu-button">
-            <button>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-list"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
-                ></path>
-              </svg>
-            </button>
-          </li>
           <li>
             <NavItem href="/#work" isActive={currentPath === "works"}>
               Work
@@ -68,6 +54,32 @@ const currentPath = pathname.slice(1);
       observer.observe(anchor);
     }
   }
+
+  // Handle menu button click event
+  const mainnav = document.querySelector(".mainnav");
+  const menuButton = document.querySelector(".mainnav__menu-button");
+  const toggleMenuClass = () => {
+    mainnav?.classList.toggle("on-mobile-open"); // add class to wrapper
+    document.body.classList.toggle("no-scroll"); // add class to body
+
+    // Close chat screen and overlay if open
+    const openChatScreen = document.querySelector(".chat-screen.show");
+    const openChatScreenOverlay = document.querySelector(".chat-screen.show");
+    if (openChatScreen && openChatScreenOverlay) {
+      openChatScreen.classList.remove("show");
+      openChatScreenOverlay.classList.remove("show");
+    }
+  };
+  menuButton?.addEventListener("click", toggleMenuClass);
+
+  // Handle menu links click event
+  const navItems = document.querySelectorAll(".mainnav__pagelinks a");
+  for (let navItem of navItems) {
+    navItem?.addEventListener("click", () => {
+      mainnav?.classList.remove("on-mobile-open");
+      document.body.classList.remove("no-scroll");
+    });
+  }
 </script>
 
 <style is:global>
@@ -85,14 +97,14 @@ const currentPath = pathname.slice(1);
   }
 
   .mainnav {
-    --height: 48px;
     --mainnav__items-ol-li-display: none;
     --mainnav__menu-button-display: flex;
 
-    margin-bottom: var(--space-xl);
     padding: var(--space-2xs) 0;
     font-size: var(--step--1);
     font-variation-settings: var(--font-bold);
+    position: relative;
+    z-index: 100000;
   }
 
   @media screen and (min-width: 490px) {
@@ -102,13 +114,38 @@ const currentPath = pathname.slice(1);
     }
   }
 
+  /* HANDLE MOBILE MENU */
+  @media screen and (max-width: 490px) {
+    .mainnav.on-mobile-open {
+      --mainnav__items-ol-li-display: block;
+    }
+
+    .mainnav.on-mobile-open .mainnav__pagelinks {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--color-primary);
+      z-index: 998;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      font-size: var(--step-1);
+      gap: var(--space-xl);
+    }
+  }
+
   @media screen and (min-width: 768px) {
     .mainnav {
       position: fixed;
       width: 100%;
       top: 0;
       left: 0;
-      z-index: 100;
     }
   }
 
@@ -135,8 +172,6 @@ const currentPath = pathname.slice(1);
     display: flex;
     align-items: center;
     justify-content: end;
-    gap: var(--space-2xs);
-    margin-left: var(--space-2xs);
   }
 
   .mainnav__pagelinks {
@@ -145,7 +180,7 @@ const currentPath = pathname.slice(1);
     align-items: center;
     gap: var(--space-l);
     margin: 0;
-    height: var(--height);
+    padding: 0;
   }
 
   .mainnav__items li {
@@ -155,24 +190,19 @@ const currentPath = pathname.slice(1);
     justify-content: center;
   }
 
-  /* RESPONSIVE */
-  .mainnav__items ol li.mainnav__menu-button {
+  .mainnav__menu-button-container {
     display: var(--mainnav__menu-button-display);
-    align-items: center;
-    justify-content: center;
-    height: var(--height);
-    width: var(--height);
+    z-index: 999;
   }
 
-  .mainnav__items ol li.mainnav__menu-button button {
+  .mainnav__menu-button {
     border: none;
-    background: transparent;
-    padding: 0;
+    padding: var(--space-2xs) var(--space-xs);
+    background-color: var(--color-onPrimary);
+    color: var(--color-primary);
   }
 
-  .mainnav__items ol li.mainnav__menu-button svg {
-    color: var(--color-primary);
-    height: 26px;
-    width: 26px;
+  .mainnav__menu-button:hover {
+    cursor: pointer;
   }
 </style>

@@ -1,8 +1,8 @@
 <a href="/" class="avatar">
-  <span role="heading" aria-level="1" class="avatar__heading">
-    <span class="avatar__heading--name">Michael Watts</span>
+  <div role="heading" aria-level="1" class="avatar__heading">
+    <div class="avatar__heading--name">M<span>ichael</span> Watts</div>
     <div class="avatar__heading--title">Web Developer</div>
-  </span>
+  </div>
 </a>
 
 <script>
@@ -56,7 +56,7 @@
 
   @media screen and (min-width: 800px) {
     .avatar {
-      --heading-display: flex;
+      --heading-display: inline;
     }
   }
 
@@ -72,29 +72,13 @@
     align-items: center;
     justify-content: start;
     margin: 0;
-  }
-
-  .avatar__icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-onPrimary);
-    height: var(--size);
-    width: var(--size);
-    border-radius: var(--border-radius-sm);
-    color: var(--color-primary);
-  }
-
-  .avatar__icon {
-    height: 26px;
-    width: 26px;
-    fill: #eace09;
+    z-index: 999;
   }
 
   .avatar__heading {
     color: var(--color-onPrimary);
-    display: var(--heading-display);
     gap: var(--space-2xs);
+    display: flex;
     font-family: var(--header-font);
     font-size: var(--step-2);
     font-weight: bold;
@@ -104,9 +88,12 @@
 
   .avatar__heading--name,
   .avatar__heading--title {
-    display: block;
     isolation: isolate;
     z-index: 2;
+  }
+
+  .avatar__heading--name > span {
+    display: var(--heading-display);
   }
 
   .avatar__heading--title {
@@ -115,19 +102,5 @@
     isolation: isolate;
     z-index: 1;
     overflow: hidden;
-  }
-
-  .avatar__icon-expression--none,
-  .avatar__icon-expression--love {
-    transition: opacity 200ms ease-in-out;
-  }
-
-  .avatar:hover .avatar__icon-expression--none,
-  .avatar[inview-work] .avatar__icon-expression--none {
-    opacity: 0;
-  }
-
-  .avatar__icon-expression--grimace {
-    opacity: 0;
   }
 </style>

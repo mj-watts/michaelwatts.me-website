@@ -57,7 +57,7 @@ import BrushEnd from "../BrushEnd.astro";
     align-items: center;
     position: relative;
     overflow: hidden;
-    height: 70dvh;
+    padding: var(--space-l) 0;
   }
 
   .hero-content-wrapper {
@@ -140,7 +140,19 @@ import BrushEnd from "../BrushEnd.astro";
     animation-direction: normal;
   }
 
+  @media screen and (min-width: 768px) {
+    .hero-container {
+      height: 75dvh;
+      min-height: 740px;
+    }
+  }
+
   @media screen and (min-width: 1440px) {
+    .hero-container {
+      height: 75dvh;
+      min-height: 740px;
+    }
+
     .hero-content-wrapper {
       flex-direction: row;
     }
@@ -152,12 +164,6 @@ import BrushEnd from "../BrushEnd.astro";
 
     .title__partial--second {
       max-width: 80%;
-    }
-  }
-
-  @media screen and (min-width: 1440px) {
-    .hero-container {
-      height: 75dvh;
     }
   }
 </style>

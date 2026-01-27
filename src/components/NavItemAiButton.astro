@@ -209,4 +209,14 @@ import Button from "./AnimatedButton.astro";
     width: 100%;
     height: 100%;
   }
+
+  @media screen and (max-width: 490px) {
+    .chat-screen-actions {
+      display: none;
+    }
+
+    .chat-screen iframe {
+      margin-top: var(--space-2xl);
+    }
+  }
 </style>
