@@ -1,34 +1,42 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="16px"
-  height="16px"
-  viewBox="0 0 16 16"
-  class="icon"
->
-  <circle class="icon__circle" cx="8" cy="8" r="8"></circle>
-  <g class="icon__arrow">
-    <line x1="6" x2="12" y1="8" y2="8"></line>
-    <g class="icon__arrowhead">
-      <line x1="14" x2="8" y1="8" y2="3"></line>
-      <line x1="14" x2="8" y1="8" y2="13"></line>
+<div class="container">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16px"
+    height="16px"
+    viewBox="0 0 16 16"
+    class="icon"
+  >
+    <g class="icon__arrow">
+      <line x1="3" x2="12" y1="8" y2="8"></line>
+      <g class="icon__arrowhead">
+        <line x1="14" x2="8" y1="8" y2="3"></line>
+        <line x1="14" x2="8" y1="8" y2="13"></line>
+      </g>
     </g>
-  </g>
-</svg>
+  </svg>
+</div>
 
-<style is:global>
-  .icon {
-    display: inline;
+<style>
+  .container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-emphasis);
+    padding: var(--space-3xs);
   }
 
-  .icon__circle {
-    fill: var(--color-onPrimary);
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-emphasis);
   }
 
   .icon__arrow {
     stroke: var(--color-primary);
-    stroke-width: 2px;
+    stroke-width: 3px;
     stroke-linecap: round;
-    transform: translateX(-1px);
+    transform: translateX(2px) scale(0.65);
     transform-origin: left center;
   }
 

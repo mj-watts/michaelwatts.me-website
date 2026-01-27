@@ -7,7 +7,6 @@ let buttonColorInvert = "var(--color-primary)";
 
 <a class="animated-button" href={href}>
   <span class="circle"></span>
-  <span class="text">{text}</span>
   <span class="icon">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +32,7 @@ let buttonColorInvert = "var(--color-primary)";
         d="M21 12 L12 20"></path>
     </svg>
   </span>
+  <span class="text">{text}</span>
 </a>
 
 <script>
@@ -60,7 +60,6 @@ let buttonColorInvert = "var(--color-primary)";
 
 <style define:vars={{ buttonColor, buttonColorInvert }}>
   a {
-    --button-height: 60px;
     --button-color: var(--buttonColor);
     --button-color-invert: var(--buttonColorInvert);
 
@@ -69,15 +68,16 @@ let buttonColorInvert = "var(--color-primary)";
     box-sizing: border-box;
     color: var(--button-color);
     cursor: pointer;
-    display: inline-flex;
     font-variation-settings: var(--font-bold);
     font-weight: 600;
-    gap: 1rem;
-    height: var(--button-height);
+    font-size: var(--step-0);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
     justify-content: center;
     letter-spacing: 1px;
     overflow: hidden;
-    padding: 0 var(--space-12);
+    padding: var(--space-xs) var(--space-s);
     position: relative;
     user-select: none;
 
@@ -136,24 +136,17 @@ let buttonColorInvert = "var(--color-primary)";
   }
 
   .icon {
-    position: absolute;
-    left: 15px;
-    top: 6px;
-    transform: scale(0.8) translateY(calc(var(--button-height) / 4.4));
-    transition: left 200ms ease-in-out;
+    transform: scale(0.8);
+    transition: transform 200ms ease-in-out;
   }
 
   .icon svg {
-    height: calc(var(--button-height) / 2.5);
-    width: calc(var(--button-height) / 2.5);
+    height: 30px;
+    width: 30px;
     transform: rotate(180deg);
   }
 
   a:hover .icon {
-    left: 4px;
-  }
-
-  .text {
-    transform: translateX(6px);
+    transform: translateX(calc(var(--space-2xs) * -1)) scale(0.8);
   }
 </style>

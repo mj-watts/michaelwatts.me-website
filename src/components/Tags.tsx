@@ -9,7 +9,7 @@ interface TagsProps {
 const TagsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-1);
+  gap: var(--space-3xs);
 `;
 
 const Tag = styled.span`
@@ -19,9 +19,8 @@ const Tag = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: smaller;
-  font-style: italic;
-  padding: 0 var(--space-3);
+  font-size: var(--step--1);
+  padding: 0 var(--space-xs);
   white-space: nowrap;
   margin: 0;
   height: var(--height);
@@ -34,7 +33,7 @@ const Tag = styled.span`
 function TagsSkeletonComponent() {
   const containerStyle = {
     display: "flex",
-    gap: "var(--space-1)",
+    gap: "var(--space-3xs)",
     height: "30px",
     alignItems: "center",
   };

@@ -65,8 +65,8 @@ import ExperienceCard from "./ExperienceCard.astro";
     --ball-distance: 0px;
     --grid-template-columns: 1fr;
     --column-gap: 0;
-    --card-margin: var(--space-12);
-    --card-padding: var(--space-6);
+    --card-margin: var(--space-2xl);
+    --card-padding: var(--space-m);
     --card-border-radius: var(--border-radius-sm);
   }
 
@@ -76,10 +76,10 @@ import ExperienceCard from "./ExperienceCard.astro";
       --ball-width: 20px;
       --ball-distance: 35px;
       --grid-template-columns: 1fr var(--line-width) 1fr;
-      --column-gap: var(--space-6);
+      --column-gap: var(--space-m);
       --card-content-border-width: var(--line-width);
       --card-margin: 0;
-      --card-padding: var(--space-8);
+      --card-padding: var(--space-l);
       --card-border-radius: var(--border-radius);
     }
   }
@@ -88,19 +88,19 @@ import ExperienceCard from "./ExperienceCard.astro";
     .experience__bd {
       --line-width: 8px;
       --ball-distance: 62px;
-      --column-gap: var(--space-12);
-      --card-padding: var(--space-24);
+      --column-gap: var(--space-2xl);
+      --card-padding: var(--space-3xl);
       --card-border-radius: var(--border-radius-lg);
     }
   }
 
   .experience__header {
     text-align: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-m);
   }
 
   .experience__header h2 {
-    font-size: var(--font-size-xl);
+    font-size: var(--step-3);
     color: var(--color-secondary);
   }
 

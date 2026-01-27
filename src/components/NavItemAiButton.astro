@@ -101,9 +101,8 @@ import Button from "./AnimatedButton.astro";
 
   button {
     color: var(--color-primary);
-    font-weight: 800;
     display: block;
-    padding: 16px 32px;
+    padding: var(--space-xs) var(--space-s);
     background-color: var(--color-emphasis);
     cursor: pointer;
     white-space: nowrap;
@@ -202,23 +201,12 @@ import Button from "./AnimatedButton.astro";
     align-items: center;
     justify-content: start;
     width: 100%;
-    padding: var(--space-4);
+    padding: var(--space-s);
   }
 
   .chat-screen iframe {
     border: none;
     width: 100%;
     height: 100%;
-  }
-
-  .chat-screen-close-button {
-    color: var(--color-primary);
-    background-color: var(--color-emphasis);
-    font-size: var(--font-size-xs);
-  }
-
-  .chat-screen-close-button:hover {
-    background-color: oklab(from var(--color-emphasis) calc(l - 0.1) a b);
-    animation: none;
   }
 </style>

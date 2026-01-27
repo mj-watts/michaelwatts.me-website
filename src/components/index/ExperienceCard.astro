@@ -52,7 +52,7 @@ const tagsArray = tagsList.split(",");
 
 <style>
   .card {
-    font-size: var(--font-size-base);
+    font-size: var(--step-0);
     margin-bottom: var(--card-margin);
   }
 
@@ -80,7 +80,7 @@ const tagsArray = tagsList.split(",");
   .card[inview] .card__meta span {
     background-color: var(--color-onPrimary);
     color: var(--color-primary);
-    padding: var(--space-1) var(--space-3);
+    padding: var(--space-3xs) var(--space-xs);
   }
 
   .card-content {
@@ -149,7 +149,7 @@ const tagsArray = tagsList.split(",");
   .card-content__aside {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-s);
     padding: var(--card-padding);
     background-color: var(--color-onPrimary);
     border-radius: var(--border-radius);
@@ -162,7 +162,7 @@ const tagsArray = tagsList.split(",");
   }
 
   .card-content__title {
-    font-size: var(--font-size-lg);
+    font-size: var(--step-1);
     font-family: var(--body-font);
     font-variation-settings: var(--font-bold);
     color: var(--color-primary);
@@ -180,7 +180,7 @@ const tagsArray = tagsList.split(",");
 
   .card-content__tags {
     display: flex;
-    gap: var(--space-2);
+    gap: var(--space-2xs);
     flex-wrap: wrap;
   }
 

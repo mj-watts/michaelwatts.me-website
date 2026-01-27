@@ -65,19 +65,15 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
   }
 
   .work__header h2 {
-    font-size: clamp(
-      var(--font-size-lg),
-      calc(7vw + 1rem),
-      var(--font-size-xl)
-    );
+    font-size: var(--step-3);
     color: var(--color-secondary);
   }
 
   .work__body {
-    margin-top: var(--space-8);
+    margin-top: var(--space-l);
     display: grid;
     grid-template-columns: var(--grid-template-columns);
-    gap: var(--space-8);
+    gap: var(--space-l);
     place-items: center;
   }
 

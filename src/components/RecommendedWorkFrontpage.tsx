@@ -19,18 +19,18 @@ const Container = styled.div<{ image: string; bgcolor: string }>`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-2xs);
   align-items: start;
   justify-content: start;
   aspect-ratio: 1;
   width: clamp(250px, 100%, 440px);
   border-radius: var(--rounded-border);
   color: var(--textcolor);
-  padding: var(--space-6);
+  padding: var(--space-m);
   box-sizing: border-box;
   background-color: var(--bgcolor);
-  background-image: linear-gradient(var(--bgcolor), transparent),
-    url(${(props) => props.image});
+  background-image:
+    linear-gradient(var(--bgcolor), transparent), url(${(props) => props.image});
   background-size: contain;
   background-position: bottom center;
   background-repeat: no-repeat;
@@ -49,15 +49,17 @@ const TextWrap = styled.div`
   left: 0;
   right: 0;
   background-color: oklab(from var(--color-primary) l a b / 0.9);
-  padding: var(--space-6);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2), 0 0 4px rgba(0, 0, 0, 0.15);
+  padding: var(--space-m);
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.2),
+    0 0 4px rgba(0, 0, 0, 0.15);
   margin: 3px;
   border-radius: 12px 12px 0 0;
 `;
 
 const Title = styled.h2`
   margin: 0;
-  font-size: var(--font-size-lg);
+  font-size: var(--step-1);
   font-family: var(--body-font);
   font-variation-settings: var(--font-semi-bold);
   line-height: 1.2;
@@ -72,7 +74,7 @@ const Description = styled.p`
 
   @container (width > 300px) {
     display: block;
-    margin-top: var(--space-4);
+    margin-top: var(--space-s);
   }
 `;
 
@@ -85,7 +87,7 @@ const Link = styled.a`
   border: 2px solid var(--color-onPrimary);
   font-variation-settings: var(--font-bold);
   border-radius: 100dvh;
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2xs) var(--space-s);
   transition: background-color 0.2s ease-in-out;
   display: flex;
   justify-content: center;
@@ -113,7 +115,9 @@ const Link = styled.a`
     z-index: 1;
     border-radius: var(--border-radius);
     opacity: 0;
-    transition: box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    transition:
+      box-shadow 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
   }
 `;
 

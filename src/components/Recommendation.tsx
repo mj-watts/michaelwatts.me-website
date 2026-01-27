@@ -15,10 +15,10 @@ const RecommendationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-6);
-  margin: calc(var(--space-12) * 1.5) 0 var(--space-12);
+  gap: var(--space-m);
+  margin: calc(var(--space-2xl) * 1.5) 0 var(--space-2xl);
   background-color: var(--color);
-  padding: var(--space-12);
+  padding: var(--space-2xl);
   border-radius: 12px;
   max-width: 500px;
   box-sizing: border-box;
@@ -62,7 +62,7 @@ const Blockquote = styled.blockquote`
   color: var(--color-secondary);
 
   p {
-    margin: 0 0 var(--space-3) 0;
+    margin: 0 0 var(--space-xs) 0;
     font-size: smaller;
   }
 
@@ -70,7 +70,7 @@ const Blockquote = styled.blockquote`
     font-size: smaller;
     font-variation-settings: var(--font-semi-bold);
     font-style: normal;
-    margin-top: var(--space-6);
+    margin-top: var(--space-m);
     color: var(--color-text-secondary);
   }
 `;

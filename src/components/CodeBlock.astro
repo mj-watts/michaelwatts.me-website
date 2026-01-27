@@ -26,7 +26,7 @@ const { lang, filename } = Astro.props;
 <style>
   .code-block {
     --font-size: 0.65rem;
-    --padding: var(--space-4);
+    --padding: var(--space-s);
     --border-width: 1px;
     --code-border: hsl(from var(--color-border) h s calc(l * 0.9));
     --code-bg-color: black;
@@ -35,7 +35,7 @@ const { lang, filename } = Astro.props;
   @media screen and (min-width: 768px) {
     .code-block {
       --font-size: 1rem;
-      --padding: var(--space-8);
+      --padding: var(--space-l);
     }
   }
 
@@ -91,7 +91,7 @@ const { lang, filename } = Astro.props;
   }
 
   .code-block__filename {
-    padding: var(--space-2) var(--space-4) var(--space-1);
+    padding: var(--space-2xs) var(--space-s) var(--space-3xs);
     letter-spacing: 0.05em;
     font-weight: 600;
     font-size: var(--font-size);
@@ -100,7 +100,7 @@ const { lang, filename } = Astro.props;
   }
 
   .code-block__lang {
-    padding: var(--space-1) var(--space-4);
+    padding: var(--space-3xs) var(--space-s);
     letter-spacing: 0.05em;
     font-weight: 600;
     text-transform: uppercase;

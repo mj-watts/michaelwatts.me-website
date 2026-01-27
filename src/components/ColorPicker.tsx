@@ -20,8 +20,8 @@ const ColorPickerWrapper = styled.div`
   display: grid;
   place-items: center;
   position: fixed;
-  bottom: var(--space-3);
-  left: var(--space-3);
+  bottom: var(--space-xs);
+  left: var(--space-xs);
   z-index: 99999;
   transition: all 0.5s var(--ease-out-elastic);
 

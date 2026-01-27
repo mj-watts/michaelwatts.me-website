@@ -16,11 +16,11 @@ const Meta = styled.div`
 const Time = styled.time`
   font-size: smaller;
   opacity: 0.7;
-  gap: var(--space-3);
+  gap: var(--space-xs);
 `;
 
 const Divider = styled.div`
-  margin: 0 var(--space-3);
+  margin: 0 var(--space-xs);
   opacity: 0.5;
 `;
 
@@ -30,7 +30,7 @@ function SkeletonComponent() {
     height: "20px",
     backgroundColor: "var(--color-skeleton)",
     borderRadius: "12px",
-    marginBottom: "var(--space-3)"
+    marginBottom: "var(--space-xs)",
   };
 
   return <div style={containerStyle}></div>;
@@ -47,10 +47,10 @@ export default function BlogListItemMeta({ date, readTime }: Props) {
 
   const formattedDate = date
     ? new Date(date).toLocaleDateString("en-gb", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
     : null;
 
   return (
@@ -66,5 +66,5 @@ export default function BlogListItemMeta({ date, readTime }: Props) {
         </>
       ) : null}
     </Meta>
-  )
+  );
 }

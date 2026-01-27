@@ -73,8 +73,8 @@ const currentPath = pathname.slice(1);
 <style is:global>
   .container {
     max-width: var(--container-width);
-    padding-left: var(--space-4);
-    padding-right: var(--space-4);
+    padding-left: var(--space-s);
+    padding-right: var(--space-s);
     margin-left: auto;
     margin-right: auto;
     transition: all 200ms ease-in-out;
@@ -86,24 +86,20 @@ const currentPath = pathname.slice(1);
 
   .mainnav {
     --height: 48px;
-    --mainnav__items-ol-padding: 0;
     --mainnav__items-ol-li-display: none;
     --mainnav__menu-button-display: flex;
+
+    margin-bottom: var(--space-xl);
+    padding: var(--space-2xs) 0;
+    font-size: var(--step--1);
+    font-variation-settings: var(--font-bold);
   }
 
   @media screen and (min-width: 490px) {
     .mainnav {
-      --mainnav__items-ol-padding: 10px 30px;
       --mainnav__items-ol-li-display: block;
       --mainnav__menu-button-display: none;
     }
-  }
-
-  .mainnav {
-    margin-bottom: var(--space-10);
-    padding: var(--space-2) 0;
-    font-size: 18px;
-    font-variation-settings: var(--font-bold);
   }
 
   @media screen and (min-width: 768px) {
@@ -113,9 +109,6 @@ const currentPath = pathname.slice(1);
       top: 0;
       left: 0;
       z-index: 100;
-    }
-
-    body.header-not-at-top .mainnav {
     }
   }
 
@@ -142,18 +135,17 @@ const currentPath = pathname.slice(1);
     display: flex;
     align-items: center;
     justify-content: end;
-    gap: var(--space-2);
-    margin-left: var(--space-2);
+    gap: var(--space-2xs);
+    margin-left: var(--space-2xs);
   }
 
   .mainnav__pagelinks {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: var(--space-12);
+    gap: var(--space-l);
     margin: 0;
     height: var(--height);
-    padding: var(--mainnav__items-ol-padding);
   }
 
   .mainnav__items li {

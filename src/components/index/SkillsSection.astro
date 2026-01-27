@@ -59,7 +59,7 @@
 <style>
   .skills {
     --grid-template-columns: 1fr;
-    --font-size-clamp-max: var(--font-size-xl);
+    --font-size-clamp-max: var(--step-3);
   }
 
   @media screen and (min-width: 490px) {
@@ -77,18 +77,18 @@
   @media screen and (min-width: 1280px) {
     .skills {
       --grid-template-columns: repeat(4, 1fr);
-      --font-size-clamp-max: var(--font-size-2xl);
+      --font-size-clamp-max: var(--step-4);
     }
   }
 
   .skills {
     display: grid;
     grid-template-columns: var(--grid-template-columns);
-    gap: var(--space-12);
+    gap: var(--space-2xl);
   }
 
   .skills__title {
-    font-size: var(--font-size-lg);
+    font-size: var(--step-1);
     color: var(--color-secondary);
     text-align: center;
   }
@@ -109,7 +109,7 @@
 
   .skills__skill {
     font-size: clamp(
-      var(--font-size-lg),
+      var(--step-1),
       calc(3vw + 1rem),
       calc(var(--font-size-clamp-max) / 2)
     );

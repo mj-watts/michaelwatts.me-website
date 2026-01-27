@@ -39,7 +39,6 @@ let buttonColorInvert = "var(--color-primary)";
 
 <style define:vars={{ buttonColor, buttonColorInvert }}>
   a {
-    --button-height: 60px;
     --button-color: var(--buttonColor);
     --button-color-invert: var(--buttonColorInvert);
 
@@ -52,11 +51,10 @@ let buttonColorInvert = "var(--color-primary)";
     font-variation-settings: var(--font-bold);
     font-weight: 600;
     gap: 1rem;
-    height: var(--button-height);
     justify-content: center;
     letter-spacing: 1px;
     overflow: hidden;
-    padding: 0 var(--space-8);
+    padding: var(--space-xs) var(--space-s);
     position: relative;
     user-select: none;
     opacity: 0;

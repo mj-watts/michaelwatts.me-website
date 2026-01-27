@@ -44,7 +44,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
         </div>
 
         <div class="work-item__aside-section work-item__aside-section--tags">
-          <strong>Skills:</strong>
+          <strong>Tech:</strong>
           <div>
             <Tags tags={frontmatter.tags} client:only="react" />
           </div>
@@ -135,12 +135,12 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   .work-item {
     --grid-template-columns: 1fr;
     --flex-direction: column;
-    --gap: var(--space-12);
+    --gap: var(--space-2xl);
     --work-item__aside-position: relative;
     --work-item__aside-top: 0;
     --work-item__aside-height: auto;
     --work-item__aside-width: auto;
-    --work-item__aside-bd-gap: var(--space-2);
+    --work-item__aside-bd-gap: var(--space-3xs);
     --work-item__main_max-width: auto;
     --strong-display: inline;
     --aside-recommended-work-display: none;
@@ -152,10 +152,10 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
       --grid-template-columns: repeat(2, 1fr);
       --flex-direction: row;
       --work-item__aside-position: sticky;
-      --work-item__aside-top: var(--space-12);
+      --work-item__aside-top: var(--space-m);
       --work-item__aside-height: 50dvi;
       --work-item__aside-width: 300px;
-      --work-item__aside-bd-gap: var(--space-4);
+      --work-item__aside-bd-gap: var(--space-2xs);
       --strong-display: block;
       --aside-contact-button-display: block;
     }
@@ -179,7 +179,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   .work-item__aside {
     display: flex;
     flex-direction: column;
-    gap: var(--space-12);
+    gap: var(--space-m);
     position: var(--work-item__aside-position);
     top: var(--work-item__aside-top);
     left: 0;
@@ -194,15 +194,11 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     transition: all 1s var(--ease-out-elastic);
   }
 
-  .work-item__aside-section {
-    line-height: 1.4;
-  }
-
   .work-item__aside-section--tags {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-3xs);
   }
 
   .work-item__aside-section strong {
@@ -214,18 +210,18 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   .work-item__aside-recommended-work {
     display: var(--aside-recommended-work-display);
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-2xs);
   }
 
   .work-item__aside-recommended-work-items {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-3xs);
   }
 
   .work-item__aside-recommended-work-items {
     list-style: none;
-    padding-left: var(--space-4);
+    padding-left: var(--space-3xs);
   }
 
   .work-item__aside-section--contact {
@@ -236,7 +232,7 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: var(--space-12);
+    margin-top: var(--space-2xl);
   }
 
   .work-item__main {
@@ -244,19 +240,18 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   }
 
   .work-item__recommended-work-works {
-    margin-top: var(--space-12);
+    margin-top: var(--space-2xl);
   }
 
   .work-item__recommended-work-title {
-    margin-bottom: var(--space-2);
-    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-l);
     text-align: center;
     color: var(--color-onPrimary);
   }
 
   .work-item__recommended-work-body {
     display: flex;
-    gap: var(--space-4);
+    gap: var(--space-s);
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;

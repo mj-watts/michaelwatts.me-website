@@ -15,11 +15,11 @@ import BrushEnd from "../BrushEnd.astro";
           {" "}
           beyond!
         </h2>
-        <span class="title__partial title__partial--second">
+        <p class="title__partial title__partial--second">
           I design and develop web applications with a focus on simplicity,
           scalability and seamless user experience.
-        </span>
-        <div class="title__partial title__partial--second">
+        </p>
+        <div class="title__partial title__partial--third">
           <Button href="#contact" text="Get in touch" />
           <span class="title__partial-work-link">
             or
@@ -57,7 +57,7 @@ import BrushEnd from "../BrushEnd.astro";
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-bottom: var(--space-24);
+    height: 70dvh;
   }
 
   .hero-content-wrapper {
@@ -70,7 +70,7 @@ import BrushEnd from "../BrushEnd.astro";
   .title {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: var(--space-m);
     color: var(--color-secondary);
     line-height: 1.1;
     text-align: center;
@@ -85,24 +85,25 @@ import BrushEnd from "../BrushEnd.astro";
     text-wrap: balance;
     line-height: 1;
     font-weight: 700;
-    font-size: clamp(
-      var(--font-size-lg),
-      calc(7vw + 1rem),
-      var(--font-size-2xl)
-    );
+    font-size: var(--step-5);
   }
 
   .title__partial--second {
     color: var(--color-onPrimary);
-    font-size: clamp(20px, 2.5dvw, 24px);
-    line-height: 1.6;
+    font-size: var(--step-1);
+    line-height: var(--space-l);
     text-wrap: balance;
   }
 
+  .title__partial--third {
+    color: var(--color-onPrimary);
+    font-size: var(--step-1);
+  }
+
   .title__partial-work-link {
-    margin-left: var(--space-4);
+    margin-left: var(--space-3xs);
     position: relative;
-    font-size: clamp(20px, 2.5dvw, 28px);
+    font-size: var(--step-1);
   }
 
   .title__partial-work-link > a {
@@ -156,8 +157,7 @@ import BrushEnd from "../BrushEnd.astro";
 
   @media screen and (min-width: 1440px) {
     .hero-container {
-      height: 70dvh;
-      padding-bottom: 0;
+      height: 75dvh;
     }
   }
 </style>

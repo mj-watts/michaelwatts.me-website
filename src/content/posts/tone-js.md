@@ -98,7 +98,7 @@ And a look at the code:
         border: none;
         color: white;
         padding: 10px 20px;
-        font-size: var(--font-size-base);
+        font-size: var(--step-0);
         border-radius: 4px;
         cursor: pointer;
         margin: 5px;
