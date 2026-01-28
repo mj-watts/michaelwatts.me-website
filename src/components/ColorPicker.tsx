@@ -250,14 +250,14 @@ export default function ColorPicker() {
         return (
           <Label
             key={colorSet.id}
-            htmlFor={colorSet.id.toString()}
+            htmlFor={`clr-${colorSet.id.toString()}`}
             style={{ "--idx": idx } as React.CSSProperties}
             onClick={() => handleColorClick(colorSet.id)}
           >
             <Input
               type="radio"
               value={colorSet.id.toString()}
-              id={colorSet.id.toString()}
+              id={`clr-${colorSet.id.toString()}`}
               name={colorSet.id.toString()}
               style={
                 { "--color-primary": colorSet.colors[0] } as React.CSSProperties
