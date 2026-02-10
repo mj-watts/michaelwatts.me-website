@@ -16,34 +16,73 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
 );
 ---
 
-<div class="work-container">
-  <Container>
-    <div class="work__header">
-      <h2>Featured Work</h2>
-      <p>A selection of website and app work</p>
-    </div>
-    <div class="work__body">
-      {
-        workList.map(
-          (work: {
-            image: { src: string };
-            title: string;
-            description: string;
-            bgcolor: string;
-            link: string;
-          }) => (
-            <RecommendedWork
-              image={work.image}
-              title={work.title}
-              description={work.description}
-              link={work.link}
-            />
-          )
-        )
-      }
-    </div>
-  </Container>
-</div>
+<section id="work">
+  <div class="work-container">
+    <Container>
+      <div class="work-scroller">
+        <div class="work__header">
+          <h2>Featured Work</h2>
+          <p>A selection of website and app work</p>
+        </div>
+        <div class="work__body">
+          {
+            workList.map(
+              (work: {
+                image: { src: string };
+                title: string;
+                description: string;
+                bgcolor: string;
+                link: string;
+              }) => (
+                <RecommendedWork
+                  image={work.image}
+                  title={work.title}
+                  description={work.description}
+                  link={work.link}
+                />
+              )
+            )
+          }
+        </div>
+      </div>
+    </Container>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".work-scroller",
+      start: "-5% top",
+      end: "+=50%",
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+    },
+  });
+
+  tl.to(".work__header h2", {
+    opacity: 0,
+    filter: "blur(2px)",
+    ease: "none",
+    duration: 0.2,
+  })
+    .to(".work__header p", {
+      opacity: 0,
+      filter: "blur(1px)",
+      ease: "none",
+      duration: 0.2,
+      delay: -0.3,
+    })
+    .to(".work__body", { y: -500, ease: "none", duration: 1 }, "<");
+
+  window.addEventListener("load", () => ScrollTrigger.refresh());
+</script>
 
 <style>
   .work-container {
@@ -52,29 +91,31 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
     padding: var(--space-xl) 0;
   }
 
+  .work-scroller {
+    margin-bottom: var(--space-2xl);
+  }
+
   .work__body {
     --grid-template-columns: 1fr;
   }
 
   @media screen and (min-width: 540px) {
-    .work__body {
-      --grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   @media screen and (min-width: 1280px) {
     .work-container {
       min-height: 100dvh;
     }
-
-    .work__body {
-      --grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   .work__header {
     text-align: center;
     margin-bottom: var(--space-xl);
+
+    > h2,
+    > p {
+      will-change: opacity, filter;
+    }
   }
 
   .work__header h2 {
@@ -89,6 +130,7 @@ const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
     grid-template-columns: var(--grid-template-columns);
     gap: var(--space-l);
     place-items: center;
+    will-change: transform;
   }
 
   .work__item {

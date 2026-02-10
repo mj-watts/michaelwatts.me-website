@@ -69,12 +69,14 @@ const { pageTitle } = Astro.props;
   <body>
     <MainNav />
 
-    <main>
-      <div id="top-of-site-pixel-anchor"></div>
-      <slot />
-    </main>
+    <div id="smoothscroll">
+      <main>
+        <div id="top-of-site-pixel-anchor"></div>
+        <slot />
+      </main>
 
-    <MainFooter />
+      <MainFooter />
+    </div>
     <ColorPicker client:only="react" />
   </body>
 </html>

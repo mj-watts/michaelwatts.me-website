@@ -27,17 +27,16 @@ const { image, title, description, link } = Astro.props;
 
 <style>
   .preview {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: var(--space-m);
     padding: var(--space-xs);
     background-color: var(--color-primary);
     height: 100%;
-    width: clamp(250px, 100%, 440px);
+    width: clamp(250px, 100%, 780px);
     position: relative;
     color: var(--text-color);
-
     transition: all 200ms ease-in-out;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 
   .preview::before {
@@ -54,7 +53,10 @@ const { image, title, description, link } = Astro.props;
   .preview__image-container {
     background-color: oklab(from var(--color-onPrimary) l a b / 0.2);
     position: relative;
-    height: 190px;
+    height: 200px;
+    max-width: 600px;
+    grid-column: 1 / span 7;
+    grid-row: 1;
   }
 
   .preview__image-wrapper {
@@ -68,9 +70,10 @@ const { image, title, description, link } = Astro.props;
 
   .preview__image {
     height: auto;
+    max-height: 400px;
     transition: all 200ms ease-in-out;
     transform-origin: bottom left;
-    max-height: 250px;
+    width: auto;
   }
 
   .preview__body {
@@ -78,6 +81,8 @@ const { image, title, description, link } = Astro.props;
     gap: var(--space-2xs);
     flex-direction: column;
     font-size: var(--step--1);
+    grid-column: 8 / span 5;
+    grid-row: 1;
   }
 
   .preview__title {
