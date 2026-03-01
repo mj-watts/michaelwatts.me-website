@@ -7,6 +7,7 @@ import ecommCoverImage from "../src/content/works/ecomm-sites/preview.png";
 import sfmCoverImage from "../src/content/works/saudi-fashion-retail/preview.png";
 import saCoverImage from "../src/content/works/swiftaid/preview.png";
 import sppocCoverImage from "../src/content/works/split-payment-poc/preview.png";
+import personalWorkCoverImage from "../src/content/works/personal-work/preview.png";
 
 export const themePrimary = persistentAtom<string>("themePrimary", "#FFFFFF");
 
@@ -84,6 +85,14 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
     description:
       "Secure administrative portal built for HM Revenue & Customs to display transactional data",
     link: "/work/split-payment-poc",
+    bgcolor: "#563d7c",
+  },
+  personal: {
+    image: personalWorkCoverImage,
+    title: "Personal projects",
+    description:
+      "A selection of my own projects and ideas I've worked on in the past and working on presently",
+    link: "/work/personal-work",
     bgcolor: "#563d7c",
   },
 });

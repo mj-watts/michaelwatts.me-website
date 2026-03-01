@@ -5,15 +5,21 @@ import { recommendedWork } from "../../store";
 
 const rw = recommendedWork.get();
 
-const workList = ["sa", "sppoc", "iomusic", "webapps", "ecomm", "sfm"].map(
-  (key: string) => ({
-    bgcolor: rw[key].bgcolor,
-    image: rw[key].image,
-    title: rw[key].title,
-    description: rw[key].description,
-    link: rw[key].link,
-  })
-);
+const workList = [
+  "sa",
+  "sppoc",
+  "iomusic",
+  "webapps",
+  "ecomm",
+  "sfm",
+  "personal",
+].map((key: string) => ({
+  bgcolor: rw[key].bgcolor,
+  image: rw[key].image,
+  title: rw[key].title,
+  description: rw[key].description,
+  link: rw[key].link,
+}));
 ---
 
 <section id="work">
