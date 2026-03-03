@@ -64,8 +64,8 @@ const workList = [
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".work-scroller",
-      start: "-5% top",
-      end: "+=50%",
+      start: "-8% top",
+      end: "+=36%",
       pin: true,
       pinSpacing: false,
       scrub: true,
@@ -95,17 +95,11 @@ const workList = [
     align-content: center;
     background-color: oklab(from var(--color-primary) calc(l - 0.05) a b);
     padding: var(--space-xl) 0;
-  }
-
-  .work-scroller {
-    margin-bottom: var(--space-2xl);
+    overflow: hidden;
   }
 
   .work__body {
     --grid-template-columns: 1fr;
-  }
-
-  @media screen and (min-width: 540px) {
   }
 
   @media screen and (min-width: 1280px) {
