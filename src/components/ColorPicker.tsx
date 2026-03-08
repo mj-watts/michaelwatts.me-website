@@ -131,9 +131,9 @@ const colorMap: ColorMap = new Map([
     {
       // Brown
       "--color-primary": "#583433",
-      "--color-onPrimary": "#cab37d",
+      "--color-onPrimary": "#f2d7ac",
       "--color-secondary": "#5a1153",
-      "--color-emphasis": "#a56e4a",
+      "--color-emphasis": "#c98482",
     },
   ],
   [
@@ -153,7 +153,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#162539",
       "--color-onPrimary": "#ede5d3",
       "--color-secondary": "#2f5283",
-      "--color-emphasis": "#d6b15e",
+      "--color-emphasis": "#d65e5e",
     },
   ],
   [
@@ -163,7 +163,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#1d1b27",
       "--color-onPrimary": "#dfdee3",
       "--color-secondary": "#2f5283",
-      "--color-emphasis": "#ffffff",
+      "--color-emphasis": "#635f70",
     },
   ],
 ]);
