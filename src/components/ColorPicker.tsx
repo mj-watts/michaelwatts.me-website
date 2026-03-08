@@ -150,20 +150,20 @@ const colorMap: ColorMap = new Map([
     4,
     {
       // Blue
-      "--color-primary": "#2f5283",
+      "--color-primary": "#162539",
       "--color-onPrimary": "#ede5d3",
       "--color-secondary": "#2f5283",
-      "--color-emphasis": "#cab37d",
+      "--color-emphasis": "#d6b15e",
     },
   ],
   [
     5,
     {
       // Dark
-      "--color-primary": "#343049",
-      "--color-onPrimary": "#98dcde",
+      "--color-primary": "#1d1b27",
+      "--color-onPrimary": "#dfdee3",
       "--color-secondary": "#2f5283",
-      "--color-emphasis": "#B9FAEA",
+      "--color-emphasis": "#ffffff",
     },
   ],
 ]);
