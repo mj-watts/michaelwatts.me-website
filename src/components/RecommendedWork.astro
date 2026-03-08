@@ -20,7 +20,7 @@ const { image, title, description, link } = Astro.props;
     <h3 class="preview__title">{title}</h3>
     <div>
       {description}
-      <strong style="color:var(--color-emphasis);">...More</strong>
+      <strong style="color:var(--color-onPrimary);">...More</strong>
     </div>
   </div>
 </a>
@@ -30,13 +30,19 @@ const { image, title, description, link } = Astro.props;
     display: grid;
     gap: var(--space-m);
     padding: var(--space-xs);
-    background-color: var(--color-primary);
+    background-color: oklab(from var(--color-primary) l a b / 0.4);
     height: 100%;
     width: clamp(250px, 100%, 780px);
     position: relative;
     color: var(--text-color);
     transition: all 200ms ease-in-out;
     grid-template-columns: repeat(12, minmax(0, 1fr));
+    border-radius: 5px;
+    box-shadow:
+      0 0 3px rgba(0, 0, 0, 0.2) inset,
+      0 0 1px rgba(0, 0, 0, 0.1),
+      0 0 0 8px oklab(from var(--color-emphasis) calc(l * 1.1) calc(a * 1.5) b),
+      0 0 26px rgba(0, 0, 0, 0.5);
   }
 
   .preview::before {
@@ -51,7 +57,10 @@ const { image, title, description, link } = Astro.props;
   }
 
   .preview__image-container {
-    background-color: oklab(from var(--color-onPrimary) l a b / 0.2);
+    background-color: oklab(from var(--color-primary) l a b / 0.4);
+    box-shadow:
+      0 0 0 1px oklab(from var(--color-emphasis) calc(l * 0.95) a b) inset,
+      0 0 10px oklab(from var(--color-emphasis) calc(l * 0.95) a b) inset;
     position: relative;
     height: 200px;
     max-width: 600px;
@@ -61,8 +70,9 @@ const { image, title, description, link } = Astro.props;
 
   .preview__image-wrapper {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
     overflow: hidden;
     z-index: 1;
     transition: all 200ms ease-in-out;
@@ -90,6 +100,6 @@ const { image, title, description, link } = Astro.props;
   }
 
   .preview:hover .preview__image {
-    transform: rotateZ(2deg) scale(1.05) translateX(-5px);
+    transform: rotateZ(2deg) scale(1.05) translateX(-6px);
   }
 </style>
