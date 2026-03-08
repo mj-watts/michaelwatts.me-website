@@ -79,7 +79,8 @@ const currentPath = pathname.slice(1);
     if (!target) return;
     const mainNavHeight =
       document.querySelector(".mainnav")?.getBoundingClientRect().height ?? 0;
-    const scrollOffset = hash === "#contact" ? 0 : Math.ceil(mainNavHeight + 16);
+    const scrollOffset =
+      hash === "#contact" ? 0 : Math.ceil(mainNavHeight + 16);
 
     try {
       const { ScrollSmoother } = await import("gsap/ScrollSmoother");
@@ -197,9 +198,8 @@ const currentPath = pathname.slice(1);
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgb(from var(--color-primary) r g b / 0.2);
     mask-image: linear-gradient(black 40%, transparent 100%);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px) saturate(1.8);
     z-index: -1;
   }
 

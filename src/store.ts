@@ -21,7 +21,7 @@ export const themeSecondary = persistentAtom<string>(
   "#D2D2D2"
 );
 
-export const themeEmphasis = persistentAtom<string>("themeEmphasis", "#0d9667");
+export const themeEmphasis = persistentAtom<string>("themeEmphasis", "#f1b102");
 
 export const selectedColorMapId = persistentAtom<string>(
   "selectedColorMapId",

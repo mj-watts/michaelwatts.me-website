@@ -123,7 +123,7 @@ const colorMap: ColorMap = new Map([
       "--color-primary": "#FFFFFF",
       "--color-onPrimary": "#363636",
       "--color-secondary": "#D2D2D2",
-      "--color-emphasis": "#0d9667",
+      "--color-emphasis": "#f1b102",
     },
   ],
   [

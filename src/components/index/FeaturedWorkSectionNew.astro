@@ -93,7 +93,7 @@ const workList = [
 <style>
   .work-container {
     align-content: center;
-    background-color: oklab(from var(--color-primary) calc(l - 0.05) a b);
+    background-color: var(--color-emphasis);
     padding: var(--space-xl) 0;
     overflow: hidden;
   }
@@ -115,12 +115,12 @@ const workList = [
     > h2,
     > p {
       will-change: opacity, filter;
+      color: var(--color-primary);
     }
   }
 
   .work__header h2 {
     font-size: var(--step-3);
-    color: var(--color-onPrimary);
     margin-bottom: var(--space-2xs);
   }
 
