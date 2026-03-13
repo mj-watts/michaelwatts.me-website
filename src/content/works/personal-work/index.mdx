@@ -13,7 +13,8 @@ tags:
     "Node",
     "AI",
     "React",
-    "Vue"
+    "Vue",
+    "Rust"
   ]
 recommendedWork: ["iomusic", "webapps", "ecomm", "sa"]
 ---
@@ -33,9 +34,13 @@ import mainVideoWebm from "./bezier.mp4";
 <ContentSection>
   ### Bezier: An SVG editing web app
 
+  Available as a native app to download or web app at https://bezier-app.pages.dev/
+
   This app is an Illustrator-style SVG path editor built to create and refine vector artwork directly in the browser. 
   It supports multi-path editing with anchor points and bezier handles, transform tools (move/scale/rotate), zoom and pan controls, 
   and a live SVG code pane so visual edits and raw markup stay in sync for fast iteration and export.
+
+
 
   <ContentImage1Column>
     <ImageContainer>
@@ -51,6 +56,8 @@ import mainVideoWebm from "./bezier.mp4";
 
   It’s built with React + TypeScript on Vite, with a component-based UI and dedicated geometry utilities for path operations. 
   Quality is backed by a BDD-style testing approach, using Vitest and Playwright to validate expected user behaviors and key editing workflows end to end.
+
+  Also available as a standalone native app for macOS using Tauri build tools.
 
   <ContentImage1Column>
     <ImageContainer backgroundColor="#000">
