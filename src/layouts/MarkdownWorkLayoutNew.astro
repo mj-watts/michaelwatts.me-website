@@ -1,0 +1,263 @@
+---
+import WorkLayout from "../layouts/WorkLayout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import Button from "../components/GetInTouchButton.astro";
+import ArrowRight from "../components/icons/ArrowRight.astro";
+import Tags from "../components/Tags.tsx";
+import Recommendation from "../components/Recommendation.tsx";
+import RecommendedWork from "../components/RecommendedWork.astro";
+import AnimatedButton from "../components/AnimatedButton.astro";
+import { recommendedWork } from "../store";
+
+const { frontmatter } = Astro.props;
+const { description } = frontmatter;
+
+const rw = recommendedWork.get();
+
+const workList = frontmatter.recommendedWork.map((key: string) => ({
+  bgcolor: rw[key].bgcolor,
+  image: rw[key].image,
+  title: rw[key].title,
+  description: rw[key].description,
+  link: rw[key].link,
+}));
+---
+
+<WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
+  <div class="work-item">
+    <div class="work-item__aside">
+      <div>
+        <AnimatedButton href="/#work" text="Back" theme="dark" />
+      </div>
+
+      <PageTitle>{frontmatter.title}</PageTitle>
+
+      <div class="work-item__aside-sections">
+        <div class="work-item__aside-section">
+          <strong>Sectors:</strong>
+          {frontmatter.sectors.join(" • ")}
+        </div>
+
+        <div class="work-item__aside-section">
+          <strong>Type:</strong>
+          {frontmatter.type}
+        </div>
+
+        <div class="work-item__aside-section work-item__aside-section--tags">
+          <strong>Tech:</strong>
+          <div>
+            <Tags tags={frontmatter.tags} client:only="react" />
+          </div>
+        </div>
+      </div>
+
+      <div class="work-item__aside-section work-item__aside-recommended-work">
+        <div class="work-item__aside-recommended-work-header">
+          <strong class="work-item__aside-recommended-work-title">
+            Other work:
+          </strong>
+        </div>
+        <div class="work-item__aside-recommended-work-body">
+          <ul class="work-item__aside-recommended-work-items">
+            {
+              workList.map(
+                (work: {
+                  title: string;
+                  description: string;
+                  link: string;
+                }) => (
+                  <li class="work-item__aside-recommended-work-item">
+                    <a href={work.link}>
+                      <div class="work-item__aside-recommended-work-item-title">
+                        <ArrowRight /> {work.title}
+                      </div>
+                    </a>
+                  </li>
+                )
+              )
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="work-item__aside-section work-item__aside-section--contact">
+        <Button href="/#contact" text="Get in touch" />
+      </div>
+    </div>
+
+    <div class="work-item__main">
+      <slot />
+
+      {
+        frontmatter.recommendationText && (
+          <div class="work-item__recommendations">
+            <Recommendation
+              image={frontmatter.recommendationImage?.src}
+              text={frontmatter.recommendationText}
+              footer={frontmatter.recommendationFooter}
+              client:load
+            />
+          </div>
+        )
+      }
+
+      {
+        frontmatter.recommendedWork?.length && (
+          <div class="work-item__recommended-work-works">
+            <h2 class="work-item__recommended-work-title">Other work</h2>
+            <div class="work-item__recommended-work-body">
+              {workList.map(
+                (work: {
+                  image: { src: string };
+                  title: string;
+                  description: string;
+                  bgcolor: string;
+                  link: string;
+                }) => (
+                  <RecommendedWork
+                    image={work.image}
+                    title={work.title}
+                    description={work.description}
+                    link={work.link}
+                    bgcolor={work.bgcolor || ""}
+                  />
+                )
+              )}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</WorkLayout>
+
+<style>
+  .work-item {
+    --grid-template-columns: 1fr;
+    --flex-direction: column;
+    --gap: var(--space-2xl);
+    --work-item__aside-position: relative;
+    --work-item__aside-top: 0;
+    --work-item__aside-height: auto;
+    --work-item__aside-width: auto;
+    --work-item__aside-bd-gap: var(--space-3xs);
+    --work-item__main_max-width: auto;
+    --strong-display: inline;
+    --aside-recommended-work-display: none;
+    --aside-contact-button-display: none;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .work-item {
+      --grid-template-columns: repeat(2, 1fr);
+      --flex-direction: row;
+      --work-item__aside-position: sticky;
+      --work-item__aside-top: var(--space-m);
+      --work-item__aside-height: 50dvi;
+      --work-item__aside-width: 300px;
+      --work-item__aside-bd-gap: var(--space-2xs);
+      --strong-display: block;
+      --aside-contact-button-display: block;
+    }
+  }
+
+  @media screen and (min-width: 1550px) and (min-height: 1200px) {
+    .work-item {
+      --grid-template-columns: repeat(3, 1fr);
+      --work-item__aside-width: 500px;
+      --work-item__main_max-width: 1740px;
+      --aside-recommended-work-display: flex;
+    }
+  }
+
+  .work-item {
+    display: flex;
+    flex-direction: var(--flex-direction);
+    gap: var(--gap);
+  }
+
+  .work-item__aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+    position: var(--work-item__aside-position);
+    top: var(--work-item__aside-top);
+    left: 0;
+    height: var(--work-item__aside-height);
+    max-width: 500px;
+  }
+
+  .work-item__aside-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--work-item__aside-bd-gap);
+    transition: all 1s var(--ease-out-elastic);
+  }
+
+  .work-item__aside-section--tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3xs);
+  }
+
+  .work-item__aside-section strong {
+    display: var(--strong-display);
+    font-family: var(--font-display);
+    font-weight: bold;
+  }
+
+  .work-item__aside-recommended-work {
+    display: var(--aside-recommended-work-display);
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .work-item__aside-recommended-work-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .work-item__aside-recommended-work-items {
+    list-style: none;
+    padding-left: var(--space-3xs);
+  }
+
+  .work-item__aside-section--contact {
+    display: var(--aside-contact-button-display);
+  }
+
+  .work-item__recommendations {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--space-2xl);
+  }
+
+  .work-item__main {
+    max-width: 1080px;
+  }
+
+  .work-item__recommended-work-works {
+    margin-top: var(--space-2xl);
+  }
+
+  .work-item__recommended-work-title {
+    margin-bottom: var(--space-l);
+    text-align: center;
+    color: var(--color-onPrimary);
+  }
+
+  .work-item__recommended-work-body {
+    display: flex;
+    gap: var(--space-s);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .work-item__aside-recommended-work-item-title {
+    text-wrap: pretty;
+  }
+</style>

@@ -7,18 +7,16 @@ import BrushEnd from "../BrushEnd.astro";
 <section id="main">
   <div class="hero">
     <Container>
-      <div class="hero__layout" data-speed="clamp(0.6)">
-        <div class="hero__content" data-speed="clamp(0.6)">
+      <div class="hero__layout">
+        <div class="hero__content">
           <h2 class="hero__headline">
-            Crafted websites
+            Helping your sites
             {" "}
-            <span style="color:var(--color-emphasis)">&</span>
-            {" "}
-            scalable web applications
+            <span style="color:var(--color-emphasis)">shine</span>
           </h2>
           <p class="hero__description">
-            I design and build fast, scalable digital experiences, from
-            marketing sites and interactive frontends, to complex platforms.
+            I design and build scalable digital experiences, from marketing
+            sites to complex platforms.
           </p>
           <div class="hero__actions">
             <Button href="#contact" text="Get in touch" />
@@ -56,15 +54,19 @@ import BrushEnd from "../BrushEnd.astro";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { ScrollSmoother } from "gsap/ScrollSmoother";
+  import Lenis from "lenis";
 
-  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  gsap.registerPlugin(ScrollTrigger);
 
-  ScrollSmoother.create({
-    content: "#smoothscroll",
-    smooth: 1,
-    effects: true,
-    smoothTouch: 0.1,
+  const lenis = new Lenis();
+
+  lenis.on("scroll", ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
   });
+
+  gsap.ticker.lagSmoothing(0);
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -73,20 +75,19 @@ import BrushEnd from "../BrushEnd.astro";
       end: "bottom 30%",
       scrub: true,
     },
-    defaults: {
-      ease: "none",
-      filter: "blur(2px)",
-    },
   });
 
-  tl.to(".hero__actions", {
+  tl.to(".hero__headline", {
     opacity: 0,
+    yPercent: -25,
   })
     .to(".hero__description", {
       opacity: 0,
+      yPercent: -25,
     })
-    .to(".hero__headline", {
+    .to(".hero__actions", {
       opacity: 0,
+      yPercent: -25,
     });
 </script>
 

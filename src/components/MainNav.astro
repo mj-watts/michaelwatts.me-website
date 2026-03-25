@@ -1,42 +1,49 @@
 ---
-import Avatar from "./Avatar.astro";
+import SiteLogo from "./SiteLogo.astro";
 import NavItem from "./NavItem.astro";
-import AiButton from "./NavItemAiButton.astro";
+import Button from "./GetInTouchButton.astro";
 
-const pathname = new URL(Astro.request.url).pathname;
+const requestUrl = new URL(Astro.request.url);
+const pathname = requestUrl.pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav class="mainnav">
-  <div class="blur-bg"></div>
+<nav class="mainnav" data-current-path={currentPath}>
   <div class="container">
     <div class="mainnav__content">
-      <Avatar />
       <div class="mainnav__items">
         <div class="mainnav__menu-button-container">
           <button class="mainnav__menu-button">Menu</button>
         </div>
         <ol class="mainnav__pagelinks">
           <li>
-            <NavItem href="/#work" isActive={currentPath === "works"}>
+            <NavItem href="/#work" isActive={currentPath.includes("work")}>
               Work
             </NavItem>
           </li>
           <li>
-            <NavItem href="/#contact" isActive={currentPath === "contact"}>
-              Contact
+            <NavItem href="/#services" isActive={currentPath === "services"}>
+              Services
             </NavItem>
           </li>
           <li>
-            <AiButton>AI Chatbot</AiButton>
+            <NavItem href="/#about" isActive={currentPath === "about"}>
+              About
+            </NavItem>
           </li>
+          <li></li>
         </ol>
+      </div>
+      <SiteLogo />
+      <div class="mainnav__cta">
+        <Button href="/#contact" text="Let's Connect" />
       </div>
     </div>
   </div>
 </nav>
 
 <script>
+  console.log("!!");
   if (
     "IntersectionObserver" in window &&
     "IntersectionObserverEntry" in window &&
@@ -73,76 +80,34 @@ const currentPath = pathname.slice(1);
     }
   };
   menuButton?.addEventListener("click", toggleMenuClass);
-
-  const scrollToHashTarget = async (hash) => {
-    const target = document.querySelector(hash);
-    if (!target) return;
-    const mainNavHeight =
-      document.querySelector(".mainnav")?.getBoundingClientRect().height ?? 0;
-    const scrollOffset =
-      hash === "#contact" ? 0 : Math.ceil(mainNavHeight + 16);
-
-    try {
-      const { ScrollSmoother } = await import("gsap/ScrollSmoother");
-      const smoother = ScrollSmoother.get();
-      if (smoother) {
-        smoother.scrollTo(target, true, `top top+=${scrollOffset}`);
-      } else {
-        const targetTop =
-          target.getBoundingClientRect().top + window.scrollY - scrollOffset;
-        window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
-      }
-    } catch {
-      const targetTop =
-        target.getBoundingClientRect().top + window.scrollY - scrollOffset;
-      window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
-    }
-  };
-
-  // Handle menu links click event
-  const navItems = document.querySelectorAll(".mainnav__pagelinks a");
-  for (let navItem of navItems) {
-    navItem?.addEventListener("click", async (event) => {
-      mainnav?.classList.remove("on-mobile-open");
-      document.body.classList.remove("no-scroll");
-
-      const url = new URL(navItem.href, window.location.href);
-      const isSamePageHashLink =
-        url.origin === window.location.origin &&
-        url.pathname === window.location.pathname &&
-        url.hash.length > 1;
-
-      if (!isSamePageHashLink) return;
-
-      event.preventDefault();
-      await scrollToHashTarget(url.hash);
-
-      if (window.location.hash !== url.hash) {
-        history.pushState(null, "", url.hash);
-      }
-    });
-  }
 </script>
 
 <style is:global>
-  .container {
+  .mainnav .container {
     max-width: var(--container-width);
-    padding-left: var(--space-s);
-    padding-right: var(--space-s);
     margin-left: auto;
     margin-right: auto;
+    padding: var(--space-2xs);
     transition: all 200ms ease-in-out;
   }
 
-  .header-not-at-top .container {
-    max-width: 100%;
+  .header-not-at-top .mainnav .container {
+    max-width: 98.5%;
+    padding: var(--space-xs);
+    border: 1px solid
+      color-mix(in oklab, var(--color-emphasis) 70%, transparent);
+    border-top: none;
+    backdrop-filter: blur(5px);
+    border-radius: 0 0 4px 4px;
   }
 
   .mainnav {
     --mainnav__items-ol-li-display: none;
+    --mainnav__cta-display: none;
     --mainnav__menu-button-display: flex;
+    --mainnav__content-grid-cols: 1;
+    --mainnav__items-justify-content: center;
 
-    padding: var(--space-2xs) 0;
     font-size: var(--step--1);
     font-variation-settings: var(--font-bold);
     position: relative;
@@ -153,6 +118,9 @@ const currentPath = pathname.slice(1);
     .mainnav {
       --mainnav__items-ol-li-display: block;
       --mainnav__menu-button-display: none;
+      --mainnav__cta-display: flex;
+      --mainnav__content-grid-cols: 2;
+      --mainnav__items-justify-content: start;
     }
   }
 
@@ -185,6 +153,8 @@ const currentPath = pathname.slice(1);
 
   @media screen and (min-width: 768px) {
     .mainnav {
+      --mainnav__content-grid-cols: 3;
+
       position: fixed;
       width: 100%;
       top: 0;
@@ -205,7 +175,7 @@ const currentPath = pathname.slice(1);
 
   .mainnav__content {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(var(--mainnav__content-grid-cols), 1fr);
     justify-content: space-between;
     align-items: center;
   }
@@ -213,7 +183,7 @@ const currentPath = pathname.slice(1);
   .mainnav__items {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: var(--mainnav__items-justify-content);
   }
 
   .mainnav__pagelinks {
@@ -230,6 +200,11 @@ const currentPath = pathname.slice(1);
     display: var(--mainnav__items-ol-li-display);
     align-items: center;
     justify-content: center;
+  }
+
+  .mainnav__cta {
+    display: var(--mainnav__cta-display);
+    justify-content: end;
   }
 
   .mainnav__menu-button-container {

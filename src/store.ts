@@ -73,7 +73,7 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sa: {
     image: saCoverImage,
-    title: "Complete SaaS platform suite",
+    title: "Fintech SaaS platform",
     description:
       "Public and internal web applications used by millions of donors and household charities such as Comic Relief",
     link: "/work/swiftaid",
@@ -81,7 +81,7 @@ export const recommendedWork = atom<RecommendedWorkCollection>({
   },
   sppoc: {
     image: sppocCoverImage,
-    title: "Secure dashboard & portals",
+    title: "Fintech dashboard & portals",
     description:
       "Secure administrative portal built for HM Revenue & Customs to display transactional data",
     link: "/work/split-payment-poc",

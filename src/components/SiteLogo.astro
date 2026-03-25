@@ -1,0 +1,25 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<a href="/" class="logo">
+  <Logo />
+</a>
+
+<style>
+  .logo {
+    --heading-display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    .logo {
+      --heading-display: flex;
+    }
+  }
+
+  .logo {
+    display: var(--heading-display);
+    justify-content: center;
+    align-items: center;
+  }
+</style>
