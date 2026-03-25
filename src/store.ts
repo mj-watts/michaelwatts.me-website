@@ -9,19 +9,19 @@ import saCoverImage from "../src/content/works/swiftaid/preview.png";
 import sppocCoverImage from "../src/content/works/split-payment-poc/preview.png";
 import personalWorkCoverImage from "../src/content/works/personal-work/preview.png";
 
-export const themePrimary = persistentAtom<string>("themePrimary", "#FFFFFF");
+export const themePrimary = persistentAtom<string>("themePrimary", "#ede5d3");
 
 export const themeOnPrimary = persistentAtom<string>(
   "themeOnPrimary",
-  "#363636"
+  "#6f8d6a"
 );
 
 export const themeSecondary = persistentAtom<string>(
   "themeSecondary",
-  "#D2D2D2"
+  "#2f5283"
 );
 
-export const themeEmphasis = persistentAtom<string>("themeEmphasis", "#f1b102");
+export const themeEmphasis = persistentAtom<string>("themeEmphasis", "#496c45");
 
 export const selectedColorMapId = persistentAtom<string>(
   "selectedColorMapId",

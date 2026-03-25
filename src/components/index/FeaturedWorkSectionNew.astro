@@ -55,40 +55,7 @@ const workList = [
   </div>
 </section>
 
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".work-scroller",
-      start: "-8% top",
-      end: "+=36%",
-      pin: true,
-      pinSpacing: false,
-      scrub: true,
-    },
-  });
-
-  tl.to(".work__header h2", {
-    opacity: 0,
-    filter: "blur(2px)",
-    ease: "none",
-    duration: 0.2,
-  })
-    .to(".work__header p", {
-      opacity: 0,
-      filter: "blur(1px)",
-      ease: "none",
-      duration: 0.2,
-      delay: -0.3,
-    })
-    .to(".work__body", { y: -500, ease: "none", duration: 1 }, "<");
-
-  window.addEventListener("load", () => ScrollTrigger.refresh());
-</script>
+<script></script>
 
 <style>
   .work-container {

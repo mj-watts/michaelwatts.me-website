@@ -120,11 +120,11 @@ const colorMap: ColorMap = new Map([
   [
     1,
     {
-      // White
-      "--color-primary": "#FFFFFF",
-      "--color-onPrimary": "#363636",
-      "--color-secondary": "#D2D2D2",
-      "--color-emphasis": "#f1b102",
+      // Green
+      "--color-primary": "#ede5d3",
+      "--color-onPrimary": "#6f8d6a",
+      "--color-secondary": "#2f5283",
+      "--color-emphasis": "#496c45",
     },
   ],
   [
@@ -140,11 +140,11 @@ const colorMap: ColorMap = new Map([
   [
     3,
     {
-      // Green
-      "--color-primary": "#ede5d3",
-      "--color-onPrimary": "#6f8d6a",
-      "--color-secondary": "#2f5283",
-      "--color-emphasis": "#496c45",
+      // White
+      "--color-primary": "#FFFFFF",
+      "--color-onPrimary": "#363636",
+      "--color-secondary": "#D2D2D2",
+      "--color-emphasis": "#f15902",
     },
   ],
   [
