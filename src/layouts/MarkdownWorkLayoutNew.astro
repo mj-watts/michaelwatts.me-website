@@ -1,21 +1,9 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
-import Tags from "../components/Tags.tsx";
-import { recommendedWork } from "../store";
 
 const { frontmatter } = Astro.props;
 const { title, description, summary } = frontmatter;
-
-const rw = recommendedWork.get();
-
-const workList = frontmatter.recommendedWork.map((key: string) => ({
-  bgcolor: rw[key].bgcolor,
-  image: rw[key].image,
-  title: rw[key].title,
-  description: rw[key].description,
-  link: rw[key].link,
-}));
 ---
 
 <WorkLayout pageTitle={title} pageDescription={description}>
@@ -61,10 +49,17 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   ).matches;
 
   if (!reduceMotion) {
+    const STACK_TOP_OFFSET = 130;
+    const STACK_STEP = 10;
+    const STACK_SCALE_STEP = 0.03;
     const work = document.querySelector(".work");
     const col1 = document.querySelector(".col-1");
     const col2 = document.querySelector(".col-2");
     const listItems = gsap.utils.toArray(".col-2 li");
+    const mediaSections = gsap.utils.toArray(
+      ".col-3 > .content > .content-section"
+    );
+    const enableMediaStack = window.matchMedia("(min-width: 1000px)").matches;
 
     if (work && col1 && col2) {
       ScrollTrigger.create({
@@ -102,6 +97,46 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
           end: "bottom 100%",
           scrub: true,
         },
+      });
+    }
+
+    if (enableMediaStack && mediaSections.length > 0) {
+      const totalSections = mediaSections.length;
+
+      mediaSections.forEach((section, index) => {
+        const depthFromFront = totalSections - 1 - index;
+        const targetY = depthFromFront * -STACK_STEP;
+        const targetScale = Math.max(0.84, 1 - depthFromFront * STACK_SCALE_STEP);
+        const targetBrightness = Math.max(0.72, 1 - depthFromFront * 0.08);
+
+        gsap.set(section, {
+          zIndex: index + 1,
+          transformOrigin: "50% 0%",
+        });
+
+        gsap.fromTo(
+          section,
+          {
+            scale: 1,
+            rotateX: 0,
+            y: 0,
+            filter: "brightness(1)",
+          },
+          {
+            scale: targetScale,
+            rotateX: -2.5,
+            y: targetY,
+            filter: `brightness(${targetBrightness})`,
+            ease: "none",
+            immediateRender: false,
+            scrollTrigger: {
+              trigger: section as Element,
+              start: `top top+=${STACK_TOP_OFFSET}`,
+              end: `bottom top+=${STACK_TOP_OFFSET}`,
+              scrub: true,
+            },
+          }
+        );
       });
     }
   }
@@ -189,5 +224,23 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     }
   }
   .col-3 {
+    perspective: 1000px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    :global(.col-3 > .content > .content-section) {
+      position: sticky;
+      top: 130px;
+    }
+
+    :global(.col-3 .content-image-2-col__bd) {
+      column-gap: 10px;
+    }
+
+    :global(.col-3 > .content)::after {
+      content: "";
+      display: block;
+      height: min(50vh, 420px);
+    }
   }
 </style>
