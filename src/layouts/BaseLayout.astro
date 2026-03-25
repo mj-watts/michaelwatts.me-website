@@ -16,6 +16,7 @@ const { pageTitle } = Astro.props;
     themeSecondary,
     themeEmphasis,
   } from "../store";
+  import { initGlobalLenis } from "../lib/initGlobalLenis";
 
   document.documentElement.style.setProperty(
     "--color-primary",
@@ -49,6 +50,8 @@ const { pageTitle } = Astro.props;
   themeEmphasis.subscribe((color) => {
     document.documentElement.style.setProperty("--color-emphasis", color);
   });
+
+  initGlobalLenis();
 </script>
 
 <html lang="en">

@@ -43,6 +43,64 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
   </div>
 </WorkLayout>
 
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { initGlobalLenis } from "../lib/initGlobalLenis";
+
+  gsap.registerPlugin(ScrollTrigger);
+  initGlobalLenis();
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (!reduceMotion) {
+    const work = document.querySelector(".work");
+    const col1 = document.querySelector(".col-1");
+    const col2 = document.querySelector(".col-2");
+    const listItems = gsap.utils.toArray(".col-2 li");
+
+    if (work && col1 && col2) {
+      ScrollTrigger.create({
+        trigger: work,
+        start: "top top+=130",
+        endTrigger: ".col-3",
+        end: "bottom bottom-=100",
+        pin: col1,
+        pinSpacing: false,
+      });
+
+      ScrollTrigger.create({
+        trigger: work,
+        start: "top top+=130",
+        endTrigger: ".col-3",
+        end: "bottom bottom-=100",
+        pin: col2,
+        pinSpacing: false,
+      });
+    }
+
+    if (work && listItems.length > 0) {
+      gsap.set(listItems, { opacity: 0.3 });
+
+      gsap.to(listItems, {
+        opacity: 1,
+        ease: "none",
+        stagger: {
+          each: 0.25,
+        },
+        scrollTrigger: {
+          trigger: work,
+          start: "top top+=130",
+          end: "bottom bottom-=100",
+          scrub: true,
+        },
+      });
+    }
+  }
+</script>
+
 <style>
   .work {
     --grid-template-columns: 1fr;
@@ -103,7 +161,6 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
       align-items: center;
       font-size: var(--step--1);
       font-variation-settings: var(--font-semi-bold);
-      opacity: 0.5;
     }
   }
   .col-3 {

@@ -1,6 +1,7 @@
 ---
 import ColorPicker from "../components/ColorPicker.tsx";
 import "../styles/styles.css";
+import "lenis/dist/lenis.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
 const { pageTitle, pageDescription } = Astro.props;
@@ -13,6 +14,7 @@ const { pageTitle, pageDescription } = Astro.props;
     themeSecondary,
     themeEmphasis,
   } from "../store";
+  import { initGlobalLenis } from "../lib/initGlobalLenis";
 
   document.documentElement.style.setProperty(
     "--color-primary",
@@ -64,6 +66,8 @@ const { pageTitle, pageDescription } = Astro.props;
       observer.observe(anchor);
     }
   }
+
+  initGlobalLenis();
 </script>
 
 <html lang="en">
