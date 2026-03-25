@@ -30,7 +30,12 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
         {
           frontmatter.tags.map((tag: { tag: string }) => (
             <li>
-              <ArrowRight /> {tag}
+              <span class="tag-item tag-item--base">
+                <ArrowRight /> {tag}
+              </span>
+              <span class="tag-item tag-item--reveal" aria-hidden="true">
+                <ArrowRight /> {tag}
+              </span>
             </li>
           ))
         }
@@ -82,10 +87,10 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     }
 
     if (work && listItems.length > 0) {
-      gsap.set(listItems, { opacity: 0.3 });
+      gsap.set(listItems, { "--reveal-progress": 0 });
 
       gsap.to(listItems, {
-        opacity: 1,
+        "--reveal-progress": 1,
         ease: "none",
         stagger: {
           each: 0.25,
@@ -93,7 +98,8 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
         scrollTrigger: {
           trigger: work,
           start: "top top+=130",
-          end: "bottom bottom-=100",
+          endTrigger: ".col-3",
+          end: "bottom 100%",
           scrub: true,
         },
       });
@@ -156,11 +162,30 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
     }
 
     li {
-      display: flex;
-      gap: var(--space-2xs);
+      --reveal-progress: 0;
+      display: inline-grid;
+      width: fit-content;
       align-items: center;
       font-size: var(--step--1);
       font-variation-settings: var(--font-semi-bold);
+      list-style: none;
+    }
+
+    .tag-item {
+      grid-area: 1 / 1;
+      display: inline-flex;
+      gap: var(--space-2xs);
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .tag-item--base {
+      opacity: 0.5;
+    }
+
+    .tag-item--reveal {
+      opacity: 1;
+      clip-path: inset(0 calc((1 - var(--reveal-progress)) * 100% - 1px) 0 0);
     }
   }
   .col-3 {
