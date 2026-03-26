@@ -1,6 +1,7 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
+import Button from "../components/GetInTouchButton.astro";
 
 const { frontmatter } = Astro.props;
 const { title, description, summary } = frontmatter;
@@ -34,6 +35,17 @@ const { title, description, summary } = frontmatter;
       <slot />
     </div>
   </div>
+
+  <div class="navigation">
+    <div class="body">
+      <div>
+        <h2>Next...</h2>
+        <p>Blah</p>
+      </div>
+
+      <Button href="/#work" text="Next" theme="dark" />
+    </div>
+  </div>
 </WorkLayout>
 
 <script>
@@ -49,8 +61,8 @@ const { title, description, summary } = frontmatter;
   ).matches;
 
   if (!reduceMotion) {
-    const STACK_TOP_OFFSET = 130;
-    const STACK_STEP = 10;
+    const TOP_OFFSET = 170;
+    const STACK_STEP = 2;
     const STACK_SCALE_STEP = 0.03;
     const work = document.querySelector(".work");
     const col1 = document.querySelector(".col-1");
@@ -64,7 +76,7 @@ const { title, description, summary } = frontmatter;
     if (work && col1 && col2) {
       ScrollTrigger.create({
         trigger: work,
-        start: "top top+=130",
+        start: `top top+=${TOP_OFFSET}`,
         endTrigger: ".col-3",
         end: "bottom bottom-=100",
         pin: col1,
@@ -73,7 +85,7 @@ const { title, description, summary } = frontmatter;
 
       ScrollTrigger.create({
         trigger: work,
-        start: "top top+=130",
+        start: `top top+=${TOP_OFFSET}`,
         endTrigger: ".col-3",
         end: "bottom bottom-=100",
         pin: col2,
@@ -92,7 +104,7 @@ const { title, description, summary } = frontmatter;
         },
         scrollTrigger: {
           trigger: work,
-          start: "top top+=130",
+          start: "top top+=170",
           endTrigger: ".col-3",
           end: "bottom 100%",
           scrub: true,
@@ -106,7 +118,10 @@ const { title, description, summary } = frontmatter;
       mediaSections.forEach((section, index) => {
         const depthFromFront = totalSections - 1 - index;
         const targetY = depthFromFront * -STACK_STEP;
-        const targetScale = Math.max(0.84, 1 - depthFromFront * STACK_SCALE_STEP);
+        const targetScale = Math.max(
+          0.84,
+          1 - depthFromFront * STACK_SCALE_STEP
+        );
         const targetBrightness = Math.max(0.72, 1 - depthFromFront * 0.08);
 
         gsap.set(section, {
@@ -131,8 +146,8 @@ const { title, description, summary } = frontmatter;
             immediateRender: false,
             scrollTrigger: {
               trigger: section as Element,
-              start: `top top+=${STACK_TOP_OFFSET}`,
-              end: `bottom top+=${STACK_TOP_OFFSET}`,
+              start: `top top+=${TOP_OFFSET}`,
+              end: `bottom top+=${TOP_OFFSET}`,
               scrub: true,
             },
           }
@@ -164,7 +179,7 @@ const { title, description, summary } = frontmatter;
     display: grid;
     grid-template-columns: var(--grid-template-columns);
     gap: var(--gap);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-3xl);
   }
 
   .col-1 {
@@ -241,6 +256,36 @@ const { title, description, summary } = frontmatter;
       content: "";
       display: block;
       height: min(50vh, 420px);
+    }
+  }
+
+  .navigation {
+    position: fixed;
+    bottom: 0;
+    left: var(--space-2xl);
+    right: var(--space-xs);
+
+    .body {
+      padding: var(--space-xs);
+      padding-bottom: var(--space-l);
+      border: 1px solid var(--color-emphasis);
+      border-bottom: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      background: color-mix(in oklab, var(--color-primary) 80%, transparent);
+      backdrop-filter: blur(5px);
+      border-radius: 4px 4px 0 0;
+
+      h2 {
+        color: var(--color-emphasis);
+        font-size: var(--step-1);
+        margin-bottom: var(--space-xs);
+      }
+
+      p {
+        font-size: var(--step--1);
+      }
     }
   }
 </style>

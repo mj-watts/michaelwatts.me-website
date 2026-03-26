@@ -1,21 +1,19 @@
 ---
-title: "Split VAT payment platform"
+title: "Split VAT payment PoC"
+description: "Helped conceive and develop an advanced admin portal as a proof of concept (POC) for HMRC, capable of handling and querying database transactions using Elasticsearch and Kibana for querying the data backend. Presented to HMRC’s technical review team at regular Sprint Reviews."
 sectors: ["Fintech", "Taxation", "Payment Systems"]
 pubDate: 2025-09-08
-summary: "Helped conceive and develop an advanced admin portal as a proof of concept (POC) for HMRC, capable of handling and querying database transactions using Elasticsearch and Kibana for querying the data backend. Presented to HMRC’s technical review team at regular Sprint Reviews."
+summary: "This was one of several innovation projects delivered by the engineering team at Streeva and the most notable to date, a £1.75M proof of concept for HM Revenue & Customs. "
 type: "Web Applications, Payment Systems"
 tags:
   [
-    "JavaScript",
-    "TypeScript",
-    "Node",
-    "Figma",
-    "Vue",
-    "Elasticsearch",
-    "Kibana",
-    "Gherkin",
-    "GraphQL",
-    "BDD",
+    "TypeScript + React",
+    "Performant transactional dashboard",
+    "Elasticsearch + Kibana",
+    "Prototyping in Figma",
+    "Gherkin + Behaviour Driven Development",
+    "GraphQL for optimum API performance",
+    "Designed with GOV.UK Design System"
   ]
 # recommendationImage: "../../../images/chris-chorley.png"
 # recommendationText: "Mike is a pleasure to work with, his UI and UX skills are invaluable to the team. The company could rely on Mike going above and beyond to help solve critical issues quickly, caring about our users having a great experience with our product, and working with the product team to help solve difficult UX problems and then helping to present these new features and updates to the broader organisation."
@@ -29,23 +27,13 @@ import ImageContainer from "../../../components/ImageContainer.astro";
 import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import img1 from "./1.png";
-import img2 from "./2.png";
-import img3 from "./3.png";
-import img4 from "./4.png";
-import image4 from "./image4.png";
-
-## Innovation proof of concept for HM Revenue & Customs
+import img1 from "./1.webp";
+import img2 from "./2.webp";
+import img3 from "./3.webp";
+import img4 from "./4.webp";
+import image4 from "./image4.webp";
 
 <ContentSection>
-  ### An introduction to the Streeva Split Payment portal
-
-  This was one of several innovation projects delivered by the engineering team at Streeva, 
-  and the most notable to date, a £1.75M proof of concept for HM Revenue & Customs. 
-  The project demonstrated the ability to process and enrich transaction data in real time, and tested to 
-  handle millions of records with low latency and a scalable infrastructure that was designed to meet processing
-  requirements set by HMRC's technical team.
-
   <ContentImage1Column>
     <ImageContainer backgroundColor="#573d7c">
       <Image
@@ -57,11 +45,13 @@ import image4 from "./image4.png";
         loading="eager"
       />
       <ImageCaption color="#e2d8f1">
-        Transaction data in detail
+        Breaking down transactional data in detail
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
+</ContentSection>
 
+<ContentSection>
   <ContentImage1Column>
     <ImageContainer backgroundColor="#573d7c">
       <Image
@@ -81,19 +71,6 @@ import image4 from "./image4.png";
 
 
 <ContentSection>
-  ### Prototyping in Figma, building with TypeScript
-
-  Designed and prototyped in Figma, built using Vue, TypeScript, Elasticsearch, Kibana and Node.
-  
-  Also developed mock merchant stores and integrated test payment solutions such as Stripe and Checkout.com with Streeva's data overlay network to demonstrate
-  the transaction processing element.
-
-  Regular presentations in sprint reviews to HMRC were well received, with our work recognised for its transparency and innovation.
-
-  Working with BDD through Gherkin and Vitest, I helped ensure reliable feature
-  delivery, while regular sprint reviews with HMRC shaped the system to their
-  strict accessibility and performance needs.
-
   <ContentImage2Column>
     <ImageContainer backgroundColor="#573d7c">
       <Image
@@ -114,7 +91,9 @@ import image4 from "./image4.png";
       />
     </ImageContainer>
   </ContentImage2Column>
+</ContentSection>
 
+<ContentSection>
   <ContentImage1Column>
     <ImageContainer backgroundColor="#573d7c">
       <Image
@@ -125,7 +104,7 @@ import image4 from "./image4.png";
         quality={100}
       />
       <ImageCaption color="#e2d8f1">
-        Accessibility standards WCAG 2.2 are a must for any government website, even POCs
+        Accessibility standards WCAG 2.2 were required even for a PoC
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>

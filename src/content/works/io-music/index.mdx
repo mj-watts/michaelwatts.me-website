@@ -1,10 +1,18 @@
 ---
-title: "IO Music App for iOS & Android"
+title: "iOS & Android App"
+description: "Cross-platform music streaming app with collaborative party mode"
 sectors: ["Music", "Social Media", "Communication Services"]
 pubDate: 2025-09-07
-summary: "An innovative music streaming app for iOS and Android using React and React Native."
+summary: "An innovative music and video streaming app for iOS and Android featuring colloborative party mode and synchronised playlists."
 type: "Mobile App"
-tags: ["JavaScript", "React", "React Native", "Objective-C", "Node", "Firebase", "Redis"]
+tags: 
+  [
+    "React Native iOS + Android", 
+    "Multi-user synchronised playlists",
+    "Collaborative party mode",
+    "100,000+ downloads in first month", 
+    "Apple Charts Top 10"
+  ]
 # recommendationImage: "../../../images/graham-beard.png"
 # recommendationText: "Michael is a strong all round developer who is extremely professional within his approach and great to work with. Whilst at Purple he worked on a variety high-end websites producing work of the highest quality."
 # recommendationFooter: "Graham Beard - Creative Director, Purple Agency"
@@ -17,25 +25,17 @@ import ImageContainer from "../../../components/ImageContainer.astro";
 import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import img2 from "./2.png";
-import img3 from "./3.png";
-import img5 from "./5.png";
-import img6 from "./6.png";
-import image1 from "./image1.png";
-import image2 from "./image2.png";
-import image5 from "./image5.png";
-
-## Launched cross-platform music streaming app with collaborative party mode
+import img2 from "./2.webp";
+import img3 from "./3.webp";
+import img5 from "./5.webp";
+import img6 from "./6.webp";
+import image1 from "./image1.webp";
+import image2 from "./image2.webp";
+import image5 from "./image5.webp";
 
 <ContentSection>
-  ### Introducing ioMusic
-
-  An iOS native application called IO Music was a free music video streaming app reached the top 10 in the Apple charts and gained
-  100,000+ downloads in its first month, gaining very positive reviews. It proved that you don't need a big team to build good things, fast. 
-  It was later transitioned to Android (thanks to React Native) and also launched on the Google Store.
-
   <ContentImage1Column>
-    <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <ImageContainer backgroundColor="#17181c">
       <Image
         src={image1}
         alt="iPhone App."
@@ -43,7 +43,7 @@ import image5 from "./image5.png";
         loading="lazy"
         quality={100}
       />
-      <ImageCaption color="var(--color-secondary)">
+      <ImageCaption color="#ccc">
         Launched on the Apple Store ioMusic reached the top 10 in the Apple Charts
       </ImageCaption>
     </ImageContainer>
@@ -51,23 +51,6 @@ import image5 from "./image5.png";
 </ContentSection>
 
 <ContentSection>
-  ### Hackathon MVP developed into full product
-
-  Stemming from an idea, that later, as part of a company hackathon, was built into a working MVP in Rails, users could remotely control a web application from their PCs
-  and queue up tracks and videos using YouTube's API on an office TV, it provided a lot of fun (and distraction) for the office and started the seed of an idea that
-  something this fun and popular could perhaps generate revenue.
-
-  Originally powered by Ruby on Rails application, WebSockets a PostgreSQL database, and a React frontend, some elements of the
-  web application were adapted and developed into a native mobile app built with React Native and supported by RabbitMQ message queues and a Firebase database.
-</ContentSection>
-
-<ContentSection>
-  ### Curated content and social media to build interest
-
-  A constant social media campaign leveraging inhouse design from our award winning designer built interest in the product even before release.
-
-  Content and playlists were carefully curated by the team alongside standard features like recommendations and social sharing built up a good stream of interesting posts about the app.
-
   <ContentImage2Column>
     <ImageContainer backgroundColor="#744086">
       <Image
@@ -90,55 +73,49 @@ import image5 from "./image5.png";
   </ContentImage2Column>
 </ContentSection>
 
-<ContentImage1Column>
-  <ImageContainer backgroundColor="var(--color-onPrimary)">
-    <Image
-      src={image2}
-      alt="iPhone App."
-      width={2816}
-      loading="lazy"
-      quality={100}
-    />
-    <ImageCaption color="var(--color-secondary)">
-      Built using React Native, custom and third-party components
-    </ImageCaption>
-  </ImageContainer>
-</ContentImage1Column>
-
-<ContentImage2Column>
-  <ImageContainer backgroundColor="#f3b2c3">
-    <Image
-      src={img5}
-      alt="iPhone App."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-  <ImageContainer backgroundColor="#6c8a6a">
-    <Image
-      src={img6}
-      alt="iPhone App."
-      width={1400}
-      loading="lazy"
-      quality={100}
-    />
-  </ImageContainer>
-</ContentImage2Column>
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer backgroundColor="#0d100a">
+      <Image
+        src={image2}
+        alt="iPhone App."
+        width={2816}
+        loading="lazy"
+        quality={100}
+      />
+      <ImageCaption color="#ccc">
+        Built using React Native, custom and third-party components
+      </ImageCaption>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
 <ContentSection>
-  ### Top 10 in the Apple Charts!
+  <ContentImage2Column>
+    <ImageContainer backgroundColor="#f3b2c3">
+      <Image
+        src={img5}
+        alt="iPhone App."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+    <ImageContainer backgroundColor="#6c8a6a">
+      <Image
+        src={img6}
+        alt="iPhone App."
+        width={1400}
+        loading="lazy"
+        quality={100}
+      />
+    </ImageContainer>
+  </ContentImage2Column>
+</ContentSection>
 
-  ioMusic reached the top 10 in the Apple charts and gained
-  100,000+ downloads in its first month, earning positive reviews for both its
-  innovative functionality and user-friendly design.
-
-  With some paywalled premium features we generated revenue from premium subscribers and plus advertising. 
-
-  The amount of money generated from advertising was not as much as was hoped.   
-
+<ContentSection>
   <ContentImage1Column>
-    <ImageContainer backgroundColor="#bababc">
+    <ImageContainer backgroundColor="#582d96">
       <Image
         src={image5}
         alt="iPhone App."
@@ -146,8 +123,8 @@ import image5 from "./image5.png";
         loading="lazy"
         quality={100}
       />
-      <ImageCaption color="var(--color-onPrimary)">
-        React Native delivered a slick native experience (with a little extra work!)
+      <ImageCaption color="#ccc">
+        React Native delivered a slick native experience
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>

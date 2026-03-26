@@ -1,20 +1,16 @@
 ---
-title: "Personal Projects, ideas and other things"
+title: "Personal Projects and sketches"
+description: "A showcase for ideas and personal projects."
 sectors: ["Personal", "SaaS", "Software"]
 pubDate: 2025-09-03
-summary: "A showcase for ideas and personal projects."
+summary: "Ideas and personal projects such as a editing app for SVGs, glass displacement effect, new HTML & JavaScript APIs"
 type: "Web Applications, Micro SaaS, ideas and experimentations"
 tags:
   [
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "TypeScript",
-    "Node",
-    "AI",
-    "React",
-    "Vue",
-    "Rust"
+    "Web & native OS application",
+    "HTML, CSS + JavaScript playground",
+    "TypeScript & Node musings",
+    "AI assisted development",
   ]
 recommendedWork: ["iomusic", "webapps", "ecomm", "sa"]
 ---
@@ -25,25 +21,15 @@ import ImageContainer from "../../../components/ImageContainer.astro";
 import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import img1 from "./1.png";
+import img1 from "./1.webp";
 import mainVideo from "./bezier.mp4";
 import mainVideoWebm from "./bezier.mp4";
 
 ## Projects
 
 <ContentSection>
-  ### Bezier: An SVG editing web app
-
-  Available as a native app to download or web app at https://bezier-app.pages.dev/
-
-  This app is an Illustrator-style SVG path editor built to create and refine vector artwork directly in the browser. 
-  It supports multi-path editing with anchor points and bezier handles, transform tools (move/scale/rotate), zoom and pan controls, 
-  and a live SVG code pane so visual edits and raw markup stay in sync for fast iteration and export.
-
-
-
   <ContentImage1Column>
-    <ImageContainer>
+    <ImageContainer backgroundColor="#000">
       <Image
         src={img1}
         alt="SVG editor"
@@ -51,14 +37,14 @@ import mainVideoWebm from "./bezier.mp4";
         loading="lazy"
         quality={100}
       />
+      <ImageCaption color="#ccc">
+           Native and web app available at https://bezier-app.pages.dev/
+      </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
+</ContentSection>
 
-  It’s built with React + TypeScript on Vite, with a component-based UI and dedicated geometry utilities for path operations. 
-  Quality is backed by a BDD-style testing approach, using Vitest and Playwright to validate expected user behaviors and key editing workflows end to end.
-
-  Also available as a standalone native app for macOS using Tauri build tools.
-
+<ContentSection>
   <ContentImage1Column>
     <ImageContainer backgroundColor="#000">
       <video poster={img1.src} autoplay="true" playslinline loop>
@@ -67,43 +53,68 @@ import mainVideoWebm from "./bezier.mp4";
         <p>Download and watch <a href={mainVideo}>video</a></p>
       </video>
       <ImageCaption color="var(--color-secondary)">
-        A video showing the editor in action 
+        Native app for macOS using Tauri build tools
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
+</ContentSection>
 
-  <hr />
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer>
+      <iframe style="width: 100%; height: 800px" scrolling="no" title="Glass displacement effect " src="https://codepen.io/mj-watts/embed/YPWBrqE?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
+        See the Pen <a href="https://codepen.io/mj-watts/pen/YPWBrqE">
+        Glass displacement effect </a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-  ### CodePens
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer>
+      <iframe style="width: 100%; height: 800px" scrolling="no" title="Sticky nav using scroll-state queries" src="https://codepen.io/mj-watts/embed/qENKBBr?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
+        See the Pen <a href="https://codepen.io/mj-watts/pen/qENKBBr">
+        Sticky nav using scroll-state queries</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-  <iframe height="600" style="width: 100%;" scrolling="no" title="Glass displacement effect " src="https://codepen.io/mj-watts/embed/YPWBrqE?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
-    See the Pen <a href="https://codepen.io/mj-watts/pen/YPWBrqE">
-    Glass displacement effect </a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </iframe>
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer>
+      <iframe style="width: 100%; height: 800px" scrolling="no" title="Shuffling cards with view transition API " src="https://codepen.io/mj-watts/embed/KwMLZdg?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
+        See the Pen <a href="https://codepen.io/mj-watts/pen/KwMLZdg">
+        Shuffling cards with view transition API </a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-  <iframe height="600" style="width: 100%;" scrolling="no" title="Sticky nav using scroll-state queries" src="https://codepen.io/mj-watts/embed/qENKBBr?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
-    See the Pen <a href="https://codepen.io/mj-watts/pen/qENKBBr">
-    Sticky nav using scroll-state queries</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </iframe>
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer>
+      <iframe style="width: 100%; height: 800px" scrolling="no" title="Pure CSS bubble navigation" src="https://codepen.io/mj-watts/embed/GgqPQbV?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
+        See the Pen <a href="https://codepen.io/mj-watts/pen/GgqPQbV">
+        Pure CSS bubble navigation</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </ImageContainer>
+  </ContentImage1Column>
+</ContentSection>
 
-  <iframe height="1000" style="width: 100%;" scrolling="no" title="Shuffling cards with view transition API " src="https://codepen.io/mj-watts/embed/KwMLZdg?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
-    See the Pen <a href="https://codepen.io/mj-watts/pen/KwMLZdg">
-    Shuffling cards with view transition API </a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </iframe>
-
-  <iframe height="800" style="width: 100%;" scrolling="no" title="Pure CSS bubble navigation" src="https://codepen.io/mj-watts/embed/GgqPQbV?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
-    See the Pen <a href="https://codepen.io/mj-watts/pen/GgqPQbV">
-    Pure CSS bubble navigation</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </iframe>
-
-  <iframe height="1000" style="width: 100%;" scrolling="no" title="Resizable Glass Effect" src="https://codepen.io/mj-watts/embed/xbOeWBj?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
-    See the Pen <a href="https://codepen.io/mj-watts/pen/xbOeWBj">
-    Resizable Glass Effect</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
-    on <a href="https://codepen.io">CodePen</a>.
-  </iframe>
-
+<ContentSection>
+  <ContentImage1Column>
+    <ImageContainer>
+      <iframe style="width: 100%; height: 800px" scrolling="no" title="Resizable Glass Effect" src="https://codepen.io/mj-watts/embed/xbOeWBj?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true">
+        See the Pen <a href="https://codepen.io/mj-watts/pen/xbOeWBj">
+        Resizable Glass Effect</a> by Michael Watts (<a href="https://codepen.io/mj-watts">@mj-watts</a>)
+        on <a href="https://codepen.io">CodePen</a>.
+      </iframe>
+    </ImageContainer>
+  </ContentImage1Column>
 </ContentSection>

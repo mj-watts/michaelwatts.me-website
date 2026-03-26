@@ -1,19 +1,17 @@
 ---
-title: "Web Applications"
+title: "WWF Carbon Footprint Calculator"
+description: "Web applications built with different technology stacks"
 sectors: ["Aerospace", "Non-Profit"]
 pubDate: 2025-09-04
-summary: "Developed a complex aircraft shipping cost calculator for Sita using AngularJS."
+summary: "Relaunch of WWF's popular Carbon Footprint questionnaire calculating a user's environmental footprint"
 type: "Web Applications"
 tags:
   [
-    "Vue",
-    "TypeScript",
-    "Laravel",
-    "Anime.js",
-    "Angular",
-    "JavaScript",
-    "Firebase",
-    "ChartJS",
+    "Environmental footprint calculator",
+    "Multi-choice questionnaire",
+    "Laravel, Vue + PostgreSQL",
+    "Animated charts & transitions",
+    "Configurable questions & weighting"
   ]
 # recommendationImage: "../../../images/anand-kuppa.png"
 # recommendationText: "Michael is an excellent web designer. His design skills and front end skills were excellent in helping us develop the website. I thoroughly enjoyed working with Mike and have been amazed at his work, his eye for web design and his knowledge of the latest trends and technologies."
@@ -27,46 +25,34 @@ import ImageContainer from "../../../components/ImageContainer.astro";
 import ImageCaption from "../../../components/ImageCaption.astro";
 import ContentImage1Column from "../../../components/ContentImage1Column.astro";
 import ContentImage2Column from "../../../components/ContentImage2Column.astro";
-import img1 from "./1.png";
-import img2 from "./2.png";
-import img3 from "./3.png";
-import img4 from "./4.png";
-import img5 from "./5.png";
-import img6 from "./6.png";
-import img7 from "./7.png";
-import img8 from "./8.png";
-import img9 from "./9.png";
+import img1 from "./1.webp";
+import img2 from "./2.webp";
+import img3 from "./3.webp";
+import img4 from "./4.webp";
+import img5 from "./5.webp";
+import img6 from "./6.webp";
+import img7 from "./7.webp";
+import img8 from "./8.webp";
+import img9 from "./9.webp";
 
 import mainVideo from "./wwf-cfc-main.mp4";
 import mainVideoWebm from "./wwf-cfc-main.webm";
 
 import questionsVideo from "./wwf-cfc-questions.mp4";
 import questionsVideoWebm from "./wwf-cfc-questions.webm";
-import questionsVideoPoster from "./wwf-cfc-questions-poster.png";
+import questionsVideoPoster from "./wwf-cfc-questions-poster.webp";
 
 import stepsVideo from "./wwf-cfc-steps.mp4";
 import stepsVideoWebm from "./wwf-cfc-steps.webm";
-import stepsVideoPoster from "./wwf-cfc-steps-poster.png";
+import stepsVideoPoster from "./wwf-cfc-steps-poster.webp";
 
 import titleVideo from "./wwf-cfc-title.mp4";
 import titleVideoWebm from "./wwf-cfc-title.webm";
-import titleVideoPoster from "./wwf-cfc-title-poster.png";
-
-## Web applications built with different technology stacks
+import titleVideoPoster from "./wwf-cfc-title-poster.webp";
 
 <ContentSection>
-  ### WWF Carbon Footprint Calculator rebuilt with Laravel, Vue and Anime.js
-
-  Delivered the 2018 relaunch of WWF's Carbon Footprint Calculator, rebuilding the interface in Vue.js powered by a Laravel
-  backend and MySQL database.
-
-  The questionnaire guided users through lifestyle questions and
-  returned tailored recommendations to reduce their impact. Close collaboration
-  with WWF stakeholders ensured the platform aligned with their goals and has
-  since supported thousands in making more sustainable choices.
-
   <ContentImage1Column>
-    <ImageContainer backgroundColor="var(--color-onPrimary)">
+    <ImageContainer backgroundColor="#000">
       <Image
         src={img1}
         alt="Web app screen."
@@ -79,14 +65,6 @@ import titleVideoPoster from "./wwf-cfc-title-poster.png";
 </ContentSection>
 
 <ContentSection>
-  ### Animations, reusable components and custom illustrations
-
-  A number of custom components were designed and built in Vue.js to be resused throughout the application. Animated with Anime.js 
-  to elevate the impactful design this made the user experience more engaging.
-
-  We also provided several high impact screens with animations for the home screen and with the results pages implementing 
-  functionality at the end to share the results across social media.
-  
   <ContentImage2Column>
     <ImageContainer backgroundColor="var(--color-secondary)">
       <video poster={questionsVideoPoster.src} autoplay="true" playslinline loop>
@@ -103,7 +81,9 @@ import titleVideoPoster from "./wwf-cfc-title-poster.png";
       </video>
     </ImageContainer>
   </ContentImage2Column>
+</ContentSection>
 
+<ContentSection>
   <ContentImage1Column>
     <ImageContainer backgroundColor="#000">
       <video poster={img1.src} autoplay="true" playslinline loop>
@@ -111,74 +91,14 @@ import titleVideoPoster from "./wwf-cfc-title-poster.png";
         <source type="video/webm" src={mainVideoWebm} />
         <p>Download and watch <a href={mainVideo}>video</a></p>
       </video>
-      <ImageCaption color="var(--color-secondary)">
+      <ImageCaption color="#ccc">
         A video showing the introduction page animation and the starting question 
-      </ImageCaption>
-    </ImageContainer>
-  </ContentImage1Column>
-
-  <ContentImage1Column>
-    <ImageContainer backgroundColor="#000">
-      <video poster={titleVideoPoster.src} autoplay="true" playslinline loop>
-        <source type="video/mp4" src={titleVideo} />
-        <source type="video/webm" src={titleVideoWebm} />
-        <p>Download and watch <a href={titleVideo}>video</a></p>
-      </video>
-      <ImageCaption color="var(--color-secondary)">
-        Different states of title content when starting or continuing the questionnaire 
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
 </ContentSection>
 
 <ContentSection>
-  ### Managing content - building for change
-
-  The core application needed to be adaptable to change, not only did we need to make updating the content as simple as possible, we also had to ensure
-  that new questions could be added easily and old ones could be removed without breaking anything.
-
-  With a limited number of templates we managed to ensure that alongside the inital question screens each questionnaire section would feature a custom 
-  illustration with a headline and a "Did you know?" section of text that also needed to be "content managed".
-
-  Deploying changes were done through a deployment service that could be rolled back if needed but it was vital that the application didn't go down during deployment,
-  so we ensured we used a service that could deliver these requirements, something like Cloud66 if I recall correctly.
-
-  <ContentImage2Column>
-    <ImageContainer backgroundColor="#000">
-      <Image
-        src={img6}
-        alt="Web app screen."
-        width={1400}
-        loading="lazy"
-        quality={100}
-      />
-    </ImageContainer>
-    <ImageContainer backgroundColor="#000">
-      <Image
-        src={img7}
-        alt="Web app screen."
-        width={1400}
-        loading="lazy"
-        quality={100}
-      />
-    </ImageContainer>
-  </ContentImage2Column>
-
-  <ContentImage1Column>
-    <ImageContainer backgroundColor="#000">
-      <Image
-        src={img2}
-        alt="Web app screen."
-        width={2816}
-        loading="lazy"
-        quality={100}
-      />
-      <ImageCaption color="var(--color-secondary)">
-        With four sections and a variable number of questions for each, the application design needed to be adabtable
-      </ImageCaption>
-    </ImageContainer>
-  </ContentImage1Column>
-
   <ContentImage2Column>
     <ImageContainer backgroundColor="#000">
       <Image
@@ -201,32 +121,20 @@ import titleVideoPoster from "./wwf-cfc-title-poster.png";
   </ContentImage2Column>
 </ContentSection>
 
----
-
 <ContentSection>
-  ### Sita Aero Logistics Calculator built with JavaScript, Angular, Express and Firebase
-
-  Developed a web-based logistics calculator designed to
-  simplify the complex process of estimating aircraft shipping costs. Built with
-  AngularJS, this single-page application enabled users to configure
-  calculations based on weight, dimensions, destination, and service levels,
-  with results shown through real-time updates and ChartJS visualisations.
-  Authentication and user management were included, while data was securely
-  managed in Firebase to support scalability.
-
   <ContentImage2Column>
-    <ImageContainer backgroundColor="#00639c">
+    <ImageContainer backgroundColor="#000">
       <Image
-        src={img5}
+        src={img6}
         alt="Web app screen."
         width={1400}
         loading="lazy"
         quality={100}
       />
     </ImageContainer>
-    <ImageContainer backgroundColor="#dcdfe4">
+    <ImageContainer backgroundColor="#000">
       <Image
-        src={img4}
+        src={img7}
         alt="Web app screen."
         width={1400}
         loading="lazy"
@@ -234,27 +142,20 @@ import titleVideoPoster from "./wwf-cfc-title-poster.png";
       />
     </ImageContainer>
   </ContentImage2Column>
+</ContentSection>
 
-  ### Applying complex calculations
-
-  The project required close collaboration with SITA's logistics team to ensure
-  accuracy and usability. Dynamic forms and a clear interface made it practical
-  for teams to use, and I produced detailed technical documentation and user
-  guides to help adoption and training. The finished system provided a reliable
-  and user-friendly tool that improved efficiency in a highly specialised area
-  of logistics.
-
+<ContentSection>
   <ContentImage1Column>
-    <ImageContainer backgroundColor="#dbdfe4">
+    <ImageContainer backgroundColor="#000">
       <Image
-        src={img3}
+        src={img2}
         alt="Web app screen."
         width={2816}
         loading="lazy"
         quality={100}
       />
-      <ImageCaption color="var(--color-onPrimary)">
-        Using Angular alongside NoSQL Firebase database made for some DevX joy
+      <ImageCaption color="#ccc">
+        With four sections and a variable number of questions for each, the application design needed to be adabtable
       </ImageCaption>
     </ImageContainer>
   </ContentImage1Column>
