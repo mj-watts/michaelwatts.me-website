@@ -10,40 +10,25 @@ const currentPath = pathname.slice(1);
 
 <nav class="mainnav" data-current-path={currentPath}>
   <div class="container">
-    <div class="mainnav__content">
-      <div class="mainnav__items">
-        <div class="mainnav__menu-button-container">
-          <button class="mainnav__menu-button">Menu</button>
-        </div>
-        <ol class="mainnav__pagelinks">
-          <li>
-            <NavItem href="/#work" isActive={currentPath.includes("work")}>
-              Work
-            </NavItem>
-          </li>
-          <li>
-            <NavItem href="/#services" isActive={currentPath === "services"}>
-              Services
-            </NavItem>
-          </li>
-          <li>
-            <NavItem href="/#about" isActive={currentPath === "about"}>
-              About
-            </NavItem>
-          </li>
-          <li></li>
-        </ol>
-      </div>
-      <SiteLogo />
-      <div class="mainnav__cta">
-        <Button href="/#contact" text="Let's Connect" />
-      </div>
+    <div class="mainnav__links">
+      <NavItem href="/#work" isActive={currentPath.includes("work")}>
+        Work
+      </NavItem>
+      <NavItem href="/#services" isActive={currentPath === "services"}>
+        Services
+      </NavItem>
+      <NavItem href="/#about" isActive={currentPath === "about"}>
+        About
+      </NavItem>
+    </div>
+    <SiteLogo />
+    <div class="mainnav__cta">
+      <Button href="/#contact" text="Let's Connect" />
     </div>
   </div>
 </nav>
 
 <script>
-  console.log("!!");
   if (
     "IntersectionObserver" in window &&
     "IntersectionObserverEntry" in window &&
@@ -81,145 +66,3 @@ const currentPath = pathname.slice(1);
   };
   menuButton?.addEventListener("click", toggleMenuClass);
 </script>
-
-<style is:global>
-  .mainnav .container {
-    max-width: var(--container-width);
-    margin-left: auto;
-    margin-right: auto;
-    padding: var(--space-2xs);
-    transition: all 200ms ease-in-out;
-  }
-
-  .header-not-at-top .mainnav .container {
-    max-width: 98.5%;
-    padding: var(--space-xs);
-    border: 1px solid
-      color-mix(in oklab, var(--color-emphasis) 70%, transparent);
-    border-top: none;
-    backdrop-filter: blur(5px);
-    border-radius: 0 0 4px 4px;
-  }
-
-  .mainnav {
-    --mainnav__items-ol-li-display: none;
-    --mainnav__cta-display: none;
-    --mainnav__menu-button-display: flex;
-    --mainnav__content-grid-cols: 1;
-    --mainnav__items-justify-content: center;
-
-    font-size: var(--step--1);
-    font-variation-settings: var(--font-bold);
-    position: relative;
-    z-index: 100000;
-  }
-
-  @media screen and (min-width: 490px) {
-    .mainnav {
-      --mainnav__items-ol-li-display: block;
-      --mainnav__menu-button-display: none;
-      --mainnav__cta-display: flex;
-      --mainnav__content-grid-cols: 2;
-      --mainnav__items-justify-content: start;
-    }
-  }
-
-  /* HANDLE MOBILE MENU */
-  @media screen and (max-width: 490px) {
-    .mainnav.on-mobile-open {
-      --mainnav__items-ol-li-display: block;
-    }
-
-    .mainnav.on-mobile-open .mainnav__pagelinks {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: var(--color-primary);
-      z-index: 998;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: auto;
-      font-size: var(--step-1);
-      gap: var(--space-xl);
-      transition: all 0.2s linear;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .mainnav {
-      --mainnav__content-grid-cols: 3;
-
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-    }
-  }
-
-  .blur-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    mask-image: linear-gradient(black 40%, transparent 100%);
-    backdrop-filter: blur(5px);
-    z-index: -1;
-  }
-
-  .mainnav__content {
-    display: grid;
-    grid-template-columns: repeat(var(--mainnav__content-grid-cols), 1fr);
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .mainnav__items {
-    display: flex;
-    align-items: center;
-    justify-content: var(--mainnav__items-justify-content);
-  }
-
-  .mainnav__pagelinks {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: var(--space-l);
-    margin: 0;
-    padding: 0;
-  }
-
-  .mainnav__items li {
-    line-height: 1;
-    display: var(--mainnav__items-ol-li-display);
-    align-items: center;
-    justify-content: center;
-  }
-
-  .mainnav__cta {
-    display: var(--mainnav__cta-display);
-    justify-content: end;
-  }
-
-  .mainnav__menu-button-container {
-    display: var(--mainnav__menu-button-display);
-    z-index: 999;
-  }
-
-  .mainnav__menu-button {
-    border: none;
-    padding: var(--space-2xs) var(--space-xs);
-    background-color: var(--color-onPrimary);
-    color: var(--color-primary);
-  }
-
-  .mainnav__menu-button:hover {
-    cursor: pointer;
-  }
-</style>

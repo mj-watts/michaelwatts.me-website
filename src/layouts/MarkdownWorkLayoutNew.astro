@@ -1,17 +1,16 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
-import Button from "../components/GetInTouchButton.astro";
 
 const { frontmatter } = Astro.props;
 const { title, description, summary } = frontmatter;
 ---
 
 <WorkLayout pageTitle={title} pageDescription={description}>
-  <div class="work">
+  <div class="row">
     <div class="col-1">
-      <h1>{title}</h1>
-      <p>{summary}</p>
+      <h1 class="heading">{title}</h1>
+      <p class="body">{summary}</p>
     </div>
 
     <div class="col-2">
@@ -35,17 +34,6 @@ const { title, description, summary } = frontmatter;
       <slot />
     </div>
   </div>
-
-  <div class="navigation">
-    <div class="body">
-      <div>
-        <h2>Next...</h2>
-        <p>Blah</p>
-      </div>
-
-      <Button href="/#work" text="Next" theme="dark" />
-    </div>
-  </div>
 </WorkLayout>
 
 <script>
@@ -61,231 +49,51 @@ const { title, description, summary } = frontmatter;
   ).matches;
 
   if (!reduceMotion) {
-    const TOP_OFFSET = 170;
-    const STACK_STEP = 2;
-    const STACK_SCALE_STEP = 0.03;
-    const work = document.querySelector(".work");
+    const scroller = document.querySelector(".col-3");
+    const content = document.querySelector(".col-3 > .content");
+    const work = document.querySelector(".row");
     const col1 = document.querySelector(".col-1");
     const col2 = document.querySelector(".col-2");
     const listItems = gsap.utils.toArray(".col-2 li");
-    const mediaSections = gsap.utils.toArray(
-      ".col-3 > .content > .content-section"
-    );
-    const enableMediaStack = window.matchMedia("(min-width: 1000px)").matches;
 
-    if (work && col1 && col2) {
+    if (scroller && content && work && col1 && col2) {
       ScrollTrigger.create({
-        trigger: work,
-        start: `top top+=${TOP_OFFSET}`,
-        endTrigger: ".col-3",
+        scroller,
+        trigger: content,
+        start: "top top",
+        endTrigger: content,
         end: "bottom bottom-=100",
-        pin: col1,
-        pinSpacing: false,
       });
 
       ScrollTrigger.create({
-        trigger: work,
-        start: `top top+=${TOP_OFFSET}`,
-        endTrigger: ".col-3",
+        scroller,
+        trigger: content,
+        start: "top top",
+        endTrigger: content,
         end: "bottom bottom-=100",
-        pin: col2,
-        pinSpacing: false,
       });
     }
 
-    if (work && listItems.length > 0) {
+    if (scroller && content && listItems.length > 0) {
       gsap.set(listItems, { "--reveal-progress": 0 });
 
       gsap.to(listItems, {
         "--reveal-progress": 1,
         ease: "none",
         stagger: {
-          each: 0.25,
+          each: 0.5,
         },
         scrollTrigger: {
-          trigger: work,
-          start: "top top+=170",
-          endTrigger: ".col-3",
-          end: "bottom 100%",
-          scrub: true,
+          scroller,
+          trigger: content,
+          endTrigger: content,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 2.5,
         },
       });
     }
 
-    if (enableMediaStack && mediaSections.length > 0) {
-      const totalSections = mediaSections.length;
-
-      mediaSections.forEach((section, index) => {
-        const depthFromFront = totalSections - 1 - index;
-        const targetY = depthFromFront * -STACK_STEP;
-        const targetScale = Math.max(
-          0.84,
-          1 - depthFromFront * STACK_SCALE_STEP
-        );
-        const targetBrightness = Math.max(0.72, 1 - depthFromFront * 0.08);
-
-        gsap.set(section, {
-          zIndex: index + 1,
-          transformOrigin: "50% 0%",
-        });
-
-        gsap.fromTo(
-          section,
-          {
-            scale: 1,
-            rotateX: 0,
-            y: 0,
-            filter: "brightness(1)",
-          },
-          {
-            scale: targetScale,
-            rotateX: -2.5,
-            y: targetY,
-            filter: `brightness(${targetBrightness})`,
-            ease: "none",
-            immediateRender: false,
-            scrollTrigger: {
-              trigger: section as Element,
-              start: `top top+=${TOP_OFFSET}`,
-              end: `bottom top+=${TOP_OFFSET}`,
-              scrub: true,
-            },
-          }
-        );
-      });
-    }
+    requestAnimationFrame(() => ScrollTrigger.refresh());
   }
 </script>
-
-<style>
-  .work {
-    --grid-template-columns: 1fr;
-    --gap: var(--space-2xl);
-  }
-
-  @media screen and (min-width: 1000px) {
-    .work {
-      --grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media screen and (min-width: 1550px) and (min-height: 1200px) {
-    .work {
-      --grid-template-columns: 0.5fr 0.5fr 1.5fr;
-    }
-  }
-
-  .work {
-    display: grid;
-    grid-template-columns: var(--grid-template-columns);
-    gap: var(--gap);
-    margin-top: var(--space-3xl);
-  }
-
-  .col-1 {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-s);
-
-    h1 {
-      font-size: var(--step--1);
-      text-transform: uppercase;
-      letter-spacing: var(--space-3xs);
-      opacity: 0.75;
-    }
-
-    p {
-      font-size: var(--step-0);
-      color: var(--color-emphasis);
-      line-height: var(--space-m);
-    }
-  }
-
-  .col-2 {
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      gap: var(--space-xs);
-    }
-
-    li {
-      --reveal-progress: 0;
-      display: inline-grid;
-      width: fit-content;
-      align-items: center;
-      font-size: var(--step--1);
-      font-variation-settings: var(--font-semi-bold);
-      list-style: none;
-    }
-
-    .tag-item {
-      grid-area: 1 / 1;
-      display: inline-flex;
-      gap: var(--space-2xs);
-      align-items: center;
-      white-space: nowrap;
-    }
-
-    .tag-item--base {
-      opacity: 0.5;
-    }
-
-    .tag-item--reveal {
-      opacity: 1;
-      clip-path: inset(0 calc((1 - var(--reveal-progress)) * 100% + 2px) 0 0);
-    }
-  }
-  .col-3 {
-    perspective: 1000px;
-  }
-
-  @media screen and (min-width: 1000px) {
-    :global(.col-3 > .content > .content-section) {
-      position: sticky;
-      top: 130px;
-    }
-
-    :global(.col-3 .content-image-2-col__bd) {
-      column-gap: 10px;
-    }
-
-    :global(.col-3 > .content)::after {
-      content: "";
-      display: block;
-      height: min(50vh, 420px);
-    }
-  }
-
-  .navigation {
-    position: fixed;
-    bottom: 0;
-    left: var(--space-2xl);
-    right: var(--space-xs);
-
-    .body {
-      padding: var(--space-xs);
-      padding-bottom: var(--space-l);
-      border: 1px solid var(--color-emphasis);
-      border-bottom: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      background: color-mix(in oklab, var(--color-primary) 80%, transparent);
-      backdrop-filter: blur(5px);
-      border-radius: 4px 4px 0 0;
-
-      h2 {
-        color: var(--color-emphasis);
-        font-size: var(--step-1);
-        margin-bottom: var(--space-xs);
-      }
-
-      p {
-        font-size: var(--step--1);
-      }
-    }
-  }
-</style>

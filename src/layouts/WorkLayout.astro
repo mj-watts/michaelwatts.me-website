@@ -1,5 +1,6 @@
 ---
-import ColorPicker from "../components/ColorPicker.tsx";
+import MainNav from "../components/MainNav.astro";
+import Button from "../components/GetInTouchButton.astro";
 import "../styles/styles.css";
 import "lenis/dist/lenis.css";
 
@@ -77,22 +78,35 @@ const { pageTitle, pageDescription } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{mainTitle} | {pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" />
+
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" /> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <span id="top-of-site-pixel-anchor"></span>
-      <div
-        id="main"
-        role="main"
-        class="main"
-        style="view-transition-name: work-main;"
-      >
+    <div class="work-layout">
+      <MainNav />
+      <div id="main" role="main" class="main container" data-lenis-prevent>
         <slot />
       </div>
-    </div>
+      <footer>
+        <div class="navigation">
+          <div class="body">
+            <div>
+              <h2>Next...</h2>
+              <p>Blah</p>
+            </div>
 
-    <ColorPicker client:only="react" />
+            <Button href="/#work" text="Next" theme="dark" />
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
 

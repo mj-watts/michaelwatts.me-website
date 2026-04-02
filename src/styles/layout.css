@@ -1,0 +1,23 @@
+@utility container {
+  --padding-inline: 16px;
+
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+
+  @variant lg {
+    --padding-inline: 32px;
+  }
+}
+
+@utility container--grid {
+  --column-gap: 8px;
+
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--column-gap);
+
+  @variant lg {
+    --column-gap: 23px;
+  }
+}

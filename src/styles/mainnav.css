@@ -1,0 +1,29 @@
+.mainnav {
+  @apply bg-black;
+
+  .container {
+    @apply mx-auto px-0;
+    @apply grid grid-cols-3;
+    @apply justify-between items-center;
+  }
+
+  .mainnav__links {
+    @apply flex items-center gap-24;
+
+    > a {
+      @apply text-white hover:opacity-75 font-normal;
+    }
+  }
+
+  .logo {
+    @apply text-white;
+  }
+
+  .mainnav__cta {
+    @apply flex justify-end;
+
+    > a {
+      @apply px-16 py-8 font-heading text-white text-3xl font-normal rounded-8;
+    }
+  }
+}

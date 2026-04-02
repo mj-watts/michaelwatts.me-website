@@ -9,25 +9,6 @@ import saCoverImage from "../src/content/works/swiftaid/preview.webp";
 import sppocCoverImage from "../src/content/works/split-payment-poc/preview.webp";
 import personalWorkCoverImage from "../src/content/works/personal-work/preview.webp";
 
-export const themePrimary = persistentAtom<string>("themePrimary", "#ede5d3");
-
-export const themeOnPrimary = persistentAtom<string>(
-  "themeOnPrimary",
-  "#6f8d6a"
-);
-
-export const themeSecondary = persistentAtom<string>(
-  "themeSecondary",
-  "#2f5283"
-);
-
-export const themeEmphasis = persistentAtom<string>("themeEmphasis", "#496c45");
-
-export const selectedColorMapId = persistentAtom<string>(
-  "selectedColorMapId",
-  "1"
-);
-
 export interface RecommendedWorkCollection {
   [key: string]: {
     image: { src: string };
