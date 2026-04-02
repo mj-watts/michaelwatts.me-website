@@ -1,15 +1,15 @@
 ---
 import SiteLogo from "./SiteLogo.astro";
 import NavItem from "./NavItem.astro";
-import Button from "./GetInTouchButton.astro";
+import Button from "./CtaLink.astro";
 
 const requestUrl = new URL(Astro.request.url);
 const pathname = requestUrl.pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav class="mainnav" data-current-path={currentPath}>
-  <div class="container">
+<nav class="mainnav container" data-current-path={currentPath}>
+  <div class="content">
     <div class="mainnav__links">
       <NavItem href="/#work" isActive={currentPath.includes("work")}>
         Work

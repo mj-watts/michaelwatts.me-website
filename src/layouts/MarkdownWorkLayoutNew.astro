@@ -1,6 +1,7 @@
 ---
 import WorkLayout from "../layouts/WorkLayout.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
+import Mouse from "../components/icons/Mouse.astro";
 
 const { frontmatter } = Astro.props;
 const { title, description, summary } = frontmatter;
@@ -31,7 +32,13 @@ const { title, description, summary } = frontmatter;
     </div>
 
     <div class="col-3">
-      <slot />
+      <div class="col-3-scroll">
+        <slot />
+      </div>
+      <div class="scroll-cta">
+        <div class="text">Scroll for more...</div>
+        <div><Mouse /></div>
+      </div>
     </div>
   </div>
 </WorkLayout>
@@ -44,13 +51,29 @@ const { title, description, summary } = frontmatter;
   gsap.registerPlugin(ScrollTrigger);
   initGlobalLenis();
 
+  const col3 = document.querySelector(".col-3");
+  const scroller = document.querySelector(".col-3-scroll");
+  const scrollCta = document.querySelector(".scroll-cta");
+
+  if (
+    col3 instanceof HTMLElement &&
+    scroller instanceof HTMLElement &&
+    scrollCta instanceof HTMLElement
+  ) {
+    const updateScrollCta = () => {
+      col3.classList.toggle("is-scrolled", scroller.scrollTop > 8);
+    };
+
+    updateScrollCta();
+    scroller.addEventListener("scroll", updateScrollCta, { passive: true });
+  }
+
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
   if (!reduceMotion) {
-    const scroller = document.querySelector(".col-3");
-    const content = document.querySelector(".col-3 > .content");
+    const content = document.querySelector(".col-3-scroll > .content");
     const work = document.querySelector(".row");
     const col1 = document.querySelector(".col-1");
     const col2 = document.querySelector(".col-2");
@@ -74,8 +97,113 @@ const { title, description, summary } = frontmatter;
       });
     }
 
+    // Route page-level scroll intent into the internal .col-3 scroller.
+    if (scroller instanceof HTMLElement) {
+      const isEditableElement = (target: {
+        closest: (arg0: string) => Element | null | undefined;
+      }) => {
+        if (!(target instanceof HTMLElement)) return false;
+        return Boolean(
+          target.closest(
+            'input, textarea, select, [contenteditable="true"], [contenteditable=""]'
+          )
+        );
+      };
+
+      const scrollCol3By = (deltaY: number) => {
+        if (!deltaY) return;
+        scroller.scrollBy({ top: deltaY, behavior: "auto" });
+      };
+
+      const onWindowWheel = (event: {
+        target: any;
+        preventDefault: () => void;
+        deltaY: any;
+      }) => {
+        if (isEditableElement(event.target)) return;
+        event.preventDefault();
+        scrollCol3By(event.deltaY);
+      };
+
+      let touchStartY = 0;
+      const onTouchStart = (event: {
+        target: any;
+        touches: string | any[];
+      }) => {
+        if (isEditableElement(event.target)) return;
+        if (event.touches.length > 0) {
+          touchStartY = event.touches[0].clientY;
+        }
+      };
+
+      const onTouchMove = (event: {
+        target: any;
+        touches: string | any[];
+        preventDefault: () => void;
+      }) => {
+        if (isEditableElement(event.target)) return;
+        if (event.touches.length === 0) return;
+        const currentY = event.touches[0].clientY;
+        const deltaY = touchStartY - currentY;
+        touchStartY = currentY;
+        event.preventDefault();
+        scrollCol3By(deltaY);
+      };
+
+      const onKeyDown = (event: {
+        target: any;
+        key: any;
+        shiftKey: any;
+        preventDefault: () => void;
+      }) => {
+        if (isEditableElement(event.target)) return;
+
+        let deltaY = 0;
+        const pageAmount = scroller.clientHeight * 0.9;
+        switch (event.key) {
+          case "ArrowDown":
+            deltaY = 60;
+            break;
+          case "ArrowUp":
+            deltaY = -60;
+            break;
+          case "PageDown":
+            deltaY = pageAmount;
+            break;
+          case "PageUp":
+            deltaY = -pageAmount;
+            break;
+          case "Home":
+            deltaY = -scroller.scrollTop;
+            break;
+          case "End":
+            deltaY =
+              scroller.scrollHeight -
+              scroller.clientHeight -
+              scroller.scrollTop;
+            break;
+          case " ":
+            deltaY = event.shiftKey ? -pageAmount : pageAmount;
+            break;
+          default:
+            return;
+        }
+
+        event.preventDefault();
+        scrollCol3By(deltaY);
+      };
+
+      window.addEventListener("wheel", onWindowWheel, { passive: false });
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: false });
+      window.addEventListener("keydown", onKeyDown);
+    }
+
     if (scroller && content && listItems.length > 0) {
       gsap.set(listItems, { "--reveal-progress": 0 });
+      listItems.forEach((item) => {
+        item.dataset.revealState = "hidden";
+      });
 
       gsap.to(listItems, {
         "--reveal-progress": 1,
@@ -91,6 +219,47 @@ const { title, description, summary } = frontmatter;
           end: "bottom bottom",
           scrub: 2.5,
         },
+        onUpdate() {
+          listItems.forEach((item) => {
+            const revealProgress = Number(
+              getComputedStyle(item as HTMLElement).getPropertyValue(
+                "--reveal-progress"
+              )
+            );
+
+            if (revealProgress <= 0.75) {
+              item.dataset.revealState = "hidden";
+              return;
+            }
+
+            if (
+              revealProgress < 0.98 ||
+              item.dataset.revealState === "revealed"
+            )
+              return;
+
+            const revealIcon = item.querySelector(
+              ".tag-item--reveal .icon-container"
+            );
+            if (!revealIcon) return;
+
+            revealIcon.classList.remove("tag-icon--animate");
+            void revealIcon.offsetWidth;
+            revealIcon.classList.add("tag-icon--animate");
+            item.dataset.revealState = "revealed";
+          });
+        },
+      });
+
+      listItems.forEach((item) => {
+        const revealIcon = item.querySelector(
+          ".tag-item--reveal .icon-container"
+        );
+        if (!revealIcon) return;
+
+        revealIcon.addEventListener("animationend", () => {
+          revealIcon.classList.remove("tag-icon--animate");
+        });
       });
     }
 

@@ -33,25 +33,28 @@
 
   .col-1 {
     @apply flex flex-col gap-36;
+    @apply h-full place-content-start;
 
     > .heading {
-      @apply font-heading text-7xl text-emphasis text-balance;
+      @apply font-heading text-7xl text-emphasis text-balance opacity-90;
     }
 
     > .body {
-      @apply font-heading text-4xl font-light leading-tight text-balance;
+      @apply font-heading text-4xl font-light leading-tight text-balance opacity-90;
     }
   }
 
   .col-2 {
+    @apply h-full place-content-start pt-72;
+
     ul {
-      @apply list-none p-0 flex flex-col items-start gap-12;
+      @apply list-none p-0 flex flex-col items-start gap-12 opacity-90;
     }
 
     li {
       --reveal-progress: 0;
 
-      @apply inline-grid w-fit items-center font-heading font-normal text-2xl;
+      @apply inline-grid w-fit items-center overflow-hidden font-heading font-normal text-2xl;
     }
 
     .tag-item {
@@ -67,23 +70,71 @@
     .tag-item--reveal {
       clip-path: inset(0 calc((1 - var(--reveal-progress)) * 100% + 3px) 0 0);
 
-      @apply opacity-100;
+      @apply opacity-100 overflow-hidden;
+    }
+
+    .tag-icon--animate {
+      @apply animate-[border-change_1s_cubic-bezier(0.2,0.9,0.3,1.25)_1];
+    }
+
+    .tag-icon--animate .icon__arrow {
+      @apply transform-fill origin-center;
+      @apply animate-[tag-arrow-shift_420ms_cubic-bezier(0.2,0.9,0.3,1.25)_1];
+    }
+
+    .tag-icon--animate .icon__arrowhead {
+      @apply transform-fill origin-center;
+      @apply animate-[tag-arrowhead-flick_420ms_cubic-bezier(0.2,0.9,0.3,1.25)_1];
     }
 
     .icon-container {
-      @apply border border-emphasis text-emphasis/50 size-24;
+      @apply border border-emphasis text-emphasis/75 size-24 rounded-4;
       @apply -translate-y-1 flex items-center justify-center;
     }
 
     .tag-item--reveal .icon-container {
-      @apply bg-emphasis/25 text-emphasis;
+      @apply bg-emphasis/25;
+
+      color: color-mix(in oklab, var(--color-emphasis) 35%, var(--color-white));
+
+      > svg {
+        @apply stroke-2 translate-y-0.5;
+      }
     }
   }
 
   .col-3 {
-    min-height: 0;
+    @apply h-full min-h-0 rounded-3xl relative overflow-hidden;
 
-    @apply h-full overflow-y-auto;
+    .col-3-scroll {
+      @apply h-full overflow-y-auto min-h-0 rounded-3xl;
+
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-emphasis) transparent;
+
+      &::-webkit-scrollbar {
+        @apply w-12;
+      }
+
+      &::-webkit-scrollbar-track {
+        @apply bg-transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply rounded-full;
+        background-color: var(--color-emphasis);
+        border: 3px solid transparent;
+        background-clip: content-box;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: color-mix(
+          in oklab,
+          var(--color-emphasis) 85%,
+          var(--color-white)
+        );
+      }
+    }
 
     .content {
       @apply flex flex-col gap-12;
@@ -108,5 +159,146 @@
     .content-image-2-col {
       @apply flex flex-row;
     }
+  }
+
+  .footer {
+    @apply mt-36;
+
+    .content {
+      @apply p-36 flex justify-between align-top;
+      @apply border border-emphasis border-b-0;
+      @apply rounded-tl-3xl rounded-tr-3xl;
+    }
+
+    .body {
+      @apply flex flex-col gap-12;
+    }
+
+    h2 {
+      @apply font-heading text-5xl text-emphasis text-balance opacity-90;
+
+      span {
+        @apply text-4xl text-white;
+      }
+    }
+
+    p {
+      @apply font-heading text-2xl text-balance opacity-90;
+    }
+
+    a {
+      @apply px-16 py-8 font-heading h-fit text-white text-3xl font-normal rounded-8;
+    }
+  }
+
+  .scroll-cta {
+    @apply absolute bottom-0 left-0 right-0 h-50 bg-black/90;
+    @apply flex items-center justify-center gap-12 p-12 font-heading text-2xl;
+    @apply transition-all duration-300 ease-out;
+    @apply z-20;
+
+    .text {
+      @apply opacity-90;
+    }
+
+    svg {
+      @apply size-36;
+    }
+
+    .mouse {
+      @apply stroke-white/50 fill-white;
+    }
+
+    .arrow-point {
+      @apply origin-center;
+
+      animation: 3s ease-in 1s infinite reverse both running finger-slide;
+    }
+
+    .arrow-stem {
+      @apply origin-center;
+
+      animation: 3s ease-in 1s infinite reverse both running stem-grow;
+    }
+  }
+
+  .col-3.is-scrolled .scroll-cta {
+    @apply opacity-0 pointer-events-none translate-y-8;
+  }
+}
+
+@keyframes border-change {
+  0% {
+    border-color: var(--color-emphasis);
+    border-style: solid;
+  }
+  50% {
+    border-color: color-mix(
+      in oklab,
+      var(--color-white) 25%,
+      var(--color-emphasis)
+    );
+    border-style: dotted;
+    border-width: 2px;
+  }
+}
+
+@keyframes tag-arrow-shift {
+  0% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(2px);
+  }
+  65% {
+    transform: translateX(-0.5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tag-arrowhead-flick {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.15);
+  }
+  65% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes finger-slide {
+  0% {
+    transform: translateY(0);
+    color: var(--color-black);
+  }
+  50% {
+    transform: translateY(4px);
+    color: var(--color-emphasis);
+  }
+  100% {
+    transform: translateY(0);
+    color: var(--color-black);
+  }
+}
+
+@keyframes stem-grow {
+  0% {
+    transform: scaleY(0.1);
+    color: var(--color-black);
+  }
+  50% {
+    transform: scaleY(0.8);
+    color: var(--color-emphasis);
+  }
+  100% {
+    transform: scaleY(0.1);
+    color: var(--color-black);
   }
 }

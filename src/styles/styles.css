@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./layout.css";
 @import "./mainnav.css";
+@import "./cta-link.css";
 @import "./work-layout.css";
 
 @theme {
@@ -40,4 +41,8 @@
   --radius-20: 20px;
   --radius-30: 30px;
   --radius-40: 40px;
+}
+
+html {
+  @apply antialiased;
 }

@@ -1,7 +1,7 @@
 .mainnav {
   @apply bg-black;
 
-  .container {
+  .content {
     @apply mx-auto px-0;
     @apply grid grid-cols-3;
     @apply justify-between items-center;

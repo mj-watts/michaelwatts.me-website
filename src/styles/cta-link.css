@@ -1,0 +1,50 @@
+.cta-link {
+  --button-color: var(--color-emphasis);
+  --button-color-invert: color-mix(
+    in oklab,
+    var(--color-emphasis) 75%,
+    var(--color-white)
+  );
+
+  @apply px-16 py-8 font-heading h-fit text-white text-3xl font-normal rounded-8;
+  @apply bg-(--button-color) box-border inline-flex items-center justify-center;
+  @apply gap-16 overflow-hidden relative;
+  @apply cursor-pointer select-none;
+  @apply whitespace-nowrap opacity-0;
+  @apply transition-all duration-200 ease-in-out delay-100;
+
+  &::before {
+    content: "";
+
+    @apply absolute inset-0;
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  &:hover {
+    @apply text-(--button-color) translate-x-10 -translate-y-10;
+    @apply shadow-emphasis/50 shadow-[-10px_10px_0_0];
+  }
+
+  &:active {
+    @apply translate-0;
+    @apply shadow-emphasis/50 shadow-none;
+  }
+
+  .circle {
+    --size: var(--width, 0);
+    content: "";
+
+    @apply bg-(--button-color-invert);
+    @apply h-(--size) w-(--size);
+    @apply left-(--x,0) top-(--y,0);
+    @apply absolute scale-0 will-change-transform;
+    @apply mix-blend-overlay rounded-full;
+    @apply origin-center -z-1;
+    @apply transition-transform duration-400 ease-in-out;
+  }
+
+  &:hover .circle {
+    @apply bg-(--button-color-invert);
+    @apply scale-200;
+  }
+}
