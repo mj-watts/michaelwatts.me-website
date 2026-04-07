@@ -1,0 +1,66 @@
+---
+import BlankLayout from "../layouts/BlankLayout.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+---
+
+<BlankLayout pageTitle="Contact">
+  <div class="row contact-layout">
+    <div class="col-1">
+      <div class="body">
+        <p>
+          I love to talk about design and web development, if you have a project
+          or an idea in mind then please get in touch.
+        </p>
+        <SocialLinks />
+      </div>
+    </div>
+    <div class="col-2">
+      <h2 class="heading">Get In Touch</h2>
+      <form novalidate class="form">
+        <div class="col-2-input">
+          <div class="input-container group invalid">
+            <label for="firstname">First Name*</label>
+            <input id="firstname" />
+            <p id="firstnameErrorMsg" class="error-msg"></p>
+          </div>
+          <div class="input-container">
+            <label for="lastname">Last Name*</label>
+            <input id="lastname" />
+            <p id="lastnameErrorMsg" class="error-msg"></p>
+          </div>
+        </div>
+        <div class="col-input">
+          <div class="input-container">
+            <label for="email">Email*</label>
+            <input id="email" type="email" />
+            <p id="emailErrorMsg" class="error-msg"></p>
+          </div>
+        </div>
+        <div class="col-input">
+          <div class="input-container">
+            <label for="company">Company Name</label>
+            <input id="company" />
+          </div>
+        </div>
+        <div class="col-input">
+          <div class="input-container">
+            <label for="message">How can I help?</label>
+            <textarea></textarea>
+          </div>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</BlankLayout>
+
+<script>
+  const form = document.querySelector(".form");
+  // const fnameInput = document.querySelector("#firstname");
+  // const lnameInput = document.querySelector("#lastname");
+  // const emailInput = document.querySelector("#email");
+
+  // const fnameErrorMsg = document.querySelector("#firstnameErrorMsg");
+  // const lnameErrorMsg = document.querySelector("#lastnameErrorMsg");
+  // const emailErrorMsg = document.querySelector("#emailErrorMsg");
+</script>

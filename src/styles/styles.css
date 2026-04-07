@@ -1,8 +1,12 @@
 @import "tailwindcss";
 @import "./layout.css";
 @import "./mainnav.css";
+@import "./footer.css";
 @import "./cta-link.css";
+@import "./blank-layout.css";
 @import "./work-layout.css";
+@import "./about-layout.css";
+@import "./contact-layout.css";
 
 @theme {
   /* Breakpoints */
@@ -45,4 +49,18 @@
 
 html {
   @apply antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+blockquote,
+label {
+  @apply opacity-85;
 }

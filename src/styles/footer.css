@@ -1,0 +1,20 @@
+.mainfooter {
+  @apply flex items-baseline justify-between py-24;
+
+  ul {
+    @apply flex gap-24;
+  }
+
+  a {
+    @apply border-2 border-emphasis rounded-lg block p-6 transition-colors;
+    @apply hover:bg-emphasis/40;
+  }
+
+  div {
+    @apply opacity-50;
+  }
+
+  svg {
+    @apply size-24 text-white group-hover:text-emphasis;
+  }
+}

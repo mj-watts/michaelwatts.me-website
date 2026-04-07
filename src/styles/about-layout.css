@@ -1,0 +1,19 @@
+.about-layout {
+  @apply grid h-full min-h-0 grid-cols-[1fr_250px] gap-72 max-w-1/2 mx-auto;
+
+  .col-1 {
+    @apply flex items-start;
+  }
+
+  .col-2 {
+    @apply flex items-start;
+  }
+
+  p {
+    @apply text-4xl font-heading;
+  }
+
+  img {
+    @apply size-250 rounded-3xl;
+  }
+}

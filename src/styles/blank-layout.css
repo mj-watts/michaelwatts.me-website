@@ -1,0 +1,27 @@
+.blank-layout {
+  @apply grid h-dvh bg-black text-white;
+
+  grid-template-areas:
+    "nav"
+    "body"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+
+  > nav {
+    grid-area: nav;
+
+    @apply py-36;
+  }
+
+  > .main {
+    grid-area: body;
+    min-height: 0;
+
+    @apply h-full;
+  }
+
+  > footer {
+    grid-area: footer;
+  }
+}

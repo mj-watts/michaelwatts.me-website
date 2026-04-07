@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import BlankLayout from "../layouts/BlankLayout.astro";
+import Me from "../images/me.jpg";
+---
+
+<BlankLayout pageTitle="About">
+  <div class="row about-layout">
+    <div class="col-1">
+      <div class="body">
+        <p class="mb-36">
+          I’m a senior full-stack developer based in Surrey. I design and build
+          scalable web platforms, SaaS products and high-quality websites that
+          combine thoughtful design with solid engineering.
+        </p>
+        <p>
+          With over 20 years’ experience across fintech, SaaS, ecommerce and
+          digital campaigns, I work across the full stack using technologies
+          such as TypeScript, Vue, React and Node.js to create reliable systems
+          and seamless user experiences.
+        </p>
+      </div>
+    </div>
+    <div class="col-2">
+      <Image src={Me} alt="Portrait image of Michael Watts" />
+    </div>
+  </div>
+</BlankLayout>

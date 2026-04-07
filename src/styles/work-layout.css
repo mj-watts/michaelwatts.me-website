@@ -26,9 +26,7 @@
   }
 
   .row {
-    min-height: 0;
-
-    @apply grid h-full grid-cols-[1fr_1fr_2fr] gap-72;
+    @apply min-h-0 grid h-full grid-cols-[1fr_1fr_2fr] gap-72;
   }
 
   .col-1 {
@@ -36,11 +34,11 @@
     @apply h-full place-content-start;
 
     > .heading {
-      @apply font-heading text-7xl text-emphasis text-balance opacity-90;
+      @apply font-heading text-7xl text-emphasis text-balance;
     }
 
     > .body {
-      @apply font-heading text-4xl font-light leading-tight text-balance opacity-90;
+      @apply font-heading text-4xl font-light leading-tight text-balance;
     }
   }
 
@@ -48,7 +46,7 @@
     @apply h-full place-content-start pt-72;
 
     ul {
-      @apply list-none p-0 flex flex-col items-start gap-12 opacity-90;
+      @apply list-none p-0 flex flex-col items-start gap-12;
     }
 
     li {
@@ -184,7 +182,7 @@
     }
 
     h2 {
-      @apply font-heading text-5xl text-emphasis text-balance opacity-90;
+      @apply font-heading text-5xl text-emphasis text-balance;
 
       span {
         @apply text-4xl text-white;
@@ -192,7 +190,7 @@
     }
 
     p {
-      @apply font-heading text-2xl text-balance opacity-90;
+      @apply font-heading text-2xl text-balance;
     }
 
     a {
