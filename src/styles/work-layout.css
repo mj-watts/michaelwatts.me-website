@@ -68,9 +68,9 @@
     }
 
     .tag-item--reveal {
-      clip-path: inset(0 calc((1 - var(--reveal-progress)) * 100% + 3px) 0 0);
+      clip-path: inset(0 calc((1 - var(--reveal-progress)) * 100%) 0 0);
 
-      @apply opacity-100 overflow-hidden;
+      @apply opacity-100 overflow-hidden mix-blend-color-burn;
     }
 
     .tag-icon--animate {
@@ -93,7 +93,7 @@
     }
 
     .tag-item--reveal .icon-container {
-      @apply bg-emphasis/25;
+      @apply bg-emphasis/25 shadow-2xs shadow-amber-600;
 
       color: color-mix(in oklab, var(--color-emphasis) 35%, var(--color-white));
 
@@ -105,9 +105,14 @@
 
   .col-3 {
     @apply h-full min-h-0 rounded-3xl relative overflow-hidden;
+    @apply border border-emphasis p-6;
+
+    &.is-scrolled {
+      @apply border-emphasis/10;
+    }
 
     .col-3-scroll {
-      @apply h-full overflow-y-auto min-h-0 rounded-3xl;
+      @apply h-full overflow-y-auto min-h-0 rounded-2xl;
 
       scrollbar-width: thin;
       scrollbar-color: var(--color-emphasis) transparent;
@@ -159,6 +164,10 @@
     .content-image-2-col {
       @apply flex flex-row;
     }
+
+    &.is-scrolled .scroll-cta {
+      @apply pointer-events-none translate-y-72 border-emphasis/20;
+    }
   }
 
   .footer {
@@ -192,13 +201,17 @@
   }
 
   .scroll-cta {
-    @apply absolute bottom-0 left-0 right-0 h-50 bg-black/90;
+    @apply absolute bottom-0 left-0 right-0 h-86;
+    @apply bg-black/90 border border-b-0 border-emphasis;
+    /* @apply bg-linear-0 from-black to-transparent; */
     @apply flex items-center justify-center gap-12 p-12 font-heading text-2xl;
     @apply transition-all duration-300 ease-out;
+    /* @apply mask-l-from-60% mask-r-from-60% mask-t-from-60%; */
+    @apply rounded-tl-3xl rounded-tr-3xl w-1/2 mx-auto;
     @apply z-20;
 
     .text {
-      @apply opacity-90;
+      @apply opacity-90 text-shadow-2xs text-white;
     }
 
     svg {
@@ -212,18 +225,14 @@
     .arrow-point {
       @apply origin-center;
 
-      animation: 3s ease-in 1s infinite reverse both running finger-slide;
+      animation: 1.5s ease-in 500ms infinite reverse both running finger-slide;
     }
 
     .arrow-stem {
       @apply origin-center;
 
-      animation: 3s ease-in 1s infinite reverse both running stem-grow;
+      animation: 1.5s ease-in 500ms infinite reverse both running stem-grow;
     }
-  }
-
-  .col-3.is-scrolled .scroll-cta {
-    @apply opacity-0 pointer-events-none translate-y-8;
   }
 }
 

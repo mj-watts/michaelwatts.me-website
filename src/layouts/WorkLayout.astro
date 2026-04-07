@@ -5,7 +5,8 @@ import "../styles/styles.css";
 import "lenis/dist/lenis.css";
 
 const mainTitle = "Michael Watts, Software Engineer";
-const { pageTitle, pageDescription } = Astro.props;
+const { pageTitle, pageDescription, nextTitle, nextDescription, nextLink } =
+  Astro.props;
 ---
 
 <script>
@@ -60,16 +61,12 @@ const { pageTitle, pageDescription } = Astro.props;
           <div class="body">
             <h2>
               Next...
-              <span>HM Revenue & Customs Dashboard</span>
+              <span>{nextTitle}</span>
             </h2>
-            <p>
-              One of several innovation projects delivered by the engineering
-              team at Streeva, and the most notable to date, a £1.75M proof of
-              concept for HM Revenue & Customs.
-            </p>
+            <p>{nextDescription}</p>
           </div>
 
-          <Button href="/#work" text="View" theme="dark" />
+          <Button href={`/work/${nextLink}`} text="View" theme="dark" />
         </div>
       </footer>
     </div>

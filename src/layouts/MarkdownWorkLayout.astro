@@ -23,7 +23,12 @@ const workList = frontmatter.recommendedWork.map((key: string) => ({
 }));
 ---
 
-<WorkLayout pageTitle={frontmatter.title} pageDescription={description}>
+<WorkLayout
+  pageTitle={frontmatter.title}
+  pageDescription={description}
+  nextTitle={frontmatter.nextTitle}
+  nextDescription={frontmatter.nextDescription}
+>
   <div class="work-item">
     <div class="work-item__aside">
       <div>

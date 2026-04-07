@@ -4,14 +4,21 @@ import ArrowRight from "../components/icons/ArrowRight.astro";
 import Mouse from "../components/icons/Mouse.astro";
 
 const { frontmatter } = Astro.props;
-const { title, description, summary } = frontmatter;
+const { title, description, summary, nextTitle, nextDescription, nextLink } =
+  frontmatter;
 ---
 
-<WorkLayout pageTitle={title} pageDescription={description}>
+<WorkLayout
+  pageTitle={title}
+  pageDescription={description}
+  nextTitle={nextTitle}
+  nextDescription={nextDescription}
+  nextLink={nextLink}
+>
   <div class="row">
     <div class="col-1">
       <h1 class="heading">{title}</h1>
-      <p class="body">{summary}</p>
+      {summary.map((para) => <p class="body">{para}</p>)}
     </div>
 
     <div class="col-2">
