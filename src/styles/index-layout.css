@@ -6,19 +6,33 @@
   }
 
   .work-sequence-container {
-    @apply grid grid-cols-12 gap-36;
+    @apply grid md:grid-cols-12 gap-36 mx-auto;
+    @apply 2xl:max-w-3/4;
 
     .col-1 {
-      @apply col-start-1 col-end-5;
+      @apply col-start-1 col-end-13;
+      @apply md:col-start-1 md:col-end-7;
+      @apply 3xl:col-end-6;
+      @apply 4xl:col-end-5;
+    }
+
+    .col-2 {
+      @apply col-start-1 col-end-13;
+      @apply md:col-start-7;
+    }
+
+    .col-1 {
       @apply flex flex-col gap-36 place-content-end;
-      @apply h-full  text-white;
+      @apply h-full text-white;
 
       h3 {
-        @apply text-5xl font-heading;
+        @apply text-5xl font-heading text-center;
+        @apply md:text-left;
       }
 
       .cta {
-        @apply flex gap-36;
+        @apply flex gap-36 items-center mx-auto;
+        @apply md:mx-0;
       }
 
       a {
@@ -31,43 +45,14 @@
     }
 
     .col-2 {
-      @apply col-start-7 col-end-13;
       @apply flex flex-col gap-36 items-end justify-start;
+
+      .work-image {
+        @apply mx-auto w-full md:w-auto;
+      }
     }
   }
 
-  .work-container {
-    @apply grid grid-cols-3 gap-36;
-
-    .col-1 {
-      @apply flex flex-col gap-36 items-end justify-start;
-    }
-
-    .col-2 {
-      @apply flex flex-col gap-36 place-content-center mt-36;
-      @apply h-full min-h-900 bg-emphasis text-white p-36 rounded-3xl text-center;
-
-      h3 {
-        @apply text-8xl text-center font-heading;
-      }
-
-      p {
-        @apply text-xl text-balance;
-      }
-
-      a {
-        @apply flex items-center justify-center border border-black cursor-pointer;
-        @apply text-4xl font-bold h-full min-h-300 rounded-2xl;
-        @apply hover:bg-emphasis/30 transition-colors hover:mix-blend-overlay;
-      }
-    }
-
-    .col-3 {
-      @apply flex flex-col gap-36 place-content-end;
-    }
-  }
-
-  .image-container,
   .work-image {
     @apply rounded-2xl;
   }

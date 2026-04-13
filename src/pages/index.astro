@@ -1,14 +1,7 @@
 ---
 import BlankLayout from "../layouts/BlankLayout.astro";
-import { Image } from "astro:assets";
 import Button from "../components/CtaLink.astro";
 import ScrollDivider from "../components/ScrollDivider.astro";
-import ImageContainer from "../components/ImageContainer.astro";
-
-import firstImage from "../content/works/swiftaid/image5.webp";
-import secondImage from "../content/works/io-music/image2.webp";
-import thirdImage from "../content/works/webapps/1.webp";
-import fourthImage from "../content/works/saudi-fashion-retail/1.webp";
 
 import videoPoster from "../images/portfolio-sequence-poster.png";
 import videoMp4 from "../images/portfolio-sequence.h264.mp4";
@@ -18,7 +11,8 @@ const pageTitle = "Home";
 ---
 
 <script>
-  const siteTypeEl = document.querySelector("#siteType");
+  import { gsap } from "gsap";
+
   const siteTypes = [
     "ecommerce sites",
     "web applications",
@@ -27,6 +21,100 @@ const pageTitle = "Home";
     "marketing sites",
     "SaaS platforms",
   ];
+
+  const toLetterSpans = (el, text) => {
+    el.textContent = "";
+    const fragment = document.createDocumentFragment();
+
+    text.split("").forEach((char) => {
+      const letterEl = document.createElement("span");
+      letterEl.className = "site-type-letter";
+      letterEl.style.display = "inline-block";
+      letterEl.textContent = char === " " ? "\u00A0" : char;
+      fragment.appendChild(letterEl);
+    });
+
+    el.appendChild(fragment);
+    return Array.from(el.querySelectorAll(".site-type-letter"));
+  };
+
+  const animateSiteType = () => {
+    const siteTypeEl = document.querySelector("#siteType");
+    const siteTypeStopEl = document.querySelector("#siteTypeStop");
+    const gsapRef = gsap;
+
+    if (!siteTypeEl || !gsapRef) {
+      return;
+    }
+
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    toLetterSpans(siteTypeEl, siteTypeEl.textContent.trim());
+
+    const runCycle = () => {
+      if (isAnimating) {
+        return;
+      }
+
+      isAnimating = true;
+
+      const currentLetters = Array.from(
+        siteTypeEl.querySelectorAll(".site-type-letter")
+      );
+
+      gsapRef.to(currentLetters, {
+        opacity: 0,
+        duration: 0.28,
+        ease: "power2.in",
+        stagger: 0.03,
+        onComplete: () => {
+          siteTypeEl.textContent = "";
+
+          if (siteTypeStopEl) {
+            gsapRef.fromTo(
+              siteTypeStopEl,
+              { opacity: 0.5, color: "#d65e5e" },
+              {
+                opacity: 1,
+                color: "#fffddb",
+                duration: 1.5,
+                ease: "power2.out",
+              }
+            );
+          }
+
+          const nextText = siteTypes[currentIndex];
+          currentIndex = (currentIndex + 1) % siteTypes.length;
+          const nextLetters = toLetterSpans(siteTypeEl, nextText);
+
+          gsapRef.set(nextLetters, { opacity: 0.2, color: "#d65e5e" });
+          gsapRef.to(nextLetters, {
+            opacity: 1,
+            color: "#fffddb",
+            duration: 0.32,
+            ease: "power2.out",
+            stagger: 0.03,
+            delay: 0.12,
+            onComplete: () => {
+              isAnimating = false;
+              gsapRef.delayedCall(1, runCycle);
+            },
+          });
+        },
+      });
+    };
+
+    gsapRef.delayedCall(1, runCycle);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", animateSiteType, {
+      once: true,
+    });
+  } else {
+    animateSiteType();
+  }
 </script>
 
 <BlankLayout pageTitle={pageTitle}>
@@ -36,7 +124,9 @@ const pageTitle = "Home";
       <div class="col-1">
         <h3>
           Web design and development studio adding that special human touch to
-          your <span id="siteType">sites</span>.
+          your <span id="siteType" class="whitespace-nowrap">sites</span><span
+            id="siteTypeStop">.</span
+          >
         </h3>
         <div class="cta">
           <Button href="/work/swiftaid" text="View Work" />
@@ -61,61 +151,4 @@ const pageTitle = "Home";
   </section>
 
   <ScrollDivider />
-
-  <section class="work-section hidden">
-    <div class="work-container">
-      <div class="col-1">
-        <Image
-          src={firstImage}
-          alt="Preview of work image."
-          width={500}
-          height={350}
-          quality={100}
-          loading="eager"
-          class="work-image"
-        />
-        <ImageContainer backgroundColor="#17181c" width="615" height="430">
-          <Image
-            src={secondImage}
-            alt="Preview of work image."
-            width={615}
-            height={430}
-            quality={100}
-            loading="lazy"
-            class="work-image"
-          />
-        </ImageContainer>
-      </div>
-      <div class="col-2">
-        <div>
-          <h3>Featured Work</h3>
-          <p>
-            Explore a blend of creative product, web, app design and
-            dashboardary
-          </p>
-        </div>
-        <a href="/work/swiftaid">All Work</a>
-      </div>
-      <div class="col-3">
-        <Image
-          src={thirdImage}
-          alt="Preview of work image."
-          width={615}
-          height={430}
-          quality={100}
-          loading="eager"
-          class="work-image"
-        />
-        <Image
-          src={fourthImage}
-          alt="Preview of work image."
-          width={500}
-          height={350}
-          quality={100}
-          loading="eager"
-          class="work-image"
-        />
-      </div>
-    </div>
-  </section>
 </BlankLayout>
