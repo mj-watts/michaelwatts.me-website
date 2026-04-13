@@ -1,5 +1,5 @@
 .blank-layout {
-  @apply grid h-dvh bg-black text-white;
+  @apply grid bg-black text-white;
 
   grid-template-areas:
     "nav"

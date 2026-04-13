@@ -19,13 +19,6 @@ import Button from "./AnimatedButton.astro";
 <div class="chat-screen-overlay"></div>
 
 <script>
-  import {
-    themePrimary,
-    themeOnPrimary,
-    themeSecondary,
-    themeEmphasis,
-  } from "../store";
-
   const chatButton = document.querySelector(".button-wrapper");
   const chatScreenOverlay = document.querySelector(".chat-screen-overlay");
   const chatScreen = document.querySelector(".chat-screen");
@@ -47,22 +40,6 @@ import Button from "./AnimatedButton.astro";
 
   chatScreenCloseButton?.addEventListener("click", closeChatScreen);
   chatScreenOverlay?.addEventListener("click", closeChatScreen);
-
-  themePrimary.subscribe((color) => {
-    iframe?.contentWindow?.postMessage(`--color-primary:${color}`, "*");
-  });
-
-  themeOnPrimary.subscribe((color) => {
-    iframe?.contentWindow?.postMessage(`--color-onPrimary:${color}`, "*");
-  });
-
-  themeSecondary.subscribe((color) => {
-    iframe?.contentWindow?.postMessage(`--color-secondary:${color}`, "*");
-  });
-
-  themeEmphasis.subscribe((color) => {
-    iframe?.contentWindow?.postMessage(`--color-emphasis:${color}`, "*");
-  });
 </script>
 
 <style>

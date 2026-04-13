@@ -45,7 +45,7 @@
         @apply border-b border-white/80 w-full relative;
 
         &.invalid {
-          @apply border-error;
+          @apply border-warn;
         }
       }
 
@@ -55,7 +55,7 @@
 
       input,
       textarea {
-        @apply w-full p-12;
+        @apply w-full p-12 focus:ring-2 focus:ring-emphasis;
       }
 
       textarea {
@@ -63,16 +63,73 @@
       }
 
       button {
-        @apply px-36 py-12 font-heading h-fit w-fit text-white text-3xl font-normal rounded-8;
-        @apply bg-black border border-emphasis;
-        @apply whitespace-nowrap cursor-pointer select-none;
+        @apply px-36 py-12 font-heading text-white text-3xl font-normal rounded-8;
+        @apply bg-black border border-emphasis whitespace-nowrap cursor-pointer select-none;
         @apply transition-colors duration-200 ease-in-out delay-100;
         @apply hover:bg-emphasis/30 hover:text-emphasis;
+        @apply inline-grid place-items-center relative;
+
+        .button-label,
+        .button-label-sizer,
+        .button-spinner {
+          grid-area: 1 / 1;
+        }
+
+        .button-label {
+          @apply transition-opacity duration-200;
+        }
+
+        .button-label-sizer {
+          @apply invisible;
+        }
+
+        .button-spinner {
+          @apply size-20 border-2 border-white/30 border-t-white rounded-full opacity-0;
+          animation: contact-spin 0.8s linear infinite;
+        }
+
+        &.is-loading {
+          @apply bg-emphasis/30 text-emphasis;
+
+          .button-label {
+            @apply opacity-0;
+          }
+
+          .button-spinner {
+            @apply opacity-100;
+          }
+        }
+
+        &:disabled {
+          @apply cursor-not-allowed opacity-80;
+        }
       }
 
       .error-msg {
-        @apply text-error text-lg absolute -bottom-30;
+        @apply text-warn text-lg absolute -bottom-30;
+      }
+
+      .errors-list {
+        @apply text-warn text-xl;
+
+        p {
+          @apply mt-24 text-white;
+        }
+
+        ul {
+          @apply mt-10 list-disc pl-24;
+        }
+
+        a {
+          @apply underline underline-offset-4 hover:no-underline hover:opacity-85;
+        }
       }
     }
+  }
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
   }
 }

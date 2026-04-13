@@ -11,46 +11,6 @@ const { pageTitle, pageDescription } = Astro.props;
 ---
 
 <script>
-  import {
-    themePrimary,
-    themeOnPrimary,
-    themeSecondary,
-    themeEmphasis,
-  } from "../store";
-
-  document.documentElement.style.setProperty(
-    "--color-primary",
-    themePrimary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-onPrimary",
-    themeOnPrimary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-secondary",
-    themeSecondary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-emphasis",
-    themeEmphasis.get()
-  );
-
-  themePrimary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-primary", color);
-  });
-
-  themeOnPrimary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-onPrimary", color);
-  });
-
-  themeSecondary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-secondary", color);
-  });
-
-  themeEmphasis.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-emphasis", color);
-  });
-
   if (
     "IntersectionObserver" in window &&
     "IntersectionObserverEntry" in window &&

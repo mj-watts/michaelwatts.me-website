@@ -1,7 +1,6 @@
 ---
 import MainNav from "../components/MainNav.astro";
-import MainFooter from "../components/Footer.astro";
-import ColorPicker from "../components/ColorPicker.tsx";
+import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
 import "lenis/dist/lenis.css";
 
@@ -10,46 +9,7 @@ const { pageTitle } = Astro.props;
 ---
 
 <script>
-  import {
-    themePrimary,
-    themeOnPrimary,
-    themeSecondary,
-    themeEmphasis,
-  } from "../store";
   import { initGlobalLenis } from "../lib/initGlobalLenis";
-
-  document.documentElement.style.setProperty(
-    "--color-primary",
-    themePrimary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-onPrimary",
-    themeOnPrimary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-secondary",
-    themeSecondary.get()
-  );
-  document.documentElement.style.setProperty(
-    "--color-emphasis",
-    themeEmphasis.get()
-  );
-
-  themePrimary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-primary", color);
-  });
-
-  themeOnPrimary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-onPrimary", color);
-  });
-
-  themeSecondary.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-secondary", color);
-  });
-
-  themeEmphasis.subscribe((color) => {
-    document.documentElement.style.setProperty("--color-emphasis", color);
-  });
 
   initGlobalLenis();
 </script>
@@ -68,7 +28,6 @@ const { pageTitle } = Astro.props;
       name="description"
       content="I'm a a software engineer from Surrey, UK, specialising in TypeScript, C#, Ruby, Rails, Node, JavaScript and HTML/CSS."
     />
-    <!-- <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" /> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -81,14 +40,12 @@ const { pageTitle } = Astro.props;
     <MainNav />
 
     <div id="smoothscroll">
-      <main>
+      <div class="main">
         <div id="top-of-site-pixel-anchor"></div>
         <slot />
-      </main>
-
-      <MainFooter />
+      </div>
     </div>
-    <ColorPicker client:only="react" />
+    <MainFooter />
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"
     ></script>
   </body>

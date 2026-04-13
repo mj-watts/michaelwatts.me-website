@@ -4,6 +4,7 @@
 @import "./footer.css";
 @import "./cta-link.css";
 @import "./blank-layout.css";
+@import "./index-layout.css";
 @import "./work-layout.css";
 @import "./about-layout.css";
 @import "./contact-layout.css";
@@ -30,7 +31,7 @@
 
   --color-error: var(--color-red-400);
   --color-success: var(--color-green-400);
-  --color-warn: var(--color-yellow-300);
+  --color-warn: var(--color-orange-300);
 
   /* Typography */
   --font-heading: "Instrument Serif", serif;
@@ -63,4 +64,9 @@ ol,
 blockquote,
 label {
   @apply opacity-85;
+}
+
+a,
+button {
+  @apply cursor-pointer;
 }

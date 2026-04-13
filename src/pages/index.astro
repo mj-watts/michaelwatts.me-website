@@ -1,12 +1,121 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import HeroSection from "../components/index/HeroSection.astro";
-import FeaturedWorkSection from "../components/index/FeaturedWorkSectionNew.astro";
+import BlankLayout from "../layouts/BlankLayout.astro";
+import { Image } from "astro:assets";
+import Button from "../components/CtaLink.astro";
+import ScrollDivider from "../components/ScrollDivider.astro";
+import ImageContainer from "../components/ImageContainer.astro";
+
+import firstImage from "../content/works/swiftaid/image5.webp";
+import secondImage from "../content/works/io-music/image2.webp";
+import thirdImage from "../content/works/webapps/1.webp";
+import fourthImage from "../content/works/saudi-fashion-retail/1.webp";
+
+import videoPoster from "../images/portfolio-sequence-poster.png";
+import videoMp4 from "../images/portfolio-sequence.h264.mp4";
+import videoWebm from "../images/portfolio-sequence.av1.webm";
 
 const pageTitle = "Home";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <HeroSection />
-  <FeaturedWorkSection />
-</BaseLayout>
+<script>
+  const siteTypeEl = document.querySelector("#siteType");
+  const siteTypes = [
+    "ecommerce sites",
+    "web applications",
+    "dashboards",
+    "portals",
+    "marketing sites",
+    "SaaS platforms",
+  ];
+</script>
+
+<BlankLayout pageTitle={pageTitle}>
+  <section class="work-section">
+    <h2>Helping your sites shine</h2>
+    <div class="work-sequence-container">
+      <div class="col-1">
+        <h3>
+          Web design and development studio adding that special human touch to
+          your <span id="siteType">sites</span>.
+        </h3>
+        <div class="cta">
+          <Button href="/work/swiftaid" text="View Work" />
+          <p>Explore a blend of creative web and application design.</p>
+        </div>
+      </div>
+      <div class="col-2">
+        <video
+          autoplay="true"
+          loop
+          width="615"
+          height="430"
+          class="work-image"
+          poster={videoPoster.src}
+        >
+          <source type="video/mp4" src={videoMp4} />
+          <source type="video/webm" src={videoWebm} />
+          <p>Download and watch <a href={videoMp4}>video</a></p>
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <ScrollDivider />
+
+  <section class="work-section hidden">
+    <div class="work-container">
+      <div class="col-1">
+        <Image
+          src={firstImage}
+          alt="Preview of work image."
+          width={500}
+          height={350}
+          quality={100}
+          loading="eager"
+          class="work-image"
+        />
+        <ImageContainer backgroundColor="#17181c" width="615" height="430">
+          <Image
+            src={secondImage}
+            alt="Preview of work image."
+            width={615}
+            height={430}
+            quality={100}
+            loading="lazy"
+            class="work-image"
+          />
+        </ImageContainer>
+      </div>
+      <div class="col-2">
+        <div>
+          <h3>Featured Work</h3>
+          <p>
+            Explore a blend of creative product, web, app design and
+            dashboardary
+          </p>
+        </div>
+        <a href="/work/swiftaid">All Work</a>
+      </div>
+      <div class="col-3">
+        <Image
+          src={thirdImage}
+          alt="Preview of work image."
+          width={615}
+          height={430}
+          quality={100}
+          loading="eager"
+          class="work-image"
+        />
+        <Image
+          src={fourthImage}
+          alt="Preview of work image."
+          width={500}
+          height={350}
+          quality={100}
+          loading="eager"
+          class="work-image"
+        />
+      </div>
+    </div>
+  </section>
+</BlankLayout>

@@ -18,49 +18,285 @@ import SocialLinks from "../components/SocialLinks.astro";
       <h2 class="heading">Get In Touch</h2>
       <form novalidate class="form">
         <div class="col-2-input">
-          <div class="input-container group invalid">
+          <div class="input-container" data-field="firstname">
             <label for="firstname">First Name*</label>
-            <input id="firstname" />
+            <input id="firstname" name="firstname" autocomplete="given-name" />
             <p id="firstnameErrorMsg" class="error-msg"></p>
           </div>
-          <div class="input-container">
+          <div class="input-container" data-field="lastname">
             <label for="lastname">Last Name*</label>
-            <input id="lastname" />
+            <input id="lastname" name="lastname" autocomplete="family-name" />
             <p id="lastnameErrorMsg" class="error-msg"></p>
           </div>
         </div>
         <div class="col-input">
-          <div class="input-container">
+          <div class="input-container" data-field="email">
             <label for="email">Email*</label>
-            <input id="email" type="email" />
+            <input id="email" name="email" type="email" autocomplete="email" />
             <p id="emailErrorMsg" class="error-msg"></p>
           </div>
         </div>
         <div class="col-input">
           <div class="input-container">
             <label for="company">Company Name</label>
-            <input id="company" />
+            <input id="company" name="company" autocomplete="organization" />
           </div>
         </div>
         <div class="col-input">
           <div class="input-container">
             <label for="message">How can I help?</label>
-            <textarea></textarea>
+            <textarea id="message" name="message"></textarea>
           </div>
         </div>
-        <button type="submit">Send Message</button>
+        <div>
+          <button type="submit" aria-live="polite">
+            <span class="button-label">Send Message</span>
+            <span class="button-label-sizer" aria-hidden="true">Send Message</span>
+            <span class="button-spinner" aria-hidden="true"></span>
+          </button>
+          <div id="errorsList" aria-live="polite" class="errors-list"></div>
+        </div>
       </form>
     </div>
   </div>
 </BlankLayout>
 
 <script>
-  const form = document.querySelector(".form");
-  // const fnameInput = document.querySelector("#firstname");
-  // const lnameInput = document.querySelector("#lastname");
-  // const emailInput = document.querySelector("#email");
+  import { gsap } from "gsap";
 
-  // const fnameErrorMsg = document.querySelector("#firstnameErrorMsg");
-  // const lnameErrorMsg = document.querySelector("#lastnameErrorMsg");
-  // const emailErrorMsg = document.querySelector("#emailErrorMsg");
+  const form = document.querySelector(".form");
+
+  if (!form) {
+    throw new Error("Contact form not found");
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  const submitButtonLabel = submitButton?.querySelector(".button-label");
+  const errorsList = form.querySelector("#errorsList");
+  const defaultSubmitLabel = "Send Message";
+  let submitLabelAnimation;
+
+  const fields = {
+    firstname: {
+      input: form.querySelector("#firstname"),
+      container: form.querySelector('[data-field="firstname"]'),
+      message: form.querySelector("#firstnameErrorMsg"),
+      label: "First name",
+    },
+    lastname: {
+      input: form.querySelector("#lastname"),
+      container: form.querySelector('[data-field="lastname"]'),
+      message: form.querySelector("#lastnameErrorMsg"),
+      label: "Last name",
+    },
+    email: {
+      input: form.querySelector("#email"),
+      container: form.querySelector('[data-field="email"]'),
+      message: form.querySelector("#emailErrorMsg"),
+      label: "Email",
+    },
+  };
+
+  function sanitize(value) {
+    return typeof value === "string" ? value.trim() : "";
+  }
+
+  function getFormDataObject(currentForm) {
+    const data = new FormData(currentForm);
+
+    return {
+      firstname: sanitize(data.get("firstname")),
+      lastname: sanitize(data.get("lastname")),
+      email: sanitize(data.get("email")),
+      company: sanitize(data.get("company")),
+      message: sanitize(data.get("message")),
+    };
+  }
+
+  function validateFormData(formData) {
+    const errors = {};
+
+    if (!formData.firstname) {
+      errors.firstname = "Please enter your first name.";
+    }
+
+    if (!formData.lastname) {
+      errors.lastname = "Please enter your last name.";
+    }
+
+    if (!formData.email) {
+      errors.email = "Please enter your email address.";
+    } else {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailPattern.test(formData.email)) {
+        errors.email = "Please enter a valid email address.";
+      }
+    }
+
+    return errors;
+  }
+
+  function clearFieldError(fieldName) {
+    const field = fields[fieldName];
+
+    if (!field) return;
+
+    field.container?.classList.remove("invalid");
+    if (field.message) {
+      field.message.textContent = "";
+    }
+  }
+
+  function setFieldError(fieldName, message) {
+    const field = fields[fieldName];
+
+    if (!field) return;
+
+    field.container?.classList.add("invalid");
+    if (field.message) {
+      field.message.textContent = message;
+    }
+  }
+
+  function renderSummary(errors) {
+    if (!errorsList) return;
+
+    const fieldNames = Object.keys(errors);
+
+    if (fieldNames.length === 0) {
+      errorsList.innerHTML = "";
+      return;
+    }
+
+    const items = fieldNames
+      .map((fieldName) => {
+        const field = fields[fieldName];
+        const errorMessage = errors[fieldName];
+        const title = field?.label ?? fieldName;
+
+        return `<li><a href="#${fieldName}">${title}: ${errorMessage}</a></li>`;
+      })
+      .join("");
+
+    errorsList.innerHTML = `<p>Please correct the following:</p><ul>${items}</ul>`;
+  }
+
+  function renderErrors(errors) {
+    Object.keys(fields).forEach((fieldName) => clearFieldError(fieldName));
+
+    Object.entries(errors).forEach(([fieldName, message]) => {
+      setFieldError(fieldName, message);
+    });
+
+    renderSummary(errors);
+  }
+
+  async function sendFormData(formData) {
+    await new Promise((resolve) => {
+      setTimeout(resolve, 3000);
+    });
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to submit contact form");
+    }
+
+    return response;
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!submitButton) return;
+
+    if (submitLabelAnimation) {
+      submitLabelAnimation.kill();
+      submitLabelAnimation = undefined;
+    }
+
+    if (submitButtonLabel) {
+      submitButtonLabel.textContent = defaultSubmitLabel;
+    }
+
+    submitButton.classList.toggle("is-loading", isSubmitting);
+    submitButton.disabled = isSubmitting;
+
+    if (isSubmitting || !submitButtonLabel) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      submitButtonLabel.textContent = defaultSubmitLabel;
+      return;
+    }
+
+    submitButtonLabel.textContent = "";
+    const animationState = { index: 0 };
+
+    submitLabelAnimation = gsap.to(animationState, {
+      index: defaultSubmitLabel.length,
+      duration: 0.55,
+      ease: "none",
+      snap: { index: 1 },
+      onUpdate: () => {
+        submitButtonLabel.textContent = defaultSubmitLabel.slice(
+          0,
+          animationState.index,
+        );
+      },
+      onComplete: () => {
+        submitLabelAnimation = undefined;
+      },
+    });
+  }
+
+  Object.keys(fields).forEach((fieldName) => {
+    const field = fields[fieldName];
+
+    field.input?.addEventListener("input", () => {
+      if (field.container?.classList.contains("invalid")) {
+        clearFieldError(fieldName);
+      }
+
+      const currentErrors = validateFormData(getFormDataObject(form));
+      renderSummary(currentErrors);
+    });
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = getFormDataObject(form);
+    const validationErrors = validateFormData(formData);
+
+    renderErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0) {
+      const firstInvalidField = Object.keys(validationErrors)[0];
+      fields[firstInvalidField]?.input?.focus();
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      await sendFormData(formData);
+      form.reset();
+      renderErrors({});
+      if (errorsList) {
+        errorsList.innerHTML = "<p>Thanks, your message has been sent.</p>";
+      }
+    } catch {
+      if (errorsList) {
+        errorsList.innerHTML =
+          "<p>Sorry, we could not send your message right now. Please try again.</p>";
+      }
+    } finally {
+      setSubmitting(false);
+    }
+  });
 </script>
