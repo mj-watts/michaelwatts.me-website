@@ -1,3 +1,27 @@
+.hero-window-mask {
+  @apply fixed inset-0 pointer-events-none;
+
+  z-index: 1100;
+
+  &::before {
+    --window-progress: var(--hero-window-progress, 0);
+    --window-inset-start: clamp(12px, 2vw, 32px);
+    --window-radius-start: clamp(20px, 3vw, 44px);
+
+    content: "";
+    position: absolute;
+    top: calc(var(--window-inset-start) * (1 - var(--window-progress)));
+    right: calc(var(--window-inset-start) * (1 - var(--window-progress)));
+    bottom: calc(var(--window-inset-start) * (1 - var(--window-progress)));
+    left: calc(var(--window-inset-start) * (1 - var(--window-progress)));
+    border-radius: calc(
+      var(--window-radius-start) * (1 - var(--window-progress))
+    );
+    box-shadow: 0 0 0 9999px oklch(0.2616 0.0431 255.94);
+    will-change: top, right, bottom, left, border-radius, box-shadow;
+  }
+}
+
 .hero-section {
   --mx: 0;
   --my: 0;

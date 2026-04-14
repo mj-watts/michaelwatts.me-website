@@ -12,6 +12,16 @@ const pageTitle = "Home";
 
 <script>
   import { gsap } from "gsap";
+  import { initGlobalLenis } from "../lib/initGlobalLenis";
+
+  type CleanupFn = () => void;
+
+  declare global {
+    interface Window {
+      __mwHeroWindowMaskCleanup?: CleanupFn;
+      __mwHeroWindowMaskListenersBound?: boolean;
+    }
+  }
 
   const siteTypes = [
     "ecommerce sites",
@@ -107,16 +117,77 @@ const pageTitle = "Home";
     gsapRef.delayedCall(1, runCycle);
   };
 
+  const cleanupHeroWindowMask = () => {
+    window.__mwHeroWindowMaskCleanup?.();
+    window.__mwHeroWindowMaskCleanup = undefined;
+    document.documentElement.style.setProperty("--hero-window-progress", "0");
+  };
+
+  const initHeroWindowMask = () => {
+    cleanupHeroWindowMask();
+
+    const maskEl = document.querySelector(".hero-window-mask");
+    if (!maskEl) {
+      return;
+    }
+
+    const maxDistance = Math.max(window.innerHeight * 0.55, 280);
+
+    const updateMask = () => {
+      const progress = Math.min(window.scrollY / maxDistance, 1);
+      document.documentElement.style.setProperty(
+        "--hero-window-progress",
+        progress.toFixed(4)
+      );
+    };
+
+    updateMask();
+
+    const lenis = initGlobalLenis();
+    let cleanup: CleanupFn = () => {};
+
+    if (lenis) {
+      lenis.on("scroll", updateMask);
+      cleanup = () => {
+        lenis.off("scroll", updateMask);
+      };
+    } else {
+      window.addEventListener("scroll", updateMask, { passive: true });
+      cleanup = () => {
+        window.removeEventListener("scroll", updateMask);
+      };
+    }
+
+    window.addEventListener("resize", updateMask, { passive: true });
+
+    window.__mwHeroWindowMaskCleanup = () => {
+      window.removeEventListener("resize", updateMask);
+      cleanup();
+    };
+  };
+
+  const initHomePageAnimations = () => {
+    animateSiteType();
+    initHeroWindowMask();
+  };
+
+  if (!window.__mwHeroWindowMaskListenersBound) {
+    document.addEventListener("astro:before-swap", cleanupHeroWindowMask);
+    document.addEventListener("astro:page-load", initHeroWindowMask);
+    window.__mwHeroWindowMaskListenersBound = true;
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", animateSiteType, {
+    document.addEventListener("DOMContentLoaded", initHomePageAnimations, {
       once: true,
     });
   } else {
-    animateSiteType();
+    initHomePageAnimations();
   }
 </script>
 
 <HomeLayout pageTitle={pageTitle}>
+  <div class="hero-window-mask" aria-hidden="true"></div>
   <section class="work-section">
     <h2>Helping your sites shine</h2>
     <div class="work-sequence-container">

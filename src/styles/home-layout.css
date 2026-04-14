@@ -25,7 +25,7 @@
   > nav {
     grid-area: nav;
 
-    @apply py-36 absolute left-0 right-0 bg-transparent z-999 mx-auto;
+    @apply p-72 absolute left-0 right-0 bg-transparent z-999 mx-auto;
   }
 
   > .hero-section {
