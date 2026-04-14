@@ -40,7 +40,23 @@ import foregroundRight from "../images/background/fg-r.webp";
   import { gsap } from "gsap";
   import { initGlobalLenis } from "../lib/initGlobalLenis";
 
+  type CleanupFn = () => void;
+
+  declare global {
+    interface Window {
+      __mwHeroParallaxCleanup?: CleanupFn;
+      __mwHeroParallaxListenersBound?: boolean;
+    }
+  }
+
+  const cleanupHeroParallax = () => {
+    window.__mwHeroParallaxCleanup?.();
+    window.__mwHeroParallaxCleanup = undefined;
+  };
+
   const initHeroParallax = () => {
+    cleanupHeroParallax();
+
     const hero = document.querySelector(".hero-section");
     if (!hero) return;
 
@@ -69,33 +85,28 @@ import foregroundRight from "../images/background/fg-r.webp";
     updateParallax();
 
     const lenis = initGlobalLenis();
+    let cleanup: CleanupFn = () => {};
+
     if (lenis) {
       lenis.on("scroll", updateParallax);
-      window.addEventListener(
-        "beforeunload",
-        () => {
-          lenis.off("scroll", updateParallax);
-        },
-        { once: true }
-      );
-      return;
+      cleanup = () => {
+        lenis.off("scroll", updateParallax);
+      };
+    } else {
+      window.addEventListener("scroll", updateParallax, { passive: true });
+      cleanup = () => {
+        window.removeEventListener("scroll", updateParallax);
+      };
     }
 
-    window.addEventListener("scroll", updateParallax, { passive: true });
-    window.addEventListener(
-      "beforeunload",
-      () => {
-        window.removeEventListener("scroll", updateParallax);
-      },
-      { once: true }
-    );
+    window.__mwHeroParallaxCleanup = cleanup;
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHeroParallax, {
-      once: true,
-    });
-  } else {
-    initHeroParallax();
+  if (!window.__mwHeroParallaxListenersBound) {
+    document.addEventListener("astro:before-swap", cleanupHeroParallax);
+    document.addEventListener("astro:page-load", initHeroParallax);
+    window.__mwHeroParallaxListenersBound = true;
   }
+
+  initHeroParallax();
 </script>
