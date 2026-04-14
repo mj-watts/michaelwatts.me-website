@@ -3,7 +3,6 @@ import MainNav from "../components/MainNav.astro";
 import Main from "../components/Main.astro";
 import Container from "../components/Container.astro";
 import MainFooter from "../components/Footer.astro";
-import ColorPicker from "../components/ColorPicker.tsx";
 import "../styles/styles.css";
 
 const mainTitle = "Michael Watts, Web Development";
@@ -50,7 +49,5 @@ const { pageTitle, pageDescription } = Astro.props;
     </Main>
 
     <MainFooter />
-
-    <ColorPicker client:only="react" />
   </body>
 </html>
