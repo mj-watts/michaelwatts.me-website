@@ -1,5 +1,5 @@
 .home-layout {
-  @apply grid bg-sky-600 text-white;
+  @apply grid bg-earth text-white;
 
   grid-template-areas:
     "nav"
@@ -9,10 +9,23 @@
   grid-template-rows: auto auto 1fr auto;
   min-height: 100dvh;
 
+  .static {
+    @apply fixed inset-0;
+    @apply mask-b-from-90%;
+    @apply mask-t-from-90%;
+    @apply pointer-events-none z-0;
+    @apply bg-repeat;
+    @apply mix-blend-multiply;
+    @apply opacity-5;
+
+    background-size: 50%;
+    background-image: var(--bg-img);
+  }
+
   > nav {
     grid-area: nav;
 
-    @apply py-36 absolute bg-transparent z-999;
+    @apply py-36 absolute left-0 right-0 bg-transparent z-999 mx-auto;
   }
 
   > .hero-section {
@@ -23,20 +36,7 @@
     grid-area: body;
     min-height: 0;
 
-    @apply min-h-dvh bg-earth relative;
-
-    .static {
-      @apply absolute -top-300 left-0 right-0 bottom-0;
-      @apply mask-b-from-90%;
-      @apply mask-t-from-90%;
-      @apply min-h-[120dvh] pointer-events-none z-0;
-      @apply bg-repeat;
-      @apply mix-blend-multiply;
-      @apply opacity-15;
-
-      background-size: 50%;
-      background-image: var(--bg-img);
-    }
+    @apply min-h-dvh;
   }
 
   > footer {

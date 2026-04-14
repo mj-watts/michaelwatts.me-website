@@ -8,15 +8,15 @@ import foregroundRight from "../images/background/fg-r.webp";
 ---
 
 <section class="hero-section">
-  <div class="clouds">
+  <div class="clouds" data-parallax-speed="0.35">
     <img src={clouds.src} />
   </div>
 
-  <div class="distant-mountains">
+  <div class="distant-mountains" data-parallax-speed="0.25">
     <img src={distantMountains.src} />
   </div>
 
-  <div class="mid-mountains">
+  <div class="mid-mountains" data-parallax-speed="0.2">
     <div class="mid-mountains-right">
       <img src={mountainsRight.src} class="max-w-1000" />
     </div>
@@ -25,7 +25,7 @@ import foregroundRight from "../images/background/fg-r.webp";
     </div>
   </div>
 
-  <div class="near-mountains">
+  <div class="near-mountains" data-parallax-speed="0.1">
     <div class="near-mountains-right hero-fg-1">
       <img src={foregroundRight.src} class="max-w-1500" />
     </div>
@@ -35,3 +35,67 @@ import foregroundRight from "../images/background/fg-r.webp";
     </div>
   </div>
 </section>
+
+<script>
+  import { gsap } from "gsap";
+  import { initGlobalLenis } from "../lib/initGlobalLenis";
+
+  const initHeroParallax = () => {
+    const hero = document.querySelector(".hero-section");
+    if (!hero) return;
+
+    const layers = Array.from(
+      hero.querySelectorAll(
+        ".clouds, .distant-mountains, .mid-mountains, .near-mountains"
+      )
+    );
+
+    if (!layers.length) return;
+
+    const layerSetters = layers.map((layer) => ({
+      speed: Number(layer.getAttribute("data-parallax-speed") ?? "0"),
+      setY: gsap.quickSetter(layer, "y", "px"),
+    }));
+
+    const updateParallax = () => {
+      const heroTop = hero.getBoundingClientRect().top + window.scrollY;
+      const offset = window.scrollY - heroTop;
+
+      layerSetters.forEach(({ speed, setY }) => {
+        setY(offset * speed);
+      });
+    };
+
+    updateParallax();
+
+    const lenis = initGlobalLenis();
+    if (lenis) {
+      lenis.on("scroll", updateParallax);
+      window.addEventListener(
+        "beforeunload",
+        () => {
+          lenis.off("scroll", updateParallax);
+        },
+        { once: true }
+      );
+      return;
+    }
+
+    window.addEventListener("scroll", updateParallax, { passive: true });
+    window.addEventListener(
+      "beforeunload",
+      () => {
+        window.removeEventListener("scroll", updateParallax);
+      },
+      { once: true }
+    );
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroParallax, {
+      once: true,
+    });
+  } else {
+    initHeroParallax();
+  }
+</script>

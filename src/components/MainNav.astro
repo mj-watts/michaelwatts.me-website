@@ -8,7 +8,11 @@ const pathname = requestUrl.pathname;
 const currentPath = pathname.slice(1);
 ---
 
-<nav class="mainnav container" data-current-path={currentPath}>
+<nav
+  class="mainnav container"
+  data-current-path={currentPath}
+  transition:persist
+>
   <div class="content">
     <div class="mainnav__links">
       <NavItem href="/work/swiftaid" isActive={currentPath.includes("work")}>

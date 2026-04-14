@@ -10,7 +10,7 @@
   @apply bg-(--button-color) box-border inline-flex items-center justify-center;
   @apply gap-16 overflow-hidden relative;
   @apply cursor-pointer select-none;
-  @apply whitespace-nowrap opacity-0;
+  @apply whitespace-nowrap;
   @apply transition-all duration-200 ease-in-out delay-100;
 
   &::before {

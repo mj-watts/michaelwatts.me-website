@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import MainNav from "../components/MainNav.astro";
 import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
@@ -26,13 +27,14 @@ const { pageTitle, pageDescription } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
+    <ClientRouter />
   </head>
   <body class="home-layout">
+    <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     <MainNav />
     <HeroLandscape />
     <div id="main" role="main" class="main container">
       <slot />
-      <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     </div>
     <MainFooter />
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"

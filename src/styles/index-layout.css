@@ -2,12 +2,14 @@
   --mx: 0;
   --my: 0;
 
-  @apply h-[90dvh] grid place-content-center relative;
+  @apply h-[85dvh] grid place-content-center relative;
   @apply bg-linear-180 from-sky-600 via-sky-500 to-earth;
   @apply pointer-events-none;
 
   .clouds {
     @apply absolute top-100 right-0;
+    @apply mask-b-from-30%;
+    @apply opacity-85;
   }
 
   .distant-mountains {
@@ -20,33 +22,34 @@
   }
 
   .mid-mountains-right {
-    @apply absolute top-20 -right-60 z-10 mask-b-from-30% flex justify-end;
+    @apply absolute top-20 right-0 z-10 mask-b-from-30% flex justify-end;
     @apply w-full;
   }
 
   .mid-mountains-left {
-    @apply absolute top-0 -left-60 z-20 mask-b-from-30% flex justify-start;
+    @apply absolute top-0 left-0 z-20 mask-b-from-30% flex justify-start;
     @apply w-full;
   }
 
   .near-mountains {
-    @apply absolute bottom-0 left-0 right-0 h-dvh overflow-hidden;
-    @apply mask-b-from-80%;
+    @apply absolute -bottom-100 left-0 right-0 h-dvh overflow-hidden;
   }
 
   .near-mountains-right {
-    @apply absolute bottom-20 -right-60 z-20;
+    @apply absolute bottom-20 right-0 z-20;
     @apply w-full flex justify-end;
     @apply mask-b-from-50%;
+    @apply bg-linear-180 from-transparent to-earth from-50%;
 
     transform: translate(calc(var(--mx) * -14px), calc(var(--my) * -10px));
   }
 
   .near-mountains-left {
-    @apply absolute bottom-20 -left-60 z-30 flex justify-start;
+    @apply absolute bottom-20 left-0 z-30 flex justify-start;
     @apply w-full;
     @apply contrast-125;
     @apply mask-b-from-50%;
+    @apply bg-linear-180 from-transparent to-earth from-50%;
 
     transform: translate(calc(var(--mx) * -9px), calc(var(--my) * -7px));
   }

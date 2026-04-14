@@ -25,11 +25,11 @@
   --spacing: 0.0625rem;
 
   /* Colors */
-  --color-white: #fffddb;
-  --color-black: #162539;
-  --color-emphasis: #d65e5e;
-  --color-earth: #5d9152;
-  --color-select: #d65e5e33;
+  --color-white: oklch(0.9869 0.0441 104.42);
+  --color-black: oklch(0.2616 0.0431 255.94);
+  --color-emphasis: oklch(0.6318 0.1519 22.41);
+  --color-earth: oklch(0.6039 0.1074 140.15);
+  --color-select: oklch(0.6318 0.1519 22.41 / 20%);
 
   --color-error: var(--color-red-400);
   --color-success: var(--color-green-400);
