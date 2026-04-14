@@ -1,0 +1,37 @@
+---
+import clouds from "../images/background/clouds.webp";
+import distantMountains from "../images/background/distant-mountains.webp";
+import mountainsLeft from "../images/background/mountains-l.webp";
+import mountainsRight from "../images/background/mountains-r.webp";
+import foregroundLeft from "../images/background/fg-l.webp";
+import foregroundRight from "../images/background/fg-r.webp";
+---
+
+<section class="hero-section">
+  <div class="clouds">
+    <img src={clouds.src} />
+  </div>
+
+  <div class="distant-mountains">
+    <img src={distantMountains.src} />
+  </div>
+
+  <div class="mid-mountains">
+    <div class="mid-mountains-right">
+      <img src={mountainsRight.src} class="max-w-1000" />
+    </div>
+    <div class="mid-mountains-left">
+      <img src={mountainsLeft.src} class="max-w-1000" />
+    </div>
+  </div>
+
+  <div class="near-mountains">
+    <div class="near-mountains-right hero-fg-1">
+      <img src={foregroundRight.src} class="max-w-1500" />
+    </div>
+
+    <div class="near-mountains-left">
+      <img src={foregroundLeft.src} class="max-w-1500" />
+    </div>
+  </div>
+</section>

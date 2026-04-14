@@ -1,5 +1,5 @@
 ---
-import BlankLayout from "../layouts/BlankLayout.astro";
+import HomeLayout from "../layouts/HomeLayout.astro";
 import Button from "../components/CtaLink.astro";
 import ScrollDivider from "../components/ScrollDivider.astro";
 
@@ -16,8 +16,7 @@ const pageTitle = "Home";
   const siteTypes = [
     "ecommerce sites",
     "web applications",
-    "dashboards",
-    "portals",
+    "dashboards & portals",
     "marketing sites",
     "SaaS platforms",
   ];
@@ -117,7 +116,7 @@ const pageTitle = "Home";
   }
 </script>
 
-<BlankLayout pageTitle={pageTitle}>
+<HomeLayout pageTitle={pageTitle}>
   <section class="work-section">
     <h2>Helping your sites shine</h2>
     <div class="work-sequence-container">
@@ -151,4 +150,4 @@ const pageTitle = "Home";
   </section>
 
   <ScrollDivider />
-</BlankLayout>
+</HomeLayout>

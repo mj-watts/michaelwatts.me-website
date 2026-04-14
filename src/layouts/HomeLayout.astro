@@ -1,0 +1,41 @@
+---
+import MainNav from "../components/MainNav.astro";
+import MainFooter from "../components/MainFooter.astro";
+import "../styles/styles.css";
+import "lenis/dist/lenis.css";
+import HeroLandscape from "../components/HeroLandscape.astro";
+import StaticImage from "../images/background/static.webp";
+
+const mainTitle = "Michael Watts, Web Development";
+const { pageTitle, pageDescription } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{mainTitle} | {pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" /> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="home-layout">
+    <MainNav />
+    <HeroLandscape />
+    <div id="main" role="main" class="main container">
+      <slot />
+      <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
+    </div>
+    <MainFooter />
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"
+    ></script>
+  </body>
+</html>

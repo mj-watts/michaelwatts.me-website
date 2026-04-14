@@ -3,6 +3,7 @@
 @import "./mainnav.css";
 @import "./footer.css";
 @import "./cta-link.css";
+@import "./home-layout.css";
 @import "./blank-layout.css";
 @import "./index-layout.css";
 @import "./work-layout.css";
@@ -27,6 +28,7 @@
   --color-white: #fffddb;
   --color-black: #162539;
   --color-emphasis: #d65e5e;
+  --color-earth: #5d9152;
   --color-select: #d65e5e33;
 
   --color-error: var(--color-red-400);

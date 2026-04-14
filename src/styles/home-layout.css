@@ -1,0 +1,47 @@
+.home-layout {
+  @apply grid bg-sky-600 text-white;
+
+  grid-template-areas:
+    "nav"
+    "hero"
+    "body"
+    "footer";
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100dvh;
+
+  > nav {
+    grid-area: nav;
+
+    @apply py-36 absolute bg-transparent z-999;
+  }
+
+  > .hero-section {
+    grid-area: hero;
+  }
+
+  > .main {
+    grid-area: body;
+    min-height: 0;
+
+    @apply min-h-dvh bg-earth relative;
+
+    .static {
+      @apply absolute -top-300 left-0 right-0 bottom-0;
+      @apply mask-b-from-90%;
+      @apply mask-t-from-90%;
+      @apply min-h-[120dvh] pointer-events-none z-0;
+      @apply bg-repeat;
+      @apply mix-blend-multiply;
+      @apply opacity-15;
+
+      background-size: 50%;
+      background-image: var(--bg-img);
+    }
+  }
+
+  > footer {
+    grid-area: footer;
+
+    @apply bg-earth;
+  }
+}
