@@ -51,7 +51,9 @@ import SocialLinks from "../components/SocialLinks.astro";
         <div>
           <button type="submit" aria-live="polite">
             <span class="button-label">Send Message</span>
-            <span class="button-label-sizer" aria-hidden="true">Send Message</span>
+            <span class="button-label-sizer" aria-hidden="true"
+              >Send Message</span
+            >
             <span class="button-spinner" aria-hidden="true"></span>
           </button>
           <div id="errorsList" aria-live="polite" class="errors-list"></div>
@@ -245,7 +247,7 @@ import SocialLinks from "../components/SocialLinks.astro";
       onUpdate: () => {
         submitButtonLabel.textContent = defaultSubmitLabel.slice(
           0,
-          animationState.index,
+          animationState.index
         );
       },
       onComplete: () => {
@@ -293,7 +295,7 @@ import SocialLinks from "../components/SocialLinks.astro";
     } catch {
       if (errorsList) {
         errorsList.innerHTML =
-          "<p>Sorry, we could not send your message right now. Please try again.</p>";
+          "<p>Sorry, we could not send your message. Please try again.</p>";
       }
     } finally {
       setSubmitting(false);

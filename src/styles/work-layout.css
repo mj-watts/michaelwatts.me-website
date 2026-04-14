@@ -1,5 +1,6 @@
 .work-layout {
-  @apply grid h-dvh bg-black text-white;
+  @apply flex flex-col bg-black text-white;
+  @apply lg:grid lg:h-dvh;
 
   grid-template-areas:
     "nav"
@@ -18,7 +19,8 @@
     grid-area: body;
     min-height: 0;
 
-    @apply h-full overflow-hidden;
+    @apply h-full;
+    @apply lg:overflow-hidden;
   }
 
   > footer {
@@ -26,7 +28,9 @@
   }
 
   .row {
-    @apply min-h-0 grid h-full grid-cols-[1fr_1fr_2fr] gap-72;
+    @apply min-h-0 h-full flex flex-col gap-36;
+    @apply lg:grid lg:grid-cols-[0.5fr_0.5fr_2fr];
+    @apply xl:grid-cols-[1fr_0.5fr_2fr] xl:gap-72;
   }
 
   .col-1 {
@@ -34,16 +38,18 @@
     @apply h-full place-content-start;
 
     > .heading {
-      @apply font-heading text-7xl text-emphasis text-balance;
+      @apply font-heading text-5xl text-emphasis text-balance;
+      @apply xl:text-7xl;
     }
 
     > .body {
-      @apply font-heading text-4xl font-light leading-tight text-balance;
+      @apply font-heading text-2xl font-light leading-tight text-balance;
+      @apply xl:text-4xl;
     }
   }
 
   .col-2 {
-    @apply h-full place-content-start pt-72;
+    @apply h-full place-content-start;
 
     ul {
       @apply list-none p-0 flex flex-col items-start gap-12;
@@ -62,7 +68,7 @@
     }
 
     .tag-item--base {
-      @apply opacity-50;
+      @apply lg:opacity-50;
     }
 
     .tag-item--reveal {
@@ -102,8 +108,9 @@
   }
 
   .col-3 {
-    @apply h-full min-h-0 rounded-3xl relative overflow-hidden;
+    @apply h-full min-h-0 rounded-3xl relative;
     @apply border border-emphasis p-6;
+    @apply lg:overflow-hidden;
 
     &.is-scrolled {
       @apply border-emphasis/10;
@@ -199,14 +206,13 @@
   }
 
   .scroll-cta {
-    @apply absolute bottom-0 left-0 right-0 h-86;
+    @apply absolute bottom-0 left-0 right-0 h-86 hidden;
     @apply bg-black/90 border border-b-0 border-emphasis;
-    /* @apply bg-linear-0 from-black to-transparent; */
-    @apply flex items-center justify-center gap-12 p-12 font-heading text-2xl;
+    @apply items-center justify-center gap-12 p-12 font-heading text-2xl;
     @apply transition-all duration-300 ease-out;
-    /* @apply mask-l-from-60% mask-r-from-60% mask-t-from-60%; */
     @apply rounded-tl-3xl rounded-tr-3xl w-1/2 mx-auto;
     @apply z-20;
+    @apply lg:flex;
 
     .text {
       @apply opacity-90 text-shadow-2xs text-white;

@@ -33,8 +33,10 @@ const { pageTitle, pageDescription } = Astro.props;
     <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     <MainNav />
     <HeroLandscape />
-    <div id="main" role="main" class="main container">
-      <slot />
+    <div id="main" role="main" class="main">
+      <div class="container">
+        <slot />
+      </div>
     </div>
     <MainFooter />
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"

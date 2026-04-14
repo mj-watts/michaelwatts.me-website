@@ -2,28 +2,15 @@
 import SiteLogo from "./SiteLogo.astro";
 import NavItem from "./NavItem.astro";
 import Button from "./CtaLink.astro";
-
-const requestUrl = new URL(Astro.request.url);
-const pathname = requestUrl.pathname;
-const currentPath = pathname.slice(1);
 ---
 
-<nav
-  class="mainnav container"
-  data-current-path={currentPath}
-  transition:persist
->
+<nav class="mainnav container" transition:persist>
   <div class="content">
     <div class="mainnav__links">
-      <NavItem href="/work/swiftaid" isActive={currentPath.includes("work")}>
-        Work
-      </NavItem>
-      <NavItem href="/#services" isActive={currentPath === "services"}>
-        Services
-      </NavItem>
-      <NavItem href="/about" isActive={currentPath === "about"}>
-        About
-      </NavItem>
+      <NavItem href="/" className="md:hidden">Home</NavItem>
+      <NavItem href="/work/swiftaid"> Work </NavItem>
+      <NavItem href="/about"> About </NavItem>
+      <NavItem href="/contact"> Contact </NavItem>
     </div>
     <SiteLogo />
     <div class="mainnav__cta">

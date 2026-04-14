@@ -1,5 +1,7 @@
 .mainfooter {
-  @apply flex items-baseline justify-between py-24;
+  .container {
+    @apply flex items-baseline justify-between py-24;
+  }
 
   ul {
     @apply flex gap-24;
@@ -10,7 +12,7 @@
     @apply hover:bg-emphasis/40;
   }
 
-  div {
+  .body {
     @apply opacity-50;
   }
 

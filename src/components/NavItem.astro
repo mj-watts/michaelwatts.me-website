@@ -1,8 +1,8 @@
 ---
-const { href, isActive } = Astro.props;
+const { href, isActive, className } = Astro.props;
 ---
 
-<a href={href} class:list={[isActive ? "active" : ""]}>
+<a href={href} class:list={[isActive ? "active" : "", className]}>
   <slot />
 </a>
 
@@ -16,5 +16,9 @@ const { href, isActive } = Astro.props;
   a:focus,
   a:active {
     opacity: 0.8;
+  }
+
+  a.active {
+    color: var(--color-emphasis) !important;
   }
 </style>

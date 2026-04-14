@@ -4,9 +4,11 @@ import SocialLinks from "./SocialLinks.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="mainfooter container">
-  <div>
-    © Michael Watts, 2022 - {currentYear}
+<footer class="mainfooter">
+  <div class="container">
+    <div class="body">
+      © Michael Watts, 2022 - {currentYear}
+    </div>
+    <SocialLinks />
   </div>
-  <SocialLinks />
 </footer>

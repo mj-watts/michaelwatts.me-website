@@ -1,11 +1,12 @@
 .contact-layout {
-  @apply grid h-full min-h-0 lg:grid-cols-[0.3fr_1fr] gap-24 mx-auto;
+  @apply flex flex-col h-full min-h-0 gap-24 mx-auto;
+  @apply lg:grid lg:grid-cols-[0.3fr_1fr];
 
   .col-1 {
-    @apply flex items-start bg-emphasis rounded-3xl p-72;
+    @apply flex items-start bg-emphasis rounded-3xl p-36;
 
     .body {
-      @apply flex flex-col justify-between h-full text-black;
+      @apply flex flex-col justify-between h-full text-black gap-36;
 
       p {
         @apply text-4xl font-heading;
