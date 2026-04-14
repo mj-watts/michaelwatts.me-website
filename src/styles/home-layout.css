@@ -1,5 +1,5 @@
 .home-layout {
-  @apply grid bg-earth text-white;
+  @apply grid bg-black text-white;
 
   grid-template-areas:
     "nav"
@@ -36,7 +36,7 @@
     grid-area: body;
     min-height: 0;
 
-    @apply min-h-dvh;
+    @apply min-h-dvh bg-earth;
   }
 
   > footer {

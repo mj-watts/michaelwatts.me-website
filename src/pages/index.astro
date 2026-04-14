@@ -20,6 +20,7 @@ const pageTitle = "Home";
     interface Window {
       __mwHeroWindowMaskCleanup?: CleanupFn;
       __mwHeroWindowMaskListenersBound?: boolean;
+      __mwHeroWindowMaskIntroTimeouts?: ReturnType<typeof setTimeout>[];
     }
   }
 
@@ -118,8 +119,27 @@ const pageTitle = "Home";
   };
 
   const cleanupHeroWindowMask = () => {
+    if (window.__mwHeroWindowMaskIntroTimeouts?.length) {
+      window.__mwHeroWindowMaskIntroTimeouts.forEach((timeoutId) => {
+        clearTimeout(timeoutId);
+      });
+      window.__mwHeroWindowMaskIntroTimeouts = undefined;
+    }
+
     window.__mwHeroWindowMaskCleanup?.();
     window.__mwHeroWindowMaskCleanup = undefined;
+    document.documentElement.style.setProperty(
+      "--hero-window-inset-start",
+      "clamp(12px, 52vw, 650px)"
+    );
+    document.documentElement.style.setProperty(
+      "--hero-window-mask-opacity",
+      "0"
+    );
+    document.documentElement.style.setProperty(
+      "--hero-window-full-opacity",
+      "1"
+    );
     document.documentElement.style.setProperty("--hero-window-progress", "0");
   };
 
@@ -130,6 +150,19 @@ const pageTitle = "Home";
     if (!maskEl) {
       return;
     }
+
+    document.documentElement.style.setProperty(
+      "--hero-window-inset-start",
+      "clamp(12px, 52vw, 650px)"
+    );
+    document.documentElement.style.setProperty(
+      "--hero-window-mask-opacity",
+      "0"
+    );
+    document.documentElement.style.setProperty(
+      "--hero-window-full-opacity",
+      "1"
+    );
 
     const maxDistance = Math.max(window.innerHeight * 0.55, 280);
 
@@ -164,6 +197,33 @@ const pageTitle = "Home";
       window.removeEventListener("resize", updateMask);
       cleanup();
     };
+
+    const revealSlitTimeout = setTimeout(() => {
+      document.documentElement.style.setProperty(
+        "--hero-window-mask-opacity",
+        "1"
+      );
+    }, 1000);
+
+    const hideFullBlackTimeout = setTimeout(() => {
+      document.documentElement.style.setProperty(
+        "--hero-window-full-opacity",
+        "0"
+      );
+    }, 1360);
+
+    const expandSlitTimeout = setTimeout(() => {
+      document.documentElement.style.setProperty(
+        "--hero-window-inset-start",
+        "clamp(12px, 2vw, 32px)"
+      );
+    }, 2400);
+
+    window.__mwHeroWindowMaskIntroTimeouts = [
+      revealSlitTimeout,
+      hideFullBlackTimeout,
+      expandSlitTimeout,
+    ];
   };
 
   const initHomePageAnimations = () => {

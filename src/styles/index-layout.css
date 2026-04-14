@@ -5,7 +5,10 @@
 
   &::before {
     --window-progress: var(--hero-window-progress, 0);
-    --window-inset-start: clamp(12px, 2vw, 32px);
+    --window-inset-start: var(
+      --hero-window-inset-start,
+      clamp(12px, 52vw, 650px)
+    );
     --window-radius-start: clamp(20px, 3vw, 44px);
 
     content: "";
@@ -17,8 +20,26 @@
     border-radius: calc(
       var(--window-radius-start) * (1 - var(--window-progress))
     );
-    box-shadow: 0 0 0 9999px oklch(0.2616 0.0431 255.94);
-    will-change: top, right, bottom, left, border-radius, box-shadow;
+    box-shadow: 0 0 0 9999px var(--color-black);
+    opacity: var(--hero-window-mask-opacity, 0);
+    transition:
+      opacity 0.35s ease,
+      top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      right 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      border-radius 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, top, right, bottom, left, border-radius, box-shadow;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-black);
+    opacity: var(--hero-window-full-opacity, 1);
+    transition: opacity 0s linear;
+    will-change: opacity;
   }
 }
 
@@ -46,12 +67,12 @@
   }
 
   .mid-mountains-right {
-    @apply absolute top-20 right-0 z-10 mask-b-from-30% flex justify-end;
+    @apply absolute top-20 right-0 z-10 flex justify-end;
     @apply w-full;
   }
 
   .mid-mountains-left {
-    @apply absolute top-0 left-0 z-20 mask-b-from-30% flex justify-start;
+    @apply absolute top-0 left-0 z-20 flex justify-start;
     @apply w-full;
   }
 
