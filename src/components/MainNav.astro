@@ -2,13 +2,37 @@
 import SiteLogo from "./SiteLogo.astro";
 import NavItem from "./NavItem.astro";
 import Button from "./CtaLink.astro";
+
+const workLinks = [
+  { label: "SaaS Platform Development", href: "/work/swiftaid" },
+  {
+    label: "Ecommerce & Payment Integrations",
+    href: "/work/ecomm-sites",
+  },
+  {
+    label: "Content Management Systems",
+    href: "/work/saudi-fashion-retail",
+  },
+  { label: "Bespoke Web Applications", href: "/work/webapps" },
+  { label: "Personal Projects", href: "/work/personal-work" },
+  {
+    label: "Custom Dashboards and Portals",
+    href: "/work/split-payment-poc",
+  },
+  { label: "iOS & Android Native Apps", href: "/work/io-music" },
+];
 ---
 
 <nav class="mainnav container" transition:persist>
   <div class="content">
     <div class="mainnav__links">
       <NavItem href="/" className="md:hidden">Home</NavItem>
-      <NavItem href="/work/swiftaid"> Work </NavItem>
+      <div class="mainnav__work-menu">
+        <a href="/work/swiftaid" class="mainnav__work-trigger">Work</a>
+        <div class="mainnav__work-dropdown">
+          {workLinks.map(({ label, href }) => <a href={href}>{label}</a>)}
+        </div>
+      </div>
       <NavItem href="/about"> About </NavItem>
       <NavItem href="/contact"> Contact </NavItem>
     </div>

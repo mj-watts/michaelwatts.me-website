@@ -1,5 +1,7 @@
 .mainnav {
   @apply bg-black;
+  @apply relative;
+  z-index: 1000;
 
   .content {
     @apply mx-auto px-0;
@@ -11,8 +13,40 @@
   .mainnav__links {
     @apply flex items-center gap-24;
 
-    > a {
+    > a,
+    > .mainnav__work-menu > .mainnav__work-trigger {
       @apply text-white hover:opacity-75 font-normal;
+    }
+
+    .mainnav__work-menu {
+      @apply relative;
+    }
+
+    .mainnav__work-dropdown {
+      @apply absolute left-0 top-full min-w-340 p-8 rounded-xl;
+      @apply flex flex-col gap-4;
+      @apply bg-white z-1001 opacity-0 pointer-events-none;
+
+      visibility: hidden;
+      transition:
+        opacity 180ms ease,
+        visibility 180ms ease;
+
+      > a {
+        @apply text-black px-10 py-8 rounded-lg;
+      }
+
+      > a:hover,
+      > a:focus-visible {
+        @apply bg-emphasis/15 text-emphasis opacity-100;
+      }
+    }
+
+    .mainnav__work-menu:hover .mainnav__work-dropdown,
+    .mainnav__work-menu:focus-within .mainnav__work-dropdown {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
   }
 
