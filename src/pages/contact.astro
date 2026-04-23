@@ -16,7 +16,20 @@ import SocialLinks from "../components/SocialLinks.astro";
     </div>
     <div class="col-2">
       <h2 class="heading">Get In Touch</h2>
-      <form novalidate class="form">
+      <form
+        novalidate
+        class="form"
+        action="https://formspree.io/f/xayaveyb"
+        method="POST"
+      >
+        <input
+          type="text"
+          name="_gotcha"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          style="position:absolute;left:-5000px;"
+        />
         <div class="col-2-input">
           <div class="input-container" data-field="firstname">
             <label for="firstname">First Name*</label>
@@ -75,6 +88,8 @@ import SocialLinks from "../components/SocialLinks.astro";
   const submitButton = form.querySelector('button[type="submit"]');
   const submitButtonLabel = submitButton?.querySelector(".button-label");
   const errorsList = form.querySelector("#errorsList");
+  const formEndpoint =
+    form.getAttribute("action") || "https://formspree.io/f/xayaveyb";
   const defaultSubmitLabel = "Send Message";
   let submitLabelAnimation;
 
@@ -112,6 +127,7 @@ import SocialLinks from "../components/SocialLinks.astro";
       email: sanitize(data.get("email")),
       company: sanitize(data.get("company")),
       message: sanitize(data.get("message")),
+      gotcha: sanitize(data.get("_gotcha")),
     };
   }
 
@@ -194,24 +210,48 @@ import SocialLinks from "../components/SocialLinks.astro";
     renderSummary(errors);
   }
 
+  function setFormStatusMessage(message) {
+    if (!errorsList) return;
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = message;
+    errorsList.replaceChildren(paragraph);
+  }
+
   async function sendFormData(formData) {
-    await new Promise((resolve) => {
-      setTimeout(resolve, 3000);
-    });
+    const payload = new FormData();
+    payload.append("firstname", formData.firstname);
+    payload.append("lastname", formData.lastname);
+    payload.append("email", formData.email);
+    payload.append("name", `${formData.firstname} ${formData.lastname}`.trim());
+    payload.append("_gotcha", formData.gotcha);
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to submit contact form");
+    if (formData.company) {
+      payload.append("company", formData.company);
     }
 
-    return response;
+    if (formData.message) {
+      payload.append("message", formData.message);
+    }
+
+    const response = await fetch(formEndpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: payload,
+    });
+
+    const result = await response.json().catch(() => null);
+
+    if (!response.ok) {
+      const errorMessage =
+        result?.errors?.[0]?.message ??
+        "Sorry, we could not send your message. Please try again.";
+      throw new Error(errorMessage);
+    }
+
+    return result;
   }
 
   function setSubmitting(isSubmitting) {
@@ -289,14 +329,12 @@ import SocialLinks from "../components/SocialLinks.astro";
       await sendFormData(formData);
       form.reset();
       renderErrors({});
-      if (errorsList) {
-        errorsList.innerHTML = "<p>Thanks, your message has been sent.</p>";
-      }
-    } catch {
-      if (errorsList) {
-        errorsList.innerHTML =
-          "<p>Sorry, we could not send your message. Please try again.</p>";
-      }
+      setFormStatusMessage("Thanks, your message has been sent.");
+    } catch (error) {
+      const fallback = "Sorry, we could not send your message. Please try again.";
+      const message =
+        error instanceof Error && error.message ? error.message : fallback;
+      setFormStatusMessage(message);
     } finally {
       setSubmitting(false);
     }
