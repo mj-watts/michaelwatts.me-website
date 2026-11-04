@@ -113,7 +113,6 @@
       @apply col-start-1 col-end-13;
       @apply md:col-start-1 md:col-end-7;
       @apply 3xl:col-end-6;
-      @apply 4xl:col-end-5;
     }
 
     .col-2 {
@@ -135,8 +134,7 @@
 
       .cta {
         @apply flex flex-wrap gap-16 items-center justify-center mx-auto;
-        @apply md:justify-start;
-        @apply md:mx-0;
+        @apply md:justify-start md:mx-0 md:flex-nowrap;
       }
 
       a {
