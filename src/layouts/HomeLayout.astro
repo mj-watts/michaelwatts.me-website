@@ -19,8 +19,6 @@ const { pageTitle, pageDescription } = Astro.props;
     <title>{mainTitle} | {pageTitle}</title>
     <meta name="description" content={pageDescription} />
 
-    <!-- <link rel="stylesheet" href="https://use.typekit.net/eaq6veo.css" /> -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,12 +30,12 @@ const { pageTitle, pageDescription } = Astro.props;
   <body class="home-layout">
     <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     <MainNav />
-    <HeroLandscape />
     <div id="main" role="main" class="main">
       <div class="container">
         <slot />
       </div>
     </div>
+    <HeroLandscape />
     <MainFooter />
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"
     ></script>

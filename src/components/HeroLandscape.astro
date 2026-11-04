@@ -5,6 +5,7 @@ import mountainsLeft from "../images/background/mountains-l.webp";
 import mountainsRight from "../images/background/mountains-r.webp";
 import foregroundLeft from "../images/background/fg-l.webp";
 import foregroundRight from "../images/background/fg-r.webp";
+import MeadowForeground from "./MeadowForeground.astro";
 ---
 
 <section class="hero-section">
@@ -26,14 +27,14 @@ import foregroundRight from "../images/background/fg-r.webp";
   </div>
 
   <div class="near-mountains" data-parallax-speed="0.1">
-    <div class="near-mountains-right hero-fg-1">
-      <img src={foregroundRight.src} class="max-w-1500" />
+    <div class="near-mountains-right">
+      <img src={foregroundRight.src} class="max-w-1500" alt="" />
     </div>
-
     <div class="near-mountains-left">
-      <img src={foregroundLeft.src} class="max-w-1500" />
+      <img src={foregroundLeft.src} class="max-w-1500" alt="" />
     </div>
   </div>
+  <MeadowForeground />
 </section>
 
 <script>
@@ -57,7 +58,7 @@ import foregroundRight from "../images/background/fg-r.webp";
   const initHeroParallax = () => {
     cleanupHeroParallax();
 
-    const hero = document.querySelector(".hero-section");
+    const hero = document.querySelector<HTMLElement>(".hero-section");
     if (!hero) return;
 
     const layers = Array.from(
@@ -76,6 +77,15 @@ import foregroundRight from "../images/background/fg-r.webp";
     const updateParallax = () => {
       const heroTop = hero.getBoundingClientRect().top + window.scrollY;
       const offset = window.scrollY - heroTop;
+      const daylightProgress = Math.min(
+        Math.max(window.scrollY / Math.max(heroTop, 1), 0),
+        1
+      );
+
+      hero.style.setProperty(
+        "--cloud-visibility",
+        String(0.65 + 0.35 * daylightProgress)
+      );
 
       layerSetters.forEach(({ speed, setY }) => {
         setY(offset * speed);
@@ -99,7 +109,11 @@ import foregroundRight from "../images/background/fg-r.webp";
       };
     }
 
-    window.__mwHeroParallaxCleanup = cleanup;
+    window.addEventListener("resize", updateParallax, { passive: true });
+    window.__mwHeroParallaxCleanup = () => {
+      window.removeEventListener("resize", updateParallax);
+      cleanup();
+    };
   };
 
   if (!window.__mwHeroParallaxListenersBound) {

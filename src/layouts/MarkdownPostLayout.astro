@@ -14,7 +14,18 @@ const { description } = frontmatter;
 </PostLayout>
 
 <script>
-  const webComponentsJS = await import.meta.glob("../web-components/**/*.ts", {
-    eager: true,
-  });
+  const loadDemos = () => {
+    if (document.querySelector("hello-world")) {
+      void import("../web-components/hello-world");
+    }
+    if (document.querySelector("code-input")) {
+      void import("../web-components/code-input");
+    }
+    if (document.querySelector("relative-color-syntax-example")) {
+      void import("../web-components/relative-color-syntax-example");
+    }
+  };
+
+  document.addEventListener("astro:page-load", loadDemos);
+  loadDemos();
 </script>

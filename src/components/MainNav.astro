@@ -62,22 +62,4 @@ const workLinks = [
     }
   }
 
-  // Handle menu button click event
-  const mainnav = document.querySelector(".mainnav");
-  const menuButton = document.querySelector(".mainnav__menu-button");
-  const toggleMenuClass = () => {
-    mainnav?.classList.toggle("on-mobile-open"); // add class to wrapper
-    document.body.classList.toggle("no-scroll"); // add class to body
-
-    // Close chat screen and overlay if open
-    const openChatScreen = document.querySelector(".chat-screen.show");
-    const openChatScreenOverlay = document.querySelector(
-      ".chat-screen-overlay.show"
-    );
-    if (openChatScreen && openChatScreenOverlay) {
-      openChatScreen.classList.remove("show");
-      openChatScreenOverlay.classList.remove("show");
-    }
-  };
-  menuButton?.addEventListener("click", toggleMenuClass);
 </script>

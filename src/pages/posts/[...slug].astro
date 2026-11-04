@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 import LeadParagraph from "../../components/LeadParagraph.astro";
 import CodeBlock from "../../components/CodeBlock.astro";
@@ -9,13 +9,13 @@ export async function getStaticPaths() {
   const recipes = await getCollection("recipes");
   const entries = [...posts, ...recipes];
   return entries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const components = { LeadParagraph, CodeBlock };
 ---

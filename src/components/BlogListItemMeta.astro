@@ -1,0 +1,41 @@
+---
+interface Props {
+  date?: Date;
+  readTime?: number;
+}
+
+const { date, readTime } = Astro.props;
+const formattedDate = date?.toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+---
+
+<div class="meta">
+  {date && <time datetime={date.toISOString()}>{formattedDate}</time>}
+  {readTime && (
+    <>
+      <span class="divider">•</span>
+      <time datetime={`PT${readTime}M`}>{readTime} min read</time>
+    </>
+  )}
+</div>
+
+<style>
+  .meta {
+    display: flex;
+    align-items: center;
+  }
+
+  time {
+    font-size: smaller;
+    opacity: 0.7;
+  }
+
+  .divider {
+    margin: 0 var(--space-xs);
+    opacity: 0.5;
+  }
+</style>

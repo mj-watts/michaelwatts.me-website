@@ -1,68 +1,59 @@
-.hero-window-mask {
-  @apply fixed inset-0 pointer-events-none;
+.hero-section {
+  @apply h-[85dvh] grid place-content-center relative;
+  @apply bg-linear-180 from-black via-sky-500 to-earth;
+  @apply pointer-events-none;
+  overflow: clip;
 
-  z-index: 1100;
-
-  &::before {
-    --window-progress: var(--hero-window-progress, 0);
-    --window-inset-start: var(
-      --hero-window-inset-start,
-      clamp(12px, 52vw, 650px)
-    );
-    --window-radius-start: clamp(20px, 3vw, 44px);
-
-    content: "";
-    position: absolute;
-    top: calc(var(--window-inset-start) * (1 - var(--window-progress)));
-    right: calc(var(--window-inset-start) * (1 - var(--window-progress)));
-    bottom: calc(var(--window-inset-start) * (1 - var(--window-progress)));
-    left: calc(var(--window-inset-start) * (1 - var(--window-progress)));
-    border-radius: calc(
-      var(--window-radius-start) * (1 - var(--window-progress))
-    );
-    box-shadow: 0 0 0 9999px var(--color-black);
-    opacity: var(--hero-window-mask-opacity, 0);
-    transition:
-      opacity 0.35s ease,
-      top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      right 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      border-radius 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, top, right, bottom, left, border-radius, box-shadow;
-  }
-
+  /* Blend every clipped layer into the page, including parallax images. */
+  &::before,
   &::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: var(--color-black);
-    opacity: var(--hero-window-full-opacity, 1);
-    transition: opacity 0s linear;
-    will-change: opacity;
+    inset-inline: 0;
+    height: clamp(80px, 12svh, 130px);
+    z-index: 50;
+    pointer-events: none;
   }
-}
 
-.hero-section {
-  --mx: 0;
-  --my: 0;
+  &::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--color-black), transparent);
+  }
 
-  @apply h-[85dvh] grid place-content-center relative;
-  @apply bg-linear-180 from-sky-600 via-sky-500 to-earth;
-  @apply pointer-events-none;
+  &::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--color-earth), transparent);
+  }
 
   .clouds {
-    @apply absolute top-100 right-0;
+    @apply absolute top-100;
+    width: max(100%, 1600px);
+    left: 50%;
+    translate: -50% 0;
     @apply mask-b-from-30%;
     @apply opacity-85;
+
+    img {
+      opacity: var(--cloud-visibility, 0.65);
+    }
+  }
+
+  .distant-mountains img {
+    opacity: var(--cloud-visibility, 0.65);
   }
 
   .distant-mountains {
-    @apply absolute top-450 right-0;
+    @apply absolute top-450;
+    width: max(100%, 1600px);
+    left: 50%;
+    translate: -50% 0;
   }
 
   .mid-mountains {
-    @apply absolute top-300 left-0 right-0 h-500 overflow-hidden;
+    @apply absolute top-300 h-500 overflow-hidden;
+    width: max(100%, 1100px);
+    left: 50%;
+    translate: -50% 0;
     @apply contrast-75;
   }
 
@@ -77,39 +68,46 @@
   }
 
   .near-mountains {
-    @apply absolute -bottom-100 left-0 right-0 h-dvh overflow-hidden;
+    @apply absolute -bottom-100 h-dvh overflow-hidden;
+    width: max(100%, 1100px);
+    left: 50%;
+    translate: -50% 0;
+    z-index: 30;
+  }
+
+  .near-mountains-right,
+  .near-mountains-left {
+    @apply absolute bottom-20 w-full flex mask-b-from-50%;
+    @apply bg-linear-180 from-transparent to-earth from-50%;
   }
 
   .near-mountains-right {
-    @apply absolute bottom-20 right-0 z-20;
-    @apply w-full flex justify-end;
-    @apply mask-b-from-50%;
-    @apply bg-linear-180 from-transparent to-earth from-50%;
-
-    transform: translate(calc(var(--mx) * -14px), calc(var(--my) * -10px));
+    @apply right-0 z-20 justify-end;
   }
 
   .near-mountains-left {
-    @apply absolute bottom-20 left-0 z-30 flex justify-start;
-    @apply w-full;
-    @apply contrast-125;
-    @apply mask-b-from-50%;
-    @apply bg-linear-180 from-transparent to-earth from-50%;
-
-    transform: translate(calc(var(--mx) * -9px), calc(var(--my) * -7px));
+    @apply left-0 z-30 justify-start contrast-125;
   }
+
 }
 
 .work-section {
-  @apply flex flex-col gap-144 my-144 relative z-2;
+  @apply flex flex-col relative z-2;
+
+  gap: clamp(24px, 4svh, 48px);
+  padding-block: clamp(24px, 4svh, 48px);
 
   h2 {
-    @apply text-9xl font-heading text-white text-center text-balance;
+    @apply font-heading text-white text-center text-balance;
+
+    font-size: clamp(40px, 5.5vw, 88px);
+    line-height: 1.05;
   }
 
   .work-sequence-container {
-    @apply grid md:grid-cols-12 gap-36 mx-auto;
-    @apply 2xl:max-w-3/4;
+    @apply grid md:grid-cols-12 gap-36 mx-auto w-full;
+
+    max-width: 1200px;
 
     .col-1 {
       @apply col-start-1 col-end-13;
@@ -124,16 +122,20 @@
     }
 
     .col-1 {
-      @apply flex flex-col gap-36 place-content-end;
+      @apply flex flex-col gap-24 justify-center;
       @apply h-full text-white;
 
       h3 {
-        @apply text-5xl font-heading text-center;
+        @apply font-heading text-center;
+
+        font-size: clamp(28px, 3vw, 48px);
+        line-height: 1.15;
         @apply md:text-left;
       }
 
       .cta {
-        @apply flex gap-36 items-center mx-auto;
+        @apply flex flex-wrap gap-16 items-center justify-center mx-auto;
+        @apply md:justify-start;
         @apply md:mx-0;
       }
 
@@ -150,7 +152,9 @@
       @apply flex flex-col gap-36 items-end justify-start;
 
       .work-image {
-        @apply mx-auto w-full md:w-auto;
+        @apply mx-auto w-full object-contain;
+
+        max-height: min(42svh, 430px);
       }
     }
   }

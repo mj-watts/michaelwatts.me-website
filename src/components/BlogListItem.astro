@@ -1,16 +1,8 @@
 ---
 import ListHeading from "./ListHeading.astro";
-import BlogListItemMeta from "./BlogListItemMeta";
+import BlogListItemMeta from "./BlogListItemMeta.astro";
 
 const { url, title, date, description, tags, readTime } = Astro.props;
-
-const formattedDate = date
-  ? new Date(date).toLocaleDateString("en-gb", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    })
-  : null;
 
 const isRecipe = tags && tags.includes("recipes");
 ---
@@ -19,20 +11,9 @@ const isRecipe = tags && tags.includes("recipes");
   !isRecipe ? (
     <li class="blog-item">
       <BlogListItemMeta
-        date={formattedDate}
+        date={date}
         readTime={readTime}
-        client:only="react"
       />
-      {/* <div>
-      {formattedDate ? (
-        <time datetime={new Date(date).toISOString()}>{formattedDate}</time>
-      ) : null}
-      {readTime ? (
-        <span>•</span>
-
-        <time datetime={`PT${readTime}M`}>{readTime} min read</time>
-      ) : null}
-      </div> */}
       <ListHeading role="heading" aria-level="2" url={url} title={title} />
       <div class="blog-item__bd">
         {description}{" "}

@@ -18,9 +18,8 @@ const pageTitle = "Home";
 
   declare global {
     interface Window {
-      __mwHeroWindowMaskCleanup?: CleanupFn;
-      __mwHeroWindowMaskListenersBound?: boolean;
-      __mwHeroWindowMaskIntroTimeouts?: ReturnType<typeof setTimeout>[];
+      __mwHomeIntroCleanup?: CleanupFn;
+      __mwHomeIntroListenersBound?: boolean;
     }
   }
 
@@ -52,8 +51,15 @@ const pageTitle = "Home";
     const siteTypeEl = document.querySelector("#siteType");
     const siteTypeStopEl = document.querySelector("#siteTypeStop");
     const gsapRef = gsap;
+    const animations = new Set<gsap.core.Animation>();
+    const track = (animation: gsap.core.Animation) => {
+      for (const previous of animations) {
+        if (previous.progress() === 1) animations.delete(previous);
+      }
+      animations.add(animation);
+    };
 
-    if (!siteTypeEl || !gsapRef) {
+    if (!siteTypeEl) {
       return;
     }
 
@@ -73,7 +79,7 @@ const pageTitle = "Home";
         siteTypeEl.querySelectorAll(".site-type-letter")
       );
 
-      gsapRef.to(currentLetters, {
+      track(gsapRef.to(currentLetters, {
         opacity: 0,
         duration: 0.28,
         ease: "power2.in",
@@ -82,7 +88,7 @@ const pageTitle = "Home";
           siteTypeEl.textContent = "";
 
           if (siteTypeStopEl) {
-            gsapRef.fromTo(
+            track(gsapRef.fromTo(
               siteTypeStopEl,
               { opacity: 0.5, color: "#d65e5e" },
               {
@@ -91,7 +97,7 @@ const pageTitle = "Home";
                 duration: 1.5,
                 ease: "power2.out",
               }
-            );
+            ));
           }
 
           const nextText = siteTypes[currentIndex];
@@ -99,7 +105,7 @@ const pageTitle = "Home";
           const nextLetters = toLetterSpans(siteTypeEl, nextText);
 
           gsapRef.set(nextLetters, { opacity: 0.2, color: "#d65e5e" });
-          gsapRef.to(nextLetters, {
+          track(gsapRef.to(nextLetters, {
             opacity: 1,
             color: "#fffddb",
             duration: 0.32,
@@ -108,155 +114,51 @@ const pageTitle = "Home";
             delay: 0.12,
             onComplete: () => {
               isAnimating = false;
-              gsapRef.delayedCall(1, runCycle);
+              track(gsapRef.delayedCall(1, runCycle));
             },
-          });
+          }));
         },
-      });
+      }));
     };
 
-    gsapRef.delayedCall(1, runCycle);
+    track(gsapRef.delayedCall(1, runCycle));
+    return () => animations.forEach((animation) => animation.kill());
   };
 
-  const cleanupHeroWindowMask = () => {
-    if (window.__mwHeroWindowMaskIntroTimeouts?.length) {
-      window.__mwHeroWindowMaskIntroTimeouts.forEach((timeoutId) => {
-        clearTimeout(timeoutId);
-      });
-      window.__mwHeroWindowMaskIntroTimeouts = undefined;
+  const cleanupHomeIntro = () => {
+    window.__mwHomeIntroCleanup?.();
+    window.__mwHomeIntroCleanup = undefined;
+  };
+
+  const initHomeIntro = () => {
+    cleanupHomeIntro();
+    if (!document.querySelector(".work-section")) return;
+
+    initGlobalLenis();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.__mwHomeIntroCleanup = animateSiteType();
     }
-
-    window.__mwHeroWindowMaskCleanup?.();
-    window.__mwHeroWindowMaskCleanup = undefined;
-    document.documentElement.style.setProperty(
-      "--hero-window-inset-start",
-      "clamp(12px, 52vw, 650px)"
-    );
-    document.documentElement.style.setProperty(
-      "--hero-window-mask-opacity",
-      "0"
-    );
-    document.documentElement.style.setProperty(
-      "--hero-window-full-opacity",
-      "1"
-    );
-    document.documentElement.style.setProperty("--hero-window-progress", "0");
   };
 
-  const initHeroWindowMask = () => {
-    cleanupHeroWindowMask();
-
-    const maskEl = document.querySelector(".hero-window-mask");
-    if (!maskEl) {
-      return;
-    }
-
-    document.documentElement.style.setProperty(
-      "--hero-window-inset-start",
-      "clamp(12px, 52vw, 650px)"
-    );
-    document.documentElement.style.setProperty(
-      "--hero-window-mask-opacity",
-      "0"
-    );
-    document.documentElement.style.setProperty(
-      "--hero-window-full-opacity",
-      "1"
-    );
-
-    const maxDistance = Math.max(window.innerHeight * 0.55, 280);
-
-    const updateMask = () => {
-      const progress = Math.min(window.scrollY / maxDistance, 1);
-      document.documentElement.style.setProperty(
-        "--hero-window-progress",
-        progress.toFixed(4)
-      );
-    };
-
-    updateMask();
-
-    const lenis = initGlobalLenis();
-    let cleanup: CleanupFn = () => {};
-
-    if (lenis) {
-      lenis.on("scroll", updateMask);
-      cleanup = () => {
-        lenis.off("scroll", updateMask);
-      };
-    } else {
-      window.addEventListener("scroll", updateMask, { passive: true });
-      cleanup = () => {
-        window.removeEventListener("scroll", updateMask);
-      };
-    }
-
-    window.addEventListener("resize", updateMask, { passive: true });
-
-    window.__mwHeroWindowMaskCleanup = () => {
-      window.removeEventListener("resize", updateMask);
-      cleanup();
-    };
-
-    const revealSlitTimeout = setTimeout(() => {
-      document.documentElement.style.setProperty(
-        "--hero-window-mask-opacity",
-        "1"
-      );
-    }, 1000);
-
-    const hideFullBlackTimeout = setTimeout(() => {
-      document.documentElement.style.setProperty(
-        "--hero-window-full-opacity",
-        "0"
-      );
-    }, 1360);
-
-    const expandSlitTimeout = setTimeout(() => {
-      document.documentElement.style.setProperty(
-        "--hero-window-inset-start",
-        "clamp(12px, 2vw, 32px)"
-      );
-    }, 2400);
-
-    window.__mwHeroWindowMaskIntroTimeouts = [
-      revealSlitTimeout,
-      hideFullBlackTimeout,
-      expandSlitTimeout,
-    ];
-  };
-
-  const initHomePageAnimations = () => {
-    animateSiteType();
-    initHeroWindowMask();
-  };
-
-  if (!window.__mwHeroWindowMaskListenersBound) {
-    document.addEventListener("astro:before-swap", cleanupHeroWindowMask);
-    document.addEventListener("astro:page-load", initHeroWindowMask);
-    window.__mwHeroWindowMaskListenersBound = true;
+  if (!window.__mwHomeIntroListenersBound) {
+    document.addEventListener("astro:before-swap", cleanupHomeIntro);
+    document.addEventListener("astro:page-load", initHomeIntro);
+    window.__mwHomeIntroListenersBound = true;
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHomePageAnimations, {
-      once: true,
-    });
-  } else {
-    initHomePageAnimations();
-  }
+  initHomeIntro();
 </script>
 
 <HomeLayout pageTitle={pageTitle}>
-  <div class="hero-window-mask" aria-hidden="true"></div>
   <section class="work-section">
     <h2>Helping your sites shine</h2>
     <div class="work-sequence-container">
       <div class="col-1">
         <h3>
-          Web design and development studio adding that special human touch to
-          your <span id="siteType" class="whitespace-nowrap">sites</span><span
-            id="siteTypeStop">.</span
-          >
+          Web design and development that adds that special human touch to your <span
+            id="siteType"
+            class="whitespace-nowrap">sites</span
+          ><span id="siteTypeStop">.</span>
         </h3>
         <div class="cta">
           <Button href="/work/swiftaid" text="View Work" />

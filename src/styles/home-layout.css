@@ -3,10 +3,10 @@
 
   grid-template-areas:
     "nav"
-    "hero"
     "body"
+    "hero"
     "footer";
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto auto auto;
   min-height: 100dvh;
 
   .static {
@@ -25,7 +25,19 @@
   > nav {
     grid-area: nav;
 
-    @apply p-72 absolute left-0 right-0 bg-transparent z-999 mx-auto;
+    @apply py-24 relative bg-transparent z-999;
+
+    .content {
+      @apply grid-cols-1 md:grid-cols-3;
+    }
+
+    .mainnav__links {
+      @apply justify-center md:justify-start;
+    }
+
+    .mainnav__cta {
+      @apply hidden md:flex;
+    }
   }
 
   > .hero-section {
@@ -36,7 +48,7 @@
     grid-area: body;
     min-height: 0;
 
-    @apply min-h-dvh bg-earth;
+    @apply bg-black pb-32;
   }
 
   > footer {
