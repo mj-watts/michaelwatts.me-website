@@ -61,6 +61,7 @@ import SocialLinks from "../components/SocialLinks.astro";
             <textarea id="message" name="message"></textarea>
           </div>
         </div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAFzpViqCx7a3PafY"></div>
         <div>
           <button type="submit" aria-live="polite">
             <span class="button-label">Send Message</span>
@@ -128,6 +129,7 @@ import SocialLinks from "../components/SocialLinks.astro";
       company: sanitize(data.get("company")),
       message: sanitize(data.get("message")),
       gotcha: sanitize(data.get("_gotcha")),
+      turnstileResponse: sanitize(data.get("cf-turnstile-response")),
     };
   }
 
@@ -225,6 +227,7 @@ import SocialLinks from "../components/SocialLinks.astro";
     payload.append("email", formData.email);
     payload.append("name", `${formData.firstname} ${formData.lastname}`.trim());
     payload.append("_gotcha", formData.gotcha);
+    payload.append("cf-turnstile-response", formData.turnstileResponse);
 
     if (formData.company) {
       payload.append("company", formData.company);
