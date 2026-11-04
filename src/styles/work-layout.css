@@ -58,7 +58,99 @@
     li {
       --reveal-progress: 0;
 
-      @apply inline-grid w-fit items-center overflow-hidden font-heading font-normal text-2xl;
+      @apply inline-grid w-fit items-center relative font-heading font-normal text-2xl;
+      padding-left: 36px;
+    }
+
+    .tag-jar {
+      position: absolute;
+      left: 0;
+      top: calc(50% - 13px);
+      width: 24px;
+      height: 24px;
+    }
+
+    .tag-jar__fill {
+      position: absolute;
+      inset: 1px;
+      border-radius: 0 0 3px 3px;
+      overflow: hidden;
+      opacity: clamp(0, calc(var(--reveal-progress) * 20), 1);
+    }
+
+    .tag-jar__liquid {
+      position: absolute;
+      inset: 0;
+      background: var(--color-emphasis);
+      transform: translateY(calc((1 - var(--reveal-progress)) * 100%));
+    }
+
+    .tag-jar__wave {
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 200%;
+      height: 6px;
+      color: var(--color-emphasis);
+      animation: jar-liquid-wave 1.4s linear infinite;
+      animation-play-state: var(--bubble-play-state, paused);
+    }
+
+    .tag-jar .icon-container {
+      position: relative;
+      translate: none;
+      border-top: 0;
+      border-radius: 0 0 4px 4px;
+      color: var(--color-black);
+    }
+
+    .tag-jar__bubbles {
+      position: absolute;
+      inset: 1px;
+      overflow: hidden;
+      border-radius: 0 0 3px 3px;
+      clip-path: inset(calc((1 - var(--reveal-progress)) * 100%) 0 0 0);
+      opacity: clamp(0, calc(var(--reveal-progress) * 10), 1);
+    }
+
+    li[data-reveal-state="revealed"] .tag-jar__bubbles { opacity: 0; }
+
+    .tag-jar__bubbles > span {
+      position: absolute;
+      bottom: -3px;
+      left: 3px;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: #fff;
+      animation: jar-bubble-rise 1.1s linear infinite;
+      animation-play-state: var(--bubble-play-state, paused);
+    }
+
+    .tag-jar__bubbles > span:nth-child(2) { left: 8px; animation-delay: -.6s; width: 3px; height: 3px; }
+    .tag-jar__bubbles > span:nth-child(3) { left: 14px; animation-delay: -.3s; animation-duration: .9s; }
+    .tag-jar__bubbles > span:nth-child(4) { left: 18px; animation-delay: -.8s; animation-duration: 1.3s; }
+
+    .tag-jar__lid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 1px;
+      background: var(--color-emphasis);
+      transform-origin: center;
+    }
+
+    .tag-pop-particle {
+      position: absolute;
+      left: 9px;
+      top: calc(50% - 13px);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-emphasis);
+      pointer-events: none;
+      z-index: 2;
     }
 
     .tag-item {
@@ -108,10 +200,26 @@
   }
 
   .col-3 {
+    --elastic-corner-radius: 24px;
     @apply h-full min-h-0 relative p-7;
+
+    .elastic-corner {
+      position: absolute;
+      width: var(--elastic-corner-radius);
+      height: var(--elastic-corner-radius);
+      color: var(--color-emphasis);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .elastic-corner--top-left { top: 0; left: 0; }
+    .elastic-corner--top-right { top: 0; right: 0; transform: rotate(90deg); }
+    .elastic-corner--bottom-right { bottom: 0; right: 0; transform: rotate(180deg); }
+    .elastic-corner--bottom-left { bottom: 0; left: 0; transform: rotate(270deg); }
 
     .col-3-scroll {
       @apply h-full overflow-y-auto min-h-0;
+      border-radius: calc(var(--elastic-corner-radius) - 7px);
 
       scrollbar-width: thin;
       scrollbar-color: var(--color-emphasis) transparent;
@@ -232,6 +340,22 @@
   }
 }
 
+@keyframes jar-bubble-rise {
+  0% { transform: translate(0, 0); opacity: 0; }
+  15% { opacity: .9; }
+  75% { opacity: .75; }
+  100% { transform: translate(1px, -25px); opacity: 0; }
+}
+
+@keyframes jar-liquid-wave {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-layout .tag-jar__bubbles { display: none; }
+  .work-layout .tag-jar__wave { animation: none; }
+}
+
 @keyframes border-change {
   0% {
     border-color: var(--color-emphasis);
@@ -243,8 +367,8 @@
       var(--color-white) 25%,
       var(--color-emphasis)
     );
-    border-style: dotted;
-    border-width: 2px;
+    border-style: solid;
+    border-width: 1px;
   }
 }
 

@@ -1,3 +1,9 @@
+.blank-layout > .main:has(.contact-layout) {
+  max-width: none;
+  width: 100%;
+  padding-inline: 12px;
+}
+
 .contact-layout {
   @apply flex flex-col h-full min-h-0 gap-24 mx-auto;
   @apply lg:grid lg:grid-cols-[0.3fr_1fr];

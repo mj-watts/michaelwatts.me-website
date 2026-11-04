@@ -6,7 +6,7 @@ const { edge } = Astro.props;
 const vertical = edge === "left" || edge === "right";
 ---
 
-<svg class:list={["elastic-line-svg", edge && `elastic-line-svg--${edge}`]} data-elastic-line="" data-elastic-axis={vertical ? "vertical" : "horizontal"} viewBox={vertical ? "0 0 1 100" : "0 0 100 1"} preserveAspectRatio="none" aria-hidden="true">
+<svg class:list={["elastic-line-svg", edge && `elastic-line-svg--${edge}`]} data-elastic-line="" data-elastic-profile={edge ? "centered" : "standard"} data-elastic-axis={vertical ? "vertical" : "horizontal"} viewBox={vertical ? "0 0 1 100" : "0 0 100 1"} preserveAspectRatio="none" aria-hidden="true">
   <path d={vertical ? "M0.5 0 Q0.5 50 0.5 100" : "M0 0.5 Q50 0.5 100 0.5"} fill="none" stroke="currentColor" stroke-width="0.0625em" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"></path>
 </svg>
 
@@ -26,10 +26,19 @@ const vertical = edge === "left" || edge === "right";
     pointer-events: none;
     z-index: 10;
   }
-  .elastic-line-svg--top { top: 0; left: 0; }
-  .elastic-line-svg--bottom { bottom: 0; left: 0; }
+  .elastic-line-svg--top,
+  .elastic-line-svg--bottom {
+    left: var(--elastic-corner-radius, 0px);
+    width: calc(100% - 2 * var(--elastic-corner-radius, 0px));
+  }
+  .elastic-line-svg--top { top: 0; }
+  .elastic-line-svg--bottom { bottom: 0; }
   .elastic-line-svg--left,
-  .elastic-line-svg--right { top: 0; width: 0.0625em; height: 100%; }
+  .elastic-line-svg--right {
+    top: var(--elastic-corner-radius, 0px);
+    width: 0.0625em;
+    height: calc(100% - 2 * var(--elastic-corner-radius, 0px));
+  }
   .elastic-line-svg--left { left: 0; }
   .elastic-line-svg--right { right: 0; }
 </style>
@@ -62,7 +71,21 @@ const vertical = edge === "left" || edge === "right";
       let tl: gsap.core.Timeline | undefined;
       const state = { x: (start + end) * 0.5, y: 0 };
 
+      const centered = svg.dataset.elasticProfile === "centered";
+
       function render() {
+        if (centered) {
+          // Keep both end tangents flat so the fixed corner arcs join smoothly.
+          const peak = state.x;
+          const before = peak - start;
+          const after = end - peak;
+          const point = (along: number, bend: number) => vertical
+            ? `${center + bend} ${along}`
+            : `${along} ${center + bend}`;
+          path!.setAttribute('d',
+            `M${point(start, 0)} C${point(start + before * 0.6, 0)} ${point(peak - before * 0.3, state.y)} ${point(peak, state.y)} C${point(peak + after * 0.3, state.y)} ${point(end - after * 0.6, 0)} ${point(end, 0)}`);
+          return;
+        }
         path!.setAttribute('d', vertical
           ? `M${center} ${start} Q${center + state.y * 2} ${state.x} ${center} ${end}`
           : `M${start} ${center} Q${state.x} ${center + state.y * 2} ${end} ${center}`);
@@ -107,8 +130,10 @@ const vertical = edge === "left" || edge === "right";
 
         tl?.kill();
         state.x = vertical ? point.y : point.x;
+        const position = Math.max(0, Math.min(1, (state.x - start) / (end - start)));
+        const middleWeight = centered ? Math.sin(Math.PI * position) ** 2 * 0.5 : 1;
         tl = gsap.timeline({ onUpdate: render });
-        tl.to(state, { y: Math.sign(across) * svgAmount, duration: 0.1, ease: 'power2.out' });
+        tl.to(state, { y: Math.sign(across) * svgAmount * middleWeight, duration: 0.1, ease: 'power2.out' });
         tl.to(state, { y: 0, duration: 1.5, ease: 'elastic.out(1, 0.3)' });
       }
 

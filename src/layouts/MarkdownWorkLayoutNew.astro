@@ -28,11 +28,25 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
         {
           frontmatter.tags.map((tag: { tag: string }) => (
             <li>
+              <span class="tag-jar" aria-hidden="true">
+                <span class="tag-jar__fill">
+                  <span class="tag-jar__liquid">
+                    <svg class="tag-jar__wave" viewBox="0 0 44 6" preserveAspectRatio="none">
+                      <path d="M0 2 Q5.5 0 11 2 T22 2 T33 2 T44 2 V6 H0 Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                </span>
+                <span class="tag-jar__bubbles">
+                  <span></span><span></span><span></span><span></span>
+                </span>
+                <ArrowRight />
+                <span class="tag-jar__lid"></span>
+              </span>
               <span class="tag-item tag-item--base">
-                <ArrowRight /> {tag}
+                {tag}
               </span>
               <span class="tag-item tag-item--reveal" aria-hidden="true">
-                <ArrowRight /> {tag}
+                {tag}
               </span>
             </li>
           ))
@@ -41,6 +55,11 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
     </div>
 
     <div class="col-3">
+      {['top-left', 'top-right', 'bottom-right', 'bottom-left'].map((corner) => (
+        <svg class={`elastic-corner elastic-corner--${corner}`} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M0.5 24 A23.5 23.5 0 0 1 24 0.5" stroke="currentColor" stroke-width="1" />
+        </svg>
+      ))}
       <ElasticLine edge="top" />
       <ElasticLine edge="bottom" />
       <ElasticLine edge="left" />
@@ -235,6 +254,77 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
           item.dataset.revealState = "hidden";
         });
 
+        const popAnimations = new Map<HTMLElement, gsap.core.Timeline>();
+        const popItem = (item: HTMLElement) => {
+          const particles = Array.from({ length: gsap.utils.random(10, 15, 1) }, () => {
+            const particle = document.createElement("span");
+            particle.className = "tag-pop-particle";
+            particle.style.backgroundColor = Math.random() < 0.5 ? "var(--color-white)" : "var(--color-emphasis)";
+            particle.setAttribute("aria-hidden", "true");
+            const size = gsap.utils.random(2, 4);
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size * gsap.utils.random(0.6, 1.4)}px`;
+            particle.style.borderRadius = Math.random() < 0.5 ? "50%" : "1px";
+            item.appendChild(particle);
+            const angle = gsap.utils.random(-Math.PI, 0);
+            const speed = gsap.utils.random(40, 95);
+            return {
+              particle,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed - gsap.utils.random(8, 20),
+              drag: gsap.utils.random(1.8, 2.8),
+              gravity: gsap.utils.random(140, 220),
+              spin: gsap.utils.random(-420, 420),
+              lifetime: gsap.utils.random(0.6, 0.9),
+              shimmerPhase: gsap.utils.random(0, Math.PI * 2),
+              shimmerRate: gsap.utils.random(18, 30),
+            };
+          });
+          const pop = gsap.timeline({ onComplete: () => {
+            particles.forEach(({ particle }) => particle.remove());
+            popAnimations.delete(item);
+          }});
+          popAnimations.set(item, pop);
+          const lid = item.querySelector(".tag-jar__lid");
+          if (lid) {
+            pop.fromTo(lid, { x: 0, y: 0, rotation: 0, opacity: 1 }, {
+              x: gsap.utils.random(-10, 10), y: -28,
+              rotation: gsap.utils.random(-40, 40), opacity: 0,
+              duration: 0.45, ease: "power2.out",
+            }, 0);
+          }
+          particles.forEach(({ particle, vx, vy, drag, gravity, spin, lifetime, shimmerPhase, shimmerRate }) => {
+            const flight = { time: 0 };
+            const setTransform = gsap.quickSetter(particle, "css");
+            // Solve velocity drag and gravity from elapsed time, independent of frame rate.
+            pop.to(flight, {
+              time: lifetime, duration: lifetime, ease: "none",
+              onUpdate: () => {
+                const t = flight.time;
+                const travel = (1 - Math.exp(-drag * t)) / drag;
+                const progress = t / lifetime;
+                const glimmer = (Math.sin(t * shimmerRate + shimmerPhase) + 1) / 2;
+                setTransform({
+                  x: vx * travel,
+                  y: vy * travel + (gravity / drag) * (t - travel),
+                  rotation: spin * t,
+                  opacity: Math.min(1, (1 - progress) / 0.35) * (0.7 + 0.3 * glimmer),
+                  filter: `brightness(${1 + glimmer * 1.5}) drop-shadow(0 0 ${glimmer * 3}px var(--color-emphasis))`,
+                  scale: 1 - progress * 0.45,
+                });
+              },
+            }, 0);
+          });
+        };
+        addCleanup(() => {
+          popAnimations.forEach((animation) => animation.kill());
+          popAnimations.clear();
+          listItems.forEach((item) => {
+            item.querySelectorAll(".tag-pop-particle").forEach((particle) => particle.remove());
+            gsap.set(item, { clearProps: "transform" });
+          });
+        });
+
         const revealTween = gsap.to(listItems, {
           "--reveal-progress": 1,
           ease: "none",
@@ -254,8 +344,18 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
               const revealProgress = Number(
                 getComputedStyle(item).getPropertyValue("--reveal-progress")
               );
+              item.style.setProperty("--bubble-play-state", revealProgress > 0 && revealProgress < 0.98 ? "running" : "paused");
 
-              if (revealProgress <= 0.75) {
+              if (revealProgress < 0.98) {
+                if (item.dataset.revealState === "revealed") {
+                  popAnimations.get(item)?.kill();
+                  popAnimations.delete(item);
+                  item.querySelectorAll(".tag-pop-particle").forEach((particle) => particle.remove());
+                  item.querySelector(".tag-icon--animate")?.classList.remove("tag-icon--animate");
+                  gsap.set(item, { clearProps: "transform,transformOrigin" });
+                  const lid = item.querySelector(".tag-jar__lid");
+                  if (lid) gsap.set(lid, { clearProps: "all" });
+                }
                 item.dataset.revealState = "hidden";
                 return;
               }
@@ -268,13 +368,14 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
               }
 
               const revealIcon = item.querySelector<HTMLElement>(
-                ".tag-item--reveal .icon-container"
+                ".tag-jar .icon-container"
               );
               if (!revealIcon) return;
 
               revealIcon.classList.remove("tag-icon--animate");
               void revealIcon.offsetWidth;
               revealIcon.classList.add("tag-icon--animate");
+              popItem(item);
               item.dataset.revealState = "revealed";
             });
           },
@@ -287,7 +388,7 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
 
         listItems.forEach((item) => {
           const revealIcon = item.querySelector<HTMLElement>(
-            ".tag-item--reveal .icon-container"
+            ".tag-jar .icon-container"
           );
           if (!revealIcon) return;
 
