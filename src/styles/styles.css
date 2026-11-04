@@ -25,11 +25,11 @@
   --spacing: 0.0625rem;
 
   /* Colors */
-  --color-white: oklch(0.9869 0.0441 104.42);
-  --color-black: oklch(0.2616 0.0431 255.94);
-  --color-emphasis: oklch(0.6318 0.1519 22.41);
+  --color-white: #e2e1df;
+  --color-black: #111111;
+  --color-emphasis: #ff2d8d;
   --color-earth: oklch(0.6039 0.1074 140.15);
-  --color-select: oklch(0.6318 0.1519 22.41 / 20%);
+  --color-select: #ff2d8d33;
 
   --color-error: var(--color-red-400);
   --color-success: var(--color-green-400);
@@ -37,6 +37,7 @@
 
   /* Typography */
   --font-heading: "Instrument Serif", serif;
+  --font-display: "PP Neue Corp Tight", Impact, "Arial Narrow", sans-serif;
   --font-body: "Instrument Sans", sans-serif;
 
   /* Border Radius */
@@ -48,6 +49,22 @@
   --radius-20: 20px;
   --radius-30: 30px;
   --radius-40: 40px;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.list-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 html {

@@ -1,5 +1,5 @@
 .work-layout {
-  @apply flex flex-col bg-black text-white;
+  @apply flex flex-col bg-white text-black;
   @apply lg:grid lg:h-dvh;
 
   grid-template-areas:
@@ -9,10 +9,8 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
 
-  > nav {
+  > .nav-space {
     grid-area: nav;
-
-    @apply py-36;
   }
 
   > .main {
@@ -38,7 +36,7 @@
     @apply h-full place-content-start;
 
     > .heading {
-      @apply font-heading text-5xl text-emphasis text-balance;
+      @apply font-display text-5xl text-emphasis text-balance;
       @apply xl:text-7xl;
     }
 
@@ -163,7 +161,7 @@
     }
 
     .image-caption {
-      @apply font-semibold text-base text-white text-center p-6 pt-12;
+      @apply font-semibold text-base text-black text-center p-6 pt-12;
     }
 
     .content-image-2-col {
@@ -189,10 +187,10 @@
     }
 
     h2 {
-      @apply font-heading text-5xl text-emphasis text-balance;
+      @apply font-display text-5xl text-emphasis text-balance;
 
       span {
-        @apply text-4xl text-white;
+        @apply text-4xl text-black;
       }
     }
 
@@ -207,7 +205,7 @@
 
   .scroll-cta {
     @apply absolute bottom-0 left-0 right-0 h-86 hidden;
-    @apply bg-black/90 border border-b-0 border-emphasis;
+    @apply bg-white/90 border border-b-0 border-emphasis;
     @apply items-center justify-center gap-12 p-12 font-heading text-2xl;
     @apply transition-all duration-300 ease-out;
     @apply rounded-tl-3xl rounded-tr-3xl w-1/2 mx-auto;
@@ -215,7 +213,7 @@
     @apply lg:flex;
 
     .text {
-      @apply opacity-90 text-shadow-2xs text-white;
+      @apply opacity-90 text-shadow-2xs text-black;
     }
 
     svg {

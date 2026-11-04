@@ -1,7 +1,6 @@
 ---
 import HomeLayout from "../layouts/HomeLayout.astro";
 import Button from "../components/CtaLink.astro";
-import ScrollDivider from "../components/ScrollDivider.astro";
 
 import videoPoster from "../images/portfolio-sequence-poster.png";
 import videoMp4 from "../images/portfolio-sequence.h264.mp4";
@@ -90,10 +89,10 @@ const pageTitle = "Home";
           if (siteTypeStopEl) {
             track(gsapRef.fromTo(
               siteTypeStopEl,
-              { opacity: 0.5, color: "#d65e5e" },
+              { opacity: 0.5, color: "#ff2d8d" },
               {
                 opacity: 1,
-                color: "#fffddb",
+                color: "#111111",
                 duration: 1.5,
                 ease: "power2.out",
               }
@@ -104,10 +103,10 @@ const pageTitle = "Home";
           currentIndex = (currentIndex + 1) % siteTypes.length;
           const nextLetters = toLetterSpans(siteTypeEl, nextText);
 
-          gsapRef.set(nextLetters, { opacity: 0.2, color: "#d65e5e" });
+          gsapRef.set(nextLetters, { opacity: 0.2, color: "#ff2d8d" });
           track(gsapRef.to(nextLetters, {
             opacity: 1,
-            color: "#fffddb",
+            color: "#111111",
             duration: 0.32,
             ease: "power2.out",
             stagger: 0.03,
@@ -184,5 +183,5 @@ const pageTitle = "Home";
     </div>
   </section>
 
-  <ScrollDivider />
+
 </HomeLayout>

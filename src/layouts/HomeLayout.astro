@@ -5,8 +5,6 @@ import MainNav from "../components/MainNav.astro";
 import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
 import "lenis/dist/lenis.css";
-import HeroLandscape from "../components/HeroLandscape.astro";
-import StaticImage from "../images/background/static.webp";
 
 const mainTitle = "Michael Watts, Web Development";
 const { pageTitle, pageDescription } = Astro.props;
@@ -30,14 +28,12 @@ const { pageTitle, pageDescription } = Astro.props;
   </head>
   <body class="home-layout">
     <SiteLoader />
-    <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     <MainNav />
     <div id="main" role="main" class="main">
       <div class="container">
         <slot />
       </div>
     </div>
-    <HeroLandscape />
     <MainFooter />
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"
     ></script>

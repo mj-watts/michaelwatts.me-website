@@ -3,7 +3,7 @@
   @apply lg:grid lg:grid-cols-[0.3fr_1fr];
 
   .col-1 {
-    @apply flex items-start bg-emphasis rounded-3xl p-36;
+    @apply flex items-start bg-emphasis/15 rounded-3xl p-36;
 
     .body {
       @apply flex flex-col justify-between h-full text-black gap-36;
@@ -18,14 +18,14 @@
         a {
           @apply border-2 border-black  rounded-sm transition-colors;
           @apply flex items-center justify-center size-36 p-6;
-          @apply hover:bg-black/40;
+          @apply hover:bg-white/40;
         }
       }
     }
   }
 
   .col-2 {
-    @apply flex items-start border-2 border-emphasis rounded-3xl p-36 text-3xl;
+    @apply flex items-start bg-emphasis/5 rounded-3xl p-36 text-3xl;
     @apply font-heading flex flex-col gap-36;
 
     .heading {
@@ -39,11 +39,8 @@
         @apply flex gap-24 w-full;
       }
 
-      .col-input {
-      }
-
       .input-container {
-        @apply border-b border-white/80 w-full relative;
+        @apply border-b border-black w-full relative;
 
         &.invalid {
           @apply border-warn;
@@ -51,7 +48,7 @@
       }
 
       label {
-        @apply text-white/50;
+        @apply text-black;
       }
 
       input,
@@ -64,10 +61,10 @@
       }
 
       button {
-        @apply px-36 py-12 font-heading text-white text-3xl font-normal rounded-8;
-        @apply bg-black border border-emphasis whitespace-nowrap cursor-pointer select-none;
+        @apply px-36 py-12 font-heading text-emphasis text-3xl font-normal rounded-8;
+        @apply bg-white border border-emphasis whitespace-nowrap cursor-pointer select-none;
         @apply transition-colors duration-200 ease-in-out delay-100;
-        @apply hover:bg-emphasis/30 hover:text-emphasis;
+        @apply hover:bg-emphasis/30 hover:text-white;
         @apply inline-grid place-items-center relative;
 
         .button-label,
@@ -85,12 +82,12 @@
         }
 
         .button-spinner {
-          @apply size-20 border-2 border-white/30 border-t-white rounded-full opacity-0;
+          @apply size-20 border-2 border-black/30 border-t-black rounded-full opacity-0;
           animation: contact-spin 0.8s linear infinite;
         }
 
         &.is-loading {
-          @apply bg-emphasis/30 text-emphasis;
+          @apply bg-emphasis/30 text-white;
 
           .button-label {
             @apply opacity-0;
@@ -114,7 +111,7 @@
         @apply text-warn text-xl;
 
         p {
-          @apply mt-24 text-white;
+          @apply mt-24 text-black;
         }
 
         ul {

@@ -21,7 +21,7 @@
   }
 
   &:hover {
-    @apply text-(--button-color) translate-x-10 -translate-y-10;
+    @apply text-white translate-x-10 -translate-y-10;
     @apply shadow-emphasis/50 shadow-[-10px_10px_0_0];
   }
 

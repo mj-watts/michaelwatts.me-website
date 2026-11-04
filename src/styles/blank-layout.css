@@ -1,5 +1,5 @@
 .blank-layout {
-  @apply grid bg-black text-white;
+  @apply grid bg-white text-black;
 
   grid-template-areas:
     "nav"
@@ -8,10 +8,8 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
 
-  > nav {
+  > .nav-space {
     grid-area: nav;
-
-    @apply py-36;
   }
 
   > .main {

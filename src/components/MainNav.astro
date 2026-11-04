@@ -1,6 +1,5 @@
 ---
-import SiteLogo from "./SiteLogo.astro";
-import NavItem from "./NavItem.astro";
+import Logo from "./Logo.astro";
 import Button from "./CtaLink.astro";
 
 const workLinks = [
@@ -23,42 +22,108 @@ const workLinks = [
 ];
 ---
 
-<nav class="mainnav container" transition:persist>
-  <div class="content">
-    <div class="mainnav__links">
-      <NavItem href="/" className="md:hidden">Home</NavItem>
-      <div class="mainnav__work-menu">
-        <a href="/work/swiftaid" class="mainnav__work-trigger">Work</a>
-        <div class="mainnav__work-dropdown">
-          {workLinks.map(({ label, href }) => <a href={href}>{label}</a>)}
+<div class="nav-space" aria-hidden="true"></div>
+<header data-nav-status="not-active" class="nav" transition:persist="main-navigation">
+  <button type="button" data-nav-control="close" aria-hidden="true" tabindex="-1" class="nav__dark-overlay"></button>
+  <nav aria-label="Primary navigation" class="nav__main">
+    <div class="nav__bar">
+      <div class="nav__bar-inner">
+        <div class="nav__start">
+          <a aria-label="Homepage" href="/" class="nav__logo"><Logo /></a>
+          <button type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Open navigation" data-nav-control="toggle" class="nav__hamburger">
+            <span aria-hidden="true" class="nav__hamburger-icon">
+              <span class="nav__hamburger-bar"></span>
+              <span class="nav__hamburger-bar"></span>
+              <span class="nav__hamburger-bar"></span>
+            </span>
+          </button>
+        </div>
+        <div class="nav__end">
+          <div class="nav__end-inner">
+            <ul id="nav-list" data-nav-list="" class="nav__list">
+              <li class="nav__item nav__home-item"><a href="/" class="nav__link"><span class="nav__link-span">Home</span></a></li>
+              <li data-nav-sub-status="not-active" class="nav__item">
+                <button type="button" data-nav-sub-control="toggle" aria-controls="nav-dropdown-work" aria-expanded="false" class="nav__link">
+                  <span class="nav__link-span">Projects</span>
+                  <span class="nav__link-chevron"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.33398 6L8.00065 10.6667L12.6673 6" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10"></path></svg></span>
+                </button>
+                <div class="nav__dropdown">
+                  <div class="nav__dropdown-inner">
+                    <ul id="nav-dropdown-work" class="nav__dropdown-list">
+                      {workLinks.map(({ label, href }) => <li class="nav__item"><a href={href} class="nav__link"><span class="nav__link-span">{label}</span></a></li>)}
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="nav__item"><a href="/about" class="nav__link"><span class="nav__link-span">About</span></a></li>
+              <li class="nav__item"><a href="/contact" class="nav__link"><span class="nav__link-span">Contact</span></a></li>
+            </ul>
+            <div class="nav__btn-wrap"><Button href="/contact" text="Let's Connect" /></div>
+          </div>
         </div>
       </div>
-      <NavItem href="/about"> About </NavItem>
-      <NavItem href="/contact"> Contact </NavItem>
     </div>
-    <SiteLogo />
-    <div class="mainnav__cta">
-      <Button href="/contact" text="Let's Connect" />
-    </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <script>
-  if (
-    "IntersectionObserver" in window &&
-    "IntersectionObserverEntry" in window &&
-    "intersectionRatio" in window.IntersectionObserverEntry.prototype
-  ) {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].boundingClientRect.y < 0) {
-        document.body.classList.add("header-not-at-top");
-      } else {
-        document.body.classList.remove("header-not-at-top");
+  const initialized = new WeakSet<HTMLElement>();
+
+  function initBasicNavigationBar() {
+    document.querySelectorAll<HTMLElement>('[data-nav-status]').forEach((nav) => {
+      if (initialized.has(nav)) return;
+      initialized.add(nav);
+      const controls = nav.querySelectorAll('[data-nav-control]');
+      const subNavs = nav.querySelectorAll('[data-nav-sub-status]');
+      const toggle = nav.querySelector<HTMLButtonElement>('[data-nav-control="toggle"]');
+
+      function setNav(active: boolean) {
+        nav.setAttribute('data-nav-status', active ? 'active' : 'not-active');
+        toggle?.setAttribute('aria-expanded', String(active));
+        toggle?.setAttribute('aria-label', active ? 'Close navigation' : 'Open navigation');
+        if (!active) subNavs.forEach((subNav) => {
+          subNav.setAttribute('data-nav-sub-status', 'not-active');
+          subNav.querySelector('[data-nav-sub-control]')?.setAttribute('aria-expanded', 'false');
+        });
       }
+
+      controls.forEach((control) => {
+        control.addEventListener('click', () => {
+          const action = control.getAttribute('data-nav-control');
+          const active = nav.getAttribute('data-nav-status') === 'active';
+          setNav(action === 'open' || (action === 'toggle' && !active));
+        });
+      });
+
+      subNavs.forEach((subNav) => {
+        const control = subNav.querySelector('[data-nav-sub-control]');
+        if (!control) return;
+        control.addEventListener('click', () => {
+          if (!window.matchMedia('(max-width: 991px)').matches) return;
+          const active = subNav.getAttribute('data-nav-sub-status') === 'active';
+          subNavs.forEach((item) => {
+            item.setAttribute('data-nav-sub-status', 'not-active');
+            item.querySelector('[data-nav-sub-control]')?.setAttribute('aria-expanded', 'false');
+          });
+          if (!active) {
+            subNav.setAttribute('data-nav-sub-status', 'active');
+            control.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && nav.getAttribute('data-nav-status') === 'active') {
+          setNav(false);
+          toggle?.focus();
+        }
+      });
+      nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setNav(false)));
+      document.addEventListener('astro:before-swap', () => setNav(false));
+      setNav(false);
     });
-    const anchor = document.querySelector("#top-of-site-pixel-anchor");
-    if (anchor) {
-      observer.observe(anchor);
-    }
   }
+
+  document.addEventListener('astro:page-load', initBasicNavigationBar);
+  initBasicNavigationBar();
 </script>

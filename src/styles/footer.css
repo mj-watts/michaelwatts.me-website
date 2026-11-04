@@ -17,6 +17,6 @@
   }
 
   svg {
-    @apply size-24 text-white group-hover:text-emphasis;
+    @apply size-24 text-black group-hover:text-emphasis;
   }
 }

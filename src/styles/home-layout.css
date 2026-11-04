@@ -1,59 +1,50 @@
 .home-layout {
-  @apply grid bg-black text-white;
 
-  grid-template-areas:
-    "nav"
-    "body"
-    "hero"
-    "footer";
-  grid-template-rows: auto auto auto auto;
+  display: grid;
+  grid-template-areas: "nav" "body" "footer";
+  grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
+  background: var(--color-white);
+  color: var(--color-black);
 
-  .static {
-    @apply fixed inset-0;
-    @apply mask-b-from-90%;
-    @apply mask-t-from-90%;
-    @apply pointer-events-none z-0;
-    @apply bg-repeat;
-    @apply mix-blend-multiply;
-    @apply opacity-5;
-
-    background-size: 50%;
-    background-image: var(--bg-img);
-  }
-
-  > nav {
-    grid-area: nav;
-
-    @apply py-36 relative bg-transparent z-999;
-
-    .content {
-      @apply grid-cols-1 md:grid-cols-3;
-    }
-
-    .mainnav__links {
-      @apply justify-center md:justify-start;
-    }
-
-    .mainnav__cta {
-      @apply hidden md:flex;
-    }
-  }
-
-  > .hero-section {
-    grid-area: hero;
-  }
+  > .nav-space { grid-area: nav; }
 
   > .main {
     grid-area: body;
     min-height: 0;
-
-    @apply bg-black pb-32;
+    padding-bottom: 48px;
   }
+
+  .work-section h2,
+  .work-section .col-1 { color: var(--color-black); }
+
+  .work-section h2,
+  .work-section h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  .work-section h2 {
+    font-size: clamp(56px, 8vw, 128px);
+    line-height: .95;
+    letter-spacing: -.025em;
+  }
+
+  .work-section h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .cta-link { color: var(--color-white); }
+
+  .cta-link:hover { color: var(--color-white); }
 
   > footer {
     grid-area: footer;
-
-    @apply bg-earth;
+    background: var(--color-white);
+    color: var(--color-black);
+    svg { color: var(--color-black); }
   }
 }
