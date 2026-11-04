@@ -1,4 +1,5 @@
 ---
+import SiteLoader from "../components/SiteLoader.astro";
 import MainNav from "../components/MainNav.astro";
 import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
@@ -37,6 +38,7 @@ const { pageTitle } = Astro.props;
     />
   </head>
   <body>
+    <SiteLoader />
     <MainNav />
 
     <div id="smoothscroll">

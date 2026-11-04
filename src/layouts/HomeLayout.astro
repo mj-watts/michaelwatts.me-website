@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import SiteLoader from "../components/SiteLoader.astro";
 import MainNav from "../components/MainNav.astro";
 import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
@@ -28,6 +29,7 @@ const { pageTitle, pageDescription } = Astro.props;
     <ClientRouter />
   </head>
   <body class="home-layout">
+    <SiteLoader />
     <div class="static" style={`--bg-img: url(${StaticImage.src});`}></div>
     <MainNav />
     <div id="main" role="main" class="main">

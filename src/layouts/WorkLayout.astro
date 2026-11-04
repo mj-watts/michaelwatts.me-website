@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import SiteLoader from "../components/SiteLoader.astro";
 import MainNav from "../components/MainNav.astro";
 import Button from "../components/CtaLink.astro";
 import "../styles/styles.css";
@@ -51,6 +52,7 @@ const { pageTitle, pageDescription, nextTitle, nextDescription, nextLink } =
     <ClientRouter />
   </head>
   <body>
+    <SiteLoader />
     <div class="work-layout">
       <MainNav />
       <div id="main" role="main" class="main container" data-lenis-prevent>

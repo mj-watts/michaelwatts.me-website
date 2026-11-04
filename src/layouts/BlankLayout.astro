@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import SiteLoader from "../components/SiteLoader.astro";
 import MainNav from "../components/MainNav.astro";
 import MainFooter from "../components/MainFooter.astro";
 import "../styles/styles.css";
@@ -27,6 +28,7 @@ const { pageTitle, pageDescription } = Astro.props;
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   </head>
   <body class="blank-layout">
+    <SiteLoader />
     <MainNav />
     <div id="main" role="main" class="main container">
       <slot />
