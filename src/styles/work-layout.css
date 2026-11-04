@@ -16,9 +16,11 @@
   > .main {
     grid-area: body;
     min-height: 0;
+    position: relative;
+    z-index: 1;
+    padding-top: 24px;
 
     @apply h-full;
-    @apply lg:overflow-hidden;
   }
 
   > footer {
@@ -106,16 +108,10 @@
   }
 
   .col-3 {
-    @apply h-full min-h-0 rounded-3xl relative;
-    @apply border border-emphasis p-6;
-    @apply lg:overflow-hidden;
-
-    &.is-scrolled {
-      @apply border-emphasis/10;
-    }
+    @apply h-full min-h-0 relative p-7;
 
     .col-3-scroll {
-      @apply h-full overflow-y-auto min-h-0 rounded-2xl;
+      @apply h-full overflow-y-auto min-h-0;
 
       scrollbar-width: thin;
       scrollbar-color: var(--color-emphasis) transparent;
@@ -169,7 +165,7 @@
     }
 
     &.is-scrolled .scroll-cta {
-      @apply pointer-events-none translate-y-72 border-emphasis/20;
+      @apply pointer-events-none opacity-0 translate-y-12 blur-sm;
     }
   }
 
@@ -177,9 +173,7 @@
     @apply mt-36;
 
     .content {
-      @apply p-36 flex justify-between align-top;
-      @apply border border-emphasis border-b-0;
-      @apply rounded-tl-3xl rounded-tr-3xl;
+      @apply py-36 flex justify-between align-top;
     }
 
     .body {
@@ -204,16 +198,16 @@
   }
 
   .scroll-cta {
-    @apply absolute bottom-0 left-0 right-0 h-86 hidden;
-    @apply bg-white/90 border border-b-0 border-emphasis;
-    @apply items-center justify-center gap-12 p-12 font-heading text-2xl;
+    @apply absolute bottom-12 left-0 right-0 h-42 hidden;
+    @apply bg-emphasis;
+    @apply items-center justify-center gap-12 py-6 pl-20 pr-0 font-heading text-2xl;
     @apply transition-all duration-300 ease-out;
-    @apply rounded-tl-3xl rounded-tr-3xl w-1/2 mx-auto;
+    @apply w-fit mx-auto rounded-l-xl rounded-r-2xl shadow-2xl shadow-emphasis/50;
     @apply z-20;
     @apply lg:flex;
 
     .text {
-      @apply opacity-90 text-shadow-2xs text-black;
+      @apply text-white;
     }
 
     svg {
@@ -221,7 +215,7 @@
     }
 
     .mouse {
-      @apply stroke-white/50 fill-white;
+      @apply stroke-white fill-white;
     }
 
     .arrow-point {
@@ -287,7 +281,7 @@
 @keyframes finger-slide {
   0% {
     transform: translateY(0);
-    color: var(--color-black);
+    color: var(--color-white);
   }
   50% {
     transform: translateY(4px);
@@ -295,14 +289,14 @@
   }
   100% {
     transform: translateY(0);
-    color: var(--color-black);
+    color: var(--color-white);
   }
 }
 
 @keyframes stem-grow {
   0% {
     transform: scaleY(0.1);
-    color: var(--color-black);
+    color: var(--color-white);
   }
   50% {
     transform: scaleY(0.8);
@@ -310,6 +304,6 @@
   }
   100% {
     transform: scaleY(0.1);
-    color: var(--color-black);
+    color: var(--color-white);
   }
 }

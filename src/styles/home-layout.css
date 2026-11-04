@@ -18,8 +18,7 @@
   .work-section h2,
   .work-section .col-1 { color: var(--color-black); }
 
-  .work-section h2,
-  .work-section h3 {
+  .work-section h2 {
     font-family: var(--font-display);
     font-weight: 700;
     opacity: 1;
@@ -29,12 +28,6 @@
     font-size: clamp(56px, 8vw, 128px);
     line-height: .95;
     letter-spacing: -.025em;
-  }
-
-  .work-section h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1.05;
   }
 
   .cta-link { color: var(--color-white); }

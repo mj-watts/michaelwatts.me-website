@@ -1,0 +1,137 @@
+---
+interface Props {
+  edge?: "top" | "bottom" | "left" | "right";
+}
+const { edge } = Astro.props;
+const vertical = edge === "left" || edge === "right";
+---
+
+<svg class:list={["elastic-line-svg", edge && `elastic-line-svg--${edge}`]} data-elastic-line="" data-elastic-axis={vertical ? "vertical" : "horizontal"} viewBox={vertical ? "0 0 1 100" : "0 0 100 1"} preserveAspectRatio="none" aria-hidden="true">
+  <path d={vertical ? "M0.5 0 Q0.5 50 0.5 100" : "M0 0.5 Q50 0.5 100 0.5"} fill="none" stroke="currentColor" stroke-width="0.0625em" vector-effect="non-scaling-stroke" stroke-linejoin="round" stroke-linecap="round"></path>
+</svg>
+
+<style>
+  .elastic-line-svg {
+    color: var(--color-emphasis);
+    width: 100%;
+    height: 0.0625em;
+    display: block;
+    overflow: visible !important;
+  }
+  .elastic-line-svg--top,
+  .elastic-line-svg--bottom,
+  .elastic-line-svg--left,
+  .elastic-line-svg--right {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+  }
+  .elastic-line-svg--top { top: 0; left: 0; }
+  .elastic-line-svg--bottom { bottom: 0; left: 0; }
+  .elastic-line-svg--left,
+  .elastic-line-svg--right { top: 0; width: 0.0625em; height: 100%; }
+  .elastic-line-svg--left { left: 0; }
+  .elastic-line-svg--right { right: 0; }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  let cleanupLines: (() => void)[] = [];
+
+  function cleanupElasticLines() {
+    cleanupLines.forEach((cleanup) => cleanup());
+    cleanupLines = [];
+  }
+
+  function initElasticLine() {
+    cleanupElasticLines();
+    const sensitivity = 40;
+    const stretch = 0.1;
+
+    document.querySelectorAll<SVGSVGElement>('[data-elastic-line]').forEach((svg) => {
+      const path = svg.querySelector('path');
+      const viewBox = svg.viewBox.baseVal;
+      if (!path || !viewBox.width || !viewBox.height) return;
+
+      const vertical = svg.dataset.elasticAxis === "vertical";
+      const center = vertical ? viewBox.x + viewBox.width * 0.5 : viewBox.y + viewBox.height * 0.5;
+      const start = vertical ? viewBox.y : viewBox.x;
+      const end = start + (vertical ? viewBox.height : viewBox.width);
+      let previous: PointerEvent | null = null;
+      let tl: gsap.core.Timeline | undefined;
+      const state = { x: (start + end) * 0.5, y: 0 };
+
+      function render() {
+        path!.setAttribute('d', vertical
+          ? `M${center} ${start} Q${center + state.y * 2} ${state.x} ${center} ${end}`
+          : `M${start} ${center} Q${state.x} ${center + state.y * 2} ${end} ${center}`);
+      }
+
+      function toSVG(x: number, y: number) {
+        const point = new DOMPoint(x, y);
+        return point.matrixTransform(svg.getScreenCTM()!.inverse());
+      }
+
+      function onPointerMove(e: PointerEvent) {
+        if (!previous) {
+          previous = e;
+          return;
+        }
+        const prev = previous;
+        previous = e;
+        if (e.timeStamp - prev.timeStamp > 150) return;
+
+        const bounds = svg.getBoundingClientRect();
+        const linePosition = vertical ? bounds.left + bounds.width * 0.5 : bounds.top + bounds.height * 0.5;
+        const from = (vertical ? prev.clientX : prev.clientY) - linePosition;
+        const to = (vertical ? e.clientX : e.clientY) - linePosition;
+        if (from * to > 0) return;
+
+        const dx = e.clientX - prev.clientX;
+        const dy = e.clientY - prev.clientY;
+        const across = vertical ? dx : dy;
+        const along = vertical ? dy : dx;
+        if (!across) return;
+        const progress = -from / across;
+        const screenAlong = (vertical ? prev.clientY : prev.clientX) + along * progress;
+        if (screenAlong <= (vertical ? bounds.top : bounds.left) || screenAlong >= (vertical ? bounds.bottom : bounds.right)) return;
+
+        const screenX = vertical ? linePosition : screenAlong;
+        const screenY = vertical ? screenAlong : linePosition;
+        const point = toSVG(screenX, screenY);
+        const velocity = Math.abs(across) / Math.max(1, e.timeStamp - prev.timeStamp);
+        const amount = Math.min((vertical ? bounds.height : bounds.width) * stretch, velocity * sensitivity);
+        const toSVGPoint = toSVG(screenX + (vertical ? amount : 0), screenY + (vertical ? 0 : amount));
+        const svgAmount = Math.abs(vertical ? toSVGPoint.x - point.x : toSVGPoint.y - point.y);
+
+        tl?.kill();
+        state.x = vertical ? point.y : point.x;
+        tl = gsap.timeline({ onUpdate: render });
+        tl.to(state, { y: Math.sign(across) * svgAmount, duration: 0.1, ease: 'power2.out' });
+        tl.to(state, { y: 0, duration: 1.5, ease: 'elastic.out(1, 0.3)' });
+      }
+
+      render();
+      const mm = gsap.matchMedia();
+      mm.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+        window.addEventListener('pointermove', onPointerMove);
+        return () => {
+          window.removeEventListener('pointermove', onPointerMove);
+          previous = null;
+          tl?.kill();
+          state.y = 0;
+          render();
+        };
+      });
+      cleanupLines.push(() => {
+        mm.revert();
+        tl?.kill();
+      });
+    });
+  }
+
+  document.addEventListener('astro:before-swap', cleanupElasticLines);
+  document.addEventListener('astro:page-load', initElasticLine);
+  initElasticLine();
+</script>

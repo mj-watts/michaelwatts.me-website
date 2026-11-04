@@ -31,11 +31,11 @@
       @apply flex flex-col gap-24 justify-center;
       @apply h-full text-black;
 
-      h3 {
-        @apply font-display text-center;
+      .work-intro {
+        @apply font-heading font-normal text-center;
 
-        font-size: clamp(28px, 3vw, 48px);
-        line-height: 1.15;
+        font-size: clamp(28px, 3vw, 50px);
+        line-height: 1.05;
         @apply md:text-left;
       }
 

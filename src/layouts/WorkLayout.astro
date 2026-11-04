@@ -3,6 +3,7 @@ import { ClientRouter } from "astro:transitions";
 import SiteLoader from "../components/SiteLoader.astro";
 import MainNav from "../components/MainNav.astro";
 import Button from "../components/CtaLink.astro";
+import ElasticLine from "../components/ElasticLine.astro";
 import "../styles/styles.css";
 import "lenis/dist/lenis.css";
 
@@ -59,6 +60,7 @@ const { pageTitle, pageDescription, nextTitle, nextDescription, nextLink } =
         <slot />
       </div>
       <footer class="footer container">
+        <ElasticLine />
         <div class="content">
           <div class="body">
             <h2>
@@ -68,7 +70,11 @@ const { pageTitle, pageDescription, nextTitle, nextDescription, nextLink } =
             <p>{nextDescription}</p>
           </div>
 
-          <Button href={`/work/${nextLink}`} text="View" theme="dark" />
+          <Button
+            href={`/work/${nextLink}`}
+            text="View Next Project"
+            theme="dark"
+          />
         </div>
       </footer>
     </div>

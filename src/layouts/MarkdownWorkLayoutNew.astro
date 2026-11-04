@@ -1,4 +1,6 @@
 ---
+import ElasticLine from "../components/ElasticLine.astro";
+import ProgressiveBlur from "../components/ProgressiveBlur.astro";
 import WorkLayout from "../layouts/WorkLayout.astro";
 import ArrowRight from "../components/icons/ArrowRight.astro";
 import Mouse from "../components/icons/Mouse.astro";
@@ -39,9 +41,14 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
     </div>
 
     <div class="col-3">
+      <ElasticLine edge="top" />
+      <ElasticLine edge="bottom" />
+      <ElasticLine edge="left" />
+      <ElasticLine edge="right" />
       <div class="col-3-scroll">
         <slot />
       </div>
+      <ProgressiveBlur />
       <div class="scroll-cta">
         <div class="text">Scroll for more...</div>
         <div><Mouse /></div>
@@ -91,10 +98,18 @@ const { title, description, summary, nextTitle, nextDescription, nextLink } =
 
     const updateScrollCta = () => {
       col3.classList.toggle("is-scrolled", scroller.scrollTop > 8);
+      const atBottom = scroller.scrollHeight - scroller.clientHeight - scroller.scrollTop <= 2;
+      col3.style.setProperty("--work-blur-opacity", atBottom ? "0" : "1");
     };
     updateScrollCta();
     scroller.addEventListener("scroll", updateScrollCta, { passive: true });
     addCleanup(() => scroller.removeEventListener("scroll", updateScrollCta));
+    scroller.addEventListener("load", updateScrollCta, true);
+    addCleanup(() => scroller.removeEventListener("load", updateScrollCta, true));
+    const blurResizeObserver = new ResizeObserver(updateScrollCta);
+    blurResizeObserver.observe(scroller);
+    if (scroller.firstElementChild) blurResizeObserver.observe(scroller.firstElementChild);
+    addCleanup(() => blurResizeObserver.disconnect());
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
