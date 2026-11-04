@@ -8,7 +8,21 @@ const currentYear = new Date().getFullYear();
   <div class="container">
     <div class="body">
       © Michael Watts, 2022 - {currentYear}
+      <span aria-hidden="true"> • </span>
+      <a class="privacy-link" href="/privacy/">Privacy Policy</a>
     </div>
     <SocialLinks />
   </div>
 </footer>
+
+<style>
+  .mainfooter .privacy-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

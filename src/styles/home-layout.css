@@ -25,7 +25,7 @@
   > nav {
     grid-area: nav;
 
-    @apply py-24 relative bg-transparent z-999;
+    @apply py-36 relative bg-transparent z-999;
 
     .content {
       @apply grid-cols-1 md:grid-cols-3;
