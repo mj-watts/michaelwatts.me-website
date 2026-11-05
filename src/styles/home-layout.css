@@ -1,4 +1,5 @@
 .home-layout {
+  isolation: isolate;
 
   display: grid;
   grid-template-areas: "nav" "body" "footer";

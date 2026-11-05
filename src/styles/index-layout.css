@@ -1,8 +1,8 @@
 .work-section {
   @apply flex flex-col relative z-2;
 
-  gap: clamp(24px, 4svh, 48px);
-  padding-block: clamp(24px, 4svh, 48px);
+  gap: clamp(24px, 6svh, 80px);
+  padding-block: clamp(24px, 6svh, 80px);
 
   h2 {
     @apply font-display text-black text-center text-balance;

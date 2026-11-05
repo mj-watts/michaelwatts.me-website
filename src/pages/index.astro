@@ -12,6 +12,7 @@ const pageTitle = "Home";
 <script>
   import { gsap } from "gsap";
   import { initGlobalLenis } from "../lib/initGlobalLenis";
+  import { initFlowers } from "../lib/initFlowers";
 
   type CleanupFn = () => void;
 
@@ -203,9 +204,18 @@ const pageTitle = "Home";
     if (!document.querySelector(".work-section")) return;
 
     initGlobalLenis();
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      window.__mwHomeIntroCleanup = animateSiteType();
-    }
+    const video = document.querySelector<HTMLVideoElement>(".work-image");
+    const cleanupVideoFlowers = video ? initFlowers(video) : undefined;
+    const title = document.querySelector<HTMLElement>(".bloom-title");
+    const cleanupTitleFlowers = title ? initFlowers(title, "underline") : undefined;
+    const cleanupType = !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? animateSiteType()
+      : undefined;
+    window.__mwHomeIntroCleanup = () => {
+      cleanupVideoFlowers?.();
+      cleanupTitleFlowers?.();
+      cleanupType?.();
+    };
   };
 
   if (!window.__mwHomeIntroListenersBound) {
@@ -219,7 +229,9 @@ const pageTitle = "Home";
 
 <HomeLayout pageTitle={pageTitle}>
   <section class="work-section">
-    <h2>Big ideas. Beautifully built.</h2>
+    <h2 class="bloom-title">
+      <span>Big</span>{" "}<span>ideas.</span>{" "}<span>Beautifully</span>{" "}<span>built.</span>
+    </h2>
     <div class="work-sequence-container">
       <div class="col-1">
         <p class="work-intro">
@@ -256,6 +268,51 @@ const pageTitle = "Home";
 </HomeLayout>
 
 <style>
+  .bloom-title span {
+    display: inline-block;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
+    color: var(--color-emphasis);
+    background: linear-gradient(
+      110deg,
+      var(--color-emphasis) 10%,
+      #b51c65 35%,
+      #b58900 55%,
+      var(--color-emphasis) 80%
+    );
+    background-size: 250% 100%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform-origin: 50% 80%;
+    animation: title-bloom 0.9s cubic-bezier(0.16, 1, 0.3, 1) both,
+      title-colour 8s ease-in-out infinite alternate;
+  }
+
+  .bloom-title span:nth-child(2) { animation-delay: 0.08s, -1s; }
+  .bloom-title span:nth-child(3) { animation-delay: 0.16s, -2s; }
+  .bloom-title span:nth-child(4) { animation-delay: 0.24s, -3s; }
+
+  @keyframes title-bloom {
+    from { opacity: 0; transform: translateY(0.18em) scale(0.94) rotate(-1deg); }
+    to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+  }
+
+  @keyframes title-colour {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bloom-title span { animation: none; }
+  }
+
+  @media (forced-colors: active) {
+    .bloom-title span {
+      background: none;
+      -webkit-text-fill-color: currentColor;
+    }
+  }
+
   .site-type-wrap {
     position: relative;
     display: inline-block;
