@@ -78,46 +78,67 @@ const pageTitle = "Home";
         siteTypeEl.querySelectorAll(".site-type-letter")
       );
 
-      track(gsapRef.to(currentLetters, {
-        opacity: 0,
-        duration: 0.28,
-        ease: "power2.in",
-        stagger: 0.03,
-        onComplete: () => {
-          siteTypeEl.textContent = "";
+      track(
+        gsapRef.to(currentLetters, {
+          opacity: 0,
+          duration: 0.28,
+          ease: "power3.in",
+          stagger: 0.03,
+          onComplete: () => {
+            siteTypeEl.textContent = "";
 
-          if (siteTypeStopEl) {
-            track(gsapRef.fromTo(
-              siteTypeStopEl,
-              { opacity: 0.5, color: "#ff2d8d" },
-              {
-                opacity: 1,
-                color: "#111111",
-                duration: 1.5,
-                ease: "power2.out",
-              }
-            ));
-          }
+            if (siteTypeStopEl) {
+              track(
+                gsapRef.fromTo(
+                  siteTypeStopEl,
+                  { opacity: 0.5, color: "#ff2d8d" },
+                  {
+                    opacity: 1,
+                    color: "#111111",
+                    duration: 1.5,
+                    ease: "power2.out",
+                  }
+                )
+              );
+            }
 
-          const nextText = siteTypes[currentIndex];
-          currentIndex = (currentIndex + 1) % siteTypes.length;
-          const nextLetters = toLetterSpans(siteTypeEl, nextText);
+            const nextText = siteTypes[currentIndex];
+            currentIndex = (currentIndex + 1) % siteTypes.length;
+            const nextLetters = toLetterSpans(siteTypeEl, nextText);
 
-          gsapRef.set(nextLetters, { opacity: 0.2, color: "#ff2d8d" });
-          track(gsapRef.to(nextLetters, {
-            opacity: 1,
-            color: "#111111",
-            duration: 0.32,
-            ease: "power2.out",
-            stagger: 0.03,
-            delay: 0.12,
-            onComplete: () => {
-              isAnimating = false;
-              track(gsapRef.delayedCall(1, runCycle));
-            },
-          }));
-        },
-      }));
+            gsapRef.set(nextLetters, {
+              opacity: 0.2,
+              color: "#ff2d8d",
+              scale: 1,
+              transformOrigin: "50% 70%",
+            });
+            track(
+              gsapRef.to(nextLetters, {
+                keyframes: [
+                  {
+                    opacity: 1,
+                    color: "#111111",
+                    scale: 1.12,
+                    duration: 0.12,
+                    ease: "power4.out",
+                  },
+                  {
+                    scale: 1,
+                    duration: 0.2,
+                    ease: "power3.out",
+                  },
+                ],
+                stagger: 0.03,
+                delay: 0.12,
+                onComplete: () => {
+                  isAnimating = false;
+                  track(gsapRef.delayedCall(1, runCycle));
+                },
+              })
+            );
+          },
+        })
+      );
     };
 
     track(gsapRef.delayedCall(1, runCycle));
@@ -150,18 +171,18 @@ const pageTitle = "Home";
 
 <HomeLayout pageTitle={pageTitle}>
   <section class="work-section">
-    <h2>Helping your sites shine</h2>
+    <h2>Big ideas. Beautifully built.</h2>
     <div class="work-sequence-container">
       <div class="col-1">
         <p class="work-intro">
-          Web design and development that adds that special human touch to your <span
+          From the first pixel to the final deployment, making <span
             id="siteType"
             class="whitespace-nowrap">sites</span
-          ><span id="siteTypeStop">.</span>
+          >that stand out..
         </p>
         <div class="cta">
-          <Button href="/work/swiftaid" text="View Work" />
-          <p>Explore a blend of creative web and application design.</p>
+          <Button href="/work/swiftaid" text="View Projects" />
+          <p>Bright ideas to beautifully built digital experiences.</p>
         </div>
       </div>
       <div class="col-2">
@@ -182,6 +203,4 @@ const pageTitle = "Home";
       </div>
     </div>
   </section>
-
-
 </HomeLayout>
