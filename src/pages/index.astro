@@ -49,6 +49,7 @@ const pageTitle = "Home";
   const animateSiteType = () => {
     const siteTypeEl = document.querySelector("#siteType");
     const siteTypeStopEl = document.querySelector("#siteTypeStop");
+    const siteTypeLineEl = document.querySelector("#siteTypeLine");
     const gsapRef = gsap;
     const animations = new Set<gsap.core.Animation>();
     const track = (animation: gsap.core.Animation) => {
@@ -105,6 +106,53 @@ const pageTitle = "Home";
             const nextText = siteTypes[currentIndex];
             currentIndex = (currentIndex + 1) % siteTypes.length;
             const nextLetters = toLetterSpans(siteTypeEl, nextText);
+            const letterStagger = 0.03;
+            const letterPopDuration = 0.12;
+            const letterSettleDuration = 0.2;
+            const letterDelay = 0.12;
+
+            if (siteTypeLineEl) {
+              const textBounds = siteTypeEl.getBoundingClientRect();
+              track(
+                gsapRef
+                  .timeline({ delay: letterDelay })
+                  .set(siteTypeLineEl, {
+                    scaleX: 0,
+                    opacity: 0,
+                    transformOrigin: "left center",
+                  })
+                  .to(
+                    siteTypeLineEl,
+                    {
+                      opacity: 1,
+                      duration: 0.25,
+                      ease: "power3.out",
+                    },
+                    0
+                  )
+                  .to(
+                    siteTypeLineEl,
+                    {
+                      keyframes: nextLetters.map((letter, index) => ({
+                        scaleX:
+                          (letter.getBoundingClientRect().right -
+                            textBounds.left) /
+                          textBounds.width,
+                        duration:
+                          index === 0 ? letterPopDuration : letterStagger,
+                        ease: "none",
+                      })),
+                    },
+                    0
+                  )
+                  .set(siteTypeLineEl, { transformOrigin: "right center" })
+                  .to(siteTypeLineEl, {
+                    scaleX: 0,
+                    duration: letterSettleDuration,
+                    ease: "power2.out",
+                  })
+              );
+            }
 
             gsapRef.set(nextLetters, {
               opacity: 0.2,
@@ -119,17 +167,17 @@ const pageTitle = "Home";
                     opacity: 1,
                     color: "#111111",
                     scale: 1.12,
-                    duration: 0.12,
+                    duration: letterPopDuration,
                     ease: "power4.out",
                   },
                   {
                     scale: 1,
-                    duration: 0.2,
+                    duration: letterSettleDuration,
                     ease: "power3.out",
                   },
                 ],
-                stagger: 0.03,
-                delay: 0.12,
+                stagger: letterStagger,
+                delay: letterDelay,
                 onComplete: () => {
                   isAnimating = false;
                   track(gsapRef.delayedCall(1, runCycle));
@@ -176,8 +224,10 @@ const pageTitle = "Home";
       <div class="col-1">
         <p class="work-intro">
           From the first pixel to the final deployment, making <span
-            id="siteType"
-            class="whitespace-nowrap">sites</span
+            class="site-type-wrap"
+            ><span id="siteType" class="whitespace-nowrap">sites</span><span
+              id="siteTypeLine"
+              aria-hidden="true"></span></span
           >that stand out..
         </p>
         <div class="cta">
@@ -204,3 +254,23 @@ const pageTitle = "Home";
     </div>
   </section>
 </HomeLayout>
+
+<style>
+  .site-type-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  #siteTypeLine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.08em;
+    height: 5px;
+    background: var(--color-emphasis);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    pointer-events: none;
+  }
+</style>
